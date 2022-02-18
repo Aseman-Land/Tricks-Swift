@@ -1,6 +1,6 @@
 //
 //  TricksApp.swift
-//  Shared
+//  Tricks
 //
 //  Created by Armin on 2/18/22.
 //
@@ -11,7 +11,7 @@ import SwiftUI
 struct TricksApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
