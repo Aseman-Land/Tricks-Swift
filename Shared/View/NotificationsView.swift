@@ -9,7 +9,24 @@ import SwiftUI
 
 struct NotificationsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        EmptyList()
+    }
+    
+    // MARK: - Empty View
+    @ViewBuilder
+    func EmptyList() -> some View {
+        VStack(spacing: 12) {
+            Image(systemName: "eyes.inverse")
+                .font(.custom("system", size: 150))
+            
+            Text("Great, No Notification!")
+                .font(.title)
+                .fontWeight(.medium)
+        }
+        .dynamicTypeSize(.xSmall ... .medium)
+        .lineLimit(1)
+        .minimumScaleFactor(0.5)
+        .foregroundStyle(.secondary)
     }
 }
 

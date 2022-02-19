@@ -26,6 +26,13 @@
 		C63C912C27BFC9100022051C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912A27BFC9100022051C /* ProfileView.swift */; };
 		C63C912F27BFCCD90022051C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912E27BFCCD90022051C /* LoginView.swift */; };
 		C63C913027BFCCD90022051C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912E27BFCCD90022051C /* LoginView.swift */; };
+		C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6748D6B27C015110023251B /* VisualEffectBlur.swift */; };
+		C69D74AD27C0D9730060432F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D74AC27C0D9730060432F /* LoginViewModel.swift */; };
+		C69D74AE27C0D9730060432F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D74AC27C0D9730060432F /* LoginViewModel.swift */; };
+		C6FA15F227C0E655005CAD1A /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F127C0E655005CAD1A /* SignupViewModel.swift */; };
+		C6FA15F327C0E655005CAD1A /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F127C0E655005CAD1A /* SignupViewModel.swift */; };
+		C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
+		C6FA15F627C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +49,10 @@
 		C63C912727BFC9090022051C /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		C63C912A27BFC9100022051C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C63C912E27BFCCD90022051C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C6748D6B27C015110023251B /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
+		C69D74AC27C0D9730060432F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C6FA15F127C0E655005CAD1A /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		C6FA15F427C0E6F9005CAD1A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +107,7 @@
 		C63C910427BFC5BA0022051C /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				C6748D6A27C015090023251B /* Components */,
 				C63C910527BFC5BA0022051C /* macOS.entitlements */,
 			);
 			path = macOS;
@@ -104,10 +116,11 @@
 		C63C911427BFC5C30022051C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C63C912427BFC8E80022051C /* TricksView.swift */,
+				C63C912E27BFCCD90022051C /* LoginView.swift */,
 				C63C912727BFC9090022051C /* NotificationsView.swift */,
 				C63C912A27BFC9100022051C /* ProfileView.swift */,
-				C63C912E27BFCCD90022051C /* LoginView.swift */,
+				C63C912427BFC8E80022051C /* TricksView.swift */,
+				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,6 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				C63C912127BFC6670022051C /* NavigationItem.swift */,
+				C69D74AC27C0D9730060432F /* LoginViewModel.swift */,
+				C6FA15F127C0E655005CAD1A /* SignupViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -151,6 +166,14 @@
 				C63C90F827BFC5BA0022051C /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C6748D6A27C015090023251B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C6748D6B27C015110023251B /* VisualEffectBlur.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,14 +274,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */,
 				C63C912B27BFC9100022051C /* ProfileView.swift in Sources */,
 				C63C912227BFC6670022051C /* NavigationItem.swift in Sources */,
 				C63C911A27BFC6230022051C /* MainView.swift in Sources */,
 				C63C912F27BFCCD90022051C /* LoginView.swift in Sources */,
 				C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */,
+				C6FA15F227C0E655005CAD1A /* SignupViewModel.swift in Sources */,
 				C63C911827BFC6230022051C /* Sidebar.swift in Sources */,
 				C63C912527BFC8E80022051C /* TricksView.swift in Sources */,
 				C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */,
+				C69D74AD27C0D9730060432F /* LoginViewModel.swift in Sources */,
 				C63C912827BFC9090022051C /* NotificationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,13 +293,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FA15F627C0E6F9005CAD1A /* SignupView.swift in Sources */,
 				C63C912327BFC6670022051C /* NavigationItem.swift in Sources */,
 				C63C912627BFC8E80022051C /* TricksView.swift in Sources */,
 				C63C911B27BFC6230022051C /* MainView.swift in Sources */,
 				C63C911927BFC6230022051C /* Sidebar.swift in Sources */,
 				C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */,
+				C6FA15F327C0E655005CAD1A /* SignupViewModel.swift in Sources */,
 				C63C912C27BFC9100022051C /* ProfileView.swift in Sources */,
+				C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */,
 				C63C913027BFCCD90022051C /* LoginView.swift in Sources */,
+				C69D74AE27C0D9730060432F /* LoginViewModel.swift in Sources */,
 				C63C912927BFC9090022051C /* NotificationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

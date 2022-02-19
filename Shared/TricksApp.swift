@@ -13,5 +13,12 @@ struct TricksApp: App {
         WindowGroup {
             MainView()
         }
+        .commands {
+            SidebarCommands()
+        }
+        #if os(macOS)
+        .windowStyle(.hiddenTitleBar)
+        #endif
+        
     }
 }

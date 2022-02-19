@@ -8,20 +8,36 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @State private var showRegister: Bool = false
     #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     #endif
     
     var body: some View {
-        #if os(iOS)
-        if horizontalSizeClass == .compact {
-            TabNavigation()
+        
+        if showRegister {
+            SignupView {
+                withAnimation {
+                    showRegister.toggle()
+                }
+            }
         } else {
-            Sidebar()
+            LoginView {
+                withAnimation {
+                    showRegister.toggle()
+                }
+            }
         }
-        #else
-        Sidebar()
-        #endif
+//        #if os(iOS)
+//        if horizontalSizeClass == .compact {
+//            TabNavigation()
+//        } else {
+//            Sidebar()
+//        }
+//        #else
+//        Sidebar()
+//        #endif
     }
 }
 

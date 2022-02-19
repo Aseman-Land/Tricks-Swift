@@ -9,7 +9,30 @@ import SwiftUI
 
 struct TricksView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        EmptyList()
+    }
+    
+    // MARK: - Empty View
+    @ViewBuilder
+    func EmptyList() -> some View {
+        VStack {
+            ZStack {
+                Image(systemName: "macwindow")
+                    .font(.custom("system", size: 150))
+                
+                Text("404")
+                    .font(.system(.largeTitle, design: .monospaced))
+                    .offset(y: 15)
+            }
+            
+            Text("No tricks available")
+                .font(.title)
+                .fontWeight(.medium)
+        }
+        .dynamicTypeSize(.xSmall ... .medium)
+        .lineLimit(1)
+        .minimumScaleFactor(0.5)
+        .foregroundStyle(.secondary)
     }
 }
 
