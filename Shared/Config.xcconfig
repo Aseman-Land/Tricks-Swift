@@ -1,0 +1,17 @@
+//
+//  Config.xcconfig
+//  Tricks
+//
+//  Created by Armin on 2/19/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+TRICKS_APP_VERSION = 1.0.0
+TRICKS_APP_BUNDLE_VERSION = 1
+
+TRICKS_APP_NAME = Tricks
+TRICKS_APP_ID = io.aseman.app.CodeTrick.test
+TRICKS_BASE_API = tricks.aseman.io
+TRICKS_PASSWORD_SALT = 92bcd38b-9aae-4528-a5b0-4c38489db279

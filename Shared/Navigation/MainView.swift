@@ -9,35 +9,44 @@ import SwiftUI
 
 struct MainView: View {
     
+    @EnvironmentObject var profile: Profile
+    
     @State private var showRegister: Bool = false
     #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     #endif
     
     var body: some View {
-        
-        if showRegister {
-            SignupView {
-                withAnimation {
-                    showRegister.toggle()
+        Group {
+            if profile.isUserLoggedIn {
+                // MARK: - Dashboard view
+                #if os(iOS)
+                if horizontalSizeClass == .compact {
+                    TabNavigation()
+                } else {
+                    Sidebar()
                 }
-            }
-        } else {
-            LoginView {
-                withAnimation {
-                    showRegister.toggle()
+                #else
+                Sidebar()
+                #endif
+            } else {
+                // MARK: - Login and register views
+                if showRegister {
+                    SignupView {
+                        withAnimation {
+                            showRegister.toggle()
+                        }
+                    }
+                } else {
+                    LoginView {
+                        withAnimation {
+                            showRegister.toggle()
+                        }
+                    }
                 }
             }
         }
-//        #if os(iOS)
-//        if horizontalSizeClass == .compact {
-//            TabNavigation()
-//        } else {
-//            Sidebar()
-//        }
-//        #else
-//        Sidebar()
-//        #endif
+        .environmentObject(profile)
     }
 }
 

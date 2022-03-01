@@ -11,7 +11,10 @@ struct LoginView: View {
     
     @State var showSignupView: () -> Void
     
+    @EnvironmentObject var profile: Profile
+    
     @StateObject var loginModel = LoginViewModel()
+    
     @FocusState private var focusedField: LoginField?
     
     var body: some View {
@@ -112,7 +115,16 @@ struct LoginView: View {
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                     }
                 }
+                
+                if loginModel.errorMessage != "" {
+                    Text(loginModel.errorMessage)
+                        .foregroundColor(.red)
+                        .shadow(radius: 2)
+                }
             }
+        }
+        .task {
+            loginModel.profile = profile
         }
     }
     

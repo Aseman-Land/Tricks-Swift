@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct TricksApp: App {
+    
+    @StateObject var profile = Profile()
+    
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(profile)
         }
         .commands {
             SidebarCommands()
@@ -19,6 +23,7 @@ struct TricksApp: App {
         #if os(macOS)
         .windowStyle(.hiddenTitleBar)
         #endif
+        
         
     }
 }
