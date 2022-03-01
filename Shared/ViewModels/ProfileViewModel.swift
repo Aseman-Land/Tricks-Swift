@@ -60,8 +60,11 @@ class ProfileViewModel: ObservableObject {
     }
     
     func logout() async {
+        loading = true
+        errorMessage = ""
+        
         Task(priority: .background) {
-            let result = try await service.logout(fcmToken: nil)
+            let result = try await service.logout(token: userToken ,fcmToken: nil)
             
             switch result {
             case .success(let result):

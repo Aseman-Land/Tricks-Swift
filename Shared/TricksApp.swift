@@ -24,6 +24,9 @@ struct TricksApp: App {
         .windowStyle(.hiddenTitleBar)
         #endif
         
-        
+        Settings {
+            SettingsView()
+                .environmentObject(profile)
+        }
     }
 }

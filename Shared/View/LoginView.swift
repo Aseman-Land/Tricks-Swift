@@ -112,7 +112,7 @@ struct LoginView: View {
                         
                     } else {
                         ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
                     }
                 }
                 

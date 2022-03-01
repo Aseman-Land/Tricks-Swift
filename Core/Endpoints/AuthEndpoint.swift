@@ -22,7 +22,10 @@ enum AuthEndpoint {
         fullname: String
     )
     
-    case logout(fcmToken: String?)
+    case logout(
+        token: String,
+        fcmToken: String?
+    )
 }
 
 extension AuthEndpoint: Endpoint {
@@ -32,7 +35,7 @@ extension AuthEndpoint: Endpoint {
             return "/api/v1/auth/login"
         case .register(_, _, _, _):
             return "/api/v1/users"
-        case .logout(_):
+        case .logout(_, _):
             return "/api/v1/auth/logout"
         }
     }
@@ -42,7 +45,15 @@ extension AuthEndpoint: Endpoint {
     }
     
     var header: [String : String]? {
-        return ["Content-Type":"application/json; charset=utf-8"]
+        switch self {
+        case .logout(let token, _):
+            return [
+                "Authorization": token,
+                "Content-Type":"application/json; charset=utf-8",
+            ]
+        default:
+            return ["Content-Type":"application/json; charset=utf-8"]
+        }
     }
     
     var body: [String : String]? {
@@ -64,7 +75,7 @@ extension AuthEndpoint: Endpoint {
                 "fullname": fullname
             ]
             
-        case .logout(let fcmToken):
+        case .logout(_, let fcmToken):
             if let fcmToken = fcmToken {
                 return ["fcm_token": fcmToken]
             } else {

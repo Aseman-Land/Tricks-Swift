@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C629100927CE778A00FD740E /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C629100827CE778A00FD740E /* AuthenticationServices.framework */; };
+		C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100B27CE8E6200FD740E /* SettingsView.swift */; };
+		C629100F27CE969A00FD740E /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100E27CE969A00FD740E /* GeneralSettingsView.swift */; };
+		C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101027CE96B600FD740E /* EditorSettingsView.swift */; };
+		C629101327CE96CF00FD740E /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101227CE96CF00FD740E /* AccountSettingsView.swift */; };
 		C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C90F627BFC5BA0022051C /* TricksApp.swift */; };
 		C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C90F627BFC5BA0022051C /* TricksApp.swift */; };
 		C63C910A27BFC5BA0022051C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63C90F827BFC5BA0022051C /* Assets.xcassets */; };
@@ -68,6 +72,10 @@
 
 /* Begin PBXFileReference section */
 		C629100827CE778A00FD740E /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		C629100B27CE8E6200FD740E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C629100E27CE969A00FD740E /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		C629101027CE96B600FD740E /* EditorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSettingsView.swift; sourceTree = "<group>"; };
+		C629101227CE96CF00FD740E /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		C63C90F627BFC5BA0022051C /* TricksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksApp.swift; sourceTree = "<group>"; };
 		C63C90F827BFC5BA0022051C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C63C90FD27BFC5BA0022051C /* Tricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +133,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C629100A27CE8E5100FD740E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C629100D27CE968200FD740E /* Settings */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C629100D27CE968200FD740E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C629100B27CE8E6200FD740E /* SettingsView.swift */,
+				C629100E27CE969A00FD740E /* GeneralSettingsView.swift */,
+				C629101027CE96B600FD740E /* EditorSettingsView.swift */,
+				C629101227CE96CF00FD740E /* AccountSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		C63C90F027BFC5B90022051C = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +189,9 @@
 		C63C910427BFC5BA0022051C /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				C67D89FF27C139AE001E0E56 /* Resources */,
 				C6748D6A27C015090023251B /* Components */,
+				C67D89FF27C139AE001E0E56 /* Resources */,
+				C629100A27CE8E5100FD740E /* View */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -460,6 +488,8 @@
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0627C14ABD001E0E56 /* AppService.swift in Sources */,
 				C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */,
+				C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */,
+				C629100F27CE969A00FD740E /* GeneralSettingsView.swift in Sources */,
 				C6D1013B27C7E13A0087235E /* AuthService.swift in Sources */,
 				C6CDBBB327CA1068008BFF5E /* HTTPMethod.swift in Sources */,
 				C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */,
@@ -467,10 +497,12 @@
 				C63C911B27BFC6230022051C /* MainView.swift in Sources */,
 				C63C911927BFC6230022051C /* Sidebar.swift in Sources */,
 				C6C0F82E27C12EF20011F173 /* Notif.swift in Sources */,
+				C629101327CE96CF00FD740E /* AccountSettingsView.swift in Sources */,
 				C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C912C27BFC9100022051C /* ProfileView.swift in Sources */,
 				C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */,
+				C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */,
 				C63C913027BFCCD90022051C /* LoginView.swift in Sources */,
 				C69D74AE27C0D9730060432F /* AuthViewModel.swift in Sources */,
 				C63C912927BFC9090022051C /* NotificationsView.swift in Sources */,
