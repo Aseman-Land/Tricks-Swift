@@ -20,6 +20,8 @@ protocol AuthServiceable {
         email: String,
         fullname: String
     ) async throws -> Result<ResponseSuccess, RequestError>
+    
+    func logout(token: String, fcmToken: String?) async throws -> Result<GlobalResponse, RequestError>
 }
 
 struct AuthService: HTTPClient, AuthServiceable {

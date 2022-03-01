@@ -56,7 +56,7 @@ extension AuthEndpoint: Endpoint {
         }
     }
     
-    var body: [String : String]? {
+    var body: [String : Any]? {
         switch self {
         case .login(let username, let password, _):
             let securedPassword = SecureKey(password: password).securedKey
