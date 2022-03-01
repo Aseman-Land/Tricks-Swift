@@ -11,9 +11,9 @@ struct LoginView: View {
     
     @State var showSignupView: () -> Void
     
-    @EnvironmentObject var profile: Profile
+    @EnvironmentObject var profile: ProfileViewModel
     
-    @StateObject var loginModel = LoginViewModel()
+    @StateObject var authModel = AuthViewModel()
     
     @FocusState private var focusedField: LoginField?
     
@@ -36,9 +36,9 @@ struct LoginView: View {
                 VStack {
                     Label {
                         // MARK: - Username Field
-                        TextField("Username", text: $loginModel.username)
+                        TextField("Username", text: $authModel.username)
                             .frame(maxWidth: 300)
-                            .disabled(loginModel.loading)
+                            .disabled(authModel.loading)
                             .focused($focusedField, equals: .username)
                             .submitLabel(.next)
                             .onSubmit {
@@ -51,16 +51,16 @@ struct LoginView: View {
                     
                     Label {
                         // MARK: - Password Field
-                        SecureField("Password", text: $loginModel.password)
+                        SecureField("Password", text: $authModel.password)
                             .frame(maxWidth: 300)
                             .privacySensitive(true)
-                            .disabled(loginModel.loading)
+                            .disabled(authModel.loading)
                             .focused($focusedField, equals: .password)
                             .submitLabel(.done)
                             .padding()
                             .onSubmit {
                                 Task.init {
-                                    await loginModel.login()
+                                    await authModel.login()
                                 }
                             }
                     } icon: {
@@ -78,7 +78,7 @@ struct LoginView: View {
                 )
                 .padding()
                 
-                if !loginModel.loading {
+                if !authModel.loading {
                     Button(action: showSignupView) {
                         Text("Don't have an account? **Register**")
                     }
@@ -88,10 +88,10 @@ struct LoginView: View {
                 
                 // MARK: - Login button
                 ZStack(alignment: .center) {
-                    if !loginModel.loading {
+                    if !authModel.loading {
                         Button(action: {
                             Task.init {
-                                await loginModel.login()
+                                await authModel.login()
                             }
                         }){
                             Text("Login")
@@ -116,21 +116,25 @@ struct LoginView: View {
                     }
                 }
                 
-                if loginModel.errorMessage != "" {
-                    Text(loginModel.errorMessage)
+                if authModel.errorMessage != "" {
+                    Text(authModel.errorMessage)
                         .foregroundColor(.red)
                         .shadow(radius: 2)
                 }
             }
         }
         .task {
-            loginModel.profile = profile
+            authModel.profile = profile
         }
     }
     
     private func endEditing() {
         focusedField = nil
     }
+}
+
+enum LoginField: Hashable {
+    case username, password
 }
 
 struct LoginView_Previews: PreviewProvider {

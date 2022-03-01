@@ -11,7 +11,10 @@ struct SignupView: View {
     
     @State var showLoginView: () -> Void
     
-    @StateObject var signupModel = SignupViewModel()
+    @EnvironmentObject var profile: ProfileViewModel
+    
+    @StateObject var authModel = AuthViewModel()
+    
     @FocusState private var focusedField: SignupField?
     
     var body: some View {
@@ -37,9 +40,9 @@ struct SignupView: View {
                 VStack {
                     Label {
                         // MARK: - Username Field
-                        TextField("Username", text: $signupModel.username)
+                        TextField("Username", text: $authModel.username)
                             .frame(maxWidth: 300)
-                            .disabled(signupModel.loading)
+                            .disabled(authModel.loading)
                             .focused($focusedField, equals: .username)
                             .submitLabel(.next)
                             .onSubmit {
@@ -52,10 +55,10 @@ struct SignupView: View {
                     
                     Label {
                         // MARK: - Password Field
-                        SecureField("Password", text: $signupModel.password)
+                        SecureField("Password", text: $authModel.password)
                             .frame(maxWidth: 300)
                             .privacySensitive(true)
-                            .disabled(signupModel.loading)
+                            .disabled(authModel.loading)
                             .focused($focusedField, equals: .password)
                             .submitLabel(.next)
                             .padding()
@@ -68,10 +71,10 @@ struct SignupView: View {
                     
                     Label {
                         // MARK: - Password Field
-                        SecureField("Repeat Password", text: $signupModel.repeatPassword)
+                        SecureField("Repeat Password", text: $authModel.repeatPassword)
                             .frame(maxWidth: 300)
                             .privacySensitive(true)
-                            .disabled(signupModel.loading)
+                            .disabled(authModel.loading)
                             .focused($focusedField, equals: .repeatPassword)
                             .submitLabel(.next)
                             .padding()
@@ -84,9 +87,9 @@ struct SignupView: View {
                     
                     Label {
                         // MARK: - Username Field
-                        TextField("Email", text: $signupModel.email)
+                        TextField("Email", text: $authModel.email)
                             .frame(maxWidth: 300)
-                            .disabled(signupModel.loading)
+                            .disabled(authModel.loading)
                             .focused($focusedField, equals: .email)
                             .submitLabel(.next)
                             .onSubmit {
@@ -99,14 +102,14 @@ struct SignupView: View {
                     
                     Label {
                         // MARK: - Username Field
-                        TextField("Your name", text: $signupModel.fullname)
+                        TextField("Your name", text: $authModel.fullname)
                             .frame(maxWidth: 300)
-                            .disabled(signupModel.loading)
+                            .disabled(authModel.loading)
                             .focused($focusedField, equals: .fullname)
                             .submitLabel(.done)
                             .onSubmit {
                                 Task.init {
-                                    await signupModel.signup()
+                                    await authModel.signup()
                                 }
                             }
                             .padding()
@@ -125,7 +128,7 @@ struct SignupView: View {
                 )
                 .padding()
                 
-                if !signupModel.loading {
+                if !authModel.loading {
                     Button(action: showLoginView) {
                         Text("Have an account? **Login**")
                     }
@@ -135,10 +138,10 @@ struct SignupView: View {
                 
                 // MARK: - Login button
                 ZStack(alignment: .center) {
-                    if !signupModel.loading {
+                    if !authModel.loading {
                         Button(action: {
                             Task.init {
-                                await signupModel.signup()
+                                await authModel.signup()
                             }
                         }){
                             Text("Register")
@@ -164,11 +167,18 @@ struct SignupView: View {
                 }
             }
         }
+        .task {
+            authModel.profile = profile
+        }
     }
     
     private func endEditing() {
         focusedField = nil
     }
+}
+
+enum SignupField: Hashable {
+    case username, password, repeatPassword, email, fullname
 }
 
 struct SignupView_Previews: PreviewProvider {

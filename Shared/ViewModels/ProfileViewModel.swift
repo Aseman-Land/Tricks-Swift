@@ -5,10 +5,10 @@
 //  Created by armin on 12/13/20.
 //
 
-import Foundation
+import SwiftUI
 import KeychainAccess
 
-class Profile: ObservableObject {
+class ProfileViewModel: ObservableObject {
     
     @Published var isUserLoggedIn: Bool
     @Published var userToken: String
@@ -38,8 +38,12 @@ class Profile: ObservableObject {
     func setToken(_ token: String) {
         let keychain = Keychain(service: AppService.apiKey)
         keychain["token"] = token
-        isUserLoggedIn = token.count > 0
-        userToken = "Bearer \(token)"
+        DispatchQueue.main.async {
+            withAnimation {
+                self.isUserLoggedIn = token.count > 0
+                self.userToken = "Bearer \(token)"
+            }
+        }
     }
     
     func setFCMToken(_ token: String) {
