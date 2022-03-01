@@ -8,13 +8,13 @@
 import Foundation
 
 protocol TricksServiceable {
-    func globalTricks(token: String) async throws -> Result<[TricksResult], RequestError>
+    func globalTricks(token: String) async throws -> Result<[Trick], RequestError>
     
-    func myTimelineTricks(token: String) async throws -> Result<[TricksResult], RequestError>
+    func myTimelineTricks(token: String) async throws -> Result<[Trick], RequestError>
     
-    func getTrick(trickID: Int, token: String) async throws -> Result<[TricksResult], RequestError>
+    func getTrick(trickID: Int, token: String) async throws -> Result<[Trick], RequestError>
     
-    func profileTricks(userID: String, token: String) async throws -> Result<[TricksResult], RequestError>
+    func profileTricks(userID: String, token: String) async throws -> Result<[Trick], RequestError>
     
     func postTrick(
         comment: String,
@@ -34,37 +34,37 @@ protocol TricksServiceable {
     
     func deleteTrickPost(trickID: Int, token: String) async throws -> Result<GlobalResponse, RequestError>
     
-    func addRate(tagID: Int, rate: Int, token: String) async throws -> Result<[TricksResult], RequestError>
+    func addRate(tagID: Int, rate: Int, token: String) async throws -> Result<[Trick], RequestError>
     
     func addView(tricksIDs: [Int], token: String) async throws -> Result<Bool, RequestError>
 }
 
 struct TricksService: HTTPClient, TricksServiceable {
-    func globalTricks(token: String) async throws -> Result<[TricksResult], RequestError> {
+    func globalTricks(token: String) async throws -> Result<[Trick], RequestError> {
         return try await sendRequest(
             endpoint: TricksEndpoint.globalTricks(token: token),
-            responseModel: [TricksResult].self
+            responseModel: [Trick].self
         )
     }
     
-    func myTimelineTricks(token: String) async throws -> Result<[TricksResult], RequestError> {
+    func myTimelineTricks(token: String) async throws -> Result<[Trick], RequestError> {
         return try await sendRequest(
             endpoint: TricksEndpoint.myTimelineTricks(token: token),
-            responseModel: [TricksResult].self
+            responseModel: [Trick].self
         )
     }
     
-    func getTrick(trickID: Int, token: String) async throws -> Result<[TricksResult], RequestError> {
+    func getTrick(trickID: Int, token: String) async throws -> Result<[Trick], RequestError> {
         return try await sendRequest(
             endpoint: TricksEndpoint.getTrick(trickID: trickID, token: token),
-            responseModel: [TricksResult].self
+            responseModel: [Trick].self
         )
     }
     
-    func profileTricks(userID: String, token: String) async throws -> Result<[TricksResult], RequestError> {
+    func profileTricks(userID: String, token: String) async throws -> Result<[Trick], RequestError> {
         return try await sendRequest(
             endpoint: TricksEndpoint.profiletricks(userID: userID, token: token),
-            responseModel: [TricksResult].self
+            responseModel: [Trick].self
         )
     }
     
@@ -89,10 +89,10 @@ struct TricksService: HTTPClient, TricksServiceable {
         )
     }
     
-    func addRate(tagID: Int, rate: Int, token: String) async throws -> Result<[TricksResult], RequestError> {
+    func addRate(tagID: Int, rate: Int, token: String) async throws -> Result<[Trick], RequestError> {
         return try await sendRequest(
             endpoint: TricksEndpoint.addRate(tagID: tagID, rate: rate, token: token),
-            responseModel: [TricksResult].self
+            responseModel: [Trick].self
         )
     }
     

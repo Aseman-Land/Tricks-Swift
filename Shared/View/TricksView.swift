@@ -2,42 +2,100 @@
 //  TricksView.swift
 //  Tricks
 //
-//  Created by Armin on 2/18/22.
+//  Created by Armin on 3/1/22.
 //
 
 import SwiftUI
 
 struct TricksView: View {
-    var body: some View {
-        EmptyList()
-    }
     
-    // MARK: - Empty View
-    @ViewBuilder
-    func EmptyList() -> some View {
+    var trick: Trick
+    
+    var body: some View {
         VStack {
-            ZStack {
-                Image(systemName: "macwindow")
-                    .font(.custom("system", size: 150))
+            HStack {
+                // MARK: - User avatar
+                ZStack {
+                    Circle()
+                        .foregroundStyle(.white)
+                    
+                    AsyncImage(url: URL(string: "https://\(AppService.apiKey)/api/v1/\(trick.owner.avatar ?? "")")) { phase in
+                        switch phase {
+                        case .empty, .failure:
+                            Image(systemName: "person.fill")
+                                .font(.title)
+                                .foregroundColor(.gray)
+                        case .success(let image):
+                            image.resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .clipShape(Circle())
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
+                    .padding(.all, 2)
+                }
+                .frame(maxWidth: 40, maxHeight: 40)
+                .shadow(radius: 1)
                 
-                Text("404")
-                    .font(.system(.largeTitle, design: .monospaced))
-                    .offset(y: 15)
+                VStack {
+                    // MARK: - Fullname
+                    Text(trick.owner.fullname)
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.primary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    // MARK: - Username
+                    Text("@\(trick.owner.username)")
+                        .font(.caption)
+                        .fontWeight(.light)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .padding(.bottom)
             
-            Text("No tricks available")
-                .font(.title)
-                .fontWeight(.medium)
+            // MARK: - Trick's body (description)
+            Text(trick.body)
+                .font(.body)
+                .foregroundStyle(.primary)
+                .dynamicTypeSize(.xSmall ... .medium)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            // MARK: - Trick preview
+            AsyncImage(url: URL(string: "https://\(AppService.apiKey)/api/v1/\(trick.filename ?? "")")) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                case .failure:
+                    ZStack {
+                        Image(systemName: "macwindow")
+                            .font(.custom("system", size: 120))
+                            .foregroundStyle(.secondary)
+                        
+                        Image(systemName: "exclamationmark.triangle")
+                            .font(.largeTitle)
+                            .foregroundStyle(.secondary)
+                            .offset(y: 5)
+                    }
+                case .success(let image):
+                    image.resizable()
+                        .aspectRatio(contentMode: .fit)
+                @unknown default:
+                    EmptyView()
+                }
+            }
         }
-        .dynamicTypeSize(.xSmall ... .medium)
-        .lineLimit(1)
-        .minimumScaleFactor(0.5)
-        .foregroundStyle(.secondary)
+        .padding(.all)
     }
 }
 
 struct TricksView_Previews: PreviewProvider {
     static var previews: some View {
-        TricksView()
+        TricksView(trick: Trick.mockExample)
+            .preferredColorScheme(.dark)
     }
 }

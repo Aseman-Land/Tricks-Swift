@@ -182,9 +182,12 @@ enum SignupField: Hashable {
 }
 
 struct SignupView_Previews: PreviewProvider {
+    @StateObject static var profile = ProfileViewModel()
+    
     static var previews: some View {
         ZStack {
             SignupView(showLoginView: {})
+                .environmentObject(profile)
         }
     }
 }

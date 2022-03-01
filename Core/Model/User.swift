@@ -39,6 +39,21 @@ public struct UserResult: Codable {
         case isFollower = "is_follower"
         case isFollowed = "is_followed"
     }
+    
+    static let mockExample = UserResult(
+        id: 1,
+        username: "realbardia",
+        fullname: "Bardia Daneshvar",
+        about: "",
+        joinDate: "2021-03-03T20:38:04",
+        avatar: "storage/upload/1/a92e7655-1d03-46c4-af07-408e68ba464c.jpeg",
+        followersCount: 4,
+        followingsCount: 3,
+        tricksCount: 4,
+        details: UserDetails(role: 0),
+        isFollower: nil,
+        isFollowed: nil
+    )
 }
 
 // MARK: - UserDetails

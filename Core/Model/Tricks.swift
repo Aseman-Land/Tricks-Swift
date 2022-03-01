@@ -9,12 +9,12 @@ import Foundation
 
 // MARK: - Tricks
 struct Tricks: Codable {
-    let result: [TricksResult]
+    let result: [Trick]
     let status: Bool
 }
 
 // MARK: - Result
-struct TricksResult: Codable {
+struct Trick: Codable {
     let id: Int
     let body: String
     let code: String
@@ -29,6 +29,25 @@ struct TricksResult: Codable {
     let filename: String?
     let quote: Quote?
     let image_size: CodePreviewDetail?
+    
+    static let mockExample = Trick(
+        id: 1,
+        body: "Rust’s Hello world",
+        code: "fn main() {\n    println!(\"Hello World!\");\n}",
+        owner: UserResult.mockExample,
+        datetime: "2022-01-18T20:22:07",
+        highlighter: GlobalTrickItemDetail(id: 16, name: "ayu Dark"),
+        programing_language: GlobalTrickItemDetail(id: 6, name: "rust"),
+        code_frame: nil,
+        type: TrickTypeClass(id: 1, name: "code", typeDescription: nil),
+        views: 3,
+        rates: 2,
+        rate_state: 1,
+        tags: ["Rust"],
+        filename: "storage/upload/1/4d1ad4cf-46f4-41a0-80c5-5f50e6132a0a.png",
+        quote: nil,
+        image_size: CodePreviewDetail(width: 1024, height: 278)
+    )
 }
 
 // MARK: - GlobalTrickItemDetail

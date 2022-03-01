@@ -16,6 +16,8 @@
 		C629101627CE9DB000FD740E /* TricksEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101427CE9DB000FD740E /* TricksEndpoint.swift */; };
 		C629101827CEA36800FD740E /* TricksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101727CEA36800FD740E /* TricksService.swift */; };
 		C629101927CEA36800FD740E /* TricksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101727CEA36800FD740E /* TricksService.swift */; };
+		C629101E27CEAF4400FD740E /* TricksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TricksView.swift */; };
+		C629101F27CEAF4400FD740E /* TricksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TricksView.swift */; };
 		C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C90F627BFC5BA0022051C /* TricksApp.swift */; };
 		C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C90F627BFC5BA0022051C /* TricksApp.swift */; };
 		C63C910A27BFC5BA0022051C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63C90F827BFC5BA0022051C /* Assets.xcassets */; };
@@ -27,8 +29,8 @@
 		C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C911E27BFC63E0022051C /* TabNavigation.swift */; };
 		C63C912227BFC6670022051C /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912127BFC6670022051C /* NavigationItem.swift */; };
 		C63C912327BFC6670022051C /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912127BFC6670022051C /* NavigationItem.swift */; };
-		C63C912527BFC8E80022051C /* TricksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912427BFC8E80022051C /* TricksView.swift */; };
-		C63C912627BFC8E80022051C /* TricksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912427BFC8E80022051C /* TricksView.swift */; };
+		C63C912527BFC8E80022051C /* TricksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912427BFC8E80022051C /* TricksListView.swift */; };
+		C63C912627BFC8E80022051C /* TricksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912427BFC8E80022051C /* TricksListView.swift */; };
 		C63C912827BFC9090022051C /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912727BFC9090022051C /* NotificationsView.swift */; };
 		C63C912927BFC9090022051C /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912727BFC9090022051C /* NotificationsView.swift */; };
 		C63C912B27BFC9100022051C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912A27BFC9100022051C /* ProfileView.swift */; };
@@ -82,6 +84,7 @@
 		C629101227CE96CF00FD740E /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		C629101427CE9DB000FD740E /* TricksEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksEndpoint.swift; sourceTree = "<group>"; };
 		C629101727CEA36800FD740E /* TricksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksService.swift; sourceTree = "<group>"; };
+		C629101D27CEAF4400FD740E /* TricksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksView.swift; sourceTree = "<group>"; };
 		C63C90F627BFC5BA0022051C /* TricksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksApp.swift; sourceTree = "<group>"; };
 		C63C90F827BFC5BA0022051C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C63C90FD27BFC5BA0022051C /* Tricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +94,7 @@
 		C63C911727BFC6230022051C /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C63C911E27BFC63E0022051C /* TabNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabNavigation.swift; sourceTree = "<group>"; };
 		C63C912127BFC6670022051C /* NavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
-		C63C912427BFC8E80022051C /* TricksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksView.swift; sourceTree = "<group>"; };
+		C63C912427BFC8E80022051C /* TricksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksListView.swift; sourceTree = "<group>"; };
 		C63C912727BFC9090022051C /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		C63C912A27BFC9100022051C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C63C912E27BFCCD90022051C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -209,7 +212,8 @@
 				C63C912727BFC9090022051C /* NotificationsView.swift */,
 				C63C912A27BFC9100022051C /* ProfileView.swift */,
 				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
-				C63C912427BFC8E80022051C /* TricksView.swift */,
+				C63C912427BFC8E80022051C /* TricksListView.swift */,
+				C629101D27CEAF4400FD740E /* TricksView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -453,6 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C629101E27CEAF4400FD740E /* TricksView.swift in Sources */,
 				C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */,
 				C6C0F82727C12EF20011F173 /* ProfileViewModel.swift in Sources */,
 				C64E784727C226A300B26527 /* Endpoint.swift in Sources */,
@@ -475,7 +480,7 @@
 				C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */,
 				C6C0F82B27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C911827BFC6230022051C /* Sidebar.swift in Sources */,
-				C63C912527BFC8E80022051C /* TricksView.swift in Sources */,
+				C63C912527BFC8E80022051C /* TricksListView.swift in Sources */,
 				C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */,
 				C63C912827BFC9090022051C /* NotificationsView.swift in Sources */,
@@ -495,7 +500,7 @@
 				C63C912327BFC6670022051C /* NavigationItem.swift in Sources */,
 				C629101627CE9DB000FD740E /* TricksEndpoint.swift in Sources */,
 				C6C0F82427C12EF20011F173 /* Tricks.swift in Sources */,
-				C63C912627BFC8E80022051C /* TricksView.swift in Sources */,
+				C63C912627BFC8E80022051C /* TricksListView.swift in Sources */,
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0627C14ABD001E0E56 /* AppService.swift in Sources */,
 				C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */,
@@ -510,6 +515,7 @@
 				C63C911927BFC6230022051C /* Sidebar.swift in Sources */,
 				C6C0F82E27C12EF20011F173 /* Notif.swift in Sources */,
 				C629101327CE96CF00FD740E /* AccountSettingsView.swift in Sources */,
+				C629101F27CEAF4400FD740E /* TricksView.swift in Sources */,
 				C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C912C27BFC9100022051C /* ProfileView.swift in Sources */,
