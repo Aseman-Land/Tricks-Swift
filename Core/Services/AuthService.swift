@@ -49,4 +49,11 @@ struct AuthService: HTTPClient, AuthServiceable {
             responseModel: ResponseSuccess.self
         )
     }
+    
+    func logout(fcmToken: String?) async throws -> Result<GlobalResponse, RequestError> {
+        return try await sendRequest(
+            endpoint: AuthEndpoint.logout(fcmToken: fcmToken),
+            responseModel: GlobalResponse.self
+        )
+    }
 }

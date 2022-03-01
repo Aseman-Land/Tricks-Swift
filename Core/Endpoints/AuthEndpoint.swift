@@ -21,6 +21,8 @@ enum AuthEndpoint {
         email: String,
         fullname: String
     )
+    
+    case logout(fcmToken: String?)
 }
 
 extension AuthEndpoint: Endpoint {
@@ -30,6 +32,8 @@ extension AuthEndpoint: Endpoint {
             return "/api/v1/auth/login"
         case .register(_, _, _, _):
             return "/api/v1/users"
+        case .logout(_):
+            return "/api/v1/auth/logout"
         }
     }
     
@@ -59,6 +63,13 @@ extension AuthEndpoint: Endpoint {
                 "email": email,
                 "fullname": fullname
             ]
+            
+        case .logout(let fcmToken):
+            if let fcmToken = fcmToken {
+                return ["fcm_token": fcmToken]
+            } else {
+                return [:]
+            }
         }
     }
 }

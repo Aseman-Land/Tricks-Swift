@@ -14,6 +14,14 @@ class ProfileViewModel: ObservableObject {
     @Published var userToken: String
     @Published var fcmToken: String
     
+    @Published var loading: Bool = false
+    @Published var errorMessage: String = ""
+    
+    @AppStorage("username") private var storageUsername = ""
+    @AppStorage("avatarAddress") private var storageAvatarAddress = ""
+    
+    private var service = AuthService()
+    
     init() {
         let keychain = Keychain(service: AppService.apiKey)
         let token = keychain["token"]
@@ -51,20 +59,53 @@ class ProfileViewModel: ObservableObject {
         keychain["fcmToken"] = token
     }
     
-    func logout() {
-//        UserService.shared.logout { (result) in
-//            switch result {
-//            case .success:
-//                let keychain = Keychain(service: AppService.apiKey)
-//                keychain["token"] = nil
-//                print("Logged out ✅")
-//            case .failure(.badNetworkingRequest):
-//                print("Network error (Logout)")
-//            case .failure(.errorParse):
-//                print("Error parsing data (Logout)")
-//            default:
-//                break
-//            }
-//        }
+    func logout() async {
+        Task(priority: .background) {
+            let result = try await service.logout(fcmToken: nil)
+            
+            switch result {
+            case .success(let result):
+                if result.status {
+                    let keychain = Keychain(service: AppService.apiKey)
+                    keychain["token"] = nil
+                    DispatchQueue.main.async {
+                        withAnimation {
+                            self.isUserLoggedIn = false
+                            self.userToken = ""
+                        }
+                        self.storageUsername.removeAll()
+                        self.storageAvatarAddress.removeAll()
+                    }
+                } else {
+                    setErrorMessage("Failed to logout, try again")
+                }
+                
+            case .failure(let error):
+                switch error {
+                case .decode:
+                    setErrorMessage("Failed to execute, try later")
+                case .invalidURL:
+                    setErrorMessage("Invalid URL")
+                case .noResponse:
+                    setErrorMessage("Network error, Try again")
+                case .unauthorized(_):
+                    setErrorMessage("Unauthorized access")
+                case .unexpectedStatusCode(let status):
+                    setErrorMessage("Unexpected Status Code \(status) occured")
+                case .unknown(_):
+                    setErrorMessage("Network error, Try again")
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.loading = false
+            }
+        }
+    }
+    
+    func setErrorMessage(_ message: String) {
+        DispatchQueue.main.async {
+            self.errorMessage = message
+        }
     }
 }
