@@ -144,10 +144,10 @@
 		C629100D27CE968200FD740E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				C629100B27CE8E6200FD740E /* SettingsView.swift */,
-				C629100E27CE969A00FD740E /* GeneralSettingsView.swift */,
-				C629101027CE96B600FD740E /* EditorSettingsView.swift */,
 				C629101227CE96CF00FD740E /* AccountSettingsView.swift */,
+				C629101027CE96B600FD740E /* EditorSettingsView.swift */,
+				C629100E27CE969A00FD740E /* GeneralSettingsView.swift */,
+				C629100B27CE8E6200FD740E /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -155,6 +155,7 @@
 		C63C90F027BFC5B90022051C = {
 			isa = PBXGroup;
 			children = (
+				C6C0F83527C130510011F173 /* Config.xcconfig */,
 				C6C0F81B27C12EBA0011F173 /* Core */,
 				C63C911C27BFC6350022051C /* iOS */,
 				C63C90F527BFC5BA0022051C /* Shared */,
@@ -172,7 +173,6 @@
 				C63C911427BFC5C30022051C /* View */,
 				C63C912027BFC65A0022051C /* ViewModels */,
 				C63C90F627BFC5BA0022051C /* TricksApp.swift */,
-				C6C0F83527C130510011F173 /* Config.xcconfig */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
