@@ -12,6 +12,17 @@ struct TrickView: View {
     
     var trick: Trick
     
+    private var liked: Bool {
+        switch trick.rate_state {
+        case 0:
+            return false
+        case 1:
+            return true
+        default:
+            return false
+        }
+    }
+    
     private var trickDate: Date {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -44,7 +55,7 @@ struct TrickView: View {
                 .shadow(radius: 1)
                 
                 // MARK: - User info
-                VStack {
+                VStack(spacing: 4) {
                     HStack {
                         // MARK: - Fullname
                         Text(trick.owner.fullname)
@@ -60,13 +71,20 @@ struct TrickView: View {
                             .fontWeight(.light)
                             .foregroundStyle(.secondary)
                     }
-                    
-                    // MARK: - Username
-                    Text("@\(trick.owner.username)")
-                        .font(.caption)
-                        .fontWeight(.light)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack {
+                        // MARK: - Username
+                        Text("@\(trick.owner.username)")
+                            .font(.caption)
+                            .fontWeight(.light)
+                        
+                        Spacer()
+                        
+                        // MARK: - View count
+                        Label(trick.views.formatted(), systemImage: "eye")
+                            .font(.caption.weight(.light))
+                        
+                    }
+                    .foregroundStyle(.secondary)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -106,6 +124,47 @@ struct TrickView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
+                
+                Divider()
+                
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        //liked.toggle()
+                        // TODO: Add like function
+                    }) {
+                        Label(trick.rates.formatted(), systemImage: liked ? "heart.fill" : "heart")
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundColor(liked ? .red : .gray)
+                    .accentColor(.clear)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        // TODO: Add quote function
+                    }) {
+                        Label("Quote", systemImage: "quote.bubble")
+                    }
+                    .buttonStyle(.plain)
+                    .labelStyle(.iconOnly)
+                    .foregroundColor(.gray)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        // TODO: Add Share function
+                    }) {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                    }
+                    .buttonStyle(.plain)
+                    .labelStyle(.iconOnly)
+                    .foregroundColor(.gray)
+                    
+                    Spacer()
+                }
+                .padding(.vertical, 10)
             }
             .frame(maxWidth: 450)
             .cornerRadius(12)
