@@ -23,6 +23,9 @@ struct Sidebar: View {
                     ) {
                         item.content
                             .navigationTitle(item.name)
+                            #if os(macOS)
+                            .frame(minWidth: 350)
+                            #endif
                     } label: {
                         Label(item.name, systemImage: item.icon)
                     }
@@ -40,7 +43,6 @@ struct Sidebar: View {
                 }
                 #endif
             }
-            .frame(minWidth: 150)
             .environmentObject(profile)
             
             Text("No selection")

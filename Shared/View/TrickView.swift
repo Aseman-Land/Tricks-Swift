@@ -107,7 +107,7 @@ struct TrickView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: 450)
             .cornerRadius(12)
             .background(
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
