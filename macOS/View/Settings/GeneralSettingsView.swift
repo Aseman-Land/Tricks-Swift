@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SDWebImage
 
 struct GeneralSettingsView: View {
     var body: some View {
-        Text("Hello, World!")
+        Button(action: {
+            SDWebImageManager.defaultImageCache?.clear(with: .all)
+        }) {
+            Text("Clear cache")
+        }
     }
 }
 

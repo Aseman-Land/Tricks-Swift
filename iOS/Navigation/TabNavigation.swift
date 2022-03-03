@@ -11,6 +11,8 @@ struct TabNavigation: View {
 
     @StateObject var viewModel = NavigationItemsModel()
 
+    @EnvironmentObject var profile: ProfileViewModel
+    
     var body: some View {
         TabView {
             ForEach(viewModel.navigationItems) { item in
@@ -26,11 +28,16 @@ struct TabNavigation: View {
                 .tag(item.id)
             }
         }
+        .environmentObject(profile)
     }
 }
 
 struct TabNavigation_Previews: PreviewProvider {
+    
+    @StateObject static var profile = ProfileViewModel()
+    
     static var previews: some View {
         TabNavigation()
+            .environmentObject(profile)
     }
 }

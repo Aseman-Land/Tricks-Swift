@@ -155,13 +155,13 @@ extension TricksEndpoint: Endpoint {
     var body: [String : Any]? {
         switch self {
         case .globalTricks(_):
-            return [:]
+            return nil
         case .myTimelineTricks(_):
-            return [:]
+            return nil
         case .getTrick(_, _):
-            return [:]
+            return nil
         case .profiletricks(_, _):
-            return [:]
+            return nil
         case .postTrick(comment: let comment, code: let code, tags: let tags, highlighterID: let highlighterID, programmingLanguageID: let programmingLanguageID, typeID: let typeID, _):
             return [
                 "body": comment,
@@ -177,7 +177,7 @@ extension TricksEndpoint: Endpoint {
                 "quoted_text": quote,
             ]
         case .deleteTrickPost(_, _):
-            return [:]
+            return nil
         case .addRate(_, rate: let rate, _):
             return ["rate": rate]
         case .addView(tricksIDs: let tricksIDs, _):

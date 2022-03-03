@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C629100927CE778A00FD740E /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C629100827CE778A00FD740E /* AuthenticationServices.framework */; };
 		C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100B27CE8E6200FD740E /* SettingsView.swift */; };
 		C629100F27CE969A00FD740E /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100E27CE969A00FD740E /* GeneralSettingsView.swift */; };
 		C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101027CE96B600FD740E /* EditorSettingsView.swift */; };
@@ -16,8 +15,8 @@
 		C629101627CE9DB000FD740E /* TricksEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101427CE9DB000FD740E /* TricksEndpoint.swift */; };
 		C629101827CEA36800FD740E /* TricksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101727CEA36800FD740E /* TricksService.swift */; };
 		C629101927CEA36800FD740E /* TricksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101727CEA36800FD740E /* TricksService.swift */; };
-		C629101E27CEAF4400FD740E /* TricksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TricksView.swift */; };
-		C629101F27CEAF4400FD740E /* TricksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TricksView.swift */; };
+		C629101E27CEAF4400FD740E /* TrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TrickView.swift */; };
+		C629101F27CEAF4400FD740E /* TrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TrickView.swift */; };
 		C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C90F627BFC5BA0022051C /* TricksApp.swift */; };
 		C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C90F627BFC5BA0022051C /* TricksApp.swift */; };
 		C63C910A27BFC5BA0022051C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63C90F827BFC5BA0022051C /* Assets.xcassets */; };
@@ -50,6 +49,10 @@
 		C67D8A0A27C17EC3001E0E56 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0827C17EC3001E0E56 /* HTTPClient.swift */; };
 		C67D8A0C27C17EDA001E0E56 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0B27C17EDA001E0E56 /* RequestError.swift */; };
 		C67D8A0D27C17EDA001E0E56 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0B27C17EDA001E0E56 /* RequestError.swift */; };
+		C6957C1127CF5A08004ECB14 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */; };
+		C6957C1327CF5A21004ECB14 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C6957C1227CF5A21004ECB14 /* SDWebImageSwiftUI */; };
+		C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */; };
+		C6957C1627CF7025004ECB14 /* TricksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */; };
 		C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D74AC27C0D9730060432F /* AuthViewModel.swift */; };
 		C69D74AE27C0D9730060432F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D74AC27C0D9730060432F /* AuthViewModel.swift */; };
 		C6C0F82327C12EF20011F173 /* Tricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81D27C12EF20011F173 /* Tricks.swift */; };
@@ -84,7 +87,7 @@
 		C629101227CE96CF00FD740E /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		C629101427CE9DB000FD740E /* TricksEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksEndpoint.swift; sourceTree = "<group>"; };
 		C629101727CEA36800FD740E /* TricksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksService.swift; sourceTree = "<group>"; };
-		C629101D27CEAF4400FD740E /* TricksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksView.swift; sourceTree = "<group>"; };
+		C629101D27CEAF4400FD740E /* TrickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickView.swift; sourceTree = "<group>"; };
 		C63C90F627BFC5BA0022051C /* TricksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksApp.swift; sourceTree = "<group>"; };
 		C63C90F827BFC5BA0022051C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C63C90FD27BFC5BA0022051C /* Tricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +109,7 @@
 		C67D8A0427C14ABD001E0E56 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		C67D8A0827C17EC3001E0E56 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		C67D8A0B27C17EDA001E0E56 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksListViewModel.swift; sourceTree = "<group>"; };
 		C69D74AC27C0D9730060432F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		C6C0F81D27C12EF20011F173 /* Tricks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tricks.swift; sourceTree = "<group>"; };
 		C6C0F81E27C12EF20011F173 /* ResponseCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCall.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6957C1127CF5A08004ECB14 /* SDWebImageSwiftUI in Frameworks */,
 				C6C0F83127C12FF50011F173 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,7 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C629100927CE778A00FD740E /* AuthenticationServices.framework in Frameworks */,
+				C6957C1327CF5A21004ECB14 /* SDWebImageSwiftUI in Frameworks */,
 				C6C0F83427C130010011F173 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,7 +218,7 @@
 				C63C912A27BFC9100022051C /* ProfileView.swift */,
 				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
 				C63C912427BFC8E80022051C /* TricksListView.swift */,
-				C629101D27CEAF4400FD740E /* TricksView.swift */,
+				C629101D27CEAF4400FD740E /* TrickView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				C69D74AC27C0D9730060432F /* AuthViewModel.swift */,
 				C63C912127BFC6670022051C /* NavigationItem.swift */,
 				C6C0F81F27C12EF20011F173 /* ProfileViewModel.swift */,
+				C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 			name = "Tricks (iOS)";
 			packageProductDependencies = (
 				C6C0F83027C12FF50011F173 /* KeychainAccess */,
+				C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */,
 			);
 			productName = "Tricks (iOS)";
 			productReference = C63C90FD27BFC5BA0022051C /* Tricks.app */;
@@ -388,6 +395,7 @@
 			name = "Tricks (macOS)";
 			packageProductDependencies = (
 				C6C0F83327C130010011F173 /* KeychainAccess */,
+				C6957C1227CF5A21004ECB14 /* SDWebImageSwiftUI */,
 			);
 			productName = "Tricks (macOS)";
 			productReference = C63C910327BFC5BA0022051C /* Tricks.app */;
@@ -422,6 +430,7 @@
 			mainGroup = C63C90F027BFC5B90022051C;
 			packageReferences = (
 				C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = C63C90FE27BFC5BA0022051C /* Products */;
 			projectDirPath = "";
@@ -457,7 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C629101E27CEAF4400FD740E /* TricksView.swift in Sources */,
+				C629101E27CEAF4400FD740E /* TrickView.swift in Sources */,
 				C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */,
 				C6C0F82727C12EF20011F173 /* ProfileViewModel.swift in Sources */,
 				C64E784727C226A300B26527 /* Endpoint.swift in Sources */,
@@ -475,6 +484,7 @@
 				C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C67D8A0927C17EC3001E0E56 /* HTTPClient.swift in Sources */,
 				C63C911A27BFC6230022051C /* MainView.swift in Sources */,
+				C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
 				C63C912F27BFCCD90022051C /* LoginView.swift in Sources */,
 				C6C0F82D27C12EF20011F173 /* Notif.swift in Sources */,
 				C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */,
@@ -515,8 +525,9 @@
 				C63C911927BFC6230022051C /* Sidebar.swift in Sources */,
 				C6C0F82E27C12EF20011F173 /* Notif.swift in Sources */,
 				C629101327CE96CF00FD740E /* AccountSettingsView.swift in Sources */,
-				C629101F27CEAF4400FD740E /* TricksView.swift in Sources */,
+				C629101F27CEAF4400FD740E /* TrickView.swift in Sources */,
 				C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */,
+				C6957C1627CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
 				C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C912C27BFC9100022051C /* ProfileView.swift in Sources */,
 				C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */,
@@ -716,7 +727,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L4C26EK8EJ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macOS/Resources/Info.plist;
@@ -745,7 +756,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L4C26EK8EJ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macOS/Resources/Info.plist;
@@ -797,6 +808,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
 		C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
@@ -808,6 +827,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		C6957C1227CF5A21004ECB14 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		C6C0F83027C12FF50011F173 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */;

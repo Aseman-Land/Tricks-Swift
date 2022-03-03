@@ -11,6 +11,8 @@ struct Sidebar: View {
 
     @StateObject var viewModel = NavigationItemsModel()
     
+    @EnvironmentObject var profile: ProfileViewModel
+    
     var body: some View {
         NavigationView {
             List {
@@ -39,6 +41,8 @@ struct Sidebar: View {
                 #endif
             }
             .frame(minWidth: 150)
+            .environmentObject(profile)
+            
             Text("No selection")
         }
     }
@@ -51,7 +55,11 @@ struct Sidebar: View {
 }
 
 struct Sidebar_Previews: PreviewProvider {
+    
+    @StateObject static var profile = ProfileViewModel()
+    
     static var previews: some View {
         Sidebar()
+            .environmentObject(profile)
     }
 }

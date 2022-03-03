@@ -6,10 +6,47 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct TricksListView: View {
+    
+    @StateObject var tricksListViewModel = TricksListViewModel()
+    
+    @EnvironmentObject var profile: ProfileViewModel
+    
     var body: some View {
-        EmptyList()
+        ZStack {
+            if tricksListViewModel.errorMessage == "" {
+                List {
+                    ForEach(tricksListViewModel.tricks, id: \.id) { trick in
+                        TrickView(trick: trick)
+                            #if os(iOS)
+                            .listSectionSeparator(.hidden)
+                            .listRowSeparator(.hidden)
+                            #endif
+                    }
+                }
+                .listStyle(.plain)
+                
+                if tricksListViewModel.tricks.isEmpty {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                }
+                
+            } else if !tricksListViewModel.tricks.isEmpty {
+                EmptyList()
+            } else {
+                NetworkError(title: tricksListViewModel.errorMessage) {
+                    Task.init {
+                        await tricksListViewModel.loadTricks()
+                    }
+                }
+            }
+        }
+        .task {
+            tricksListViewModel.profile = profile
+            await tricksListViewModel.loadTricks()
+        }
     }
     
     // MARK: - Empty View
@@ -34,10 +71,35 @@ struct TricksListView: View {
         .minimumScaleFactor(0.5)
         .foregroundStyle(.secondary)
     }
+    
+    func NetworkError(title: String, action: @escaping () -> Void) -> some View {
+        VStack {
+            ZStack(alignment: .bottomTrailing) {
+                Image(systemName: "network")
+                    .font(.custom("system", size: 150))
+                
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .font(.largeTitle)
+            }
+            
+            Text(title)
+                .font(.title)
+            
+            Button(action: action) {
+                Text("Try again")
+            }
+            .buttonStyle(.bordered)
+        }
+        .foregroundStyle(.secondary)
+    }
 }
 
 struct TricksListView_Previews: PreviewProvider {
+    
+    @StateObject static var profile = ProfileViewModel()
+    
     static var previews: some View {
         TricksListView()
+            .environmentObject(profile)
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 protocol TricksServiceable {
     func globalTricks(token: String) async throws -> Result<[Trick], RequestError>
     
-    func myTimelineTricks(token: String) async throws -> Result<[Trick], RequestError>
+    func myTimelineTricks(token: String) async throws -> Result<Tricks, RequestError>
     
     func getTrick(trickID: Int, token: String) async throws -> Result<[Trick], RequestError>
     
@@ -47,10 +47,10 @@ struct TricksService: HTTPClient, TricksServiceable {
         )
     }
     
-    func myTimelineTricks(token: String) async throws -> Result<[Trick], RequestError> {
+    func myTimelineTricks(token: String) async throws -> Result<Tricks, RequestError> {
         return try await sendRequest(
             endpoint: TricksEndpoint.myTimelineTricks(token: token),
-            responseModel: [Trick].self
+            responseModel: Tricks.self
         )
     }
     
