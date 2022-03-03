@@ -12,6 +12,13 @@ struct TrickView: View {
     
     var trick: Trick
     
+    private var trickDate: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return dateFormatter.date(from: trick.datetime) ?? Date()
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -38,12 +45,21 @@ struct TrickView: View {
                 
                 // MARK: - User info
                 VStack {
-                    // MARK: - Fullname
-                    Text(trick.owner.fullname)
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .foregroundStyle(.primary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack {
+                        // MARK: - Fullname
+                        Text(trick.owner.fullname)
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.primary)
+                        
+                        Spacer()
+                        
+                        // MARK: - Trick's time
+                        Text(trickDate, style: .relative)
+                            .font(.caption)
+                            .fontWeight(.light)
+                            .foregroundStyle(.secondary)
+                    }
                     
                     // MARK: - Username
                     Text("@\(trick.owner.username)")
