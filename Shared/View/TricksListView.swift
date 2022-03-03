@@ -23,6 +23,8 @@ struct TricksListView: View {
                             #if os(iOS)
                             .listSectionSeparator(.hidden)
                             .listRowSeparator(.hidden)
+                            #elseif os(macOS)
+                            .padding()
                             #endif
                     }
                 }

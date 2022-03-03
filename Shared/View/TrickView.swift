@@ -99,6 +99,7 @@ struct TrickView: View {
                 .padding([.top, .leading, .trailing])
                 
                 Text(trick.code)
+                    .textSelection(.enabled)
                     .font(.system(.caption, design: .monospaced))
                     .dynamicTypeSize(.xSmall ... .large)
                     .lineLimit(5)
