@@ -21,9 +21,6 @@ class AuthViewModel: ObservableObject {
     
     @Published var userCreated: Bool = false
     
-    @AppStorage("username") private var storageUsername = ""
-    @AppStorage("avatarAddress") private var storageAvatarAddress = ""
-    
     @Published var profile: ProfileViewModel? = nil
     
     private var service = AuthService()
@@ -39,9 +36,6 @@ class AuthViewModel: ObservableObject {
             case .success(let loginCall):
                 if let token = loginCall.result.token {
                     profile?.setToken(token)
-                    DispatchQueue.main.async {
-                        self.storageUsername = self.username
-                    }
                 } else {
                     setErrorMessage("No token found, Try again")
                 }

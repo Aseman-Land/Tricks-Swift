@@ -22,6 +22,16 @@ protocol AuthServiceable {
     ) async throws -> Result<ResponseSuccess, RequestError>
     
     func logout(token: String, fcmToken: String?) async throws -> Result<GlobalResponse, RequestError>
+    
+    func getMe(token: String) async throws -> Result<User, RequestError>
+    
+    func editMe(
+        username: String?,
+        fullname: String?,
+        password: String?,
+        current_password: String?,
+        token: String
+    ) async throws -> Result<User, RequestError>
 }
 
 struct AuthService: HTTPClient, AuthServiceable {
@@ -56,6 +66,30 @@ struct AuthService: HTTPClient, AuthServiceable {
         return try await sendRequest(
             endpoint: AuthEndpoint.logout(token: token, fcmToken: fcmToken),
             responseModel: GlobalResponse.self
+        )
+    }
+    
+    func getMe(token: String) async throws -> Result<User, RequestError> {
+        return try await sendRequest(endpoint: AuthEndpoint.getMe(token: token), responseModel: User.self)
+    }
+    
+    func editMe(
+        username: String?,
+        fullname: String?,
+        password: String?,
+        current_password: String?,
+        token: String
+    ) async throws -> Result<User, RequestError> {
+        return try await sendRequest(
+            endpoint:
+                AuthEndpoint.editMe(
+                    username: username,
+                    fullname: fullname,
+                    password: password,
+                    current_password: current_password,
+                    token: token
+                ),
+            responseModel: User.self
         )
     }
 }

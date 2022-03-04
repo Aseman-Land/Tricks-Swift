@@ -17,6 +17,7 @@ class ProfileViewModel: ObservableObject {
     @Published var loading: Bool = false
     @Published var errorMessage: String = ""
     
+    @AppStorage("fullname") private var storageFullname = ""
     @AppStorage("username") private var storageUsername = ""
     @AppStorage("avatarAddress") private var storageAvatarAddress = ""
     
@@ -41,6 +42,10 @@ class ProfileViewModel: ObservableObject {
         } else {
             fcmToken = ""
         }
+        
+        Task.init {
+            await getMe()
+        }
     }
     
     func setToken(_ token: String) {
@@ -52,11 +57,42 @@ class ProfileViewModel: ObservableObject {
                 self.userToken = "Bearer \(token)"
             }
         }
+        
+        Task.init {
+            await getMe()
+        }
     }
     
     func setFCMToken(_ token: String) {
         let keychain = Keychain(service: AppService.apiKey)
         keychain["fcmToken"] = token
+    }
+    
+    func getMe() async {
+        if userToken == "" { return }
+        
+        Task(priority: .background) {
+            let result = try await service.getMe(token: userToken)
+            
+            switch result {
+            case .success(let result):
+                if result.status {
+                    DispatchQueue.main.async {
+                        self.storageUsername = result.result.username
+                        self.storageFullname = result.result.fullname
+                        
+                        if let avatar = result.result.avatar {
+                            self.storageAvatarAddress = avatar
+                        }
+                    }
+                } else {
+                    print("Failed to get user data")
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func logout() async {

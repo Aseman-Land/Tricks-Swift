@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100B27CE8E6200FD740E /* SettingsView.swift */; };
-		C629100F27CE969A00FD740E /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100E27CE969A00FD740E /* GeneralSettingsView.swift */; };
+		C629100F27CE969A00FD740E /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100E27CE969A00FD740E /* AdvancedSettingsView.swift */; };
 		C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101027CE96B600FD740E /* EditorSettingsView.swift */; };
 		C629101327CE96CF00FD740E /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101227CE96CF00FD740E /* AccountSettingsView.swift */; };
 		C629101527CE9DB000FD740E /* TricksEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101427CE9DB000FD740E /* TricksEndpoint.swift */; };
@@ -36,6 +36,10 @@
 		C63C912C27BFC9100022051C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912A27BFC9100022051C /* ProfileView.swift */; };
 		C63C912F27BFCCD90022051C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912E27BFCCD90022051C /* LoginView.swift */; };
 		C63C913027BFCCD90022051C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C912E27BFCCD90022051C /* LoginView.swift */; };
+		C63D793727D27882000D7442 /* AddQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793627D27882000D7442 /* AddQuoteViewModel.swift */; };
+		C63D793827D27882000D7442 /* AddQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793627D27882000D7442 /* AddQuoteViewModel.swift */; };
+		C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */; };
+		C63D793C27D287F1000D7442 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */; };
 		C64E784727C226A300B26527 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784627C226A300B26527 /* Endpoint.swift */; };
 		C64E784827C226A300B26527 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784627C226A300B26527 /* Endpoint.swift */; };
 		C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784927C2271A00B26527 /* AuthEndpoint.swift */; };
@@ -75,6 +79,9 @@
 		C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDBBB727CA1096008BFF5E /* HTTPContentType.swift */; };
 		C6D1013A27C7E13A0087235E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D1013927C7E13A0087235E /* AuthService.swift */; };
 		C6D1013B27C7E13A0087235E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D1013927C7E13A0087235E /* AuthService.swift */; };
+		C6D9FF3827D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
+		C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
+		C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */; };
 		C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
 		C6FA15F627C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
 /* End PBXBuildFile section */
@@ -82,7 +89,7 @@
 /* Begin PBXFileReference section */
 		C629100827CE778A00FD740E /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		C629100B27CE8E6200FD740E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		C629100E27CE969A00FD740E /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		C629100E27CE969A00FD740E /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
 		C629101027CE96B600FD740E /* EditorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSettingsView.swift; sourceTree = "<group>"; };
 		C629101227CE96CF00FD740E /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		C629101427CE9DB000FD740E /* TricksEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksEndpoint.swift; sourceTree = "<group>"; };
@@ -101,6 +108,8 @@
 		C63C912727BFC9090022051C /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		C63C912A27BFC9100022051C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C63C912E27BFCCD90022051C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C63D793627D27882000D7442 /* AddQuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteViewModel.swift; sourceTree = "<group>"; };
+		C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
 		C64E784627C226A300B26527 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		C64E784927C2271A00B26527 /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
 		C6748D6B27C015110023251B /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
@@ -122,6 +131,8 @@
 		C6CDBBB127CA1068008BFF5E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C6CDBBB727CA1096008BFF5E /* HTTPContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPContentType.swift; sourceTree = "<group>"; };
 		C6D1013927C7E13A0087235E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteView.swift; sourceTree = "<group>"; };
+		C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extension.swift"; sourceTree = "<group>"; };
 		C6FA15F427C0E6F9005CAD1A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,8 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				C629101227CE96CF00FD740E /* AccountSettingsView.swift */,
+				C629100E27CE969A00FD740E /* AdvancedSettingsView.swift */,
 				C629101027CE96B600FD740E /* EditorSettingsView.swift */,
-				C629100E27CE969A00FD740E /* GeneralSettingsView.swift */,
 				C629100B27CE8E6200FD740E /* SettingsView.swift */,
 			);
 			path = Settings;
@@ -182,6 +193,7 @@
 		C63C90F527BFC5BA0022051C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C63D793927D287DD000D7442 /* Extensions */,
 				C63C911527BFC6150022051C /* Navigation */,
 				C63C912D27BFCBD20022051C /* Resources */,
 				C63C911427BFC5C30022051C /* View */,
@@ -203,6 +215,7 @@
 		C63C910427BFC5BA0022051C /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				C6D9FF3A27D173ED0000CB4A /* Extensions */,
 				C6748D6A27C015090023251B /* Components */,
 				C67D89FF27C139AE001E0E56 /* Resources */,
 				C629100A27CE8E5100FD740E /* View */,
@@ -213,6 +226,7 @@
 		C63C911427BFC5C30022051C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
 				C63C912E27BFCCD90022051C /* LoginView.swift */,
 				C63C912727BFC9090022051C /* NotificationsView.swift */,
 				C63C912A27BFC9100022051C /* ProfileView.swift */,
@@ -252,6 +266,7 @@
 		C63C912027BFC65A0022051C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C63D793627D27882000D7442 /* AddQuoteViewModel.swift */,
 				C69D74AC27C0D9730060432F /* AuthViewModel.swift */,
 				C63C912127BFC6670022051C /* NavigationItem.swift */,
 				C6C0F81F27C12EF20011F173 /* ProfileViewModel.swift */,
@@ -266,6 +281,14 @@
 				C63C90F827BFC5BA0022051C /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C63D793927D287DD000D7442 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C64E784527C2267C00B26527 /* Endpoints */ = {
@@ -354,6 +377,14 @@
 				C67D8A0B27C17EDA001E0E56 /* RequestError.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		C6D9FF3A27D173ED0000CB4A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,6 +509,7 @@
 				C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0527C14ABD001E0E56 /* AppService.swift in Sources */,
 				C6CDBBB827CA1096008BFF5E /* HTTPContentType.swift in Sources */,
+				C6D9FF3827D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
 				C6D1013A27C7E13A0087235E /* AuthService.swift in Sources */,
 				C6CDBBB227CA1068008BFF5E /* HTTPMethod.swift in Sources */,
 				C629101527CE9DB000FD740E /* TricksEndpoint.swift in Sources */,
@@ -486,6 +518,7 @@
 				C63C911A27BFC6230022051C /* MainView.swift in Sources */,
 				C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
 				C63C912F27BFCCD90022051C /* LoginView.swift in Sources */,
+				C63D793727D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
 				C6C0F82D27C12EF20011F173 /* Notif.swift in Sources */,
 				C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */,
 				C6C0F82B27C12EF20011F173 /* Tags.swift in Sources */,
@@ -493,6 +526,7 @@
 				C63C912527BFC8E80022051C /* TricksListView.swift in Sources */,
 				C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */,
+				C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */,
 				C63C912827BFC9090022051C /* NotificationsView.swift in Sources */,
 				C6C0F82927C12EF20011F173 /* GlobalResponse.swift in Sources */,
 				C67D8A0227C14A70001E0E56 /* User.swift in Sources */,
@@ -511,11 +545,14 @@
 				C629101627CE9DB000FD740E /* TricksEndpoint.swift in Sources */,
 				C6C0F82427C12EF20011F173 /* Tricks.swift in Sources */,
 				C63C912627BFC8E80022051C /* TricksListView.swift in Sources */,
+				C63D793827D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
+				C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0627C14ABD001E0E56 /* AppService.swift in Sources */,
 				C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */,
+				C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */,
 				C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */,
-				C629100F27CE969A00FD740E /* GeneralSettingsView.swift in Sources */,
+				C629100F27CE969A00FD740E /* AdvancedSettingsView.swift in Sources */,
 				C6D1013B27C7E13A0087235E /* AuthService.swift in Sources */,
 				C6CDBBB327CA1068008BFF5E /* HTTPMethod.swift in Sources */,
 				C629101927CEA36800FD740E /* TricksService.swift in Sources */,
@@ -537,6 +574,7 @@
 				C63C912927BFC9090022051C /* NotificationsView.swift in Sources */,
 				C6C0F82A27C12EF20011F173 /* GlobalResponse.swift in Sources */,
 				C67D8A0327C14A70001E0E56 /* User.swift in Sources */,
+				C63D793C27D287F1000D7442 /* NSNotification+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

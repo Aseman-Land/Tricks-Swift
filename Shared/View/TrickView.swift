@@ -30,6 +30,10 @@ struct TrickView: View {
         return dateFormatter.date(from: trick.datetime) ?? Date()
     }
     
+    @StateObject private var addQuoteModel = AddQuoteViewModel()
+    
+    @EnvironmentObject var profile: ProfileViewModel
+    
     var body: some View {
         VStack {
             HStack {
@@ -143,7 +147,7 @@ struct TrickView: View {
                     Spacer()
                     
                     Button(action: {
-                        // TODO: Add quote function
+                        addQuoteModel.showQuoteView.toggle()
                     }) {
                         Label("Quote", systemImage: "quote.bubble")
                     }
@@ -173,14 +177,28 @@ struct TrickView: View {
                     .fill(.black)
                     .shadow(color: Color.secondary, radius: 5, x: 0, y: 0)
             )
+            .popover(isPresented: $addQuoteModel.showQuoteView) {
+                AddQuoteView(trickID: trick.id)
+                    #if os(macOS)
+                    .frame(minWidth: 250, minHeight: 250)
+                    #endif
+                    .environmentObject(addQuoteModel)
+            }
+        }
+        .task {
+            addQuoteModel.profile = profile
         }
     }
 }
 
 struct TrickView_Previews: PreviewProvider {
+    
+    @StateObject static var profile = ProfileViewModel()
+    
     static var previews: some View {
         TrickView(trick: Trick.mockExample)
             .padding()
+            .environmentObject(profile)
             .preferredColorScheme(.dark)
     }
 }

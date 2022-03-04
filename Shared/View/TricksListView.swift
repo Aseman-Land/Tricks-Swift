@@ -29,6 +29,9 @@ struct TricksListView: View {
                     }
                 }
                 .listStyle(.plain)
+                .refreshable {
+                    await tricksListViewModel.loadTricks()
+                }
                 
                 if tricksListViewModel.tricks.isEmpty {
                     ProgressView()
@@ -49,29 +52,35 @@ struct TricksListView: View {
             tricksListViewModel.profile = profile
             await tricksListViewModel.loadTricks()
         }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.UpdateList)) { _ in
+            Task.init {
+                await tricksListViewModel.loadTricks()
+            }
+        }
     }
     
     // MARK: - Empty View
-    @ViewBuilder
-    func EmptyList() -> some View {
-        VStack {
-            ZStack {
-                Image(systemName: "macwindow")
-                    .font(.custom("system", size: 150))
+    private struct EmptyList: View {
+        var body: some View {
+            VStack {
+                ZStack {
+                    Image(systemName: "macwindow")
+                        .font(.custom("system", size: 150))
+                    
+                    Text("404")
+                        .font(.system(.largeTitle, design: .monospaced))
+                        .offset(y: 15)
+                }
                 
-                Text("404")
-                    .font(.system(.largeTitle, design: .monospaced))
-                    .offset(y: 15)
+                Text("No tricks available")
+                    .font(.title)
+                    .fontWeight(.medium)
             }
-            
-            Text("No tricks available")
-                .font(.title)
-                .fontWeight(.medium)
+            .dynamicTypeSize(.xSmall ... .medium)
+            .lineLimit(1)
+            .minimumScaleFactor(0.5)
+            .foregroundStyle(.secondary)
         }
-        .dynamicTypeSize(.xSmall ... .medium)
-        .lineLimit(1)
-        .minimumScaleFactor(0.5)
-        .foregroundStyle(.secondary)
     }
     
     func NetworkError(title: String, action: @escaping () -> Void) -> some View {

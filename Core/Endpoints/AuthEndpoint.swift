@@ -26,6 +26,16 @@ enum AuthEndpoint {
         token: String,
         fcmToken: String?
     )
+    
+    case getMe(token: String)
+    
+    case editMe(
+        username: String?,
+        fullname: String?,
+        password: String?,
+        current_password: String?,
+        token: String
+    )
 }
 
 extension AuthEndpoint: Endpoint {
@@ -37,16 +47,29 @@ extension AuthEndpoint: Endpoint {
             return "/api/v1/users"
         case .logout(_, _):
             return "/api/v1/auth/logout"
+        case .getMe(_) , .editMe(_, _, _, _, _):
+            return "/api/v1/users/me"
         }
     }
     
     var method: HTTPMethod {
-        return .post
+        switch self {
+        case .login(_, _, _),
+             .register(_, _, _, _),
+             .logout(_, _):
+            return .post
+        case .getMe(_):
+            return .get
+        case .editMe(_, _, _, _, _):
+            return .patch
+        }
     }
     
     var header: [String : String]? {
         switch self {
-        case .logout(let token, _):
+        case .logout(let token, _),
+             .getMe(token: let token),
+             .editMe(_, _, _, _, let token):
             return [
                 "Authorization": token,
                 "Content-Type":"application/json; charset=utf-8",
@@ -81,6 +104,30 @@ extension AuthEndpoint: Endpoint {
             } else {
                 return [:]
             }
+            
+        case .getMe(_):
+            return nil
+            
+        case .editMe(let username , let fullname, let password, let current_password, _):
+            var editBody = [String : String]()
+            
+            if let username = username {
+                editBody["username"] = username
+            }
+            
+            if let fullname = fullname {
+                editBody["fullname"] = fullname
+            }
+            
+            if let password = password {
+                editBody["password"] = password
+            }
+            
+            if let current_password = current_password {
+                editBody["current_password"] = current_password
+            }
+            
+            return editBody
         }
     }
 }

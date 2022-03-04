@@ -11,38 +11,25 @@ struct SettingsView: View {
     
     @EnvironmentObject var profile: ProfileViewModel
     
-    private enum Tabs: Hashable {
-        case general, editor, account
-    }
     var body: some View {
         TabView {
-            /// General settings
-            withAnimation {
-                GeneralSettingsView()
-            }
-            .tabItem {
-                Label("General", systemImage: "gearshape")
-            }
-            .tag(Tabs.general)
+            /// Account settings
+            AccountSettingsView()
+                .environmentObject(profile)
+                .tabItem {
+                    Label("Account", systemImage: "person.crop.circle")
+                }
             
             /// Editor settings
-            withAnimation {
-                EditorSettingsView()
-            }
-            .tabItem {
-                Label("Editor", systemImage: "square.and.pencil")
-            }
-            .tag(Tabs.editor)
+            EditorSettingsView()
+                .tabItem {
+                    Label("Editor", systemImage: "square.and.pencil")
+                }
             
-            /// Account settings
-            withAnimation {
-                AccountSettingsView()
-                    .environmentObject(profile)
-            }
-            .tabItem {
-                Label("Account", systemImage: "person.crop.circle")
-            }
-            .tag(Tabs.account)
+            AdvancedSettingsView()
+                .tabItem {
+                    Label("Advanced", systemImage: "gearshape.2")
+                }
         }
         .padding(20)
         .frame(minWidth: 450, minHeight: 250)
