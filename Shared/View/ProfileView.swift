@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    let userID: String
+    @StateObject private var profileModel: ProfileViewModel
+    
+    init(viewModel: @autoclosure @escaping () -> ProfileViewModel) {
+        _profileModel = StateObject(wrappedValue: viewModel())
+    }
     
     var body: some View {
         ScrollView {
@@ -71,6 +75,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(userID: "me")
+        ProfileView(viewModel: ProfileViewModel(userId: "me"))
     }
 }
