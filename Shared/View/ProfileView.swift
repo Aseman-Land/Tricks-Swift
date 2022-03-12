@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileView: View {
     
     @StateObject private var profileModel: ProfileViewModel
+    
+    @EnvironmentObject var profile: MyProfileViewModel
     
     init(viewModel: @autoclosure @escaping () -> ProfileViewModel) {
         _profileModel = StateObject(wrappedValue: viewModel())
@@ -22,6 +25,10 @@ struct ProfileView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
             }
         }
+        .task {
+            profileModel.profile = profile
+            await profileModel.getProfile()
+        }
     }
     
     @ViewBuilder
@@ -30,29 +37,27 @@ struct ProfileView: View {
             // MARK: - User avatar
             ZStack {
                 Circle()
-                    .stroke(.secondary)
-                    .foregroundStyle(.secondary)
-                
-                AsyncImage(url: URL(string: "https://aseman.io/wp-content/uploads/2018/12/aseman-logo.png")) { phase in
-                    switch phase {
-                    case .empty, .failure:
+                    .foregroundStyle(.white)
+                    .frame(width: 80, height: 80)
+                WebImage(url: URL(string: "https://\(AppService.apiKey)/api/v1/\(profileModel.avatar)"))
+                    .resizable()
+                    .placeholder {
                         Image(systemName: "person.fill")
-                            .font(.largeTitle)
-                            .foregroundStyle(.secondary)
-                    case .success(let image):
-                        image.resizable()
-                            .aspectRatio(contentMode: .fit)
-                    @unknown default:
-                        EmptyView()
+                            .font(.body)
+                            .foregroundColor(.gray)
                     }
-                }
-                .padding(.all, 5)
+                    .transition(.fade)
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+                    .frame(width: 75, height: 75, alignment: .center)
+                    .padding(.all, 2)
             }
-            .frame(maxWidth: 80, maxHeight: 80)
+            .frame(width: 80, height: 80)
+            .shadow(radius: 1)
             
             VStack {
                 // MARK: - User's name
-                Text("Aseman")
+                Text(profileModel.fullname)
                     .font(.title)
                     .fontWeight(.medium)
                     .dynamicTypeSize(.xSmall ... .large)
@@ -60,13 +65,15 @@ struct ProfileView: View {
                     .minimumScaleFactor(0.5)
                 
                 // MARK: - Username
-                Text("@aseman")
-                    .font(.body)
-                    .fontWeight(.light)
-                    .dynamicTypeSize(.xSmall ... .large)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .foregroundStyle(.secondary)
+                if profileModel.username != "" {
+                    Text("@\(profileModel.username)")
+                        .font(.body)
+                        .fontWeight(.light)
+                        .dynamicTypeSize(.xSmall ... .large)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
         .padding()
@@ -74,7 +81,11 @@ struct ProfileView: View {
 }
 
 struct ProfileView_Previews: PreviewProvider {
+    
+    @StateObject static var profile = MyProfileViewModel()
+    
     static var previews: some View {
         ProfileView(viewModel: ProfileViewModel(userId: "me"))
+            .environmentObject(profile)
     }
 }
