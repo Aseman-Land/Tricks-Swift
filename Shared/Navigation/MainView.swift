@@ -17,7 +17,7 @@ struct MainView: View {
     #endif
     
     var body: some View {
-        Group {
+        ZStack {
             if profile.isUserLoggedIn {
                 // MARK: - Dashboard view
                 #if os(iOS)

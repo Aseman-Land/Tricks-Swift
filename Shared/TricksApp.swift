@@ -20,9 +20,6 @@ struct TricksApp: App {
         .commands {
             SidebarCommands()
         }
-        #if os(macOS)
-        .windowStyle(.hiddenTitleBar)
-        #endif
         
         #if os(macOS)
         Settings {
