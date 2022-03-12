@@ -20,9 +20,11 @@ struct ProfileView: View {
     
     var body: some View {
         ScrollView {
+            Section {
             VStack(alignment: .leading) {
                 UserView()
                     .frame(maxWidth: .infinity, alignment: .center)
+            }
             }
         }
         .task {
@@ -37,23 +39,22 @@ struct ProfileView: View {
             // MARK: - User avatar
             ZStack {
                 Circle()
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.ultraThickMaterial)
                     .frame(width: 80, height: 80)
+                    .shadow(radius: 2)
                 WebImage(url: URL(string: "https://\(AppService.apiKey)/api/v1/\(profileModel.userResult?.avatar ?? "")"))
                     .resizable()
                     .placeholder {
                         Image(systemName: "person.fill")
                             .font(.largeTitle)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                     }
                     .transition(.fade)
                     .aspectRatio(contentMode: .fill)
+                    .frame(width: 70, height: 70, alignment: .center)
                     .clipShape(Circle())
-                    .frame(width: 75, height: 75, alignment: .center)
-                    .padding(.all, 2)
             }
             .frame(width: 80, height: 80)
-            .shadow(radius: 1)
             
             VStack {
                 // MARK: - User's name
@@ -87,6 +88,7 @@ struct ProfileView_Previews: PreviewProvider {
     
     static var previews: some View {
         ProfileView(viewModel: ProfileViewModel(userId: "me"))
+            .preferredColorScheme(.dark)
             .environmentObject(profile)
     }
 }
