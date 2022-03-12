@@ -39,11 +39,11 @@ struct ProfileView: View {
                 Circle()
                     .foregroundStyle(.white)
                     .frame(width: 80, height: 80)
-                WebImage(url: URL(string: "https://\(AppService.apiKey)/api/v1/\(profileModel.avatar)"))
+                WebImage(url: URL(string: "https://\(AppService.apiKey)/api/v1/\(profileModel.userResult?.avatar ?? "")"))
                     .resizable()
                     .placeholder {
                         Image(systemName: "person.fill")
-                            .font(.body)
+                            .font(.largeTitle)
                             .foregroundColor(.gray)
                     }
                     .transition(.fade)
@@ -57,23 +57,24 @@ struct ProfileView: View {
             
             VStack {
                 // MARK: - User's name
-                Text(profileModel.fullname)
+                Text(profileModel.userResult?.fullname ?? "       ")
                     .font(.title)
                     .fontWeight(.medium)
                     .dynamicTypeSize(.xSmall ... .large)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
+                    .redacted(reason: profileModel.userResult?.fullname.trimmingCharacters(in: .whitespaces).isEmpty ?? true ? .placeholder : [])
                 
                 // MARK: - Username
-                if profileModel.username != "" {
-                    Text("@\(profileModel.username)")
-                        .font(.body)
-                        .fontWeight(.light)
-                        .dynamicTypeSize(.xSmall ... .large)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-                        .foregroundStyle(.secondary)
-                }
+                Text("@" + (profileModel.userResult?.username ?? "     "))
+                    .font(.body)
+                    .fontWeight(.light)
+                    .dynamicTypeSize(.xSmall ... .large)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .foregroundStyle(.secondary)
+                    .redacted(reason: profileModel.userResult?.username.trimmingCharacters(in: .whitespaces).isEmpty ?? true ? .placeholder : [])
+                
             }
         }
         .padding()

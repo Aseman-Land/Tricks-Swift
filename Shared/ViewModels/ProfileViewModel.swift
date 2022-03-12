@@ -13,9 +13,7 @@ class ProfileViewModel: ObservableObject {
     
     @Published var profile: MyProfileViewModel? = nil
     
-    @Published var username: String = ""
-    @Published var fullname: String = ""
-    @Published var avatar: String = ""
+    @Published var userResult: UserResult? = nil
     
     @Published var loading: Bool = false
     @Published var errorMessage: String = ""
@@ -37,12 +35,7 @@ class ProfileViewModel: ObservableObject {
             case .success(let result):
                 if result.status {
                     DispatchQueue.main.async {
-                        self.username = result.result.username
-                        self.fullname = result.result.fullname
-                        
-                        if let avatar = result.result.avatar {
-                            self.avatar = avatar
-                        }
+                        self.userResult = result.result
                     }
                 } else {
                     print("Failed to get user data")
