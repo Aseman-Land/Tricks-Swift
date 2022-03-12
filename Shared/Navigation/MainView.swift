@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @EnvironmentObject var profile: ProfileViewModel
+    @EnvironmentObject var profile: MyProfileViewModel
     
     @State private var showRegister: Bool = false
     #if os(iOS)

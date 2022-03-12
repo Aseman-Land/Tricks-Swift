@@ -23,7 +23,10 @@ protocol AuthServiceable {
     
     func logout(token: String, fcmToken: String?) async throws -> Result<GlobalResponse, RequestError>
     
-    func getMe(token: String) async throws -> Result<User, RequestError>
+    func getUser(
+        userID: String,
+        token: String
+    ) async throws -> Result<User, RequestError>
     
     func editMe(
         username: String?,
@@ -69,8 +72,11 @@ struct AuthService: HTTPClient, AuthServiceable {
         )
     }
     
-    func getMe(token: String) async throws -> Result<User, RequestError> {
-        return try await sendRequest(endpoint: AuthEndpoint.getMe(token: token), responseModel: User.self)
+    func getUser(
+        userID: String,
+        token: String
+    ) async throws -> Result<User, RequestError> {
+        return try await sendRequest(endpoint: AuthEndpoint.getUser(userID: userID, token: token), responseModel: User.self)
     }
     
     func editMe(

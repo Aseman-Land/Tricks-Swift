@@ -8,7 +8,7 @@
 import SwiftUI
 import KeychainAccess
 
-class ProfileViewModel: ObservableObject {
+class MyProfileViewModel: ObservableObject {
     
     @Published var isUserLoggedIn: Bool
     @Published var userToken: String
@@ -72,7 +72,7 @@ class ProfileViewModel: ObservableObject {
         if userToken == "" { return }
         
         Task(priority: .background) {
-            let result = try await service.getMe(token: userToken)
+            let result = try await service.getUser(userID: "me" ,token: userToken)
             
             switch result {
             case .success(let result):

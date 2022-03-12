@@ -11,7 +11,7 @@ struct Sidebar: View {
 
     @StateObject var viewModel = NavigationItemsModel()
     
-    @EnvironmentObject var profile: ProfileViewModel
+    @EnvironmentObject var profile: MyProfileViewModel
     
     var body: some View {
         NavigationView {
@@ -58,7 +58,7 @@ struct Sidebar: View {
 
 struct Sidebar_Previews: PreviewProvider {
     
-    @StateObject static var profile = ProfileViewModel()
+    @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
         Sidebar()

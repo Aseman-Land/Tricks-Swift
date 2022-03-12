@@ -12,7 +12,7 @@ class TricksListViewModel: ObservableObject {
     @Published var loading: Bool = false
     @Published var errorMessage: String = ""
     
-    @Published var profile: ProfileViewModel? = nil
+    @Published var profile: MyProfileViewModel? = nil
     
     @Published var tricks: [Trick] = [Trick]()
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var profile: ProfileViewModel
+    @EnvironmentObject var profile: MyProfileViewModel
     
     var body: some View {
         TabView {

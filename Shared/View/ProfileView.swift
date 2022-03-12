@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    let userID: String
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -68,6 +71,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(userID: "me")
     }
 }

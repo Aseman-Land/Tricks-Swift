@@ -21,7 +21,7 @@ class AuthViewModel: ObservableObject {
     
     @Published var userCreated: Bool = false
     
-    @Published var profile: ProfileViewModel? = nil
+    @Published var profile: MyProfileViewModel? = nil
     
     private var service = AuthService()
     

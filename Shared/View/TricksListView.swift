@@ -12,7 +12,7 @@ struct TricksListView: View {
     
     @StateObject var tricksListViewModel = TricksListViewModel()
     
-    @EnvironmentObject var profile: ProfileViewModel
+    @EnvironmentObject var profile: MyProfileViewModel
     
     var body: some View {
         ZStack {
@@ -107,7 +107,7 @@ struct TricksListView: View {
 
 struct TricksListView_Previews: PreviewProvider {
     
-    @StateObject static var profile = ProfileViewModel()
+    @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
         TricksListView()

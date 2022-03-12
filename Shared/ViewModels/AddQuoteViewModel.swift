@@ -11,7 +11,7 @@ class AddQuoteViewModel: ObservableObject {
     
     @Published var showQuoteView: Bool = false
     
-    @Published var profile: ProfileViewModel? = nil
+    @Published var profile: MyProfileViewModel? = nil
     
     @Published var quote: String = ""
     

@@ -63,8 +63,8 @@
 		C6C0F82427C12EF20011F173 /* Tricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81D27C12EF20011F173 /* Tricks.swift */; };
 		C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81E27C12EF20011F173 /* ResponseCall.swift */; };
 		C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81E27C12EF20011F173 /* ResponseCall.swift */; };
-		C6C0F82727C12EF20011F173 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81F27C12EF20011F173 /* ProfileViewModel.swift */; };
-		C6C0F82827C12EF20011F173 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81F27C12EF20011F173 /* ProfileViewModel.swift */; };
+		C6C0F82727C12EF20011F173 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */; };
+		C6C0F82827C12EF20011F173 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */; };
 		C6C0F82927C12EF20011F173 /* GlobalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82027C12EF20011F173 /* GlobalResponse.swift */; };
 		C6C0F82A27C12EF20011F173 /* GlobalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82027C12EF20011F173 /* GlobalResponse.swift */; };
 		C6C0F82B27C12EF20011F173 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82127C12EF20011F173 /* Tags.swift */; };
@@ -122,7 +122,7 @@
 		C69D74AC27C0D9730060432F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		C6C0F81D27C12EF20011F173 /* Tricks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tricks.swift; sourceTree = "<group>"; };
 		C6C0F81E27C12EF20011F173 /* ResponseCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCall.swift; sourceTree = "<group>"; };
-		C6C0F81F27C12EF20011F173 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		C6C0F82027C12EF20011F173 /* GlobalResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalResponse.swift; sourceTree = "<group>"; };
 		C6C0F82127C12EF20011F173 /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		C6C0F82227C12EF20011F173 /* Notif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notif.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				C63D793627D27882000D7442 /* AddQuoteViewModel.swift */,
 				C69D74AC27C0D9730060432F /* AuthViewModel.swift */,
 				C63C912127BFC6670022051C /* NavigationItem.swift */,
-				C6C0F81F27C12EF20011F173 /* ProfileViewModel.swift */,
+				C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */,
 				C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */,
 			);
 			path = ViewModels;
@@ -499,7 +499,7 @@
 			files = (
 				C629101E27CEAF4400FD740E /* TrickView.swift in Sources */,
 				C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */,
-				C6C0F82727C12EF20011F173 /* ProfileViewModel.swift in Sources */,
+				C6C0F82727C12EF20011F173 /* MyProfileViewModel.swift in Sources */,
 				C64E784727C226A300B26527 /* Endpoint.swift in Sources */,
 				C67D8A0C27C17EDA001E0E56 /* RequestError.swift in Sources */,
 				C63C912B27BFC9100022051C /* ProfileView.swift in Sources */,
@@ -538,7 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6FA15F627C0E6F9005CAD1A /* SignupView.swift in Sources */,
-				C6C0F82827C12EF20011F173 /* ProfileViewModel.swift in Sources */,
+				C6C0F82827C12EF20011F173 /* MyProfileViewModel.swift in Sources */,
 				C64E784827C226A300B26527 /* Endpoint.swift in Sources */,
 				C67D8A0D27C17EDA001E0E56 /* RequestError.swift in Sources */,
 				C63C912327BFC6670022051C /* NavigationItem.swift in Sources */,

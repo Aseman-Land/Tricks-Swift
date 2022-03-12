@@ -27,7 +27,10 @@ enum AuthEndpoint {
         fcmToken: String?
     )
     
-    case getMe(token: String)
+    case getUser(
+        userID: String,
+        token: String
+    )
     
     case editMe(
         username: String?,
@@ -47,7 +50,9 @@ extension AuthEndpoint: Endpoint {
             return "/api/v1/users"
         case .logout(_, _):
             return "/api/v1/auth/logout"
-        case .getMe(_) , .editMe(_, _, _, _, _):
+        case .getUser(let userID, _):
+            return "/api/v1/users/\(userID)"
+        case .editMe(_, _, _, _, _):
             return "/api/v1/users/me"
         }
     }
@@ -58,7 +63,7 @@ extension AuthEndpoint: Endpoint {
              .register(_, _, _, _),
              .logout(_, _):
             return .post
-        case .getMe(_):
+        case .getUser(_, _):
             return .get
         case .editMe(_, _, _, _, _):
             return .patch
@@ -68,7 +73,7 @@ extension AuthEndpoint: Endpoint {
     var header: [String : String]? {
         switch self {
         case .logout(let token, _),
-             .getMe(token: let token),
+             .getUser(_, let token),
              .editMe(_, _, _, _, let token):
             return [
                 "Authorization": token,
@@ -105,7 +110,7 @@ extension AuthEndpoint: Endpoint {
                 return [:]
             }
             
-        case .getMe(_):
+        case .getUser(_, _):
             return nil
             
         case .editMe(let username , let fullname, let password, let current_password, _):

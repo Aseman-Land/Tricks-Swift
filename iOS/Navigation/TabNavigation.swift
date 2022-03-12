@@ -11,7 +11,7 @@ struct TabNavigation: View {
 
     @StateObject var viewModel = NavigationItemsModel()
 
-    @EnvironmentObject var profile: ProfileViewModel
+    @EnvironmentObject var profile: MyProfileViewModel
     
     var body: some View {
         TabView {
@@ -34,7 +34,7 @@ struct TabNavigation: View {
 
 struct TabNavigation_Previews: PreviewProvider {
     
-    @StateObject static var profile = ProfileViewModel()
+    @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
         TabNavigation()

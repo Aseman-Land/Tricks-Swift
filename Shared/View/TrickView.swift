@@ -32,7 +32,7 @@ struct TrickView: View {
     
     @StateObject private var addQuoteModel = AddQuoteViewModel()
     
-    @EnvironmentObject var profile: ProfileViewModel
+    @EnvironmentObject var profile: MyProfileViewModel
     
     var body: some View {
         VStack {
@@ -193,7 +193,7 @@ struct TrickView: View {
 
 struct TrickView_Previews: PreviewProvider {
     
-    @StateObject static var profile = ProfileViewModel()
+    @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
         TrickView(trick: Trick.mockExample)

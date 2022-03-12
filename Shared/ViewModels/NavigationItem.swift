@@ -44,7 +44,7 @@ final class NavigationItemsModel: ObservableObject {
             name: "Profile",
             comment: "Your profile",
             icon: "person",
-            content: AnyView(ProfileView())
+            content: AnyView(ProfileView(userID: "me"))
         ),
     ]
 }

@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct TricksApp: App {
     
-    @StateObject var profile = ProfileViewModel()
+    @StateObject var profile = MyProfileViewModel()
     
     var body: some Scene {
         WindowGroup {

@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct AccountSettingsView: View {
-    @EnvironmentObject var profile: ProfileViewModel
+    @EnvironmentObject var profile: MyProfileViewModel
     
     @AppStorage("fullname") private var storageFullname = ""
     @AppStorage("username") private var storageUsername = ""
@@ -90,7 +90,7 @@ struct AccountSettingsView: View {
 
 struct AccountSettingsView_Previews: PreviewProvider {
     
-    @StateObject static var profile = ProfileViewModel()
+    @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
         AccountSettingsView()
