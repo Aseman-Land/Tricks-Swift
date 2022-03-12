@@ -30,7 +30,7 @@ final class NavigationItemsModel: ObservableObject {
             name: "Discover",
             comment: "Latest tricks",
             icon: "rectangle.stack",
-            content: AnyView(TricksListView())
+            content: AnyView(TricksListView(viewModel: TricksListViewModel(.timeline)))
         ),
         
         NavigationItem(

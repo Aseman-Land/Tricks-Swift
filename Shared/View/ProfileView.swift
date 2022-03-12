@@ -19,13 +19,15 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        ScrollView {
-            Section {
-            VStack(alignment: .leading) {
-                UserView()
-                    .frame(maxWidth: .infinity, alignment: .center)
-            }
-            }
+        
+        // TODO: Add proper section instead of VStack
+        VStack {
+            UserView()
+                .frame(maxWidth: .infinity, alignment: .center)
+            
+            TricksListView(viewModel: TricksListViewModel(.me))
+                .environmentObject(profile)
+                
         }
         .task {
             profileModel.profile = profile
@@ -75,7 +77,6 @@ struct ProfileView: View {
                     .minimumScaleFactor(0.5)
                     .foregroundStyle(.secondary)
                     .redacted(reason: profileModel.userResult?.username.trimmingCharacters(in: .whitespaces).isEmpty ?? true ? .placeholder : [])
-                
             }
         }
         .padding()

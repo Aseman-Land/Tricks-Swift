@@ -12,9 +12,9 @@ protocol TricksServiceable {
     
     func myTimelineTricks(token: String) async throws -> Result<Tricks, RequestError>
     
-    func getTrick(trickID: Int, token: String) async throws -> Result<[Trick], RequestError>
+    func getTrick(trickID: Int, token: String) async throws -> Result<Tricks, RequestError>
     
-    func profileTricks(userID: String, token: String) async throws -> Result<[Trick], RequestError>
+    func profileTricks(userID: String, token: String) async throws -> Result<Tricks, RequestError>
     
     func postTrick(
         comment: String,
@@ -54,17 +54,17 @@ struct TricksService: HTTPClient, TricksServiceable {
         )
     }
     
-    func getTrick(trickID: Int, token: String) async throws -> Result<[Trick], RequestError> {
+    func getTrick(trickID: Int, token: String) async throws -> Result<Tricks, RequestError> {
         return try await sendRequest(
             endpoint: TricksEndpoint.getTrick(trickID: trickID, token: token),
-            responseModel: [Trick].self
+            responseModel: Tricks.self
         )
     }
     
-    func profileTricks(userID: String, token: String) async throws -> Result<[Trick], RequestError> {
+    func profileTricks(userID: String, token: String) async throws -> Result<Tricks, RequestError> {
         return try await sendRequest(
             endpoint: TricksEndpoint.profiletricks(userID: userID, token: token),
-            responseModel: [Trick].self
+            responseModel: Tricks.self
         )
     }
     

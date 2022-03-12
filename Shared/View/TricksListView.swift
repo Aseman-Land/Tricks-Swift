@@ -10,15 +10,19 @@ import SDWebImageSwiftUI
 
 struct TricksListView: View {
     
-    @StateObject var tricksListViewModel = TricksListViewModel()
+    @StateObject var tricksListModel: TricksListViewModel
     
     @EnvironmentObject var profile: MyProfileViewModel
     
+    init(viewModel: @autoclosure @escaping () -> TricksListViewModel) {
+        _tricksListModel = StateObject(wrappedValue: viewModel())
+    }
+    
     var body: some View {
         ZStack {
-            if tricksListViewModel.errorMessage == "" {
+            if tricksListModel.errorMessage == "" {
                 List {
-                    ForEach(tricksListViewModel.tricks, id: \.id) { trick in
+                    ForEach(tricksListModel.tricks, id: \.id) { trick in
                         TrickView(trick: trick)
                             #if os(iOS)
                             .listSectionSeparator(.hidden)
@@ -30,31 +34,31 @@ struct TricksListView: View {
                 }
                 .listStyle(.plain)
                 .refreshable {
-                    await tricksListViewModel.loadTricks()
+                    await tricksListModel.loadTricks()
                 }
                 
-                if tricksListViewModel.tricks.isEmpty {
+                if tricksListModel.tricks.isEmpty {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
                 }
                 
-            } else if !tricksListViewModel.tricks.isEmpty {
+            } else if !tricksListModel.tricks.isEmpty {
                 EmptyList()
             } else {
-                NetworkError(title: tricksListViewModel.errorMessage) {
+                NetworkError(title: tricksListModel.errorMessage) {
                     Task.init {
-                        await tricksListViewModel.loadTricks()
+                        await tricksListModel.loadTricks()
                     }
                 }
             }
         }
         .task {
-            tricksListViewModel.profile = profile
-            await tricksListViewModel.loadTricks()
+            tricksListModel.profile = profile
+            await tricksListModel.loadTricks()
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.UpdateList)) { _ in
             Task.init {
-                await tricksListViewModel.loadTricks()
+                await tricksListModel.loadTricks()
             }
         }
     }
@@ -95,6 +99,7 @@ struct TricksListView: View {
             
             Text(title)
                 .font(.title)
+                .multilineTextAlignment(.center)
             
             Button(action: action) {
                 Text("Try again")
@@ -110,7 +115,7 @@ struct TricksListView_Previews: PreviewProvider {
     @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
-        TricksListView()
+        TricksListView(viewModel: TricksListViewModel(.timeline))
             .environmentObject(profile)
     }
 }

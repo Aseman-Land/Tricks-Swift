@@ -9,14 +9,19 @@ import Foundation
 
 class TricksListViewModel: ObservableObject {
     
-    @Published var loading: Bool = false
-    @Published var errorMessage: String = ""
+    @Published var type: TrickListType
     
     @Published var profile: MyProfileViewModel? = nil
     
     @Published var tricks: [Trick] = [Trick]()
+    @Published var loading: Bool = false
+    @Published var errorMessage: String = ""
     
     private var service = TricksService()
+    
+    init(_ type: TrickListType) {
+        self.type = type
+    }
     
     func loadTricks() async {
         loading = true
@@ -29,7 +34,16 @@ class TricksListViewModel: ObservableObject {
         }
 
         Task(priority: .background) {
-            let result = try await service.myTimelineTricks(token: profile.userToken)
+            var result: Result<Tricks, RequestError>? = nil
+            
+            switch type {
+            case .timeline:
+                result = try await service.myTimelineTricks(token: profile.userToken)
+            case .me:
+                result = try await service.profileTricks(userID: "me", token: profile.userToken)
+            case .user(let userID):
+                result = try await service.profileTricks(userID: userID, token: profile.userToken)
+            }
             
             switch result {
             case .success(let tricksResult):
@@ -51,6 +65,8 @@ class TricksListViewModel: ObservableObject {
                 case .unknown(_):
                     setErrorMessage("Network error, Try again")
                 }
+            case .none:
+                setErrorMessage("Failed to load tricks, Try again")
             }
             
             DispatchQueue.main.async {
@@ -64,4 +80,10 @@ class TricksListViewModel: ObservableObject {
             self.errorMessage = message
         }
     }
+}
+
+enum TrickListType {
+    case timeline
+    case me
+    case user(userID: String)
 }
