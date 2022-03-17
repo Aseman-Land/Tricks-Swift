@@ -21,4 +21,11 @@ struct AppService {
         }
         return ""
     }
+    
+    func imageURL(url: String?) -> String {
+        if let url = url {
+            return "https://\(AppService.apiKey)/api/v1/\(url)"
+        }
+        return ""
+    }
 }

@@ -84,6 +84,12 @@
 		C6D9FF3827D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
 		C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
 		C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */; };
+		C6F7D2B927E3C485001F0B54 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2B827E3C485001F0B54 /* ShareSheet.swift */; };
+		C6F7D2BC27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2BB27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift */; };
+		C6F7D2BE27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2BD27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift */; };
+		C6F7D2C027E3C5F1001F0B54 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2BF27E3C5F1001F0B54 /* ShareSheet.swift */; };
+		C6F7D2C227E3C602001F0B54 /* Sharer+Implementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2C127E3C602001F0B54 /* Sharer+Implementation.swift */; };
+		C6F7D2C427E3C646001F0B54 /* Sharer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2C327E3C646001F0B54 /* Sharer.swift */; };
 		C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
 		C6FA15F627C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
 /* End PBXBuildFile section */
@@ -136,6 +142,12 @@
 		C6D1013927C7E13A0087235E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteView.swift; sourceTree = "<group>"; };
 		C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extension.swift"; sourceTree = "<group>"; };
+		C6F7D2B827E3C485001F0B54 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		C6F7D2BB27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareSheet+Modifiers.swift"; sourceTree = "<group>"; };
+		C6F7D2BD27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareSheet+UIKitRepresentable.swift"; sourceTree = "<group>"; };
+		C6F7D2BF27E3C5F1001F0B54 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		C6F7D2C127E3C602001F0B54 /* Sharer+Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sharer+Implementation.swift"; sourceTree = "<group>"; };
+		C6F7D2C327E3C646001F0B54 /* Sharer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharer.swift; sourceTree = "<group>"; };
 		C6FA15F427C0E6F9005CAD1A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				C629100D27CE968200FD740E /* Settings */,
+				C6F7D2B827E3C485001F0B54 /* ShareSheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,8 +265,9 @@
 		C63C911C27BFC6350022051C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				C6C0F83727C1392D0011F173 /* Resources */,
 				C63C911D27BFC63E0022051C /* Navigation */,
+				C6C0F83727C1392D0011F173 /* Resources */,
+				C6F7D2BA27E3C5B2001F0B54 /* ShareSheet */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -391,6 +405,18 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C6F7D2BA27E3C5B2001F0B54 /* ShareSheet */ = {
+			isa = PBXGroup;
+			children = (
+				C6F7D2BB27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift */,
+				C6F7D2BD27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift */,
+				C6F7D2BF27E3C5F1001F0B54 /* ShareSheet.swift */,
+				C6F7D2C127E3C602001F0B54 /* Sharer+Implementation.swift */,
+				C6F7D2C327E3C646001F0B54 /* Sharer.swift */,
+			);
+			path = ShareSheet;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -510,6 +536,7 @@
 				C6C0F82327C12EF20011F173 /* Tricks.swift in Sources */,
 				C63C912227BFC6670022051C /* NavigationItem.swift in Sources */,
 				C629101827CEA36800FD740E /* TricksService.swift in Sources */,
+				C6F7D2C427E3C646001F0B54 /* Sharer.swift in Sources */,
 				C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0527C14ABD001E0E56 /* AppService.swift in Sources */,
 				C6CDBBB827CA1096008BFF5E /* HTTPContentType.swift in Sources */,
@@ -523,7 +550,9 @@
 				C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
 				C63C912F27BFCCD90022051C /* LoginView.swift in Sources */,
 				C63D793727D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
+				C6F7D2C227E3C602001F0B54 /* Sharer+Implementation.swift in Sources */,
 				C6C0F82D27C12EF20011F173 /* Notif.swift in Sources */,
+				C6F7D2BE27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift in Sources */,
 				C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */,
 				C6C0F82B27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C911827BFC6230022051C /* Sidebar.swift in Sources */,
@@ -531,9 +560,11 @@
 				C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */,
 				C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */,
+				C6F7D2C027E3C5F1001F0B54 /* ShareSheet.swift in Sources */,
 				C6B143D827DCC27F00AE777E /* ProfileViewModel.swift in Sources */,
 				C63C912827BFC9090022051C /* NotificationsView.swift in Sources */,
 				C6C0F82927C12EF20011F173 /* GlobalResponse.swift in Sources */,
+				C6F7D2BC27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift in Sources */,
 				C67D8A0227C14A70001E0E56 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,6 +586,7 @@
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0627C14ABD001E0E56 /* AppService.swift in Sources */,
 				C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */,
+				C6F7D2B927E3C485001F0B54 /* ShareSheet.swift in Sources */,
 				C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */,
 				C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */,
 				C629100F27CE969A00FD740E /* AdvancedSettingsView.swift in Sources */,

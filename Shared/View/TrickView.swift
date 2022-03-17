@@ -8,6 +8,8 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+
+
 struct TrickView: View {
     
     var trick: Trick
@@ -33,6 +35,8 @@ struct TrickView: View {
     @StateObject private var addQuoteModel = AddQuoteViewModel()
     
     @EnvironmentObject var profile: MyProfileViewModel
+    
+    @State var showShare: Bool = false
     
     var body: some View {
         VStack {
@@ -157,14 +161,19 @@ struct TrickView: View {
                     
                     Spacer()
                     
-                    Button(action: {
-                        // TODO: Add Share function
-                    }) {
+                    Button(action: { showShare = true }) {
                         Label("Share", systemImage: "square.and.arrow.up")
                     }
                     .buttonStyle(.plain)
                     .labelStyle(.iconOnly)
                     .foregroundColor(.gray)
+                    #if os(iOS)
+                    .sheet(isPresented: $showShare) {
+                        ShareSheet(items: shareBody())
+                    }
+                    #elseif os(macOS)
+                    .background(ShareSheet(isPresented: $showShare, items: shareBody()))
+                    #endif
                     
                     Spacer()
                 }
@@ -188,6 +197,15 @@ struct TrickView: View {
         .task {
             addQuoteModel.profile = profile
         }
+    }
+    
+    func shareBody() -> [Any] {        
+        return [
+            trick.body,
+            trick.code,
+            "By \(trick.owner.fullname)",
+            URL(string: AppService().imageURL(url: trick.filename))!
+        ]
     }
 }
 
