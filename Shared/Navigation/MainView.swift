@@ -51,7 +51,11 @@ struct MainView: View {
 }
 
 struct MainView_Previews: PreviewProvider {
+    
+    @StateObject static var profile = MyProfileViewModel()
+    
     static var previews: some View {
         MainView()
+            .environmentObject(profile)
     }
 }
