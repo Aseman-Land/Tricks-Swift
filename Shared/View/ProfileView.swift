@@ -19,16 +19,11 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        
-        // TODO: Add proper section instead of VStack
-        VStack {
+        TricksListView(viewModel: TricksListViewModel(.me)) {
             UserView()
                 .frame(maxWidth: .infinity, alignment: .center)
-            
-            TricksListView(viewModel: TricksListViewModel(.me))
-                .environmentObject(profile)
-                
         }
+        .environmentObject(profile)
         .task {
             profileModel.profile = profile
             await profileModel.getProfile()

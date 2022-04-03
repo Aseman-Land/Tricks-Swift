@@ -8,20 +8,28 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct TricksListView: View {
+struct TricksListView<ProfileContent: View>: View {
     
     @StateObject var tricksListModel: TricksListViewModel
     
+    let profileContent: ProfileContent
+    
     @EnvironmentObject var profile: MyProfileViewModel
     
-    init(viewModel: @autoclosure @escaping () -> TricksListViewModel) {
+    init(
+        viewModel: @autoclosure @escaping () -> TricksListViewModel,
+        @ViewBuilder profileContent: () -> ProfileContent
+    ) {
         _tricksListModel = StateObject(wrappedValue: viewModel())
+        self.profileContent = profileContent()
     }
     
     var body: some View {
         ZStack {
             if tricksListModel.errorMessage == "" {
                 List {
+                    profileContent
+                    
                     ForEach(tricksListModel.tricks, id: \.id) { trick in
                         TrickView(trick: trick)
                             #if os(iOS)
@@ -110,12 +118,20 @@ struct TricksListView: View {
     }
 }
 
+extension TricksListView where ProfileContent == EmptyView {
+    init(viewModel: @autoclosure @escaping () -> TricksListViewModel) {
+        self.init(viewModel: viewModel(), profileContent: { EmptyView() })
+    }
+}
+
 struct TricksListView_Previews: PreviewProvider {
     
     @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
-        TricksListView(viewModel: TricksListViewModel(.timeline))
+        TricksListView(viewModel: TricksListViewModel(.timeline)) {
+            
+        }
             .environmentObject(profile)
     }
 }
