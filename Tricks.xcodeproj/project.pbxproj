@@ -84,6 +84,8 @@
 		C6D9FF3827D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
 		C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
 		C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */; };
+		C6F1B72627E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
+		C6F1B72727E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
 		C6F7D2B927E3C485001F0B54 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2B827E3C485001F0B54 /* ShareSheet.swift */; };
 		C6F7D2BC27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2BB27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift */; };
 		C6F7D2BE27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2BD27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift */; };
@@ -142,6 +144,7 @@
 		C6D1013927C7E13A0087235E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteView.swift; sourceTree = "<group>"; };
 		C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extension.swift"; sourceTree = "<group>"; };
+		C6F1B72527E64B690008EFBE /* TrickViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickViewModel.swift; sourceTree = "<group>"; };
 		C6F7D2B827E3C485001F0B54 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		C6F7D2BB27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareSheet+Modifiers.swift"; sourceTree = "<group>"; };
 		C6F7D2BD27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareSheet+UIKitRepresentable.swift"; sourceTree = "<group>"; };
@@ -283,7 +286,7 @@
 		C63C912027BFC65A0022051C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				C63D793627D27882000D7442 /* AddQuoteViewModel.swift */,
+				C6F1B72427E64B4E0008EFBE /* TricksViewModels */,
 				C69D74AC27C0D9730060432F /* AuthViewModel.swift */,
 				C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */,
 				C63C912127BFC6670022051C /* NavigationItem.swift */,
@@ -403,6 +406,15 @@
 				C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C6F1B72427E64B4E0008EFBE /* TricksViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C63D793627D27882000D7442 /* AddQuoteViewModel.swift */,
+				C6F1B72527E64B690008EFBE /* TrickViewModel.swift */,
+			);
+			path = TricksViewModels;
 			sourceTree = "<group>";
 		};
 		C6F7D2BA27E3C5B2001F0B54 /* ShareSheet */ = {
@@ -566,6 +578,7 @@
 				C6C0F82927C12EF20011F173 /* GlobalResponse.swift in Sources */,
 				C6F7D2BC27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift in Sources */,
 				C67D8A0227C14A70001E0E56 /* User.swift in Sources */,
+				C6F1B72627E64B690008EFBE /* TrickViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +601,7 @@
 				C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */,
 				C6F7D2B927E3C485001F0B54 /* ShareSheet.swift in Sources */,
 				C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */,
+				C6F1B72727E64B690008EFBE /* TrickViewModel.swift in Sources */,
 				C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */,
 				C629100F27CE969A00FD740E /* AdvancedSettingsView.swift in Sources */,
 				C6D1013B27C7E13A0087235E /* AuthService.swift in Sources */,

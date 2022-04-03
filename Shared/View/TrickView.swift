@@ -8,35 +8,18 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-
-
 struct TrickView: View {
     
-    var trick: Trick
-    
-    private var liked: Bool {
-        switch trick.rate_state {
-        case 0:
-            return false
-        case 1:
-            return true
-        default:
-            return false
-        }
-    }
-    
-    private var trickDate: Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return dateFormatter.date(from: trick.datetime) ?? Date()
-    }
-    
+    @StateObject private var trickModel: TrickViewModel
     @StateObject private var addQuoteModel = AddQuoteViewModel()
     
     @EnvironmentObject var profile: MyProfileViewModel
     
     @State var showShare: Bool = false
+    
+    init(trick: Trick) {
+        _trickModel = StateObject(wrappedValue: TrickViewModel(trick: trick))
+    }
     
     var body: some View {
         VStack {
@@ -46,7 +29,7 @@ struct TrickView: View {
                     Circle()
                         .foregroundStyle(.white)
                         .frame(width: 40, height: 40)
-                    WebImage(url: URL(string: "https://\(AppService.apiKey)/api/v1/\(trick.owner.avatar ?? "")"))
+                    WebImage(url: trickModel.trickOwnerAvatar)
                         .resizable()
                         .placeholder {
                             Image(systemName: "person.fill")
@@ -66,7 +49,7 @@ struct TrickView: View {
                 VStack(spacing: 4) {
                     HStack {
                         // MARK: - Fullname
-                        Text(trick.owner.fullname)
+                        Text(trickModel.trick.owner.fullname)
                             .font(.caption)
                             .fontWeight(.medium)
                             .foregroundStyle(.primary)
@@ -74,21 +57,21 @@ struct TrickView: View {
                         Spacer()
                         
                         // MARK: - Trick's time
-                        Text(trickDate, style: .relative)
+                        Text(trickModel.trickDate, style: .relative)
                             .font(.caption)
                             .fontWeight(.light)
                             .foregroundStyle(.secondary)
                     }
                     HStack {
                         // MARK: - Username
-                        Text("@\(trick.owner.username)")
+                        Text("@\(trickModel.trick.owner.username)")
                             .font(.caption)
                             .fontWeight(.light)
                         
                         Spacer()
                         
                         // MARK: - View count
-                        Label(trick.views.formatted(), systemImage: "eye")
+                        Label(trickModel.trick.views.formatted(), systemImage: "eye")
                             .font(.caption.weight(.light))
                         
                     }
@@ -99,7 +82,7 @@ struct TrickView: View {
             .padding(.bottom, 8)
             
             // MARK: - Trick's body (description)
-            Text(trick.body)
+            Text(trickModel.trick.body)
                 .font(.body)
                 .foregroundStyle(.primary)
                 .dynamicTypeSize(.xSmall ... .medium)
@@ -124,7 +107,7 @@ struct TrickView: View {
                 }
                 .padding([.top, .leading, .trailing])
                 
-                Text(trick.code)
+                Text(trickModel.trick.code)
                     .textSelection(.enabled)
                     .font(.system(.caption, design: .monospaced))
                     .dynamicTypeSize(.xSmall ... .large)
@@ -139,13 +122,14 @@ struct TrickView: View {
                     Spacer()
                     
                     Button(action: {
-                        //liked.toggle()
-                        // TODO: Add like function
+                        Task.init {
+                            await trickModel.addLike()
+                        }
                     }) {
-                        Label(trick.rates.formatted(), systemImage: liked ? "heart.fill" : "heart")
+                        Label(trickModel.trick.rates.formatted(), systemImage: trickModel.liked ? "heart.fill" : "heart")
                     }
                     .buttonStyle(.plain)
-                    .foregroundColor(liked ? .red : .gray)
+                    .foregroundColor(trickModel.liked ? .red : .gray)
                     .accentColor(.clear)
                     
                     Spacer()
@@ -187,7 +171,7 @@ struct TrickView: View {
                     .shadow(color: Color.secondary, radius: 5, x: 0, y: 0)
             )
             .popover(isPresented: $addQuoteModel.showQuoteView) {
-                AddQuoteView(trickID: trick.id)
+                AddQuoteView(trickID: trickModel.trick.id)
                     #if os(macOS)
                     .frame(minWidth: 250, minHeight: 250)
                     #endif
@@ -195,16 +179,17 @@ struct TrickView: View {
             }
         }
         .task {
+            trickModel.profile = profile
             addQuoteModel.profile = profile
         }
     }
     
-    func shareBody() -> [Any] {        
+    func shareBody() -> [Any] {
         return [
-            trick.body,
-            trick.code,
-            "By \(trick.owner.fullname)",
-            URL(string: AppService().imageURL(url: trick.filename))!
+            trickModel.trick.body,
+            trickModel.trick.code,
+            "By \(trickModel.trick.owner.fullname)",
+            URL(string: AppService().imageURL(url: trickModel.trick.filename))!
         ]
     }
 }

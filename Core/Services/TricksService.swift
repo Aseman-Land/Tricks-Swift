@@ -34,7 +34,7 @@ protocol TricksServiceable {
     
     func deleteTrickPost(trickID: Int, token: String) async throws -> Result<GlobalResponse, RequestError>
     
-    func addRate(tagID: Int, rate: Int, token: String) async throws -> Result<[Trick], RequestError>
+    func addRate(tagID: Int, rate: Int, token: String) async throws -> Result<Tricks, RequestError>
     
     func addView(tricksIDs: [Int], token: String) async throws -> Result<Bool, RequestError>
 }
@@ -89,10 +89,10 @@ struct TricksService: HTTPClient, TricksServiceable {
         )
     }
     
-    func addRate(tagID: Int, rate: Int, token: String) async throws -> Result<[Trick], RequestError> {
+    func addRate(tagID: Int, rate: Int, token: String) async throws -> Result<Tricks, RequestError> {
         return try await sendRequest(
             endpoint: TricksEndpoint.addRate(tagID: tagID, rate: rate, token: token),
-            responseModel: [Trick].self
+            responseModel: Tricks.self
         )
     }
     
