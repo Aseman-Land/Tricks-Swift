@@ -286,12 +286,13 @@
 		C63C912027BFC65A0022051C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				C6F1B72427E64B4E0008EFBE /* TricksViewModels */,
+				C63D793627D27882000D7442 /* AddQuoteViewModel.swift */,
 				C69D74AC27C0D9730060432F /* AuthViewModel.swift */,
 				C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */,
 				C63C912127BFC6670022051C /* NavigationItem.swift */,
 				C6B143D727DCC27F00AE777E /* ProfileViewModel.swift */,
 				C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */,
+				C6F1B72527E64B690008EFBE /* TrickViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -406,15 +407,6 @@
 				C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		C6F1B72427E64B4E0008EFBE /* TricksViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				C63D793627D27882000D7442 /* AddQuoteViewModel.swift */,
-				C6F1B72527E64B690008EFBE /* TrickViewModel.swift */,
-			);
-			path = TricksViewModels;
 			sourceTree = "<group>";
 		};
 		C6F7D2BA27E3C5B2001F0B54 /* ShareSheet */ = {
