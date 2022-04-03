@@ -82,10 +82,9 @@ struct AddQuoteView: View {
                         .fontWeight(.semibold)
                 }
                 #if os(macOS)
-                .buttonStyle(.bordered)
-                .headerProminence(.increased)
+                .buttonStyle(.borderedProminent)
+                .keyboardShortcut(.defaultAction)
                 #endif
-                
             } else {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
