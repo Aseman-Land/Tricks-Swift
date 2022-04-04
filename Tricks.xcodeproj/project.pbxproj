@@ -43,6 +43,10 @@
 		C63D793827D27882000D7442 /* AddQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793627D27882000D7442 /* AddQuoteViewModel.swift */; };
 		C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */; };
 		C63D793C27D287F1000D7442 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */; };
+		C64A97C327FB2DE500C7EE1A /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = C64A97C227FB2DE500C7EE1A /* CodeEditor */; };
+		C64A97C527FB2DF100C7EE1A /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = C64A97C427FB2DF100C7EE1A /* CodeEditor */; };
+		C64A97C727FB2F6A00C7EE1A /* AddTrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */; };
+		C64A97C827FB2F6A00C7EE1A /* AddTrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */; };
 		C64E784727C226A300B26527 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784627C226A300B26527 /* Endpoint.swift */; };
 		C64E784827C226A300B26527 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784627C226A300B26527 /* Endpoint.swift */; };
 		C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784927C2271A00B26527 /* AuthEndpoint.swift */; };
@@ -125,6 +129,7 @@
 		C63C912E27BFCCD90022051C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C63D793627D27882000D7442 /* AddQuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteViewModel.swift; sourceTree = "<group>"; };
 		C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
+		C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrickView.swift; sourceTree = "<group>"; };
 		C64E784627C226A300B26527 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		C64E784927C2271A00B26527 /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
 		C6748D6B27C015110023251B /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
@@ -165,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6957C1127CF5A08004ECB14 /* SDWebImageSwiftUI in Frameworks */,
+				C64A97C327FB2DE500C7EE1A /* CodeEditor in Frameworks */,
 				C6C0F83127C12FF50011F173 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6957C1327CF5A21004ECB14 /* SDWebImageSwiftUI in Frameworks */,
+				C64A97C527FB2DF100C7EE1A /* CodeEditor in Frameworks */,
 				C6C0F83427C130010011F173 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
+				C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */,
 				C63C912E27BFCCD90022051C /* LoginView.swift */,
 				C63C912727BFC9090022051C /* NotificationsView.swift */,
 				C63C912A27BFC9100022051C /* ProfileView.swift */,
@@ -447,6 +455,7 @@
 			packageProductDependencies = (
 				C6C0F83027C12FF50011F173 /* KeychainAccess */,
 				C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */,
+				C64A97C227FB2DE500C7EE1A /* CodeEditor */,
 			);
 			productName = "Tricks (iOS)";
 			productReference = C63C90FD27BFC5BA0022051C /* Tricks.app */;
@@ -468,6 +477,7 @@
 			packageProductDependencies = (
 				C6C0F83327C130010011F173 /* KeychainAccess */,
 				C6957C1227CF5A21004ECB14 /* SDWebImageSwiftUI */,
+				C64A97C427FB2DF100C7EE1A /* CodeEditor */,
 			);
 			productName = "Tricks (macOS)";
 			productReference = C63C910327BFC5BA0022051C /* Tricks.app */;
@@ -503,6 +513,7 @@
 			packageReferences = (
 				C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				C64A97C127FB2DE500C7EE1A /* XCRemoteSwiftPackageReference "CodeEditor" */,
 			);
 			productRefGroup = C63C90FE27BFC5BA0022051C /* Products */;
 			projectDirPath = "";
@@ -550,6 +561,7 @@
 				C6F7D2C427E3C646001F0B54 /* Sharer.swift in Sources */,
 				C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0527C14ABD001E0E56 /* AppService.swift in Sources */,
+				C64A97C727FB2F6A00C7EE1A /* AddTrickView.swift in Sources */,
 				C6CDBBB827CA1096008BFF5E /* HTTPContentType.swift in Sources */,
 				C6D9FF3827D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
 				C6D1013A27C7E13A0087235E /* AuthService.swift in Sources */,
@@ -608,6 +620,7 @@
 				C6018F0F27FAF51A00DF8FED /* View+Extension.swift in Sources */,
 				C6CDBBB327CA1068008BFF5E /* HTTPMethod.swift in Sources */,
 				C629101927CEA36800FD740E /* TricksService.swift in Sources */,
+				C64A97C827FB2F6A00C7EE1A /* AddTrickView.swift in Sources */,
 				C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C67D8A0A27C17EC3001E0E56 /* HTTPClient.swift in Sources */,
 				C63C911B27BFC6230022051C /* MainView.swift in Sources */,
@@ -900,6 +913,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C64A97C127FB2DE500C7EE1A /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ZeeZide/CodeEditor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -919,6 +940,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C64A97C227FB2DE500C7EE1A /* CodeEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C64A97C127FB2DE500C7EE1A /* XCRemoteSwiftPackageReference "CodeEditor" */;
+			productName = CodeEditor;
+		};
+		C64A97C427FB2DF100C7EE1A /* CodeEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C64A97C127FB2DE500C7EE1A /* XCRemoteSwiftPackageReference "CodeEditor" */;
+			productName = CodeEditor;
+		};
 		C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

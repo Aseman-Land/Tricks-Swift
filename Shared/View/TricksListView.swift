@@ -14,6 +14,8 @@ struct TricksListView<ProfileContent: View>: View {
     
     let profileContent: ProfileContent
     
+    @State var showAddTrick: Bool = false
+    
     @EnvironmentObject var profile: MyProfileViewModel
     
     init(
@@ -68,6 +70,18 @@ struct TricksListView<ProfileContent: View>: View {
             Task.init {
                 await tricksListModel.loadTricks()
             }
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                if tricksListModel.type == .timeline {
+                    Button(action: { showAddTrick.toggle() }) {
+                        Label("Add Trick", systemImage: "pencil")
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: $showAddTrick) {
+            AddTrickView()
         }
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
@@ -132,9 +146,7 @@ struct TricksListView_Previews: PreviewProvider {
     @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
-        TricksListView(viewModel: TricksListViewModel(.timeline)) {
-            
-        }
+        TricksListView(viewModel: TricksListViewModel(.timeline))
             .environmentObject(profile)
     }
 }

@@ -82,7 +82,7 @@ class TricksListViewModel: ObservableObject {
     }
 }
 
-enum TrickListType {
+enum TrickListType: Equatable {
     case timeline
     case me
     case user(userID: String)

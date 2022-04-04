@@ -21,13 +21,13 @@ struct AddQuoteView: View {
                 .navigationTitle("Quote")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
+                    ToolbarItem(placement: .cancellationAction) {
                         Button(action: closeView) {
                             Text("Cancel")
                         }
                     }
                     
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItem(placement: .confirmationAction) {
                         sendButton
                     }
                 }
@@ -73,13 +73,10 @@ struct AddQuoteView: View {
     var sendButton: some View {
         ZStack(alignment: .center) {
             if !addQuoteMode.loading {
-                Button(action: {
+                Button("Send") {
                     Task.init {
                         await addQuoteMode.send(trickID: trickID)
                     }
-                }){
-                    Text("Send")
-                        .fontWeight(.semibold)
                 }
                 #if os(macOS)
                 .buttonStyle(.borderedProminent)
