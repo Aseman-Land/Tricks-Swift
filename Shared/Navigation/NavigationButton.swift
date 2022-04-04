@@ -12,15 +12,22 @@ struct NavigationButton<Content, Destination> : View where Content : View, Desti
     let content: () -> Content
     let destination: () -> Destination
     
+    @State var isDestinationPresented = false
+    
     var body: some View {
         #if os(iOS)
-        ZStack(alignment: .leading) {
-            NavigationLink(destination: destination) {
+        VStack(alignment: .leading) {
+            content()
+                .onTapGesture { self.isDestinationPresented = true }
+            
+            NavigationLink(
+                destination: destination(),
+                isActive:self.$isDestinationPresented
+            ) {
                 EmptyView()
             }
             .opacity(0)
-            
-            content()
+            .disabled(true)
         }
         #elseif os(macOS)
         Button(action: {
