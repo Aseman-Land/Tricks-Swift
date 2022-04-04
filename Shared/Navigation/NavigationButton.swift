@@ -16,7 +16,7 @@ struct NavigationButton<Content, Destination> : View where Content : View, Desti
     
     var body: some View {
         #if os(iOS)
-        VStack(alignment: .leading) {
+        ZStack(alignment: .leading) {
             content()
                 .onTapGesture { self.isDestinationPresented = true }
             
