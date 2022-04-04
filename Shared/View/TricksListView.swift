@@ -69,6 +69,9 @@ struct TricksListView<ProfileContent: View>: View {
                 await tricksListModel.loadTricks()
             }
         }
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
     
     // MARK: - Empty View

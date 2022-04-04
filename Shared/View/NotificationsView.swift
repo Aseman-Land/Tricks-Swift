@@ -10,6 +10,9 @@ import SwiftUI
 struct NotificationsView: View {
     var body: some View {
         EmptyList()
+            #if os(iOS)
+            .navigationBarTitleDisplayMode(.inline)
+            #endif
     }
     
     // MARK: - Empty View
