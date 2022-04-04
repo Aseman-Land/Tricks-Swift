@@ -47,6 +47,8 @@
 		C64A97C527FB2DF100C7EE1A /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = C64A97C427FB2DF100C7EE1A /* CodeEditor */; };
 		C64A97C727FB2F6A00C7EE1A /* AddTrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */; };
 		C64A97C827FB2F6A00C7EE1A /* AddTrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */; };
+		C64A97CA27FB463500C7EE1A /* LoaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A97C927FB463500C7EE1A /* LoaderButton.swift */; };
+		C64A97CB27FB463500C7EE1A /* LoaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A97C927FB463500C7EE1A /* LoaderButton.swift */; };
 		C64E784727C226A300B26527 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784627C226A300B26527 /* Endpoint.swift */; };
 		C64E784827C226A300B26527 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784627C226A300B26527 /* Endpoint.swift */; };
 		C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784927C2271A00B26527 /* AuthEndpoint.swift */; };
@@ -130,6 +132,7 @@
 		C63D793627D27882000D7442 /* AddQuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteViewModel.swift; sourceTree = "<group>"; };
 		C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
 		C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrickView.swift; sourceTree = "<group>"; };
+		C64A97C927FB463500C7EE1A /* LoaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderButton.swift; sourceTree = "<group>"; };
 		C64E784627C226A300B26527 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		C64E784927C2271A00B26527 /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
 		C6748D6B27C015110023251B /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
@@ -265,6 +268,7 @@
 				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
 				C63C912427BFC8E80022051C /* TricksListView.swift */,
 				C629101D27CEAF4400FD740E /* TrickView.swift */,
+				C64A97C927FB463500C7EE1A /* LoaderButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -554,6 +558,7 @@
 				C6C0F82727C12EF20011F173 /* MyProfileViewModel.swift in Sources */,
 				C64E784727C226A300B26527 /* Endpoint.swift in Sources */,
 				C67D8A0C27C17EDA001E0E56 /* RequestError.swift in Sources */,
+				C64A97CA27FB463500C7EE1A /* LoaderButton.swift in Sources */,
 				C63C912B27BFC9100022051C /* ProfileView.swift in Sources */,
 				C6C0F82327C12EF20011F173 /* Tricks.swift in Sources */,
 				C63C912227BFC6670022051C /* NavigationItem.swift in Sources */,
@@ -607,6 +612,7 @@
 				C6C0F82427C12EF20011F173 /* Tricks.swift in Sources */,
 				C63C912627BFC8E80022051C /* TricksListView.swift in Sources */,
 				C63D793827D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
+				C64A97CB27FB463500C7EE1A /* LoaderButton.swift in Sources */,
 				C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0627C14ABD001E0E56 /* AppService.swift in Sources */,

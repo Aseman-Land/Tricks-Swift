@@ -66,27 +66,12 @@ struct AddTrickView: View {
             }
             
             ToolbarItem(placement: .confirmationAction) {
-                sendButton
+                LoaderButton(title: "Send", loading: $sending) {
+                    // TODO: Add Send function
+                }
             }
         }
             
-    }
-    
-    var sendButton: some View {
-        ZStack(alignment: .center) {
-            if !sending {
-                Button(action: {}) {
-                    Text("Send")
-                }
-                #if os(macOS)
-                .buttonStyle(.borderedProminent)
-                .keyboardShortcut(.defaultAction)
-                #endif
-            } else {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-            }
-        }
     }
     
     private func closeView() {

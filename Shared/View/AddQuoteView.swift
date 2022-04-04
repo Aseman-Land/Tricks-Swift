@@ -71,20 +71,9 @@ struct AddQuoteView: View {
     }
     
     var sendButton: some View {
-        ZStack(alignment: .center) {
-            if !addQuoteMode.loading {
-                Button("Send") {
-                    Task.init {
-                        await addQuoteMode.send(trickID: trickID)
-                    }
-                }
-                #if os(macOS)
-                .buttonStyle(.borderedProminent)
-                .keyboardShortcut(.defaultAction)
-                #endif
-            } else {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+        LoaderButton(title: "Send", loading: $addQuoteMode.loading) {
+            Task.init {
+                await addQuoteMode.send(trickID: trickID)
             }
         }
     }
