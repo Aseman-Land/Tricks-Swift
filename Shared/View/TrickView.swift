@@ -46,29 +46,33 @@ struct TrickView: View {
                 .shadow(radius: 1)
                 
                 // MARK: - User info
-                VStack(spacing: 4) {
-                    HStack {
-                        // MARK: - Fullname
-                        Text(trickModel.trick.owner.fullname)
-                            .font(.caption)
-                            .fontWeight(.medium)
-                            .foregroundStyle(.primary)
-                        
-                        Spacer()
-                        
+                HStack {
+                    NavigationButton(title: trickModel.trick.owner.fullname) {
+                        VStack(alignment: .leading) {
+                            // MARK: - Fullname
+                            Text(trickModel.trick.owner.fullname)
+                                .font(.caption)
+                                .fontWeight(.medium)
+                                .foregroundStyle(.primary)
+                            
+                            // MARK: - Username
+                            Text("@\(trickModel.trick.owner.username)")
+                                .font(.caption)
+                                .fontWeight(.light)
+                        }
+                    } destination: {
+                        ProfileView(viewModel: ProfileViewModel(userId: String(trickModel.trick.owner.id)))
+                            .environmentObject(profile)
+                    }
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .trailing) {
                         // MARK: - Trick's time
                         Text(trickModel.trickDate, style: .relative)
                             .font(.caption)
                             .fontWeight(.light)
                             .foregroundStyle(.secondary)
-                    }
-                    HStack {
-                        // MARK: - Username
-                        Text("@\(trickModel.trick.owner.username)")
-                            .font(.caption)
-                            .fontWeight(.light)
-                        
-                        Spacer()
                         
                         // MARK: - View count
                         Label(trickModel.trick.views.formatted(), systemImage: "eye")

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6018F0B27FADFD700DF8FED /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6018F0A27FADFD700DF8FED /* NavigationButton.swift */; };
+		C6018F0C27FADFD700DF8FED /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6018F0A27FADFD700DF8FED /* NavigationButton.swift */; };
+		C6018F0F27FAF51A00DF8FED /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6018F0D27FAF51A00DF8FED /* View+Extension.swift */; };
 		C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100B27CE8E6200FD740E /* SettingsView.swift */; };
 		C629100F27CE969A00FD740E /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100E27CE969A00FD740E /* AdvancedSettingsView.swift */; };
 		C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101027CE96B600FD740E /* EditorSettingsView.swift */; };
@@ -97,6 +100,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C6018F0A27FADFD700DF8FED /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
+		C6018F0D27FAF51A00DF8FED /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C629100827CE778A00FD740E /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		C629100B27CE8E6200FD740E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C629100E27CE969A00FD740E /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
@@ -261,6 +266,7 @@
 			children = (
 				C63C911727BFC6230022051C /* MainView.swift */,
 				C63C911627BFC6230022051C /* Sidebar.swift */,
+				C6018F0A27FADFD700DF8FED /* NavigationButton.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */,
+				C6018F0D27FAF51A00DF8FED /* View+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -555,6 +562,7 @@
 				C63C912F27BFCCD90022051C /* LoginView.swift in Sources */,
 				C63D793727D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
 				C6F7D2C227E3C602001F0B54 /* Sharer+Implementation.swift in Sources */,
+				C6018F0B27FADFD700DF8FED /* NavigationButton.swift in Sources */,
 				C6C0F82D27C12EF20011F173 /* Notif.swift in Sources */,
 				C6F7D2BE27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift in Sources */,
 				C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */,
@@ -597,6 +605,7 @@
 				C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */,
 				C629100F27CE969A00FD740E /* AdvancedSettingsView.swift in Sources */,
 				C6D1013B27C7E13A0087235E /* AuthService.swift in Sources */,
+				C6018F0F27FAF51A00DF8FED /* View+Extension.swift in Sources */,
 				C6CDBBB327CA1068008BFF5E /* HTTPMethod.swift in Sources */,
 				C629101927CEA36800FD740E /* TricksService.swift in Sources */,
 				C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */,
@@ -613,6 +622,7 @@
 				C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */,
 				C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */,
 				C63C913027BFCCD90022051C /* LoginView.swift in Sources */,
+				C6018F0C27FADFD700DF8FED /* NavigationButton.swift in Sources */,
 				C69D74AE27C0D9730060432F /* AuthViewModel.swift in Sources */,
 				C63C912927BFC9090022051C /* NotificationsView.swift in Sources */,
 				C6C0F82A27C12EF20011F173 /* GlobalResponse.swift in Sources */,

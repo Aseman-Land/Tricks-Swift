@@ -19,7 +19,7 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        TricksListView(viewModel: TricksListViewModel(.me)) {
+        TricksListView(viewModel: TricksListViewModel(profileModel.userId == "me" ? .me : .user(userID: profileModel.userId))) {
             UserView()
                 .frame(maxWidth: .infinity, alignment: .center)
         }
@@ -28,6 +28,9 @@ struct ProfileView: View {
             profileModel.profile = profile
             await profileModel.getProfile()
         }
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
     
     @ViewBuilder
