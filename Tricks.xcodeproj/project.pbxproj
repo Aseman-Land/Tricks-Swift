@@ -68,6 +68,12 @@
 		C69D74AE27C0D9730060432F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D74AC27C0D9730060432F /* AuthViewModel.swift */; };
 		C6B143D827DCC27F00AE777E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B143D727DCC27F00AE777E /* ProfileViewModel.swift */; };
 		C6B143D927DCC27F00AE777E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B143D727DCC27F00AE777E /* ProfileViewModel.swift */; };
+		C6B84D0E27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D0D27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift */; };
+		C6B84D0F27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D0D27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift */; };
+		C6B84D1127FC7D6800A9F734 /* CodeHighlighterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1027FC7D6800A9F734 /* CodeHighlighterService.swift */; };
+		C6B84D1227FC7D6800A9F734 /* CodeHighlighterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1027FC7D6800A9F734 /* CodeHighlighterService.swift */; };
+		C6B84D1427FC7E2000A9F734 /* CodeHighlighters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */; };
+		C6B84D1527FC7E2000A9F734 /* CodeHighlighters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */; };
 		C6C0F82327C12EF20011F173 /* Tricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81D27C12EF20011F173 /* Tricks.swift */; };
 		C6C0F82427C12EF20011F173 /* Tricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81D27C12EF20011F173 /* Tricks.swift */; };
 		C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81E27C12EF20011F173 /* ResponseCall.swift */; };
@@ -142,6 +148,9 @@
 		C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksListViewModel.swift; sourceTree = "<group>"; };
 		C69D74AC27C0D9730060432F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		C6B143D727DCC27F00AE777E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C6B84D0D27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighterEndpoint.swift; sourceTree = "<group>"; };
+		C6B84D1027FC7D6800A9F734 /* CodeHighlighterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighterService.swift; sourceTree = "<group>"; };
+		C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighters.swift; sourceTree = "<group>"; };
 		C6C0F81D27C12EF20011F173 /* Tricks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tricks.swift; sourceTree = "<group>"; };
 		C6C0F81E27C12EF20011F173 /* ResponseCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCall.swift; sourceTree = "<group>"; };
 		C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
@@ -332,6 +341,7 @@
 			children = (
 				C64E784927C2271A00B26527 /* AuthEndpoint.swift */,
 				C629101427CE9DB000FD740E /* TricksEndpoint.swift */,
+				C6B84D0D27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -358,6 +368,7 @@
 			children = (
 				C6D1013927C7E13A0087235E /* AuthService.swift */,
 				C629101727CEA36800FD740E /* TricksService.swift */,
+				C6B84D1027FC7D6800A9F734 /* CodeHighlighterService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -383,6 +394,7 @@
 				C6C0F82127C12EF20011F173 /* Tags.swift */,
 				C6C0F81D27C12EF20011F173 /* Tricks.swift */,
 				C67D8A0127C14A70001E0E56 /* User.swift */,
+				C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -549,6 +561,7 @@
 				C629101E27CEAF4400FD740E /* TrickView.swift in Sources */,
 				C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */,
 				C6C0F82727C12EF20011F173 /* MyProfileViewModel.swift in Sources */,
+				C6B84D0E27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift in Sources */,
 				C64E784727C226A300B26527 /* Endpoint.swift in Sources */,
 				C67D8A0C27C17EDA001E0E56 /* RequestError.swift in Sources */,
 				C64A97CA27FB463500C7EE1A /* LoaderButton.swift in Sources */,
@@ -573,12 +586,14 @@
 				C63D793727D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
 				C6F7D2C227E3C602001F0B54 /* Sharer+Implementation.swift in Sources */,
 				C6018F0B27FADFD700DF8FED /* NavigationButton.swift in Sources */,
+				C6B84D1127FC7D6800A9F734 /* CodeHighlighterService.swift in Sources */,
 				C6C0F82D27C12EF20011F173 /* Notif.swift in Sources */,
 				C6F7D2BE27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift in Sources */,
 				C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */,
 				C6C0F82B27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C911827BFC6230022051C /* Sidebar.swift in Sources */,
 				C63C912527BFC8E80022051C /* TricksListView.swift in Sources */,
+				C6B84D1427FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
 				C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */,
 				C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */,
@@ -627,6 +642,7 @@
 				C6C0F82E27C12EF20011F173 /* Notif.swift in Sources */,
 				C629101327CE96CF00FD740E /* AccountSettingsView.swift in Sources */,
 				C629101F27CEAF4400FD740E /* TrickView.swift in Sources */,
+				C6B84D1527FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
 				C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C6957C1627CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
 				C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */,
@@ -639,6 +655,8 @@
 				C63C912927BFC9090022051C /* NotificationsView.swift in Sources */,
 				C6C0F82A27C12EF20011F173 /* GlobalResponse.swift in Sources */,
 				C6B143D927DCC27F00AE777E /* ProfileViewModel.swift in Sources */,
+				C6B84D0F27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift in Sources */,
+				C6B84D1227FC7D6800A9F734 /* CodeHighlighterService.swift in Sources */,
 				C67D8A0327C14A70001E0E56 /* User.swift in Sources */,
 				C63D793C27D287F1000D7442 /* NSNotification+Extension.swift in Sources */,
 			);
