@@ -78,6 +78,8 @@
 		C6B84D1D27FC86C800A9F734 /* TrickCodePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */; };
 		C6B84D1F27FC8D5400A9F734 /* TrickCodeImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */; };
 		C6B84D2027FC8D5400A9F734 /* TrickCodeImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */; };
+		C6B84D2227FCCE2200A9F734 /* TrickUserPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */; };
+		C6B84D2327FCCE2200A9F734 /* TrickUserPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */; };
 		C6C0F82327C12EF20011F173 /* Tricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81D27C12EF20011F173 /* Tricks.swift */; };
 		C6C0F82427C12EF20011F173 /* Tricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81D27C12EF20011F173 /* Tricks.swift */; };
 		C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81E27C12EF20011F173 /* ResponseCall.swift */; };
@@ -157,6 +159,7 @@
 		C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighters.swift; sourceTree = "<group>"; };
 		C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickCodePreview.swift; sourceTree = "<group>"; };
 		C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickCodeImagePreview.swift; sourceTree = "<group>"; };
+		C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickUserPreview.swift; sourceTree = "<group>"; };
 		C6C0F81D27C12EF20011F173 /* Tricks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tricks.swift; sourceTree = "<group>"; };
 		C6C0F81E27C12EF20011F173 /* ResponseCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCall.swift; sourceTree = "<group>"; };
 		C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
@@ -282,6 +285,7 @@
 				C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */,
 				C63C912427BFC8E80022051C /* TricksListView.swift */,
 				C629101D27CEAF4400FD740E /* TrickView.swift */,
+				C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -577,6 +581,7 @@
 				C63C912B27BFC9100022051C /* ProfileView.swift in Sources */,
 				C6C0F82327C12EF20011F173 /* Tricks.swift in Sources */,
 				C63C912227BFC6670022051C /* NavigationItem.swift in Sources */,
+				C6B84D2227FCCE2200A9F734 /* TrickUserPreview.swift in Sources */,
 				C629101827CEA36800FD740E /* TricksService.swift in Sources */,
 				C6F7D2C427E3C646001F0B54 /* Sharer.swift in Sources */,
 				C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
@@ -647,6 +652,7 @@
 				C64A97C827FB2F6A00C7EE1A /* AddTrickView.swift in Sources */,
 				C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C67D8A0A27C17EC3001E0E56 /* HTTPClient.swift in Sources */,
+				C6B84D2327FCCE2200A9F734 /* TrickUserPreview.swift in Sources */,
 				C63C911B27BFC6230022051C /* MainView.swift in Sources */,
 				C63C911927BFC6230022051C /* Sidebar.swift in Sources */,
 				C6C0F82E27C12EF20011F173 /* Notif.swift in Sources */,

@@ -27,68 +27,9 @@ struct TrickView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                // MARK: - User avatar
-                ZStack {
-                    Circle()
-                        .foregroundStyle(.white)
-                        .frame(width: 40, height: 40)
-                    LazyImage(source: trickModel.trickOwnerAvatar) { state in
-                        if let image = state.image {
-                            image
-                        } else {
-                            Image(systemName: "person.fill")
-                                .font(.body)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    .aspectRatio(contentMode: .fill)
-                    .clipShape(Circle())
-                    .frame(width: 38, height: 38, alignment: .center)
-                    .padding(.all, 2)
-                }
-                .frame(width: 40, height: 40)
-                .shadow(radius: 1)
-                
-                // MARK: - User info
-                HStack {
-                    NavigationButton(title: trickModel.trick.owner.fullname) {
-                        VStack(alignment: .leading) {
-                            // MARK: - Fullname
-                            Text(trickModel.trick.owner.fullname)
-                                .font(.caption)
-                                .fontWeight(.medium)
-                                .foregroundStyle(.primary)
-                            
-                            // MARK: - Username
-                            Text("@\(trickModel.trick.owner.username)")
-                                .font(.caption)
-                                .fontWeight(.light)
-                        }
-                    } destination: {
-                        ProfileView(viewModel: ProfileViewModel(userId: String(trickModel.trick.owner.id)))
-                            .environmentObject(profile)
-                    }
-                    
-                    Spacer()
-                    
-                    VStack(alignment: .trailing) {
-                        // MARK: - Trick's time
-                        Text(trickModel.trickDate, style: .relative)
-                            .font(.caption)
-                            .fontWeight(.light)
-                            .foregroundStyle(.secondary)
-                        
-                        // MARK: - View count
-                        Label(trickModel.trick.views.formatted(), systemImage: "eye")
-                            .font(.caption.weight(.light))
-                        
-                    }
-                    .foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .padding(.bottom, 8)
+            TrickUserPreview(trick: $trickModel.trick)
+                .environmentObject(profile)
+                .padding(.bottom, 8)
             
             // MARK: - Trick's body (description)
             Text(trickModel.trick.body)
@@ -98,14 +39,6 @@ struct TrickView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             // MARK: - Trick preview
-            
-            /*
-            TrickCodeImagePreview(
-                source: AppService().imageURL(url: trickModel.trick.filename ?? ""),
-                codePreviewSize: trickModel.trick.image_size ?? CodePreviewDetail(width: 300, height: 300),
-                width: $parentWidth,
-           */
-            
             TrickCodePreview(
                 code: trickModel.trick.code,
                 likeLabel: $trickModel.trick.rates,

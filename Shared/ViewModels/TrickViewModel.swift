@@ -21,17 +21,6 @@ class TrickViewModel: ObservableObject {
         self.liked = trick.rate_state == 1
     }
     
-    var trickOwnerAvatar: URL? {
-        return URL(string: "https://\(AppService.apiKey)/api/v1/\(trick.owner.avatar ?? "")")
-    }
-    
-    var trickDate: Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return dateFormatter.date(from: trick.datetime) ?? Date()
-    }
-    
     func addLike() async {
         liked = !liked
         trick.rates += 1
