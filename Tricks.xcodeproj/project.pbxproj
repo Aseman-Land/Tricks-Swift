@@ -60,8 +60,6 @@
 		C67D8A0A27C17EC3001E0E56 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0827C17EC3001E0E56 /* HTTPClient.swift */; };
 		C67D8A0C27C17EDA001E0E56 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0B27C17EDA001E0E56 /* RequestError.swift */; };
 		C67D8A0D27C17EDA001E0E56 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0B27C17EDA001E0E56 /* RequestError.swift */; };
-		C6957C1127CF5A08004ECB14 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */; };
-		C6957C1327CF5A21004ECB14 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C6957C1227CF5A21004ECB14 /* SDWebImageSwiftUI */; };
 		C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */; };
 		C6957C1627CF7025004ECB14 /* TricksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */; };
 		C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D74AC27C0D9730060432F /* AuthViewModel.swift */; };
@@ -74,6 +72,10 @@
 		C6B84D1227FC7D6800A9F734 /* CodeHighlighterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1027FC7D6800A9F734 /* CodeHighlighterService.swift */; };
 		C6B84D1427FC7E2000A9F734 /* CodeHighlighters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */; };
 		C6B84D1527FC7E2000A9F734 /* CodeHighlighters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */; };
+		C6B84D1827FC838400A9F734 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C6B84D1727FC838400A9F734 /* NukeUI */; };
+		C6B84D1A27FC838F00A9F734 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C6B84D1927FC838F00A9F734 /* NukeUI */; };
+		C6B84D1C27FC86C800A9F734 /* TrickCodePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */; };
+		C6B84D1D27FC86C800A9F734 /* TrickCodePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */; };
 		C6C0F82327C12EF20011F173 /* Tricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81D27C12EF20011F173 /* Tricks.swift */; };
 		C6C0F82427C12EF20011F173 /* Tricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81D27C12EF20011F173 /* Tricks.swift */; };
 		C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81E27C12EF20011F173 /* ResponseCall.swift */; };
@@ -151,6 +153,7 @@
 		C6B84D0D27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighterEndpoint.swift; sourceTree = "<group>"; };
 		C6B84D1027FC7D6800A9F734 /* CodeHighlighterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighterService.swift; sourceTree = "<group>"; };
 		C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighters.swift; sourceTree = "<group>"; };
+		C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickCodePreview.swift; sourceTree = "<group>"; };
 		C6C0F81D27C12EF20011F173 /* Tricks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tricks.swift; sourceTree = "<group>"; };
 		C6C0F81E27C12EF20011F173 /* ResponseCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCall.swift; sourceTree = "<group>"; };
 		C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
@@ -179,8 +182,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6957C1127CF5A08004ECB14 /* SDWebImageSwiftUI in Frameworks */,
 				C6C0F83127C12FF50011F173 /* KeychainAccess in Frameworks */,
+				C6B84D1827FC838400A9F734 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,8 +191,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6957C1327CF5A21004ECB14 /* SDWebImageSwiftUI in Frameworks */,
 				C6C0F83427C130010011F173 /* KeychainAccess in Frameworks */,
+				C6B84D1A27FC838F00A9F734 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +277,7 @@
 				C63C912427BFC8E80022051C /* TricksListView.swift */,
 				C629101D27CEAF4400FD740E /* TrickView.swift */,
 				C64A97C927FB463500C7EE1A /* LoaderButton.swift */,
+				C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -466,7 +470,7 @@
 			name = "Tricks (iOS)";
 			packageProductDependencies = (
 				C6C0F83027C12FF50011F173 /* KeychainAccess */,
-				C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */,
+				C6B84D1727FC838400A9F734 /* NukeUI */,
 			);
 			productName = "Tricks (iOS)";
 			productReference = C63C90FD27BFC5BA0022051C /* Tricks.app */;
@@ -487,7 +491,7 @@
 			name = "Tricks (macOS)";
 			packageProductDependencies = (
 				C6C0F83327C130010011F173 /* KeychainAccess */,
-				C6957C1227CF5A21004ECB14 /* SDWebImageSwiftUI */,
+				C6B84D1927FC838F00A9F734 /* NukeUI */,
 			);
 			productName = "Tricks (macOS)";
 			productReference = C63C910327BFC5BA0022051C /* Tricks.app */;
@@ -522,7 +526,7 @@
 			mainGroup = C63C90F027BFC5B90022051C;
 			packageReferences = (
 				C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */,
 			);
 			productRefGroup = C63C90FE27BFC5BA0022051C /* Products */;
 			projectDirPath = "";
@@ -579,6 +583,7 @@
 				C6CDBBB227CA1068008BFF5E /* HTTPMethod.swift in Sources */,
 				C629101527CE9DB000FD740E /* TricksEndpoint.swift in Sources */,
 				C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */,
+				C6B84D1C27FC86C800A9F734 /* TrickCodePreview.swift in Sources */,
 				C67D8A0927C17EC3001E0E56 /* HTTPClient.swift in Sources */,
 				C63C911A27BFC6230022051C /* MainView.swift in Sources */,
 				C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
@@ -643,6 +648,7 @@
 				C629101327CE96CF00FD740E /* AccountSettingsView.swift in Sources */,
 				C629101F27CEAF4400FD740E /* TrickView.swift in Sources */,
 				C6B84D1527FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
+				C6B84D1D27FC86C800A9F734 /* TrickCodePreview.swift in Sources */,
 				C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C6957C1627CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
 				C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */,
@@ -930,12 +936,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+		C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			repositoryURL = "https://github.com/kean/NukeUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.2;
+				minimumVersion = 0.8.1;
 			};
 		};
 		C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -949,15 +955,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */ = {
+		C6B84D1727FC838400A9F734 /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
+			package = C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
 		};
-		C6957C1227CF5A21004ECB14 /* SDWebImageSwiftUI */ = {
+		C6B84D1927FC838F00A9F734 /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
+			package = C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
 		};
 		C6C0F83027C12FF50011F173 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

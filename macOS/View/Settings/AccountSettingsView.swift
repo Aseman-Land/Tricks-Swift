@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import NukeUI
 
 struct AccountSettingsView: View {
     @EnvironmentObject var profile: MyProfileViewModel
@@ -24,18 +24,19 @@ struct AccountSettingsView: View {
                         Circle()
                             .foregroundStyle(.white)
                             .frame(width: 40, height: 40)
-                        WebImage(url: URL(string: "https://\(AppService.apiKey)/api/v1/\(storageAvatarAddress)"))
-                            .resizable()
-                            .placeholder {
+                        LazyImage(source: "https://\(AppService.apiKey)/api/v1/\(storageAvatarAddress)") { state in
+                            if let image = state.image {
+                                image
+                            } else {
                                 Image(systemName: "person.fill")
                                     .font(.body)
                                     .foregroundColor(.gray)
                             }
-                            .transition(.fade)
-                            .aspectRatio(contentMode: .fill)
-                            .clipShape(Circle())
-                            .frame(width: 38, height: 38, alignment: .center)
-                            .padding(.all, 2)
+                        }
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                        .frame(width: 38, height: 38, alignment: .center)
+                        .padding(.all, 2)
                     }
                     .frame(width: 40, height: 40)
                     .shadow(radius: 1)

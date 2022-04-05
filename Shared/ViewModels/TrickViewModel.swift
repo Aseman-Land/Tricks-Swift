@@ -34,9 +34,11 @@ class TrickViewModel: ObservableObject {
     
     func addLike() async {
         liked = !liked
+        trick.rates += 1
         
         guard let profile = profile else {
             liked = !liked
+            trick.rates -= 1
             print("Warning: No profile found!")
             return
         }
@@ -53,12 +55,14 @@ class TrickViewModel: ObservableObject {
                     }
                 } else {
                     liked = !liked
+                    trick.rates -= 1
                     print("Failed to sent the rate, try again")
                 }
                 
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.liked = !(self.liked)
+                    self.trick.rates -= 1
                 }
                 switch error {
                 case .decode:

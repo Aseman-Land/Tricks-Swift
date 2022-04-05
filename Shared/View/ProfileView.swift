@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import NukeUI
 
 struct ProfileView: View {
     
@@ -42,17 +42,18 @@ struct ProfileView: View {
                     .foregroundStyle(.ultraThickMaterial)
                     .frame(width: 80, height: 80)
                     .shadow(radius: 2)
-                WebImage(url: URL(string: "https://\(AppService.apiKey)/api/v1/\(profileModel.userResult?.avatar ?? "")"))
-                    .resizable()
-                    .placeholder {
+                LazyImage(source: "https://\(AppService.apiKey)/api/v1/\(profileModel.userResult?.avatar ?? "")") { state in
+                    if let image = state.image {
+                        image
+                    } else {
                         Image(systemName: "person.fill")
                             .font(.largeTitle)
                             .foregroundColor(.secondary)
                     }
-                    .transition(.fade)
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 70, height: 70, alignment: .center)
-                    .clipShape(Circle())
+                }
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 70, height: 70, alignment: .center)
+                .clipShape(Circle())
             }
             .frame(width: 80, height: 80)
             

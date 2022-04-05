@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "gifu",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kaishin/Gifu",
+      "state" : {
+        "revision" : "51f2eab32903e336f590c013267cfa4d7f8b06c4",
+        "version" : "3.3.1"
+      }
+    },
+    {
       "identity" : "keychainaccess",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
@@ -10,21 +19,21 @@
       }
     },
     {
-      "identity" : "sdwebimage",
+      "identity" : "nuke",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "location" : "https://github.com/kean/Nuke.git",
       "state" : {
-        "revision" : "2c53f531f1bedd253f55d85105409c28ed4a922c",
-        "version" : "5.12.3"
+        "revision" : "78fa963b8491fc520791d8c2a509f1b8593d8aae",
+        "version" : "10.7.1"
       }
     },
     {
-      "identity" : "sdwebimageswiftui",
+      "identity" : "nukeui",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI",
+      "location" : "https://github.com/kean/NukeUI",
       "state" : {
-        "revision" : "cd8625b7cf11a97698e180d28bb7d5d357196678",
-        "version" : "2.0.2"
+        "revision" : "17f26c07e6b1d3b9258287f99f528111fcd7b7ad",
+        "version" : "0.8.1"
       }
     }
   ],

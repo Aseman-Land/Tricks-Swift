@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import NukeUI
 
 struct TrickView: View {
     
@@ -29,18 +29,19 @@ struct TrickView: View {
                     Circle()
                         .foregroundStyle(.white)
                         .frame(width: 40, height: 40)
-                    WebImage(url: trickModel.trickOwnerAvatar)
-                        .resizable()
-                        .placeholder {
+                    LazyImage(source: trickModel.trickOwnerAvatar) { state in
+                        if let image = state.image {
+                            image
+                        } else {
                             Image(systemName: "person.fill")
                                 .font(.body)
                                 .foregroundColor(.gray)
                         }
-                        .transition(.fade)
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
-                        .frame(width: 38, height: 38, alignment: .center)
-                        .padding(.all, 2)
+                    }
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+                    .frame(width: 38, height: 38, alignment: .center)
+                    .padding(.all, 2)
                 }
                 .frame(width: 40, height: 40)
                 .shadow(radius: 1)
@@ -93,94 +94,33 @@ struct TrickView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             // MARK: - Trick preview
-            VStack {
-                HStack {
-                    Circle()
-                        .foregroundColor(.red)
-                        .frame(width: 12, height: 12)
-                    
-                    Circle()
-                        .foregroundColor(.yellow)
-                        .frame(width: 12, height: 12)
-                    
-                    Circle()
-                        .foregroundColor(.green)
-                        .frame(width: 12, height: 12)
-                    
-                    Spacer()
+            TrickCodePreview(
+                code: trickModel.trick.code,
+                likeLabel: $trickModel.trick.rates,
+                liked: $trickModel.liked) {
+                    Task.init {
+                        await trickModel.addLike()
+                    }
+                } quoteAction: {
+                    addQuoteModel.showQuoteView.toggle()
+                } shareAction: {
+                    showShare = true
                 }
-                .padding([.top, .leading, .trailing])
-                
-                Text(trickModel.trick.code)
-                    .textSelection(.enabled)
-                    .font(.system(.caption, design: .monospaced))
-                    .dynamicTypeSize(.xSmall ... .large)
-                    .lineLimit(5)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                
-                Divider()
-                
-                HStack {
-                    Spacer()
-                    
-                    Button(action: {
-                        Task.init {
-                            await trickModel.addLike()
-                        }
-                    }) {
-                        Label(trickModel.trick.rates.formatted(), systemImage: trickModel.liked ? "heart.fill" : "heart")
-                    }
-                    .buttonStyle(.plain)
-                    .foregroundColor(trickModel.liked ? .red : .gray)
-                    .accentColor(.clear)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        addQuoteModel.showQuoteView.toggle()
-                    }) {
-                        Label("Quote", systemImage: "quote.bubble")
-                    }
-                    .buttonStyle(.plain)
-                    .labelStyle(.iconOnly)
-                    .foregroundColor(.gray)
-                    
-                    Spacer()
-                    
-                    Button(action: { showShare = true }) {
-                        Label("Share", systemImage: "square.and.arrow.up")
-                    }
-                    .buttonStyle(.plain)
-                    .labelStyle(.iconOnly)
-                    .foregroundColor(.gray)
-                    #if os(iOS)
-                    .sheet(isPresented: $showShare) {
-                        ShareSheet(items: shareBody())
-                    }
-                    #elseif os(macOS)
-                    .background(ShareSheet(isPresented: $showShare, items: shareBody()))
-                    #endif
-                    
-                    Spacer()
+                .popover(isPresented: $addQuoteModel.showQuoteView) {
+                    AddQuoteView(trickID: trickModel.trick.id)
+                        #if os(macOS)
+                        .frame(minWidth: 250, minHeight: 250)
+                        #endif
+                        .environmentObject(addQuoteModel)
                 }
-                .padding(.vertical, 10)
-            }
-            .frame(maxWidth: 450)
-            .cornerRadius(12)
-            .background(
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(.black)
-                    .shadow(color: Color.secondary, radius: 5, x: 0, y: 0)
-            )
-            .popover(isPresented: $addQuoteModel.showQuoteView) {
-                AddQuoteView(trickID: trickModel.trick.id)
-                    #if os(macOS)
-                    .frame(minWidth: 250, minHeight: 250)
-                    #endif
-                    .environmentObject(addQuoteModel)
-            }
+                #if os(iOS)
+                .sheet(isPresented: $showShare) {
+                    ShareSheet(items: shareBody())
+                }
+                #elseif os(macOS)
+                .background(ShareSheet(isPresented: $showShare, items: shareBody()))
+                #endif
+                
         }
         .task {
             trickModel.profile = profile

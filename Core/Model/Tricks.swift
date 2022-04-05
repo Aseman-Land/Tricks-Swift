@@ -24,7 +24,7 @@ struct Trick: Codable {
     let programing_language: GlobalTrickItemDetail?
     let code_frame: GlobalTrickItemDetail?
     let type: TrickTypeClass
-    let views, rates, rate_state: Int
+    var views, rates, rate_state: Int
     let tags: [String?]
     let filename: String?
     let quote: Quote?
