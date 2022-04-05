@@ -32,40 +32,82 @@ struct TrickView: View {
                 .padding(.bottom, 8)
             
             // MARK: - Trick's body (description)
-            Text(trickModel.trick.body)
+            Text((trickModel.trick.quote != nil) ? (trickModel.trick.quote?.quote ?? "") : trickModel.trick.body)
                 .font(.body)
                 .foregroundStyle(.primary)
                 .dynamicTypeSize(.xSmall ... .medium)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            // MARK: - Trick preview
-            TrickCodePreview(
-                code: trickModel.trick.code,
-                likeLabel: $trickModel.trick.rates,
-                liked: $trickModel.liked) {
-                    Task.init {
-                        await trickModel.addLike()
+            if trickModel.trick.quote != nil {
+                SectionView {
+                    VStack(alignment: .leading) {
+                        UserRow(
+                            name: trickModel.trick.quote?.user.fullname ?? "",
+                            username: trickModel.trick.quote?.user.username ?? "",
+                            userID: String(trickModel.trick.quote?.user.id ?? 1),
+                            avatar: trickModel.trick.quote?.user.avatar ?? ""
+                        )
+                        .environmentObject(profile)
+                        
+                        // MARK: - Trick preview
+                        TrickCodePreview(
+                            code: trickModel.trick.code,
+                            likeLabel: $trickModel.trick.rates,
+                            liked: $trickModel.liked) {
+                                Task.init {
+                                    await trickModel.addLike()
+                                }
+                            } quoteAction: {
+                                addQuoteModel.showQuoteView.toggle()
+                            } shareAction: {
+                                showShare = true
+                            }
+                            .popover(isPresented: $addQuoteModel.showQuoteView) {
+                                AddQuoteView(trickID: trickModel.trick.id)
+                                    #if os(macOS)
+                                    .frame(minWidth: 250, minHeight: 250)
+                                    #endif
+                                    .environmentObject(addQuoteModel)
+                            }
+                            #if os(iOS)
+                            .sheet(isPresented: $showShare) {
+                                ShareSheet(items: shareBody())
+                            }
+                            #elseif os(macOS)
+                            .background(ShareSheet(isPresented: $showShare, items: shareBody()))
+                            #endif
                     }
-                } quoteAction: {
-                    addQuoteModel.showQuoteView.toggle()
-                } shareAction: {
-                    showShare = true
+                    .padding()
                 }
-                .popover(isPresented: $addQuoteModel.showQuoteView) {
-                    AddQuoteView(trickID: trickModel.trick.id)
-                        #if os(macOS)
-                        .frame(minWidth: 250, minHeight: 250)
-                        #endif
-                        .environmentObject(addQuoteModel)
-                }
-                #if os(iOS)
-                .sheet(isPresented: $showShare) {
-                    ShareSheet(items: shareBody())
-                }
-                #elseif os(macOS)
-                .background(ShareSheet(isPresented: $showShare, items: shareBody()))
-                #endif
-                
+            } else {
+                // MARK: - Trick preview
+                TrickCodePreview(
+                    code: trickModel.trick.code,
+                    likeLabel: $trickModel.trick.rates,
+                    liked: $trickModel.liked) {
+                        Task.init {
+                            await trickModel.addLike()
+                        }
+                    } quoteAction: {
+                        addQuoteModel.showQuoteView.toggle()
+                    } shareAction: {
+                        showShare = true
+                    }
+                    .popover(isPresented: $addQuoteModel.showQuoteView) {
+                        AddQuoteView(trickID: trickModel.trick.id)
+                            #if os(macOS)
+                            .frame(minWidth: 250, minHeight: 250)
+                            #endif
+                            .environmentObject(addQuoteModel)
+                    }
+                    #if os(iOS)
+                    .sheet(isPresented: $showShare) {
+                        ShareSheet(items: shareBody())
+                    }
+                    #elseif os(macOS)
+                    .background(ShareSheet(isPresented: $showShare, items: shareBody()))
+                    #endif
+            }
         }
         .task {
             trickModel.profile = profile

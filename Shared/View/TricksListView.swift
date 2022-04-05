@@ -38,6 +38,7 @@ struct TricksListView<ProfileContent: View>: View {
                                 #if os(iOS)
                                 .listSectionSeparator(.hidden)
                                 .listRowSeparator(.hidden)
+                                .padding(.bottom)
                                 #elseif os(macOS)
                                 .padding()
                                 #endif
