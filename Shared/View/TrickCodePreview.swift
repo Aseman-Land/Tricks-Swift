@@ -42,8 +42,8 @@ struct TrickCodePreview: View {
                 .textSelection(.enabled)
                 .font(.system(.caption, design: .monospaced))
                 .dynamicTypeSize(.xSmall ... .large)
-                .lineLimit(5)
                 .foregroundColor(.white)
+                .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
             

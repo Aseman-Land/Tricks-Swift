@@ -6,18 +6,11 @@
 //
 
 import SwiftUI
-import SDWebImage
 
 struct AdvancedSettingsView: View {
     var body: some View {
         Form {
             HStack {
-                Text("Reset downloaded images cache:")
-                Button(action: {
-                    SDWebImageManager.defaultImageCache?.clear(with: .all)
-                }) {
-                    Text("Reset cache")
-                }
             }
         }
     }

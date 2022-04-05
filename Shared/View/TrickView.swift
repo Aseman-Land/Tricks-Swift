@@ -11,14 +11,18 @@ import NukeUI
 struct TrickView: View {
     
     @StateObject private var trickModel: TrickViewModel
+    
+    @State var parentWidth: CGFloat
+    
     @StateObject private var addQuoteModel = AddQuoteViewModel()
     
     @EnvironmentObject var profile: MyProfileViewModel
     
     @State var showShare: Bool = false
     
-    init(trick: Trick) {
+    init(trick: Trick, parentWidth: CGFloat) {
         _trickModel = StateObject(wrappedValue: TrickViewModel(trick: trick))
+        _parentWidth = State(wrappedValue: parentWidth)
     }
     
     var body: some View {
@@ -94,6 +98,14 @@ struct TrickView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             // MARK: - Trick preview
+            
+            /*
+            TrickCodeImagePreview(
+                source: AppService().imageURL(url: trickModel.trick.filename ?? ""),
+                codePreviewSize: trickModel.trick.image_size ?? CodePreviewDetail(width: 300, height: 300),
+                width: $parentWidth,
+           */
+            
             TrickCodePreview(
                 code: trickModel.trick.code,
                 likeLabel: $trickModel.trick.rates,
@@ -143,9 +155,11 @@ struct TrickView_Previews: PreviewProvider {
     @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
-        TrickView(trick: Trick.mockExample)
-            .padding()
-            .environmentObject(profile)
-            .preferredColorScheme(.dark)
+        GeometryReader { proxy in
+            TrickView(trick: Trick.mockExample, parentWidth: proxy.size.width)
+                .padding()
+                .environmentObject(profile)
+                .preferredColorScheme(.dark)
+        }
     }
 }

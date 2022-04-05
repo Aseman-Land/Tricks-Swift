@@ -26,24 +26,27 @@ struct TricksListView<ProfileContent: View>: View {
     }
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .center) {
             if tricksListModel.errorMessage == "" {
-                List {
-                    profileContent
-                    
-                    ForEach(tricksListModel.tricks, id: \.id) { trick in
-                        TrickView(trick: trick)
-                            #if os(iOS)
-                            .listSectionSeparator(.hidden)
-                            .listRowSeparator(.hidden)
-                            #elseif os(macOS)
-                            .padding()
-                            #endif
+                GeometryReader { proxy in
+                    List {
+                        profileContent
+                        
+                        ForEach(tricksListModel.tricks, id: \.id) { trick in
+                            TrickView(trick: trick, parentWidth: proxy.size.width)
+                                .fixedSize(horizontal: false, vertical: true)
+                                #if os(iOS)
+                                .listSectionSeparator(.hidden)
+                                .listRowSeparator(.hidden)
+                                #elseif os(macOS)
+                                .padding()
+                                #endif
+                        }
                     }
-                }
-                .listStyle(.plain)
-                .refreshable {
-                    await tricksListModel.loadTricks()
+                    .listStyle(.plain)
+                    .refreshable {
+                        await tricksListModel.loadTricks()
+                    }
                 }
                 
                 if tricksListModel.tricks.isEmpty {
