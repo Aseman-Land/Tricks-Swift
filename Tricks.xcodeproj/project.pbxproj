@@ -43,8 +43,6 @@
 		C63D793827D27882000D7442 /* AddQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793627D27882000D7442 /* AddQuoteViewModel.swift */; };
 		C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */; };
 		C63D793C27D287F1000D7442 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */; };
-		C64A97C327FB2DE500C7EE1A /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = C64A97C227FB2DE500C7EE1A /* CodeEditor */; };
-		C64A97C527FB2DF100C7EE1A /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = C64A97C427FB2DF100C7EE1A /* CodeEditor */; };
 		C64A97C727FB2F6A00C7EE1A /* AddTrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */; };
 		C64A97C827FB2F6A00C7EE1A /* AddTrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */; };
 		C64A97CA27FB463500C7EE1A /* LoaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A97C927FB463500C7EE1A /* LoaderButton.swift */; };
@@ -173,7 +171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6957C1127CF5A08004ECB14 /* SDWebImageSwiftUI in Frameworks */,
-				C64A97C327FB2DE500C7EE1A /* CodeEditor in Frameworks */,
 				C6C0F83127C12FF50011F173 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +180,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6957C1327CF5A21004ECB14 /* SDWebImageSwiftUI in Frameworks */,
-				C64A97C527FB2DF100C7EE1A /* CodeEditor in Frameworks */,
 				C6C0F83427C130010011F173 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,7 +455,6 @@
 			packageProductDependencies = (
 				C6C0F83027C12FF50011F173 /* KeychainAccess */,
 				C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */,
-				C64A97C227FB2DE500C7EE1A /* CodeEditor */,
 			);
 			productName = "Tricks (iOS)";
 			productReference = C63C90FD27BFC5BA0022051C /* Tricks.app */;
@@ -481,7 +476,6 @@
 			packageProductDependencies = (
 				C6C0F83327C130010011F173 /* KeychainAccess */,
 				C6957C1227CF5A21004ECB14 /* SDWebImageSwiftUI */,
-				C64A97C427FB2DF100C7EE1A /* CodeEditor */,
 			);
 			productName = "Tricks (macOS)";
 			productReference = C63C910327BFC5BA0022051C /* Tricks.app */;
@@ -517,7 +511,6 @@
 			packageReferences = (
 				C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				C64A97C127FB2DE500C7EE1A /* XCRemoteSwiftPackageReference "CodeEditor" */,
 			);
 			productRefGroup = C63C90FE27BFC5BA0022051C /* Products */;
 			projectDirPath = "";
@@ -919,14 +912,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C64A97C127FB2DE500C7EE1A /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ZeeZide/CodeEditor.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
 		C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -946,16 +931,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C64A97C227FB2DE500C7EE1A /* CodeEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C64A97C127FB2DE500C7EE1A /* XCRemoteSwiftPackageReference "CodeEditor" */;
-			productName = CodeEditor;
-		};
-		C64A97C427FB2DF100C7EE1A /* CodeEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C64A97C127FB2DE500C7EE1A /* XCRemoteSwiftPackageReference "CodeEditor" */;
-			productName = CodeEditor;
-		};
 		C6957C1027CF5A08004ECB14 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6957C0F27CF5A08004ECB14 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CodeEditor
 
 struct AddTrickView: View {
     
@@ -34,11 +33,9 @@ struct AddTrickView: View {
     
     var content: some View {
         ScrollView {
-            CodeEditor(source: $code, language: .swift, theme: .atelierSavannaDark)
+            TextEditor(text: $code)
                 .disableAutocorrection(true)
                 .frame(minHeight: 450)
-            
-            
         }
         .toolbar {
             ToolbarItemGroup(placement: toolsPlacement) {
