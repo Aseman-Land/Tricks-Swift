@@ -29,19 +29,22 @@ struct TricksListView<ProfileContent: View>: View {
         ZStack(alignment: .center) {
             if tricksListModel.errorMessage == "" {
                 GeometryReader { proxy in
-                    List {
-                        profileContent
-                        
-                        ForEach(tricksListModel.tricks, id: \.id) { trick in
-                            TrickView(trick: trick, parentWidth: proxy.size.width)
-                                .fixedSize(horizontal: false, vertical: true)
-                                #if os(iOS)
-                                .listSectionSeparator(.hidden)
-                                .listRowSeparator(.hidden)
-                                .padding(.bottom)
-                                #elseif os(macOS)
-                                .padding()
-                                #endif
+                    ScrollView {
+                        LazyVStack {
+                            profileContent
+                            
+                            ForEach(tricksListModel.tricks, id: \.id) { trick in
+                                TrickView(trick: trick, parentWidth: proxy.size.width)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .padding(.horizontal)
+                                    #if os(iOS)
+                                    .listSectionSeparator(.hidden)
+                                    .listRowSeparator(.hidden)
+                                    .padding(.bottom)
+                                    #elseif os(macOS)
+                                    .padding()
+                                    #endif
+                            }
                         }
                     }
                     .listStyle(.plain)

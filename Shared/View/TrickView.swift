@@ -54,8 +54,10 @@ struct TrickView: View {
                         }
                         
                         // MARK: - Trick preview
-                        TrickCodePreview(
-                            code: trickModel.trick.code,
+                        TrickCodeImagePreview(
+                            source: AppService().imageURL(url: trickModel.trick.filename),
+                            codePreviewSize: trickModel.trick.image_size!,
+                            width: parentWidth,
                             likeLabel: $trickModel.trick.rates,
                             liked: $trickModel.liked) {
                                 Task.init {
@@ -85,8 +87,10 @@ struct TrickView: View {
                 }
             } else {
                 // MARK: - Trick preview
-                TrickCodePreview(
-                    code: trickModel.trick.code,
+                TrickCodeImagePreview(
+                    source: AppService().imageURL(url: trickModel.trick.filename),
+                    codePreviewSize: trickModel.trick.image_size!,
+                    width: parentWidth,
                     likeLabel: $trickModel.trick.rates,
                     liked: $trickModel.liked) {
                         Task.init {

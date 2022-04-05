@@ -33,7 +33,7 @@ struct Sidebar: View {
             }
             .frame(minWidth: 130)
             .listStyle(.sidebar)
-            .navigationTitle("APP_NAME")
+            .navigationTitle("Tricks")
             .toolbar {
                 #if os(macOS)
                 ToolbarItemGroup {

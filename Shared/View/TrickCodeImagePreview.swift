@@ -13,7 +13,7 @@ struct TrickCodeImagePreview: View {
     @State var source: String
     
     @State var codePreviewSize: CodePreviewDetail
-    @Binding var width: CGFloat
+    @State var width: CGFloat
     
     @Binding var likeLabel: Int
     @Binding var liked: Bool
@@ -23,15 +23,23 @@ struct TrickCodeImagePreview: View {
     
     @State var shareAction: () -> Void
     
+    var widthNormal: CGFloat {
+        if width >= 450 {
+            return 450
+        } else {
+            return width
+        }
+    }
+    
     var body: some View {
         VStack {
             // MARK: - Trick Image Preview
             #if os(macOS)
             LazyImage(source: source)
-                .frame(height: width * CGFloat(codePreviewSize.height) / CGFloat(codePreviewSize.width))
+                .frame(height: widthNormal * CGFloat(codePreviewSize.height) / CGFloat(codePreviewSize.width))
             #else
             LazyImage(source: source, resizingMode: .aspectFit)
-                .frame(height: width * CGFloat(codePreviewSize.height) / CGFloat(codePreviewSize.width))
+                .frame(height: widthNormal * CGFloat(codePreviewSize.height) / CGFloat(codePreviewSize.width))
             
             #endif
             
@@ -78,7 +86,7 @@ struct TrickCodeImagePreview_Previews: PreviewProvider {
             TrickCodeImagePreview(
                 source: AppService().imageURL(url: Trick.mockExample.filename),
                 codePreviewSize: Trick.mockExample.image_size ?? CodePreviewDetail(width: 300, height: 300),
-                width: .constant(proxy.size.width),
+                width: proxy.size.width,
                 likeLabel: .constant(Int(1)),
                 liked: .constant(true),
                 likeAction: {},
