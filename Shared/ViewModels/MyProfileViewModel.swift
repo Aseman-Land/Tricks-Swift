@@ -81,7 +81,7 @@ class MyProfileViewModel: ObservableObject {
                         self.storageUsername = result.result.username
                         self.storageFullname = result.result.fullname
                         
-                        if let avatar = result.result.avatar {
+                        if let avatar = result.result.avatarAddress {
                             self.storageAvatarAddress = avatar
                         }
                     }

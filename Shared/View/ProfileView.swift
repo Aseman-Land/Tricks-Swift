@@ -42,7 +42,7 @@ struct ProfileView: View {
                     .foregroundStyle(.ultraThickMaterial)
                     .frame(width: 80, height: 80)
                     .shadow(radius: 2)
-                LazyImage(source: "https://\(AppService.apiKey)/api/v1/\(profileModel.userResult?.avatar ?? "")") { state in
+                LazyImage(source: profileModel.userResult?.avatarAddress ?? "") { state in
                     if let image = state.image {
                         image
                     } else {

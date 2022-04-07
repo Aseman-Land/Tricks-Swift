@@ -46,7 +46,7 @@ struct TrickView: View {
                                 name: trickModel.trick.quote?.user.fullname ?? "",
                                 username: trickModel.trick.quote?.user.username ?? "",
                                 userID: String(trickModel.trick.quote?.user.id ?? 1),
-                                avatar: trickModel.trick.quote?.user.avatar ?? ""
+                                avatar: trickModel.trick.quote?.user.avatarAddress ?? ""
                             )
                             .environmentObject(profile)
                             
@@ -55,7 +55,7 @@ struct TrickView: View {
                         
                         // MARK: - Trick preview
                         TrickCodeImagePreview(
-                            source: AppService().imageURL(url: trickModel.trick.filename),
+                            source: trickModel.trick.previewAddress,
                             codePreviewSize: trickModel.trick.image_size!,
                             width: parentWidth,
                             likeLabel: $trickModel.trick.rates,
@@ -88,7 +88,7 @@ struct TrickView: View {
             } else {
                 // MARK: - Trick preview
                 TrickCodeImagePreview(
-                    source: AppService().imageURL(url: trickModel.trick.filename),
+                    source: trickModel.trick.previewAddress,
                     codePreviewSize: trickModel.trick.image_size!,
                     width: parentWidth,
                     likeLabel: $trickModel.trick.rates,
@@ -128,7 +128,7 @@ struct TrickView: View {
             trickModel.trick.body,
             trickModel.trick.code,
             "By \(trickModel.trick.owner.fullname)",
-            URL(string: AppService().imageURL(url: trickModel.trick.filename))!
+            URL(string: trickModel.trick.previewAddress)!
         ]
     }
 }

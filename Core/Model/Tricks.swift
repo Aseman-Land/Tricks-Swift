@@ -30,6 +30,10 @@ struct Trick: Codable {
     let quote: Quote?
     let image_size: CodePreviewDetail?
     
+    var previewAddress: String {
+        return AppService().imageURL(url: Trick.mockExample.filename)
+    }
+    
     static let mockExample = Trick(
         id: 1,
         body: "Rust’s Hello world",

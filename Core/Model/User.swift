@@ -29,6 +29,13 @@ public struct UserResult: Codable {
     let details: UserDetails?
     let isFollower, isFollowed: Bool?
     
+    var avatarAddress: String? {
+        if let avatar = avatar {
+            return "https://\(AppService.apiKey)/api/v1/\(avatar)"
+        }
+        return nil
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, username, fullname, about
         case joinDate = "join_date"

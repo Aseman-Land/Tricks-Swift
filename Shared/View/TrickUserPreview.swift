@@ -27,7 +27,7 @@ struct TrickUserPreview: View {
                 name: trick.owner.fullname,
                 username: trick.owner.username,
                 userID: String(trick.owner.id),
-                avatar: trick.owner.avatar ?? ""
+                avatar: trick.owner.avatarAddress ?? ""
             )
             .environmentObject(profile)
 
@@ -66,7 +66,7 @@ struct UserRow: View {
                 Circle()
                     .foregroundStyle(.white)
                     .frame(width: 40, height: 40)
-                LazyImage(source: "https://\(AppService.apiKey)/api/v1/\(avatar)") { state in
+                LazyImage(source: avatar) { state in
                     if let image = state.image {
                         image
                     } else {
