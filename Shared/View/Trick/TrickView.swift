@@ -57,17 +57,8 @@ struct TrickView: View {
                         TrickCodeImagePreview(
                             source: trickModel.trick.previewAddress,
                             codePreviewSize: trickModel.trick.image_size!,
-                            width: parentWidth,
-                            likeLabel: $trickModel.trick.rates,
-                            liked: $trickModel.liked) {
-                                Task.init {
-                                    await trickModel.addLike()
-                                }
-                            } quoteAction: {
-                                addQuoteModel.showQuoteView.toggle()
-                            } shareAction: {
-                                showShare = true
-                            }
+                            width: parentWidth
+                        )
                             .popover(isPresented: $addQuoteModel.showQuoteView) {
                                 AddQuoteView(trickID: trickModel.trick.id)
                                     #if os(macOS)
@@ -85,37 +76,45 @@ struct TrickView: View {
                     }
                     .padding()
                 }
+                
+                
             } else {
                 // MARK: - Trick preview
                 TrickCodeImagePreview(
                     source: trickModel.trick.previewAddress,
                     codePreviewSize: trickModel.trick.image_size!,
-                    width: parentWidth,
-                    likeLabel: $trickModel.trick.rates,
-                    liked: $trickModel.liked) {
-                        Task.init {
-                            await trickModel.addLike()
-                        }
-                    } quoteAction: {
-                        addQuoteModel.showQuoteView.toggle()
-                    } shareAction: {
-                        showShare = true
-                    }
-                    .popover(isPresented: $addQuoteModel.showQuoteView) {
-                        AddQuoteView(trickID: trickModel.trick.id)
-                            #if os(macOS)
-                            .frame(minWidth: 250, minHeight: 250)
-                            #endif
-                            .environmentObject(addQuoteModel)
-                    }
-                    #if os(iOS)
-                    .sheet(isPresented: $showShare) {
-                        ShareSheet(items: shareBody())
-                    }
-                    #elseif os(macOS)
-                    .background(ShareSheet(isPresented: $showShare, items: shareBody()))
-                    #endif
+                    width: parentWidth
+                )
             }
+            
+            TrickActions(
+                likeLabel: $trickModel.trick.rates,
+                liked: $trickModel.liked
+            ) {
+                Task.init {
+                    await trickModel.addLike()
+                }
+            } quoteAction: {
+                addQuoteModel.showQuoteView.toggle()
+            } shareAction: {
+                showShare = true
+            } copyAction: {
+                copyCode(code: trickModel.trick.code)
+            }
+            .popover(isPresented: $addQuoteModel.showQuoteView) {
+                AddQuoteView(trickID: trickModel.trick.id)
+                    #if os(macOS)
+                    .frame(minWidth: 250, minHeight: 250)
+                    #endif
+                    .environmentObject(addQuoteModel)
+            }
+            #if os(iOS)
+            .sheet(isPresented: $showShare) {
+                ShareSheet(items: shareBody())
+            }
+            #elseif os(macOS)
+            .background(ShareSheet(isPresented: $showShare, items: shareBody()))
+            #endif
         }
         .task {
             trickModel.profile = profile
@@ -130,6 +129,18 @@ struct TrickView: View {
             "By \(trickModel.trick.owner.fullname)",
             URL(string: trickModel.trick.previewAddress)!
         ]
+    }
+    
+    func copyCode(code: String) {
+        #if os(iOS)
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = code
+        HapticGenerator.shared.success()
+        #elseif os(macOS)
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(code, forType: .string)
+        #endif
     }
 }
 

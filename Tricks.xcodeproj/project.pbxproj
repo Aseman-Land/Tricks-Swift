@@ -102,6 +102,9 @@
 		C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDBBB727CA1096008BFF5E /* HTTPContentType.swift */; };
 		C6D1013A27C7E13A0087235E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D1013927C7E13A0087235E /* AuthService.swift */; };
 		C6D1013B27C7E13A0087235E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D1013927C7E13A0087235E /* AuthService.swift */; };
+		C6D1E2512800342200DFC60A /* TrickActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D1E2502800342200DFC60A /* TrickActions.swift */; };
+		C6D1E2522800342200DFC60A /* TrickActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D1E2502800342200DFC60A /* TrickActions.swift */; };
+		C6D1E2582800376500DFC60A /* HapticGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D1E2572800376500DFC60A /* HapticGenerator.swift */; };
 		C6D9FF3827D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
 		C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
 		C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */; };
@@ -174,6 +177,8 @@
 		C6CDBBB127CA1068008BFF5E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C6CDBBB727CA1096008BFF5E /* HTTPContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPContentType.swift; sourceTree = "<group>"; };
 		C6D1013927C7E13A0087235E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		C6D1E2502800342200DFC60A /* TrickActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickActions.swift; sourceTree = "<group>"; };
+		C6D1E2572800376500DFC60A /* HapticGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGenerator.swift; sourceTree = "<group>"; };
 		C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteView.swift; sourceTree = "<group>"; };
 		C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extension.swift"; sourceTree = "<group>"; };
 		C6F1B72527E64B690008EFBE /* TrickViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickViewModel.swift; sourceTree = "<group>"; };
@@ -277,19 +282,9 @@
 		C63C911427BFC5C30022051C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
-				C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */,
-				C64A97C927FB463500C7EE1A /* LoaderButton.swift */,
-				C63C912E27BFCCD90022051C /* LoginView.swift */,
-				C63C912727BFC9090022051C /* NotificationsView.swift */,
-				C63C912A27BFC9100022051C /* ProfileView.swift */,
-				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
-				C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */,
-				C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */,
-				C63C912427BFC8E80022051C /* TricksListView.swift */,
-				C629101D27CEAF4400FD740E /* TrickView.swift */,
-				C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */,
-				C6B84D2427FCD34D00A9F734 /* SectionView.swift */,
+				C6D1E2552800356400DFC60A /* Components */,
+				C6D1E2542800352300DFC60A /* Pages */,
+				C6D1E253280034DA00DFC60A /* Trick */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,6 +305,7 @@
 				C63C911D27BFC63E0022051C /* Navigation */,
 				C6C0F83727C1392D0011F173 /* Resources */,
 				C6F7D2BA27E3C5B2001F0B54 /* ShareSheet */,
+				C6D1E2562800375400DFC60A /* Utilities */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -441,6 +437,49 @@
 				C67D8A0B27C17EDA001E0E56 /* RequestError.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		C6D1E253280034DA00DFC60A /* Trick */ = {
+			isa = PBXGroup;
+			children = (
+				C6D1E2502800342200DFC60A /* TrickActions.swift */,
+				C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */,
+				C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */,
+				C63C912427BFC8E80022051C /* TricksListView.swift */,
+				C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */,
+				C629101D27CEAF4400FD740E /* TrickView.swift */,
+			);
+			path = Trick;
+			sourceTree = "<group>";
+		};
+		C6D1E2542800352300DFC60A /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
+				C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */,
+				C63C912E27BFCCD90022051C /* LoginView.swift */,
+				C63C912727BFC9090022051C /* NotificationsView.swift */,
+				C63C912A27BFC9100022051C /* ProfileView.swift */,
+				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		C6D1E2552800356400DFC60A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C64A97C927FB463500C7EE1A /* LoaderButton.swift */,
+				C6B84D2427FCD34D00A9F734 /* SectionView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C6D1E2562800375400DFC60A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C6D1E2572800376500DFC60A /* HapticGenerator.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		C6D9FF3A27D173ED0000CB4A /* Extensions */ = {
@@ -596,7 +635,9 @@
 				C6D9FF3827D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
 				C6D1013A27C7E13A0087235E /* AuthService.swift in Sources */,
 				C6CDBBB227CA1068008BFF5E /* HTTPMethod.swift in Sources */,
+				C6D1E2512800342200DFC60A /* TrickActions.swift in Sources */,
 				C629101527CE9DB000FD740E /* TricksEndpoint.swift in Sources */,
+				C6D1E2582800376500DFC60A /* HapticGenerator.swift in Sources */,
 				C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C6B84D1C27FC86C800A9F734 /* TrickCodePreview.swift in Sources */,
 				C67D8A0927C17EC3001E0E56 /* HTTPClient.swift in Sources */,
@@ -659,6 +700,7 @@
 				C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C67D8A0A27C17EC3001E0E56 /* HTTPClient.swift in Sources */,
 				C6B84D2327FCCE2200A9F734 /* TrickUserPreview.swift in Sources */,
+				C6D1E2522800342200DFC60A /* TrickActions.swift in Sources */,
 				C63C911B27BFC6230022051C /* MainView.swift in Sources */,
 				C63C911927BFC6230022051C /* Sidebar.swift in Sources */,
 				C6C0F82E27C12EF20011F173 /* Notif.swift in Sources */,
