@@ -18,8 +18,6 @@ struct TrickView: View {
     
     @EnvironmentObject var profile: MyProfileViewModel
     
-    @State var showShare: Bool = false
-    
     init(trick: Trick, parentWidth: CGFloat) {
         _trickModel = StateObject(wrappedValue: TrickViewModel(trick: trick))
         _parentWidth = State(wrappedValue: parentWidth)
@@ -29,7 +27,6 @@ struct TrickView: View {
         VStack {
             TrickUserPreview(trick: $trickModel.trick)
                 .environmentObject(profile)
-                .padding(.bottom, 8)
             
             // MARK: - Trick's body (description)
             Text((trickModel.trick.quote != nil) ? (trickModel.trick.quote?.quote ?? "") : trickModel.trick.body)
@@ -53,26 +50,19 @@ struct TrickView: View {
                             Spacer()
                         }
                         
+                        Text(trickModel.trick.body)
+                            .font(.body)
+                            .foregroundStyle(.primary)
+                            .dynamicTypeSize(.xSmall ... .medium)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
                         // MARK: - Trick preview
+                        let _ = print(trickModel.trick.previewAddress)
                         TrickCodeImagePreview(
                             source: trickModel.trick.previewAddress,
                             codePreviewSize: trickModel.trick.image_size!,
                             width: parentWidth
                         )
-                            .popover(isPresented: $addQuoteModel.showQuoteView) {
-                                AddQuoteView(trickID: trickModel.trick.id)
-                                    #if os(macOS)
-                                    .frame(minWidth: 250, minHeight: 250)
-                                    #endif
-                                    .environmentObject(addQuoteModel)
-                            }
-                            #if os(iOS)
-                            .sheet(isPresented: $showShare) {
-                                ShareSheet(items: shareBody())
-                            }
-                            #elseif os(macOS)
-                            .background(ShareSheet(isPresented: $showShare, items: shareBody()))
-                            #endif
                     }
                     .padding()
                 }
@@ -88,33 +78,19 @@ struct TrickView: View {
             }
             
             TrickActions(
+                trickID: trickModel.trick.id,
                 likeLabel: $trickModel.trick.rates,
-                liked: $trickModel.liked
+                liked: $trickModel.liked,
+                shareItems: shareBody()
             ) {
                 Task.init {
                     await trickModel.addLike()
                 }
-            } quoteAction: {
-                addQuoteModel.showQuoteView.toggle()
-            } shareAction: {
-                showShare = true
             } copyAction: {
                 copyCode(code: trickModel.trick.code)
             }
-            .popover(isPresented: $addQuoteModel.showQuoteView) {
-                AddQuoteView(trickID: trickModel.trick.id)
-                    #if os(macOS)
-                    .frame(minWidth: 250, minHeight: 250)
-                    #endif
-                    .environmentObject(addQuoteModel)
-            }
-            #if os(iOS)
-            .sheet(isPresented: $showShare) {
-                ShareSheet(items: shareBody())
-            }
-            #elseif os(macOS)
-            .background(ShareSheet(isPresented: $showShare, items: shareBody()))
-            #endif
+            .environmentObject(addQuoteModel)
+            .frame(maxWidth: 450)
         }
         .task {
             trickModel.profile = profile

@@ -31,7 +31,7 @@ struct Trick: Codable {
     let image_size: CodePreviewDetail?
     
     var previewAddress: String {
-        return AppService().imageURL(url: Trick.mockExample.filename)
+        return AppService().imageURL(url: filename)
     }
     
     static let mockExample = Trick(
