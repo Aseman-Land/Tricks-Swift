@@ -56,7 +56,7 @@ struct TrickActions: View {
                 ShareSheet(items: trickModel.shareBody())
             }
             #elseif os(macOS)
-            .background(ShareSheet(isPresented: $showShare, items: showShare()))
+            .background(ShareSheet(isPresented: $showShare, items: trickModel.shareBody()))
             #endif
             
             Spacer()
