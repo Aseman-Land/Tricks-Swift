@@ -9,28 +9,22 @@ import SwiftUI
 
 struct TrickActions: View {
     
-    @State var trickID: Int
-    
-    @Binding var likeLabel: Int
-    @Binding var liked: Bool
-    @State var shareItems: [Any] = [""]
-    
-    @State var likeAction: () -> Void
-    @State var copyAction: () -> Void
-    
+    @EnvironmentObject var trickModel: TrickViewModel
     @EnvironmentObject var addQuoteModel: AddQuoteViewModel
     
     @State var showShare: Bool = false
     
     var body: some View {
         HStack {
-            Spacer()
-            
-            Button(action: likeAction) {
-                Label(likeLabel.formatted(), systemImage: liked ? "heart.fill" : "heart")
+            Button {
+                Task.init {
+                    await trickModel.addLike()
+                }
+            } label: {
+                Label($trickModel.trick.rates.wrappedValue.formatted(), systemImage: trickModel.liked ? "heart.fill" : "heart")
             }
             .buttonStyle(.plain)
-            .foregroundColor(liked ? .red : .gray)
+            .foregroundColor(trickModel.liked ? .red : .gray)
             .accentColor(.clear)
             
             Spacer()
@@ -42,7 +36,7 @@ struct TrickActions: View {
             .labelStyle(.iconOnly)
             .foregroundColor(.gray)
             .popover(isPresented: $addQuoteModel.showQuoteView) {
-                AddQuoteView(trickID: trickID)
+                AddQuoteView(trickID: trickModel.trick.id)
                     #if os(macOS)
                     .frame(minWidth: 250, minHeight: 250)
                     #endif
@@ -59,38 +53,57 @@ struct TrickActions: View {
             .foregroundColor(.gray)
             #if os(iOS)
             .sheet(isPresented: $showShare) {
-                ShareSheet(items: shareItems)
+                ShareSheet(items: trickModel.shareBody())
             }
             #elseif os(macOS)
-            .background(ShareSheet(isPresented: $showShare, items: shareItems))
+            .background(ShareSheet(isPresented: $showShare, items: showShare()))
             #endif
             
             Spacer()
             
-            Button(action: copyAction) {
+            Button(action: trickModel.copyCode) {
                 Label("Copy Code", systemImage: "doc.on.doc")
             }
             .buttonStyle(.plain)
             .labelStyle(.iconOnly)
             .foregroundColor(.gray)
             
-            Spacer()
+            
+            if trickModel.isMine {
+                Spacer()
+                
+                Button {
+                    trickModel.willDelete = true
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
+                .buttonStyle(.plain)
+                .labelStyle(.iconOnly)
+                .foregroundColor(.gray)
+                .confirmationDialog(
+                    "Are you sure to delete this trick?",
+                    isPresented: $trickModel.willDelete,
+                    titleVisibility: .visible
+                ) {
+                    Button("Delete", role: .destructive) {
+                        Task.init {
+                            await trickModel.deleteTrick()
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 struct TrickActions_Previews: PreviewProvider {
     
+    @StateObject static var trickModel = TrickViewModel(trick: Trick.mockExample)
     @StateObject static var addQuoteModel = AddQuoteViewModel()
     
     static var previews: some View {
-        TrickActions(
-            trickID: 1,
-            likeLabel: .constant(10),
-            liked: .constant(true),
-            likeAction: {},
-            copyAction: {}
-        )
-        .environmentObject(addQuoteModel)
+        TrickActions()
+            .environmentObject(trickModel)
+            .environmentObject(addQuoteModel)
     }
 }

@@ -17,6 +17,7 @@ class MyProfileViewModel: ObservableObject {
     @Published var loading: Bool = false
     @Published var errorMessage: String = ""
     
+    @AppStorage("userID") private var storageUserID = ""
     @AppStorage("fullname") private var storageFullname = ""
     @AppStorage("username") private var storageUsername = ""
     @AppStorage("avatarAddress") private var storageAvatarAddress = ""
@@ -78,6 +79,7 @@ class MyProfileViewModel: ObservableObject {
             case .success(let result):
                 if result.status {
                     DispatchQueue.main.async {
+                        self.storageUserID = String(result.result.id)
                         self.storageUsername = result.result.username
                         self.storageFullname = result.result.fullname
                         

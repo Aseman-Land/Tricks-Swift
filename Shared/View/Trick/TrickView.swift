@@ -57,7 +57,6 @@ struct TrickView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         // MARK: - Trick preview
-                        let _ = print(trickModel.trick.previewAddress)
                         TrickCodeImagePreview(
                             source: trickModel.trick.previewAddress,
                             codePreviewSize: trickModel.trick.image_size!,
@@ -77,46 +76,16 @@ struct TrickView: View {
                 )
             }
             
-            TrickActions(
-                trickID: trickModel.trick.id,
-                likeLabel: $trickModel.trick.rates,
-                liked: $trickModel.liked,
-                shareItems: shareBody()
-            ) {
-                Task.init {
-                    await trickModel.addLike()
-                }
-            } copyAction: {
-                copyCode(code: trickModel.trick.code)
-            }
-            .environmentObject(addQuoteModel)
-            .frame(maxWidth: 450)
+            TrickActions()
+                .environmentObject(trickModel)
+                .environmentObject(addQuoteModel)
+                .frame(maxWidth: 450)
+                .padding(.horizontal)
         }
         .task {
             trickModel.profile = profile
             addQuoteModel.profile = profile
         }
-    }
-    
-    func shareBody() -> [Any] {
-        return [
-            trickModel.trick.body,
-            trickModel.trick.code,
-            "By \(trickModel.trick.owner.fullname)",
-            URL(string: trickModel.trick.previewAddress)!
-        ]
-    }
-    
-    func copyCode(code: String) {
-        #if os(iOS)
-        let pasteboard = UIPasteboard.general
-        pasteboard.string = code
-        HapticGenerator.shared.success()
-        #elseif os(macOS)
-        let pasteboard = NSPasteboard.general
-        pasteboard.clearContents()
-        pasteboard.setString(code, forType: .string)
-        #endif
     }
 }
 

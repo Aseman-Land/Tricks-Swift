@@ -5,14 +5,16 @@
 //  Created by Armin on 3/19/22.
 //
 
-import Foundation
+import SwiftUI
 
 class TrickViewModel: ObservableObject {
     
     @Published var trick: Trick
     @Published var liked: Bool = false
+    @Published var willDelete: Bool = false
     
     @Published var profile: MyProfileViewModel? = nil
+    @AppStorage("userID") private var storageUserID = ""
     
     private var service = TricksService()
     
@@ -21,9 +23,34 @@ class TrickViewModel: ObservableObject {
         self.liked = trick.rate_state == 1
     }
     
+    var isMine: Bool {
+        return trick.owner.id == Int(storageUserID)
+    }
+    
+    func copyCode() {
+        #if os(iOS)
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = trick.code
+        HapticGenerator.shared.success()
+        #elseif os(macOS)
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(trick.code, forType: .string)
+        #endif
+    }
+    
+    func shareBody() -> [Any] {
+        return [
+            trick.body,
+            trick.code,
+            "By \(trick.owner.fullname)",
+            URL(string: trick.previewAddress)!
+        ]
+    }
+    
     func addLike() async {
         liked = !liked
-        trick.rates += 1
+        trick.rates += liked ? 1 : -1
         
         guard let profile = profile else {
             liked = !liked
@@ -53,6 +80,43 @@ class TrickViewModel: ObservableObject {
                     self.liked = !(self.liked)
                     self.trick.rates -= 1
                 }
+                switch error {
+                case .decode:
+                    print("Failed to execute, try later")
+                case .invalidURL:
+                    print("Invalid URL")
+                case .noResponse:
+                    print("Network error, Try again")
+                case .unauthorized(_):
+                    print("Unauthorized access")
+                case .unexpectedStatusCode(let status):
+                    print("Unexpected Status Code \(status) occured")
+                case .unknown(_):
+                    print("Network error, Try again")
+                }
+            }
+        }
+    }
+    
+    func deleteTrick() async {
+        guard let profile = profile else {
+            print("Failed to authorize")
+            return
+        }
+        
+        Task(priority: .background) {
+            let result = try await service.deleteTrickPost(trickID: trick.id, token: profile.userToken)
+            
+            switch result {
+            case .success(let response):
+                if response.result {
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: NSNotification.UpdateList, object: nil)
+                    }
+                } else {
+                    print("Failed to delete the trick, try again")
+                }
+            case .failure(let error):
                 switch error {
                 case .decode:
                     print("Failed to execute, try later")
