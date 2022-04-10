@@ -54,6 +54,12 @@
 		C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784927C2271A00B26527 /* AuthEndpoint.swift */; };
 		C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784927C2271A00B26527 /* AuthEndpoint.swift */; };
 		C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6748D6B27C015110023251B /* VisualEffectBlur.swift */; };
+		C6799B5C280337CD00385799 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5B280337CD00385799 /* TagsViewModel.swift */; };
+		C6799B5D280337CD00385799 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5B280337CD00385799 /* TagsViewModel.swift */; };
+		C6799B5F28033AA100385799 /* TagsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5E28033AA100385799 /* TagsEndpoint.swift */; };
+		C6799B6028033AA100385799 /* TagsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5E28033AA100385799 /* TagsEndpoint.swift */; };
+		C6799B6228033F1A00385799 /* TagsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B6128033F1A00385799 /* TagsService.swift */; };
+		C6799B6328033F1A00385799 /* TagsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B6128033F1A00385799 /* TagsService.swift */; };
 		C67D8A0227C14A70001E0E56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0127C14A70001E0E56 /* User.swift */; };
 		C67D8A0327C14A70001E0E56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0127C14A70001E0E56 /* User.swift */; };
 		C67D8A0527C14ABD001E0E56 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0427C14ABD001E0E56 /* AppService.swift */; };
@@ -154,6 +160,9 @@
 		C64E784627C226A300B26527 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		C64E784927C2271A00B26527 /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
 		C6748D6B27C015110023251B /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
+		C6799B5B280337CD00385799 /* TagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewModel.swift; sourceTree = "<group>"; };
+		C6799B5E28033AA100385799 /* TagsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEndpoint.swift; sourceTree = "<group>"; };
+		C6799B6128033F1A00385799 /* TagsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsService.swift; sourceTree = "<group>"; };
 		C67D89FE27C1399D001E0E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C67D8A0127C14A70001E0E56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C67D8A0427C14ABD001E0E56 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
@@ -331,6 +340,7 @@
 				C6B143D727DCC27F00AE777E /* ProfileViewModel.swift */,
 				C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */,
 				C6F1B72527E64B690008EFBE /* TrickViewModel.swift */,
+				C6799B5B280337CD00385799 /* TagsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -355,8 +365,9 @@
 			isa = PBXGroup;
 			children = (
 				C64E784927C2271A00B26527 /* AuthEndpoint.swift */,
-				C629101427CE9DB000FD740E /* TricksEndpoint.swift */,
 				C6B84D0D27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift */,
+				C6799B5E28033AA100385799 /* TagsEndpoint.swift */,
+				C629101427CE9DB000FD740E /* TricksEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -382,8 +393,9 @@
 			isa = PBXGroup;
 			children = (
 				C6D1013927C7E13A0087235E /* AuthService.swift */,
-				C629101727CEA36800FD740E /* TricksService.swift */,
 				C6B84D1027FC7D6800A9F734 /* CodeHighlighterService.swift */,
+				C6799B6128033F1A00385799 /* TagsService.swift */,
+				C629101727CEA36800FD740E /* TricksService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -642,7 +654,10 @@
 				C6CDBBB227CA1068008BFF5E /* HTTPMethod.swift in Sources */,
 				C6D1E2512800342200DFC60A /* TrickActions.swift in Sources */,
 				C629101527CE9DB000FD740E /* TricksEndpoint.swift in Sources */,
+				C6799B5F28033AA100385799 /* TagsEndpoint.swift in Sources */,
+				C6799B5C280337CD00385799 /* TagsViewModel.swift in Sources */,
 				C6D1E2582800376500DFC60A /* HapticGenerator.swift in Sources */,
+				C6799B6228033F1A00385799 /* TagsService.swift in Sources */,
 				C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C6B84D1C27FC86C800A9F734 /* TrickCodePreview.swift in Sources */,
 				C67D8A0927C17EC3001E0E56 /* HTTPClient.swift in Sources */,
@@ -686,12 +701,15 @@
 				C6C0F82427C12EF20011F173 /* Tricks.swift in Sources */,
 				C63C912627BFC8E80022051C /* TricksListView.swift in Sources */,
 				C6B84D2627FCD34D00A9F734 /* SectionView.swift in Sources */,
+				C6799B6328033F1A00385799 /* TagsService.swift in Sources */,
 				C63D793827D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
 				C62A29FA2802D2DA0056F8D5 /* ScrollRefreshable.swift in Sources */,
 				C64A97CB27FB463500C7EE1A /* LoaderButton.swift in Sources */,
 				C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
+				C6799B6028033AA100385799 /* TagsEndpoint.swift in Sources */,
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0627C14ABD001E0E56 /* AppService.swift in Sources */,
+				C6799B5D280337CD00385799 /* TagsViewModel.swift in Sources */,
 				C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */,
 				C6F7D2B927E3C485001F0B54 /* ShareSheet.swift in Sources */,
 				C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */,
