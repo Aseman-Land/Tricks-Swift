@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct LoaderButton: View {
+struct LoaderButton<Content: View>: View {
     
-    @State var title: String
     @Binding var loading: Bool
+    let content: () -> Content
     @State var action: () -> Void
     
     var body: some View {
         ZStack(alignment: .center) {
             if !loading {
-                Button("Send") {
-                    action()
+                Button(action: action) {
+                    content()
                 }
                 #if os(macOS)
                 .buttonStyle(.borderedProminent)
@@ -33,6 +33,10 @@ struct LoaderButton: View {
 
 struct LoaderButton_Previews: PreviewProvider {
     static var previews: some View {
-        LoaderButton(title: "Test", loading: .constant(false), action: {})
+        LoaderButton(loading: .constant(false)) {
+            Text("Hello")
+        } action: {
+            
+        }
     }
 }

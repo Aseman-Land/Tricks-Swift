@@ -63,7 +63,9 @@ struct AddTrickView: View {
             }
             
             ToolbarItem(placement: .confirmationAction) {
-                LoaderButton(title: "Send", loading: $sending) {
+                LoaderButton(loading: $sending) {
+                    Text("Send")
+                } action: {
                     // TODO: Add Send function
                 }
             }

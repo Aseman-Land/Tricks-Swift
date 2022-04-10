@@ -71,7 +71,9 @@ struct AddQuoteView: View {
     }
     
     var sendButton: some View {
-        LoaderButton(title: "Send", loading: $addQuoteMode.loading) {
+        LoaderButton(loading: $addQuoteMode.loading) {
+            Text("Send")
+        } action: {
             Task.init {
                 await addQuoteMode.send(trickID: trickID)
             }
