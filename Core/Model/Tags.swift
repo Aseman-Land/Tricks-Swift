@@ -8,13 +8,13 @@
 import Foundation
 
 // MARK: - Tags
-struct Tags: Codable {
-    let result: [TagsResult]
+struct TagsResult: Codable {
+    let result: [Tags]
     let status: Bool
 }
 
 // MARK: - Result
-struct TagsResult: Codable {
+struct Tags: Codable {
     let tag: String
     let count, followers: Int
 }
