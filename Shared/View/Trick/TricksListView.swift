@@ -29,7 +29,7 @@ struct TricksListView<ProfileContent: View>: View {
         ZStack(alignment: .center) {
             if tricksListModel.errorMessage == "" {
                 GeometryReader { proxy in
-                    ScrollView {
+                    ScrollRefreshable {
                         LazyVStack {
                             profileContent
                             
@@ -44,15 +44,9 @@ struct TricksListView<ProfileContent: View>: View {
                                     #endif
                             }
                         }
+                    } onRefresh: {
+                        await tricksListModel.loadTricks()
                     }
-                    #if os(macOS)
-                    .background(
-                        VisualEffectBlur(
-                            material: .contentBackground,
-                            blendingMode: .withinWindow
-                        )
-                    )
-                    #endif
                     .toolbar {
                         ToolbarItem {
                             #if os(macOS)

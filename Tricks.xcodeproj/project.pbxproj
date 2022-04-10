@@ -20,6 +20,8 @@
 		C629101927CEA36800FD740E /* TricksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101727CEA36800FD740E /* TricksService.swift */; };
 		C629101E27CEAF4400FD740E /* TrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TrickView.swift */; };
 		C629101F27CEAF4400FD740E /* TrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TrickView.swift */; };
+		C62A29F92802C3F20056F8D5 /* ScrollRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */; };
+		C62A29FA2802D2DA0056F8D5 /* ScrollRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */; };
 		C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C90F627BFC5BA0022051C /* TricksApp.swift */; };
 		C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C90F627BFC5BA0022051C /* TricksApp.swift */; };
 		C63C910A27BFC5BA0022051C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63C90F827BFC5BA0022051C /* Assets.xcassets */; };
@@ -131,6 +133,7 @@
 		C629101427CE9DB000FD740E /* TricksEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksEndpoint.swift; sourceTree = "<group>"; };
 		C629101727CEA36800FD740E /* TricksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksService.swift; sourceTree = "<group>"; };
 		C629101D27CEAF4400FD740E /* TrickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickView.swift; sourceTree = "<group>"; };
+		C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollRefreshable.swift; sourceTree = "<group>"; };
 		C63C90F627BFC5BA0022051C /* TricksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksApp.swift; sourceTree = "<group>"; };
 		C63C90F827BFC5BA0022051C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C63C90FD27BFC5BA0022051C /* Tricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -469,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				C64A97C927FB463500C7EE1A /* LoaderButton.swift */,
+				C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */,
 				C6B84D2427FCD34D00A9F734 /* SectionView.swift */,
 			);
 			path = Components;
@@ -613,6 +617,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C62A29F92802C3F20056F8D5 /* ScrollRefreshable.swift in Sources */,
 				C629101E27CEAF4400FD740E /* TrickView.swift in Sources */,
 				C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */,
 				C6C0F82727C12EF20011F173 /* MyProfileViewModel.swift in Sources */,
@@ -682,6 +687,7 @@
 				C63C912627BFC8E80022051C /* TricksListView.swift in Sources */,
 				C6B84D2627FCD34D00A9F734 /* SectionView.swift in Sources */,
 				C63D793827D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
+				C62A29FA2802D2DA0056F8D5 /* ScrollRefreshable.swift in Sources */,
 				C64A97CB27FB463500C7EE1A /* LoaderButton.swift in Sources */,
 				C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
