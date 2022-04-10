@@ -38,8 +38,6 @@ struct TricksListView<ProfileContent: View>: View {
                                     .fixedSize(horizontal: false, vertical: true)
                                     .padding(.horizontal)
                                     #if os(iOS)
-                                    .listSectionSeparator(.hidden)
-                                    .listRowSeparator(.hidden)
                                     .padding(.bottom)
                                     #elseif os(macOS)
                                     .padding()
@@ -47,7 +45,14 @@ struct TricksListView<ProfileContent: View>: View {
                             }
                         }
                     }
-                    .listStyle(.plain)
+                    #if os(macOS)
+                    .background(
+                        VisualEffectBlur(
+                            material: .contentBackground,
+                            blendingMode: .withinWindow
+                        )
+                    )
+                    #endif
                     .refreshable {
                         await tricksListModel.loadTricks()
                     }

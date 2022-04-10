@@ -9,10 +9,21 @@ import SwiftUI
 
 struct NotificationsView: View {
     var body: some View {
-        EmptyList()
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            #endif
+        ZStack {
+            EmptyList()
+                #if os(iOS)
+                .navigationBarTitleDisplayMode(.inline)
+                #endif
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        #if os(macOS)
+        .background(
+            VisualEffectBlur(
+                material: .contentBackground,
+                blendingMode: .withinWindow
+            )
+        )
+        #endif
     }
     
     // MARK: - Empty View
