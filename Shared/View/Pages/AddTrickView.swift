@@ -6,8 +6,17 @@
 //
 
 import SwiftUI
+import CodeEditor
 
 struct AddTrickView: View {
+    
+    enum Syntax: String, CaseIterable, Identifiable {
+        case cpp, swift, rust
+        var id: Self { self }
+    }
+
+    @State private var selectedSyntax: CodeEditor.Language = .swift
+    @State private var selectedTheme: CodeEditor.ThemeName = .agate
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -27,50 +36,62 @@ struct AddTrickView: View {
         }
         #elseif os (macOS)
         content
-            .frame(minWidth: 550, minHeight: 400)
+            .frame(minWidth: 650, minHeight: 400)
         #endif
     }
     
     var content: some View {
-        ScrollView {
-            TextEditor(text: $code)
-                .disableAutocorrection(true)
-                .frame(minHeight: 450)
-        }
-        .toolbar {
-            ToolbarItemGroup(placement: toolsPlacement) {
-                Menu {
-                    Button("C++") {}
-                    Button("Swift") {}
-                } label: {
-                    Label("Syntax", systemImage: "chevron.left.forwardslash.chevron.right")
+        CodeEditor(source: $code, language: selectedSyntax, theme: selectedTheme)
+            .disableAutocorrection(true)
+            .toolbar {
+                ToolbarItemGroup(placement: toolsPlacement) {
+                    HStack {
+                        #if os(iOS)
+                        Label("Syntax: ", systemImage: "chevron.left.forwardslash.chevron.right")
+                            .foregroundColor(.accentColor)
+                        #endif
+                        Picker(selection: $selectedSyntax, label: Label("Syntax", systemImage: "chevron.left.forwardslash.chevron.right")) {
+                            ForEach(CodeEditor.availableLanguages) { language in
+                                Text(language.rawValue).tag(language)
+                            }
+                        }
+                        .pickerStyle(.menu)
                         .labelStyle(.titleAndIcon)
+                    }
+                    
+                    #if os(macOS)
+                    Divider()
+                    #endif
+                    
+                    HStack {
+                        #if os(iOS)
+                        Label("Theme:", systemImage: "paintbrush")
+                            .foregroundColor(.accentColor)
+                        #endif
+                        Picker(selection: $selectedTheme, label: Label("Theme", systemImage: "paintbrush")) {
+                            ForEach(CodeEditor.availableThemes) { theme in
+                                Text(theme.rawValue).tag(theme)
+                            }
+                        }
+                        .pickerStyle(.menu)
+                        .labelStyle(.titleAndIcon)
+                    }
                 }
                 
-                Menu {
-                    Button("Dracula") {}
-                    Button("Github") {}
-                } label: {
-                    Label("Theme", systemImage: "paintbrush")
-                        .labelStyle(.titleAndIcon)
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(action: closeView) {
+                        Text("Cancel")
+                    }
+                }
+                
+                ToolbarItem(placement: .confirmationAction) {
+                    LoaderButton(loading: $sending) {
+                        Text("Send")
+                    } action: {
+                        // TODO: Add Send function
+                    }
                 }
             }
-            
-            ToolbarItem(placement: .cancellationAction) {
-                Button(action: closeView) {
-                    Text("Cancel")
-                }
-            }
-            
-            ToolbarItem(placement: .confirmationAction) {
-                LoaderButton(loading: $sending) {
-                    Text("Send")
-                } action: {
-                    // TODO: Add Send function
-                }
-            }
-        }
-            
     }
     
     private func closeView() {

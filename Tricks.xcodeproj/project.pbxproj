@@ -70,6 +70,8 @@
 		C67D8A0D27C17EDA001E0E56 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0B27C17EDA001E0E56 /* RequestError.swift */; };
 		C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */; };
 		C6957C1627CF7025004ECB14 /* TricksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */; };
+		C699305628075B0C000548B9 /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = C699305528075B0C000548B9 /* CodeEditor */; };
+		C699305828075B17000548B9 /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = C699305728075B17000548B9 /* CodeEditor */; };
 		C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D74AC27C0D9730060432F /* AuthViewModel.swift */; };
 		C69D74AE27C0D9730060432F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D74AC27C0D9730060432F /* AuthViewModel.swift */; };
 		C6B143D827DCC27F00AE777E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B143D727DCC27F00AE777E /* ProfileViewModel.swift */; };
@@ -209,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C0F83127C12FF50011F173 /* KeychainAccess in Frameworks */,
+				C699305628075B0C000548B9 /* CodeEditor in Frameworks */,
 				C6B84D1827FC838400A9F734 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C0F83427C130010011F173 /* KeychainAccess in Frameworks */,
+				C699305828075B17000548B9 /* CodeEditor in Frameworks */,
 				C6B84D1A27FC838F00A9F734 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +542,7 @@
 			packageProductDependencies = (
 				C6C0F83027C12FF50011F173 /* KeychainAccess */,
 				C6B84D1727FC838400A9F734 /* NukeUI */,
+				C699305528075B0C000548B9 /* CodeEditor */,
 			);
 			productName = "Tricks (iOS)";
 			productReference = C63C90FD27BFC5BA0022051C /* Tricks.app */;
@@ -559,6 +564,7 @@
 			packageProductDependencies = (
 				C6C0F83327C130010011F173 /* KeychainAccess */,
 				C6B84D1927FC838F00A9F734 /* NukeUI */,
+				C699305728075B17000548B9 /* CodeEditor */,
 			);
 			productName = "Tricks (macOS)";
 			productReference = C63C910327BFC5BA0022051C /* Tricks.app */;
@@ -594,6 +600,7 @@
 			packageReferences = (
 				C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */,
+				C699305428075B0C000548B9 /* XCRemoteSwiftPackageReference "CodeEditor" */,
 			);
 			productRefGroup = C63C90FE27BFC5BA0022051C /* Products */;
 			projectDirPath = "";
@@ -1020,6 +1027,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C699305428075B0C000548B9 /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ZeeZide/CodeEditor.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/NukeUI";
@@ -1039,6 +1054,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C699305528075B0C000548B9 /* CodeEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C699305428075B0C000548B9 /* XCRemoteSwiftPackageReference "CodeEditor" */;
+			productName = CodeEditor;
+		};
+		C699305728075B17000548B9 /* CodeEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C699305428075B0C000548B9 /* XCRemoteSwiftPackageReference "CodeEditor" */;
+			productName = CodeEditor;
+		};
 		C6B84D1727FC838400A9F734 /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */;
