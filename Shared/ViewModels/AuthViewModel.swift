@@ -26,8 +26,10 @@ class AuthViewModel: ObservableObject {
     private var service = AuthService()
     
     func login() async {
-        loading = true
-        errorMessage = ""
+        DispatchQueue.main.async {
+            self.loading = true
+            self.errorMessage = ""
+        }
         
         Task(priority: .background) {
             let result = try await service.login(username: username, password: password, fcmToken: "")
@@ -35,7 +37,9 @@ class AuthViewModel: ObservableObject {
             switch result {
             case .success(let loginCall):
                 if let token = loginCall.result.token {
-                    profile?.setToken(token)
+                    DispatchQueue.main.async {
+                        self.profile?.setToken(token)
+                    }
                 } else {
                     setErrorMessage("No token found, Try again")
                 }
@@ -64,8 +68,10 @@ class AuthViewModel: ObservableObject {
     }
     
     func signup() async {
-        loading = true
-        errorMessage = ""
+        DispatchQueue.main.async {
+            self.loading = true
+            self.errorMessage = ""
+        }
         
         Task(priority: .background) {
             let result = try await service.register(username: username, password: password, email: email, fullname: fullname)
@@ -73,15 +79,21 @@ class AuthViewModel: ObservableObject {
             switch result {
             case .success(let responseSuccess):
                 if responseSuccess.status {
-                    userCreated = true
+                    DispatchQueue.main.async {
+                        self.userCreated = true
+                    }
                     await login()
                 } else {
-                    userCreated = false
+                    DispatchQueue.main.async {
+                        self.userCreated = false
+                    }
                     setErrorMessage("Failed to register, Try again")
                 }
                 
             case .failure(let error):
-                userCreated = false
+                DispatchQueue.main.async {
+                    self.userCreated = false
+                }
                 switch error {
                 case .decode:
                     setErrorMessage("Failed to execute, try later")
