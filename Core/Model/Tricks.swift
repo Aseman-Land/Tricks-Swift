@@ -29,6 +29,7 @@ struct Trick: Codable {
     let filename: String?
     let quote: Quote?
     let image_size: CodePreviewDetail?
+    let share_link: String?
     
     var previewAddress: String {
         return AppService().imageURL(url: filename)
@@ -50,7 +51,8 @@ struct Trick: Codable {
         tags: ["Rust"],
         filename: "storage/upload/1/4d1ad4cf-46f4-41a0-80c5-5f50e6132a0a.png",
         quote: nil,
-        image_size: CodePreviewDetail(width: 1024, height: 278)
+        image_size: CodePreviewDetail(width: 1024, height: 278),
+        share_link: "https://tricks.aseman.io/tricks/127"
     )
 }
 

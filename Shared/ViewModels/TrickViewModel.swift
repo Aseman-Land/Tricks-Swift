@@ -44,7 +44,7 @@ class TrickViewModel: ObservableObject {
             trick.body,
             trick.code,
             "By \(trick.owner.fullname)",
-            URL(string: trick.previewAddress)!
+            URL(string: trick.share_link ?? trick.previewAddress)!
         ]
     }
     
