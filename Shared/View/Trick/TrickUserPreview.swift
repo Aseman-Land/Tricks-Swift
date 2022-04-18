@@ -27,18 +27,22 @@ struct TrickUserPreview: View {
                 name: trick.owner.fullname,
                 username: trick.owner.username,
                 userID: String(trick.owner.id),
-                avatar: trick.owner.avatarAddress ?? ""
+                avatar: trick.owner.avatarAddress ?? "",
+                language: trick.programing_language?.name
             )
             .environmentObject(profile)
 
             Spacer()
             
-            VStack(alignment: .trailing) {
+            VStack(alignment: .trailing, spacing: 3) {
                 // MARK: - Trick's time
                 Text(trickDate, style: .relative)
                     .font(.caption)
                     .fontWeight(.light)
                     .foregroundStyle(.secondary)
+                    .dynamicTypeSize(.xSmall ... .medium)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.4)
                 
                 // MARK: - View count
                 Label(trick.views.formatted(), systemImage: "eye")
@@ -57,50 +61,68 @@ struct UserRow: View {
     @State var username: String
     @State var userID: String
     @State var avatar: String
+    @State var language: String?
 
     @EnvironmentObject var profile: MyProfileViewModel
     
     var body: some View {
-        HStack {
-            ZStack {
-                Circle()
-                    .foregroundStyle(.white)
-                    .frame(width: 40, height: 40)
-                LazyImage(source: avatar) { state in
-                    if let image = state.image {
-                        image
-                    } else {
-                        Image(systemName: "person.fill")
+        NavigationButton(title: name) {
+            HStack {
+                ZStack {
+                    Circle()
+                        .foregroundStyle(.white)
+                        .frame(width: 40, height: 40)
+                    LazyImage(source: avatar) { state in
+                        if let image = state.image {
+                            image
+                        } else {
+                            Image(systemName: "person.fill")
+                                .font(.body)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+                    .frame(width: 38, height: 38, alignment: .center)
+                    .padding(.all, 2)
+                }
+                .frame(width: 40, height: 40)
+                .shadow(radius: 1)
+                
+                VStack(alignment: .leading, spacing: 3) {
+                    HStack {
+                        // MARK: - Fullname
+                        Text(name)
                             .font(.body)
-                            .foregroundColor(.gray)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.primary)
+                            .dynamicTypeSize(.xSmall ... .medium)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.4)
+                        
+                        // MARK: - Username
+                        Text("@\(username)")
+                            .font(.caption)
+                            .fontWeight(.light)
+                            .foregroundStyle(.secondary)
+                            .dynamicTypeSize(.xSmall ... .medium)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.4)
+                    }
+                    if let language = language {
+                        Label(language.capitalized, systemImage: "chevron.left.forwardslash.chevron.right")
+                            .font(.system(.caption, design: .monospaced))
+                            .foregroundStyle(.secondary)
+                            .dynamicTypeSize(.xSmall ... .medium)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.4)
+                            .labelStyle(.titleAndIcon)
                     }
                 }
-                .aspectRatio(contentMode: .fill)
-                .clipShape(Circle())
-                .frame(width: 38, height: 38, alignment: .center)
-                .padding(.all, 2)
             }
-            .frame(width: 40, height: 40)
-            .shadow(radius: 1)
-            
-            // MARK: - User info
-            NavigationButton(title: name) {
-                VStack(alignment: .leading) {
-                    // MARK: - Fullname
-                    Text(name)
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .foregroundStyle(.primary)
-                    
-                    // MARK: - Username
-                    Text("@\(username)")
-                        .font(.caption)
-                        .fontWeight(.light)
-                }
-            } destination: {
-                ProfileView(viewModel: ProfileViewModel(userId: userID))
-                    .environmentObject(profile)
-            }
+        } destination: {
+            ProfileView(viewModel: ProfileViewModel(userId: userID))
+                .environmentObject(profile)
         }
     }
 }
