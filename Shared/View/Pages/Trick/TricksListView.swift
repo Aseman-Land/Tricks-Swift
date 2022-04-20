@@ -63,7 +63,7 @@ struct TricksListView<ProfileContent: View>: View {
                     }
                 }
                 
-                if tricksListModel.tricks.isEmpty {
+                if tricksListModel.tricks.isEmpty && tricksListModel.tricks.isEmpty {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
                 }

@@ -9,4 +9,5 @@ import Foundation
 
 extension NSNotification {
     static let UpdateList = Notification.Name.init("UpdateList")
+    static let UpdateNotifList = Notification.Name.init("UpdateNotifList")
 }

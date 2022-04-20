@@ -8,13 +8,13 @@
 import Foundation
 
 // MARK: - Notification
-struct Notif: Codable {
-    let result: [NotifResult]
+struct NotifResult: Codable {
+    let result: [Notif]
     let status: Bool
 }
 
 // MARK: - Notification Item
-struct NotifResult: Codable {
+struct Notif: Codable {
     let id = UUID()
     let trick: NotifTrickResult
     let notifyType: Int
@@ -27,6 +27,30 @@ struct NotifResult: Codable {
         case notifyType = "notify_type"
         case datetime, user, viewed
     }
+    
+    static let mockLikeExample = Notif(
+        trick: NotifTrickResult.mockExample,
+        notifyType: 1,
+        datetime: "2022-04-05T01:37:40",
+        user: UserResult.mockExample,
+        viewed: 1
+    )
+    
+    static let mockQuoteExample = Notif(
+        trick: NotifTrickResult.mockExample,
+        notifyType: 2,
+        datetime: "2022-04-05T01:37:40",
+        user: UserResult.mockExample,
+        viewed: 1
+    )
+    
+    static let mockCommentExample = Notif(
+        trick: NotifTrickResult.mockExample,
+        notifyType: 3,
+        datetime: "2022-04-05T01:37:40",
+        user: UserResult.mockExample,
+        viewed: 1
+    )
 }
 
 struct NotifTrickResult: Codable {
@@ -38,4 +62,20 @@ struct NotifTrickResult: Codable {
     let highlighterID, programingLanguageID, codeFrameID, typeID: Int?
     let views, rates: Int
     let filename: String
+    
+    static let mockExample = NotifTrickResult(
+        id: 123,
+        body: "Its a test",
+        code: "PostTrickRequest {\n    id: postReq\n    allowGlobalBusy: GlobalSettings.mobileView\n    onSuccessfull: reloadTimer.restart()\n}",
+        owner: 7,
+        datetime: "2022-04-04T15:34:39",
+        highlighterID: 4,
+        programingLanguageID: 11,
+        codeFrameID: 2,
+        typeID: 1,
+        views: 2,
+        rates: 2,
+        filename: "storage/upload/1/efb5ca7f-7f37-4f17-aefd-dd6f8d2b7108.png"
+    )
 }
+

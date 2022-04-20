@@ -37,7 +37,7 @@ final class NavigationItemsModel: ObservableObject {
             name: "Notifications",
             comment: "Latest notifications",
             icon: "bell",
-            content: AnyView(NotificationsView())
+            content: AnyView(NotificationsListView())
         ),
         
         NavigationItem(

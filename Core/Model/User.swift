@@ -51,7 +51,7 @@ public struct UserResult: Codable {
         id: 1,
         username: "realbardia",
         fullname: "Bardia Daneshvar",
-        about: "",
+        about: "I'm a C++ and Rust Developer :)",
         joinDate: "2021-03-03T20:38:04",
         avatar: "storage/upload/1/a92e7655-1d03-46c4-af07-408e68ba464c.jpeg",
         followersCount: 4,
