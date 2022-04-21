@@ -29,6 +29,19 @@ struct ProfileView: View {
             await profileModel.getProfile()
         }
         #if os(iOS)
+        .sheet(isPresented: $profileModel.showSettings) {
+            SettingsView()
+                .environmentObject(profile)
+        }
+        .toolbar {
+            ToolbarItem {
+                if profileModel.userId == "me" {
+                    Button(action: { profileModel.showSettings = true }) {
+                        Label("Settings", systemImage: "gear")
+                    }
+                }
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
         #endif
     }

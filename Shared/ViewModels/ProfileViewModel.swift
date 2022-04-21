@@ -15,8 +15,7 @@ class ProfileViewModel: ObservableObject {
     
     @Published var userResult: UserResult? = nil
     
-    @Published var loading: Bool = false
-    @Published var errorMessage: String = ""
+    @Published var showSettings: Bool = false
     
     private var service = AuthService()
     
