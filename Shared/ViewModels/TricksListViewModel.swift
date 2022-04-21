@@ -14,9 +14,7 @@ class TricksListViewModel: ObservableObject {
     @Published var profile: MyProfileViewModel? = nil
     
     @Published var tricks: [Trick] = [Trick]()
-    @Published var loading: Bool = false
-    @Published var isRefreshing: Bool = false
-    @Published var errorMessage: String = ""
+    @Published var listStatus: ListStatus = .loading
     
     private var service = TricksService()
     
@@ -25,13 +23,16 @@ class TricksListViewModel: ObservableObject {
     }
     
     func loadTricks() async {
-        loading = true
-        errorMessage = ""
+        if tricks.isEmpty {
+            DispatchQueue.main.async {
+                self.listStatus = .loading
+            }
+        }
         
         guard let profile = profile else {
-            self.loading = false
-            self.isRefreshing = false
-            self.errorMessage = "Failed to authorize"
+            DispatchQueue.main.async {
+                self.listStatus = .errorLoading("Failed to authorize")
+            }
             return
         }
 
@@ -51,6 +52,7 @@ class TricksListViewModel: ObservableObject {
             case .success(let tricksResult):
                 DispatchQueue.main.async {
                     self.tricks = tricksResult.result
+                    self.listStatus = self.tricks.isEmpty ? .emptyList : .fullList
                 }
             case .failure(let error):
                 switch error {
@@ -70,17 +72,12 @@ class TricksListViewModel: ObservableObject {
             case .none:
                 setErrorMessage("Failed to load tricks, Try again")
             }
-            
-            DispatchQueue.main.async {
-                self.loading = false
-                self.isRefreshing = false
-            }
         }
     }
     
     func setErrorMessage(_ message: String) {
         DispatchQueue.main.async {
-            self.errorMessage = message
+            self.listStatus = .errorLoading(message)
         }
     }
 }

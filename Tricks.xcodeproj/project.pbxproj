@@ -128,6 +128,8 @@
 		C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */; };
 		C6F1B72627E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
 		C6F1B72727E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
+		C6F339FF2811326200AD7688 /* ListStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F339FE2811326200AD7688 /* ListStatus.swift */; };
+		C6F33A002811326200AD7688 /* ListStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F339FE2811326200AD7688 /* ListStatus.swift */; };
 		C6F7D2B927E3C485001F0B54 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2B827E3C485001F0B54 /* ShareSheet.swift */; };
 		C6F7D2BC27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2BB27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift */; };
 		C6F7D2BE27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2BD27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift */; };
@@ -208,6 +210,7 @@
 		C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteView.swift; sourceTree = "<group>"; };
 		C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extension.swift"; sourceTree = "<group>"; };
 		C6F1B72527E64B690008EFBE /* TrickViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickViewModel.swift; sourceTree = "<group>"; };
+		C6F339FE2811326200AD7688 /* ListStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStatus.swift; sourceTree = "<group>"; };
 		C6F7D2B827E3C485001F0B54 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		C6F7D2BB27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareSheet+Modifiers.swift"; sourceTree = "<group>"; };
 		C6F7D2BD27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareSheet+UIKitRepresentable.swift"; sourceTree = "<group>"; };
@@ -449,6 +452,7 @@
 				C6C0F81D27C12EF20011F173 /* Tricks.swift */,
 				C67D8A0127C14A70001E0E56 /* User.swift */,
 				C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */,
+				C6F339FE2811326200AD7688 /* ListStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -710,6 +714,7 @@
 				C63C912527BFC8E80022051C /* TricksListView.swift in Sources */,
 				C6B84D1427FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
 				C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */,
+				C6F339FF2811326200AD7688 /* ListStatus.swift in Sources */,
 				C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */,
 				C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */,
 				C6F7D2C027E3C5F1001F0B54 /* ShareSheet.swift in Sources */,
@@ -784,6 +789,7 @@
 				C63C912927BFC9090022051C /* NotificationsListView.swift in Sources */,
 				C6C0F82A27C12EF20011F173 /* GlobalResponse.swift in Sources */,
 				C6B143D927DCC27F00AE777E /* ProfileViewModel.swift in Sources */,
+				C6F33A002811326200AD7688 /* ListStatus.swift in Sources */,
 				C6B84D0F27FC7B8200A9F734 /* CodeHighlighterEndpoint.swift in Sources */,
 				C6B84D1227FC7D6800A9F734 /* CodeHighlighterService.swift in Sources */,
 				C67D8A0327C14A70001E0E56 /* User.swift in Sources */,

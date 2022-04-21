@@ -27,7 +27,11 @@ struct TricksListView<ProfileContent: View>: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            if tricksListModel.errorMessage == "" {
+            switch tricksListModel.listStatus {
+            case .loading:
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+            case .fullList:
                 GeometryReader { proxy in
                     ScrollRefreshable {
                         LazyVStack {
@@ -62,16 +66,10 @@ struct TricksListView<ProfileContent: View>: View {
                         }
                     }
                 }
-                
-                if tricksListModel.tricks.isEmpty && tricksListModel.tricks.isEmpty {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                }
-                
-            } else if !tricksListModel.tricks.isEmpty {
+            case .emptyList:
                 EmptyList()
-            } else {
-                NetworkError(title: tricksListModel.errorMessage) {
+            case .errorLoading(let message):
+                NetworkError(title: message) {
                     Task.init {
                         await tricksListModel.loadTricks()
                     }

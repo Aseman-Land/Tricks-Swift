@@ -70,10 +70,3 @@ class NotificationsViewModel: ObservableObject {
         }
     }
 }
-
-enum ListStatus {
-    case loading
-    case fullList
-    case emptyList
-    case errorLoading(String)
-}
