@@ -27,6 +27,16 @@ enum AuthEndpoint {
         fcmToken: String?
     )
     
+    case forgotPassword(
+        email: String
+    )
+    
+    case recoverPassword(
+        email: String,
+        code: String,
+        newPassword: String
+    )
+    
     case getUser(
         userID: String,
         token: String
@@ -50,6 +60,10 @@ extension AuthEndpoint: Endpoint {
             return "/api/v1/users"
         case .logout(_, _):
             return "/api/v1/auth/logout"
+        case .forgotPassword(_):
+            return "/api/v1/auth/forget-password"
+        case .recoverPassword(_, _, _):
+            return "/api/v1/auth/forget-password/recover"
         case .getUser(let userID, _):
             return "/api/v1/users/\(userID)"
         case .editMe(_, _, _, _, _):
@@ -61,7 +75,9 @@ extension AuthEndpoint: Endpoint {
         switch self {
         case .login(_, _, _),
              .register(_, _, _, _),
-             .logout(_, _):
+             .logout(_, _),
+             .forgotPassword(_),
+             .recoverPassword(_, _, _):
             return .post
         case .getUser(_, _):
             return .get
@@ -109,6 +125,16 @@ extension AuthEndpoint: Endpoint {
             } else {
                 return [:]
             }
+            
+        case .forgotPassword(let email):
+            return ["email": email]
+            
+        case .recoverPassword(let email, let code, let newPassword):
+            return [
+                "email": email,
+                "code": code,
+                "new_password": newPassword
+            ]
             
         case .getUser(_, _):
             return nil
