@@ -28,6 +28,9 @@ struct MainView: View {
                 }
                 #else
                 Sidebar()
+                    .task {
+                        titleBarVisibility(hidden: false)
+                    }
                 #endif
             } else {
                 // MARK: - Login and register views
@@ -37,17 +40,32 @@ struct MainView: View {
                             showRegister.toggle()
                         }
                     }
+                    .task {
+                        titleBarVisibility(hidden: true)
+                    }
                 } else {
                     LoginView {
                         withAnimation {
                             showRegister.toggle()
                         }
                     }
+                    .task {
+                        titleBarVisibility(hidden: true)
+                    }
                 }
             }
         }
         .environmentObject(profile)
     }
+    
+    
+    func titleBarVisibility(hidden: Bool) {
+        #if os(macOS)
+        NSApplication.shared.windows.first?.titlebarAppearsTransparent = hidden
+        NSApplication.shared.windows.first?.titleVisibility = hidden ? .hidden : .visible
+        #endif
+    }
+    
 }
 
 struct MainView_Previews: PreviewProvider {

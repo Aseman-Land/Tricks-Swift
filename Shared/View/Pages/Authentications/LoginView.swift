@@ -17,6 +17,8 @@ struct LoginView: View {
     
     @FocusState private var focusedField: LoginField?
     
+    @State var showRecoverView: Bool = false
+    
     var body: some View {
         ZStack(alignment: .center) {
             #if os(macOS)
@@ -35,6 +37,9 @@ struct LoginView: View {
                 }
                 .clipped()
             }
+        }
+        .sheet(isPresented: $showRecoverView) {
+            RecoverPasswordView()
         }
         .task {
             authModel.profile = profile
@@ -132,16 +137,17 @@ struct LoginView: View {
                     .shadow(radius: 2)
             }
             
-            /*
             if !authModel.loading {
-                Button(action: {}) {
+                Button(action: { showRecoverView = true }) {
                     Text("Recovery password")
                         .foregroundStyle(.secondary)
                         .font(.callout)
                 }
+                #if os(macOS)
+                .buttonStyle(.plain)
+                #endif
                 .padding(.top, 10)
             }
-            */
             
             Spacer()
             
@@ -149,8 +155,10 @@ struct LoginView: View {
                 Button(action: showSignupView) {
                     Text(signupAttributedString())
                 }
-                
-                .padding(.bottom, 5)
+                #if os(macOS)
+                .buttonStyle(.plain)
+                #endif
+                .padding(.bottom)
             }
         }
     }

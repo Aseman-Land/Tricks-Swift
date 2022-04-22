@@ -14,6 +14,8 @@
 		C605E127280E966A00C777DB /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C605E125280E966A00C777DB /* NotificationRow.swift */; };
 		C61A875A28129FB400CA6257 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A875928129FB400CA6257 /* CustomTextEditor.swift */; };
 		C61A875B28129FB400CA6257 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A875928129FB400CA6257 /* CustomTextEditor.swift */; };
+		C61A875E2812C37A00CA6257 /* RecoverPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A875D2812C37A00CA6257 /* RecoverPasswordView.swift */; };
+		C61A875F2812C37A00CA6257 /* RecoverPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A875D2812C37A00CA6257 /* RecoverPasswordView.swift */; };
 		C621AFBE28114B48007BBEDA /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C621AFBD28114B48007BBEDA /* AboutView.swift */; };
 		C621AFC128114BB3007BBEDA /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C621AFC028114BB3007BBEDA /* Bundle+Extensions.swift */; };
 		C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100B27CE8E6200FD740E /* SettingsView.swift */; };
@@ -150,6 +152,7 @@
 		C6018F0D27FAF51A00DF8FED /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C605E125280E966A00C777DB /* NotificationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRow.swift; sourceTree = "<group>"; };
 		C61A875928129FB400CA6257 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
+		C61A875D2812C37A00CA6257 /* RecoverPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordView.swift; sourceTree = "<group>"; };
 		C621AFBD28114B48007BBEDA /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		C621AFC028114BB3007BBEDA /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		C629100827CE778A00FD740E /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
@@ -267,6 +270,7 @@
 			children = (
 				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
 				C63C912E27BFCCD90022051C /* LoginView.swift */,
+				C61A875D2812C37A00CA6257 /* RecoverPasswordView.swift */,
 			);
 			path = Authentications;
 			sourceTree = "<group>";
@@ -701,6 +705,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C61A875E2812C37A00CA6257 /* RecoverPasswordView.swift in Sources */,
 				C62A29F92802C3F20056F8D5 /* ScrollRefreshable.swift in Sources */,
 				C629101E27CEAF4400FD740E /* TrickView.swift in Sources */,
 				C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */,
@@ -829,6 +834,7 @@
 				C6018F0C27FADFD700DF8FED /* NavigationButton.swift in Sources */,
 				C69D74AE27C0D9730060432F /* AuthViewModel.swift in Sources */,
 				C63C912927BFC9090022051C /* NotificationsListView.swift in Sources */,
+				C61A875F2812C37A00CA6257 /* RecoverPasswordView.swift in Sources */,
 				C6C0F82A27C12EF20011F173 /* GlobalResponse.swift in Sources */,
 				C6B143D927DCC27F00AE777E /* ProfileViewModel.swift in Sources */,
 				C6F33A002811326200AD7688 /* ListStatus.swift in Sources */,

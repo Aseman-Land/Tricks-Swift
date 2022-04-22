@@ -147,6 +147,9 @@ struct SignupView: View {
                 Button(action: showLoginView) {
                     Text(loginAttributedString())
                 }
+                #if os(macOS)
+                .buttonStyle(.plain)
+                #endif
                 .padding(.bottom, 5)
             }
             
