@@ -37,9 +37,7 @@ struct TrickActions: View {
             .foregroundColor(.gray)
             .popover(isPresented: $addQuoteModel.showQuoteView) {
                 AddQuoteView(trickID: trickModel.trick.id)
-                    #if os(macOS)
-                    .frame(minWidth: 250, minHeight: 250)
-                    #endif
+                    .frame(minWidth: 300, minHeight: 250)
                     .environmentObject(addQuoteModel)
             }
             

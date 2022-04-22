@@ -12,6 +12,8 @@
 		C6018F0F27FAF51A00DF8FED /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6018F0D27FAF51A00DF8FED /* View+Extension.swift */; };
 		C605E126280E966A00C777DB /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C605E125280E966A00C777DB /* NotificationRow.swift */; };
 		C605E127280E966A00C777DB /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C605E125280E966A00C777DB /* NotificationRow.swift */; };
+		C61A875A28129FB400CA6257 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A875928129FB400CA6257 /* CustomTextEditor.swift */; };
+		C61A875B28129FB400CA6257 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A875928129FB400CA6257 /* CustomTextEditor.swift */; };
 		C621AFBE28114B48007BBEDA /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C621AFBD28114B48007BBEDA /* AboutView.swift */; };
 		C621AFC128114BB3007BBEDA /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C621AFC028114BB3007BBEDA /* Bundle+Extensions.swift */; };
 		C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629100B27CE8E6200FD740E /* SettingsView.swift */; };
@@ -147,6 +149,7 @@
 		C6018F0A27FADFD700DF8FED /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		C6018F0D27FAF51A00DF8FED /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C605E125280E966A00C777DB /* NotificationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRow.swift; sourceTree = "<group>"; };
+		C61A875928129FB400CA6257 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		C621AFBD28114B48007BBEDA /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		C621AFC028114BB3007BBEDA /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		C629100827CE778A00FD740E /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
@@ -338,6 +341,7 @@
 			children = (
 				C6D1E2552800356400DFC60A /* Components */,
 				C6D1E2542800352300DFC60A /* Pages */,
+				C61A875928129FB400CA6257 /* CustomTextEditor.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -708,6 +712,7 @@
 				C6F7D2C427E3C646001F0B54 /* Sharer.swift in Sources */,
 				C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0527C14ABD001E0E56 /* AppService.swift in Sources */,
+				C61A875A28129FB400CA6257 /* CustomTextEditor.swift in Sources */,
 				C605E126280E966A00C777DB /* NotificationRow.swift in Sources */,
 				C64A97C727FB2F6A00C7EE1A /* AddTrickView.swift in Sources */,
 				C6CDBBB827CA1096008BFF5E /* HTTPContentType.swift in Sources */,
@@ -790,6 +795,7 @@
 				C629101927CEA36800FD740E /* TricksService.swift in Sources */,
 				C63930AB280F211500E9E1DB /* NotificationService.swift in Sources */,
 				C64A97C827FB2F6A00C7EE1A /* AddTrickView.swift in Sources */,
+				C61A875B28129FB400CA6257 /* CustomTextEditor.swift in Sources */,
 				C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C67D8A0A27C17EC3001E0E56 /* HTTPClient.swift in Sources */,
 				C6B84D2327FCCE2200A9F734 /* TrickUserPreview.swift in Sources */,

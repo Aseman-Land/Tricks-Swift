@@ -51,16 +51,11 @@ struct AddQuoteView: View {
     }
     
     var content: some View {
-        Form {
-            Text("Write your quote")
-            #if os(macOS)
-            .padding()
-            #endif
-            
-            TextEditor(text: $addQuoteMode.quote)
-                .padding()
-                .textFieldStyle(.plain)
-        }
+        CustomTextEditor(
+            placeholder: "Write your quote",
+            context: $addQuoteMode.quote
+        )
+        .padding()
         .alert(isPresented: $addQuoteMode.showErrorMessage) {
             Alert(
                 title: Text("Failed to send your quote"),
