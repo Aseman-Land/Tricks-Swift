@@ -67,6 +67,8 @@
 		C64E784827C226A300B26527 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784627C226A300B26527 /* Endpoint.swift */; };
 		C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784927C2271A00B26527 /* AuthEndpoint.swift */; };
 		C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784927C2271A00B26527 /* AuthEndpoint.swift */; };
+		C667D8552813256500018E6A /* RecoverPaswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */; };
+		C667D8562813256500018E6A /* RecoverPaswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */; };
 		C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6748D6B27C015110023251B /* VisualEffectBlur.swift */; };
 		C6799B5C280337CD00385799 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5B280337CD00385799 /* TagsViewModel.swift */; };
 		C6799B5D280337CD00385799 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5B280337CD00385799 /* TagsViewModel.swift */; };
@@ -186,6 +188,7 @@
 		C64A97C927FB463500C7EE1A /* LoaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderButton.swift; sourceTree = "<group>"; };
 		C64E784627C226A300B26527 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		C64E784927C2271A00B26527 /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
+		C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPaswordViewModel.swift; sourceTree = "<group>"; };
 		C6748D6B27C015110023251B /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
 		C6799B5B280337CD00385799 /* TagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewModel.swift; sourceTree = "<group>"; };
 		C6799B5E28033AA100385799 /* TagsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEndpoint.swift; sourceTree = "<group>"; };
@@ -399,6 +402,7 @@
 				C63C912127BFC6670022051C /* NavigationItem.swift */,
 				C63930AC280F262500E9E1DB /* NotificationsViewModel.swift */,
 				C6B143D727DCC27F00AE777E /* ProfileViewModel.swift */,
+				C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */,
 				C6799B5B280337CD00385799 /* TagsViewModel.swift */,
 				C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */,
 				C6F1B72527E64B690008EFBE /* TrickViewModel.swift */,
@@ -754,6 +758,7 @@
 				C6B84D1127FC7D6800A9F734 /* CodeHighlighterService.swift in Sources */,
 				C6C0F82D27C12EF20011F173 /* Notif.swift in Sources */,
 				C6F7D2BE27E3C5DF001F0B54 /* ShareSheet+UIKitRepresentable.swift in Sources */,
+				C667D8552813256500018E6A /* RecoverPaswordViewModel.swift in Sources */,
 				C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */,
 				C6C0F82B27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C911827BFC6230022051C /* Sidebar.swift in Sources */,
@@ -792,6 +797,7 @@
 				C62A29FA2802D2DA0056F8D5 /* ScrollRefreshable.swift in Sources */,
 				C64A97CB27FB463500C7EE1A /* LoaderButton.swift in Sources */,
 				C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
+				C667D8562813256500018E6A /* RecoverPaswordViewModel.swift in Sources */,
 				C6799B6028033AA100385799 /* TagsEndpoint.swift in Sources */,
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C67D8A0627C14ABD001E0E56 /* AppService.swift in Sources */,

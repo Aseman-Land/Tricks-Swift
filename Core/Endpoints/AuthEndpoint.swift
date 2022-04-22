@@ -130,10 +130,11 @@ extension AuthEndpoint: Endpoint {
             return ["email": email]
             
         case .recoverPassword(let email, let code, let newPassword):
+            let securedPassword = SecureKey(password: newPassword).securedKey
             return [
                 "email": email,
                 "code": code,
-                "new_password": newPassword
+                "new_password": securedPassword
             ]
             
         case .getUser(_, _):
