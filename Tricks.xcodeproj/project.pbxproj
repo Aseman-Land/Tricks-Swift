@@ -262,6 +262,15 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		C61A875C2812B7EB00CA6257 /* Authentications */ = {
+			isa = PBXGroup;
+			children = (
+				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
+				C63C912E27BFCCD90022051C /* LoginView.swift */,
+			);
+			path = Authentications;
+			sourceTree = "<group>";
+		};
 		C621AFBF28114BAC007BBEDA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,13 +530,12 @@
 		C6D1E2542800352300DFC60A /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				C61A875C2812B7EB00CA6257 /* Authentications */,
 				C605E124280E964A00C777DB /* Notifications */,
 				C6D1E253280034DA00DFC60A /* Trick */,
 				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
 				C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */,
-				C63C912E27BFCCD90022051C /* LoginView.swift */,
 				C63C912A27BFC9100022051C /* ProfileView.swift */,
-				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
