@@ -97,8 +97,16 @@ struct TricksListView<ProfileContent: View>: View {
         .sheet(isPresented: $showAddTrick) {
             AddTrickView()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #elseif os(macOS)
+        .background(
+            VisualEffectBlur(
+                material: .contentBackground,
+                blendingMode: .withinWindow
+            )
+        )
         #endif
     }
     

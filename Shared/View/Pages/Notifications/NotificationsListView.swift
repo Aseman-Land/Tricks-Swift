@@ -27,6 +27,11 @@ struct NotificationsListView: View {
                         NotificationRow(notif: notif)
                     }
                 }
+                #if os(macOS)
+                .environment(\.defaultMinListRowHeight, 60)
+                .listStyle(.inset(alternatesRowBackgrounds: true))
+                
+                #endif
                 .refreshable {
                     await notifModel.getNotifications()
                 }
@@ -42,9 +47,6 @@ struct NotificationsListView: View {
                 }
             }
         }
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
         .task {
             notifModel.profile = profile
             await notifModel.getNotifications()
@@ -54,6 +56,17 @@ struct NotificationsListView: View {
                 await notifModel.getNotifications()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #elseif os(macOS)
+        .background(
+            VisualEffectBlur(
+                material: .contentBackground,
+                blendingMode: .withinWindow
+            )
+        )
+        #endif
     }
     
     // MARK: - Empty View
