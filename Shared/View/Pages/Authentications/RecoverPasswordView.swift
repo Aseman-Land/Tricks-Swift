@@ -144,7 +144,7 @@ struct RecoverPasswordView: View {
                     .foregroundStyle(.indigo)
                     .padding()
                 
-                Text("Enter the code we have sent to your email and type your new password")
+                Text("Enter the **code** we have sent to **your email** and type your **new password**")
                     .font(.system(.title2, design: .monospaced))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
@@ -219,7 +219,7 @@ struct RecoverPasswordView: View {
                         .foregroundStyle(.green)
                         .padding()
                     
-                    Text("Success! Now login with your new password")
+                    Text("**Success!** Now login with your new password")
                         .font(.system(.title2, design: .monospaced))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
