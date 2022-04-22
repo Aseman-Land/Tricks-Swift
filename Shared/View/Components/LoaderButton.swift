@@ -26,6 +26,9 @@ struct LoaderButton<Content: View>: View {
             } else {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                    #if os(macOS)
+                    .scaleEffect(0.5)
+                    #endif
             }
         }
     }

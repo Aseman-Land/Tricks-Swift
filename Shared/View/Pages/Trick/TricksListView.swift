@@ -55,13 +55,13 @@ struct TricksListView<ProfileContent: View>: View {
                         ToolbarItem {
                             #if os(macOS)
                             LoaderButton(loading: $tricksListModel.isRefreshing) {
-                                    Label("Refresh", systemImage: "arrow.clockwise")
-                                } action: {
-                                    Task.init {
-                                        tricksListModel.isRefreshing = true
-                                        await tricksListModel.loadTricks()
-                                    }
+                                Label("Refresh", systemImage: "arrow.clockwise")
+                            } action: {
+                                Task.init {
+                                    tricksListModel.isRefreshing = true
+                                    await tricksListModel.loadTricks()
                                 }
+                            }
                             #endif
                         }
                     }

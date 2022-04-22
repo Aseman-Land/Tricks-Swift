@@ -101,7 +101,9 @@ struct NotificationRow_Previews: PreviewProvider {
                 NotificationRow(notif: Notif.mockCommentExample)
             }
             .navigationTitle("Notifications")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 }

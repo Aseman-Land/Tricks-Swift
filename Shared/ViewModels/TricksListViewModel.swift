@@ -15,6 +15,7 @@ class TricksListViewModel: ObservableObject {
     
     @Published var tricks: [Trick] = [Trick]()
     @Published var listStatus: ListStatus = .loading
+    @Published var isRefreshing: Bool = false
     
     private var service = TricksService()
     
@@ -31,6 +32,7 @@ class TricksListViewModel: ObservableObject {
         
         guard let profile = profile else {
             DispatchQueue.main.async {
+                self.isRefreshing = false
                 self.listStatus = .errorLoading("Failed to authorize")
             }
             return
@@ -51,6 +53,7 @@ class TricksListViewModel: ObservableObject {
             switch result {
             case .success(let tricksResult):
                 DispatchQueue.main.async {
+                    self.isRefreshing = false
                     self.tricks = tricksResult.result
                     self.listStatus = self.tricks.isEmpty ? .emptyList : .fullList
                 }
@@ -77,6 +80,7 @@ class TricksListViewModel: ObservableObject {
     
     func setErrorMessage(_ message: String) {
         DispatchQueue.main.async {
+            self.isRefreshing = false
             self.listStatus = .errorLoading(message)
         }
     }

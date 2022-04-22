@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ListStatus {
+enum ListStatus: Equatable {
     case loading
     case fullList
     case emptyList
