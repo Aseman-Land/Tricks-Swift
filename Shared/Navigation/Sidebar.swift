@@ -13,6 +13,8 @@ struct Sidebar: View {
     
     @EnvironmentObject var profile: MyProfileViewModel
     
+    @State var initPadding: CGFloat = 1
+    
     var body: some View {
         NavigationView {
             List {
@@ -31,7 +33,7 @@ struct Sidebar: View {
                     }
                 }
             }
-            .frame(minWidth: 130)
+            .frame(minWidth: 150, maxHeight: .infinity)
             .listStyle(.sidebar)
             .navigationTitle("Tricks")
             .toolbar {
@@ -44,7 +46,13 @@ struct Sidebar: View {
                 }
                 #endif
             }
+            .padding(.top, initPadding)
             .environmentObject(profile)
+            .task {
+                // There is glitch bug in Sidebar that the position of top of it is wrong
+                // We force it to resize itself with a little padding while showing the view
+                self.initPadding = 0
+            }
             
             Text("No selection")
         }
