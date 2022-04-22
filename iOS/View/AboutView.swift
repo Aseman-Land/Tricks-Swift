@@ -19,6 +19,7 @@ struct AboutView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(50.0)
+                    .frame(maxWidth: 350, maxHeight: 350)
                 
                 Text(Bundle.main.displayName ?? "")
                     .font(.title)
@@ -27,7 +28,7 @@ struct AboutView: View {
                 Spacer()
                 
                 VStack(spacing: 8.0) {
-                    Text("\(Bundle.main.displayName ?? "") \(Bundle.main.appVersion) (\(Bundle.main.appBundleVersion))")
+                    Text("Version \(Bundle.main.appVersion) (\(Bundle.main.appBundleVersion))")
                         .font(.caption)
                         .fontWeight(.light)
                 }

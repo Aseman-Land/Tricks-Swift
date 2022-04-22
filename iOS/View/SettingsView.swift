@@ -57,7 +57,7 @@ struct SettingsView: View {
             }
             
             Section {                
-                NavigationLink(destination: EmptyView()) {
+                NavigationLink(destination: AboutView()) {
                     SettingsItemView(
                         icon: "info.circle.fill",
                         color: .blue,
