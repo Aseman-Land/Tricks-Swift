@@ -155,32 +155,26 @@ struct SignupView: View {
             
             // MARK: - Login button
             ZStack(alignment: .center) {
-                if !authModel.loading {
-                    Button(action: {
-                        Task.init {
-                            await authModel.signup()
-                        }
-                    }){
-                        Text("Register")
-                            #if os(iOS)
-                            .foregroundColor(Color("AccentTextColor"))
-                            #endif
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: 200)
+                LoaderButton(loading: $authModel.loading) {
+                    Text("Register")
+                        #if os(iOS)
+                        .foregroundColor(Color("AccentTextColor"))
+                        #endif
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: 200)
+                } action: {
+                    Task.init {
+                        await authModel.signup()
                     }
-                    #if os(iOS)
-                    .buttonStyle(.borderedProminent)
-                    #elseif os(macOS)
-                    .buttonStyle(.bordered)
-                    #endif
-                    .controlSize(.large)
-                    .headerProminence(.increased)
-                    
-                } else {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
                 }
+                #if os(iOS)
+                .buttonStyle(.borderedProminent)
+                #elseif os(macOS)
+                .buttonStyle(.bordered)
+                #endif
+                .controlSize(.large)
+                .headerProminence(.increased)
             }
         }
     }

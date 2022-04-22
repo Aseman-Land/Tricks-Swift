@@ -102,34 +102,26 @@ struct LoginView: View {
             .padding()
             
             // MARK: - Login button
-            ZStack(alignment: .center) {
-                if !authModel.loading {
-                    Button(action: {
-                        Task.init {
-                            await authModel.login()
-                        }
-                    }){
-                        Text("Login")
-                            #if os(iOS)
-                            .foregroundColor(Color("AccentTextColor"))
-                            #endif
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: 200)
-                    }
+            LoaderButton(loading: $authModel.loading) {
+                Text("Login")
                     #if os(iOS)
-                    .buttonStyle(.borderedProminent)
-                    #elseif os(macOS)
-                    .buttonStyle(.bordered)
+                    .foregroundColor(Color("AccentTextColor"))
                     #endif
-                    .controlSize(.large)
-                    .headerProminence(.increased)
-                    
-                } else {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: 200)
+            } action: {
+                Task.init {
+                    await authModel.login()
                 }
             }
+            #if os(iOS)
+            .buttonStyle(.borderedProminent)
+            #elseif os(macOS)
+            .buttonStyle(.bordered)
+            #endif
+            .controlSize(.large)
+            .headerProminence(.increased)
             
             if authModel.errorMessage != "" {
                 Text(authModel.errorMessage)
