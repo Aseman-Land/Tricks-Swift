@@ -65,7 +65,7 @@ struct GlobalTrickItemDetail: Codable {
 // MARK: - Quote
 struct Quote: Codable {
     let trickID: Int
-    let quote: String
+    let quote: String?
     let user: UserResult
 
     enum CodingKeys: String, CodingKey {

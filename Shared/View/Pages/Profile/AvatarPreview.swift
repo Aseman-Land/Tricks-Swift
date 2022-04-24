@@ -69,7 +69,6 @@ struct AvatarPreview: View {
         .edgesIgnoringSafeArea(.all)
         #endif
         .preferredColorScheme(.dark)
-        
     }
 }
 
