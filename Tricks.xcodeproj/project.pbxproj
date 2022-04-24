@@ -147,6 +147,8 @@
 		C6F7D2C427E3C646001F0B54 /* Sharer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2C327E3C646001F0B54 /* Sharer.swift */; };
 		C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
 		C6FA15F627C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
+		C6FBB8E7281540A000ECCE77 /* AvatarPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */; };
+		C6FBB8E8281540A000ECCE77 /* AvatarPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -233,6 +235,7 @@
 		C6F7D2C127E3C602001F0B54 /* Sharer+Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sharer+Implementation.swift"; sourceTree = "<group>"; };
 		C6F7D2C327E3C646001F0B54 /* Sharer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharer.swift; sourceTree = "<group>"; };
 		C6FA15F427C0E6F9005CAD1A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,9 +274,9 @@
 		C61A875C2812B7EB00CA6257 /* Authentications */ = {
 			isa = PBXGroup;
 			children = (
-				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
 				C63C912E27BFCCD90022051C /* LoginView.swift */,
 				C61A875D2812C37A00CA6257 /* RecoverPasswordView.swift */,
+				C6FA15F427C0E6F9005CAD1A /* SignupView.swift */,
 			);
 			path = Authentications;
 			sourceTree = "<group>";
@@ -357,7 +360,6 @@
 			children = (
 				C6D1E2552800356400DFC60A /* Components */,
 				C6D1E2542800352300DFC60A /* Pages */,
-				C61A875928129FB400CA6257 /* CustomTextEditor.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -540,10 +542,10 @@
 			children = (
 				C61A875C2812B7EB00CA6257 /* Authentications */,
 				C605E124280E964A00C777DB /* Notifications */,
+				C6FBB8E52815408F00ECCE77 /* Profile */,
 				C6D1E253280034DA00DFC60A /* Trick */,
 				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
 				C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */,
-				C63C912A27BFC9100022051C /* ProfileView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -554,6 +556,7 @@
 				C64A97C927FB463500C7EE1A /* LoaderButton.swift */,
 				C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */,
 				C6B84D2427FCD34D00A9F734 /* SectionView.swift */,
+				C61A875928129FB400CA6257 /* CustomTextEditor.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -594,6 +597,15 @@
 				C6F7D2C327E3C646001F0B54 /* Sharer.swift */,
 			);
 			path = ShareSheet;
+			sourceTree = "<group>";
+		};
+		C6FBB8E52815408F00ECCE77 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */,
+				C63C912A27BFC9100022051C /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -744,6 +756,7 @@
 				C6F33A0628113F5A00AD7688 /* SettingsView.swift in Sources */,
 				C6799B5C280337CD00385799 /* TagsViewModel.swift in Sources */,
 				C6D1E2582800376500DFC60A /* HapticGenerator.swift in Sources */,
+				C6FBB8E7281540A000ECCE77 /* AvatarPreview.swift in Sources */,
 				C6799B6228033F1A00385799 /* TagsService.swift in Sources */,
 				C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C6B84D1C27FC86C800A9F734 /* TrickCodePreview.swift in Sources */,
@@ -790,6 +803,7 @@
 				C63C912327BFC6670022051C /* NavigationItem.swift in Sources */,
 				C629101627CE9DB000FD740E /* TricksEndpoint.swift in Sources */,
 				C6C0F82427C12EF20011F173 /* Tricks.swift in Sources */,
+				C6FBB8E8281540A000ECCE77 /* AvatarPreview.swift in Sources */,
 				C63C912627BFC8E80022051C /* TricksListView.swift in Sources */,
 				C6B84D2627FCD34D00A9F734 /* SectionView.swift in Sources */,
 				C6799B6328033F1A00385799 /* TagsService.swift in Sources */,

@@ -33,6 +33,9 @@ struct ProfileView: View {
             SettingsView()
                 .environmentObject(profile)
         }
+        .sheet(isPresented: $profileModel.showAvatarPreview) {
+            AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress ?? "")
+        }
         .toolbar {
             ToolbarItem {
                 if profileModel.userId == "me" {
@@ -43,6 +46,12 @@ struct ProfileView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        #elseif os(macOS)
+        .onChange(of: profileModel.showAvatarPreview) { _ in
+            AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress ?? "")
+                .frame(minWidth: 512, minHeight: 512)
+                .openInWindow(title: profileModel.userResult?.fullname ?? "", sender: self)
+        }
         #endif
     }
     
@@ -50,25 +59,32 @@ struct ProfileView: View {
     func UserView() -> some View {
         VStack(spacing: 12) {
             // MARK: - User avatar
-            ZStack {
-                Circle()
-                    .foregroundStyle(.ultraThickMaterial)
-                    .frame(width: 80, height: 80)
-                    .shadow(radius: 2)
-                LazyImage(source: profileModel.userResult?.avatarAddress ?? "") { state in
-                    if let image = state.image {
-                        image
-                    } else {
-                        Image(systemName: "person.fill")
-                            .font(.largeTitle)
-                            .foregroundColor(.secondary)
+            Button(action: {
+                profileModel.showAvatarPreview.toggle()
+            }, label: {
+                ZStack {
+                    Circle()
+                        .foregroundStyle(.ultraThickMaterial)
+                        .frame(width: 80, height: 80)
+                        .shadow(radius: 2)
+                    LazyImage(source: profileModel.userResult?.avatarAddress ?? "") { state in
+                        if let image = state.image {
+                            image
+                        } else {
+                            Image(systemName: "person.fill")
+                                .font(.largeTitle)
+                                .foregroundColor(.secondary)
+                        }
                     }
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 70, height: 70, alignment: .center)
+                    .clipShape(Circle())
                 }
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 70, height: 70, alignment: .center)
-                .clipShape(Circle())
-            }
+                .frame(width: 80, height: 80)
+                .padding()
+            })
             .frame(width: 80, height: 80)
+            .buttonStyle(.borderless)
             
             VStack {
                 // MARK: - User's name
