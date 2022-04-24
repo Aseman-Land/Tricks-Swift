@@ -33,7 +33,7 @@ struct ProfileView: View {
             SettingsView()
                 .environmentObject(profile)
         }
-        .sheet(isPresented: $profileModel.showAvatarPreview) {
+        .fullScreenCover(isPresented: $profileModel.showAvatarPreview) {
             AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress ?? "")
         }
         .toolbar {
@@ -49,8 +49,8 @@ struct ProfileView: View {
         #elseif os(macOS)
         .onChange(of: profileModel.showAvatarPreview) { _ in
             AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress ?? "")
-                .frame(minWidth: 512, minHeight: 512)
-                .openInWindow(title: profileModel.userResult?.fullname ?? "", sender: self)
+                .frame(minWidth: 512, minHeight: 484)
+                .openInWindow(title: profileModel.userResult?.fullname ?? "", sender: self, transparentTitlebar: true)
         }
         #endif
     }
