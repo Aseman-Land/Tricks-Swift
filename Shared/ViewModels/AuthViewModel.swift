@@ -16,10 +16,10 @@ class AuthViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var fullname: String = ""
     
+    @Published var invitationCode: String = ""
+    
     @Published var loading: Bool = false
     @Published var errorMessage: String = ""
-    
-    @Published var userCreated: Bool = false
     
     @Published var profile: MyProfileViewModel? = nil
     
@@ -74,26 +74,23 @@ class AuthViewModel: ObservableObject {
         }
         
         Task(priority: .background) {
-            let result = try await service.register(username: username, password: password, email: email, fullname: fullname)
+            let result = try await service.register(
+                username: username,
+                password: password,
+                email: email,
+                fullname: fullname,
+                invitationCode: invitationCode
+            )
             
             switch result {
             case .success(let responseSuccess):
                 if responseSuccess.status {
-                    DispatchQueue.main.async {
-                        self.userCreated = true
-                    }
                     await login()
                 } else {
-                    DispatchQueue.main.async {
-                        self.userCreated = false
-                    }
                     setErrorMessage("Failed to register, Try again")
                 }
                 
             case .failure(let error):
-                DispatchQueue.main.async {
-                    self.userCreated = false
-                }
                 switch error {
                 case .decode:
                     setErrorMessage("Failed to execute, try later")
@@ -109,24 +106,21 @@ class AuthViewModel: ObservableObject {
                     setErrorMessage("Network error, Try again")
                 }
             }
-            
-            DispatchQueue.main.async {
-                self.loading = false
-            }
         }
     }
     
     func loginErrorMessage(_ data: Data) async throws -> String {
         do {
-            let message = try JSONDecoder().decode(LoginResult.self, from: data).message
+            let message = try JSONDecoder().decode(ResponseFail.self, from: data).message ?? "Failed to Create account, Try again"
             return message
         } catch {
-            return "Failed to login, Try again"
+            return "Failed to Create account, Try again"
         }
     }
     
     func setErrorMessage(_ message: String) {
         DispatchQueue.main.async {
+            self.loading = false
             self.errorMessage = message
         }
     }

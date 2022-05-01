@@ -18,7 +18,8 @@ protocol AuthServiceable {
         username: String,
         password: String,
         email: String,
-        fullname: String
+        fullname: String,
+        invitationCode: String
     ) async throws -> Result<ResponseSuccess, RequestError>
     
     func logout(
@@ -70,14 +71,16 @@ struct AuthService: HTTPClient, AuthServiceable {
         username: String,
         password: String,
         email: String,
-        fullname: String
+        fullname: String,
+        invitationCode: String
     ) async throws -> Result<ResponseSuccess, RequestError> {
         return try await sendRequest(
             endpoint: AuthEndpoint.register(
                 username: username,
                 password: password,
                 email: email,
-                fullname: fullname
+                fullname: fullname,
+                invitationCode: invitationCode
             ),
             responseModel: ResponseSuccess.self
         )

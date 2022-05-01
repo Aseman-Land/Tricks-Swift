@@ -123,13 +123,28 @@ struct SignupView: View {
                         .focused($focusedField, equals: .fullname)
                         .submitLabel(.done)
                         .onSubmit {
+                            focusedField = .invitationCode
+                        }
+                        .padding()
+                } icon: {
+                    Image(systemName: "signature")
+                }
+                
+                Label {
+                    // MARK: - Username Field
+                    TextField("Invitation Code", text: $authModel.invitationCode)
+                        .frame(maxWidth: 300)
+                        .disabled(authModel.loading)
+                        .focused($focusedField, equals: .invitationCode)
+                        .submitLabel(.done)
+                        .onSubmit {
                             Task.init {
                                 await authModel.signup()
                             }
                         }
                         .padding()
                 } icon: {
-                    Image(systemName: "signature")
+                    Image(systemName: "number")
                 }
             }
             .disableAutocorrection(true)
@@ -154,27 +169,31 @@ struct SignupView: View {
             }
             
             // MARK: - Login button
-            ZStack(alignment: .center) {
-                LoaderButton(loading: $authModel.loading) {
-                    Text("Register")
-                        #if os(iOS)
-                        .foregroundColor(Color("AccentTextColor"))
-                        #endif
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: 200)
-                } action: {
-                    Task.init {
-                        await authModel.signup()
-                    }
+            LoaderButton(loading: $authModel.loading) {
+                Text("Register")
+                    #if os(iOS)
+                    .foregroundColor(Color("AccentTextColor"))
+                    #endif
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: 200)
+            } action: {
+                Task.init {
+                    await authModel.signup()
                 }
-                #if os(iOS)
-                .buttonStyle(.borderedProminent)
-                #elseif os(macOS)
-                .buttonStyle(.bordered)
-                #endif
-                .controlSize(.large)
-                .headerProminence(.increased)
+            }
+            #if os(iOS)
+            .buttonStyle(.borderedProminent)
+            #elseif os(macOS)
+            .buttonStyle(.bordered)
+            #endif
+            .controlSize(.large)
+            .headerProminence(.increased)
+            
+            if authModel.errorMessage != "" {
+                Text(authModel.errorMessage)
+                    .foregroundColor(.red)
+                    .shadow(radius: 1)
             }
         }
     }
@@ -197,7 +216,7 @@ struct SignupView: View {
 }
 
 enum SignupField: Hashable {
-    case username, password, repeatPassword, email, fullname
+    case username, password, repeatPassword, email, fullname, invitationCode
 }
 
 struct SignupView_Previews: PreviewProvider {

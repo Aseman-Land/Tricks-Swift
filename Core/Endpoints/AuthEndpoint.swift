@@ -19,7 +19,8 @@ enum AuthEndpoint {
         username: String,
         password: String,
         email: String,
-        fullname: String
+        fullname: String,
+        invitationCode: String
     )
     
     case logout(
@@ -56,7 +57,7 @@ extension AuthEndpoint: Endpoint {
         switch self {
         case .login(_, _, _):
             return "/api/v1/auth/login"
-        case .register(_, _, _, _):
+        case .register(_, _, _, _, _):
             return "/api/v1/users"
         case .logout(_, _):
             return "/api/v1/auth/logout"
@@ -74,7 +75,7 @@ extension AuthEndpoint: Endpoint {
     var method: HTTPMethod {
         switch self {
         case .login(_, _, _),
-             .register(_, _, _, _),
+             .register(_, _, _, _, _),
              .logout(_, _),
              .forgotPassword(_),
              .recoverPassword(_, _, _):
@@ -110,13 +111,14 @@ extension AuthEndpoint: Endpoint {
                 //"fcm_token": Profile().getFCMToken
             ]
         
-        case .register(let username, let password, let email, let fullname):
+        case .register(let username, let password, let email, let fullname, let invitationCode):
             let securedPassword = SecureKey(password: password).securedKey
             return [
                 "username": username,
                 "password": securedPassword,
                 "email": email,
-                "fullname": fullname
+                "fullname": fullname,
+                "invitation_code": invitationCode
             ]
             
         case .logout(_, let fcmToken):
