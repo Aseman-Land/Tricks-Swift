@@ -66,6 +66,42 @@ enum UsersEndpoint {
         userID: String,
         token: String
     )
+    
+    // MARK: - Avatar
+    case updateAvatar(
+        avatar: Data,
+        token: String
+    )
+    
+    // MARK: - Blocks
+    case blockSomeone(
+        userID: String,
+        token: String
+    )
+    
+    case unblockSomeone(
+        userID: String,
+        token: String
+    )
+    
+    // MARK: - Mutes
+    case muteSomeone(
+        userID: String,
+        token: String
+    )
+    
+    case unmuteSomeone(
+        userID: String,
+        token: String
+    )
+    
+    // MARK: - Reports
+    case reportSomeone(
+        userID: String,
+        message: String,
+        reportType: Int,
+        token: String
+    )
 }
 
 extension UsersEndpoint: Endpoint {
@@ -95,6 +131,22 @@ extension UsersEndpoint: Endpoint {
             return "/api/v1/users/me/followings"
         case .unfollowSomeone(let userID, _):
             return "/api/v1/users/me/followings/\(userID)"
+            
+        case .updateAvatar(_, _):
+            return "/api/v1/users/me/avatar"
+            
+        case .blockSomeone(_, _):
+            return "/api/v1/users/me/blocks"
+        case .unblockSomeone(let userID, _):
+            return "/api/v1/users/me/blocks/\(userID)"
+            
+        case .muteSomeone(_, _):
+            return "/api/v1/users/me/mutes"
+        case .unmuteSomeone(let userID, _):
+            return "/api/v1/users/me/mutes/\(userID)"
+            
+        case .reportSomeone(let userID, _, _, _):
+            return "/api/v1/users/\(userID)/reports"
         }
     }
 
@@ -108,12 +160,18 @@ extension UsersEndpoint: Endpoint {
              .getMyFollowings(_),
              .getUserFollowings(_, _):
             return .get
-        case .followSomeone(_, _):
+        case .followSomeone(_, _),
+             .blockSomeone(_, _),
+             .muteSomeone(_, _),
+             .reportSomeone(_, _, _, _):
             return .post
-        case .editMe(_, _, _, _, _):
+        case .editMe(_, _, _, _, _),
+             .updateAvatar(_, _):
             return .patch
         case .deleteMe(_),
-             .unfollowSomeone(_, _):
+             .unfollowSomeone(_, _),
+             .unblockSomeone(_, _),
+             .unmuteSomeone(_, _):
             return .delete
         }
     }
@@ -130,7 +188,13 @@ extension UsersEndpoint: Endpoint {
              .getMyFollowings(let token),
              .getUserFollowings(_, let token),
              .followSomeone(_, let token),
-             .unfollowSomeone(_, let token):
+             .unfollowSomeone(_, let token),
+             .updateAvatar(_, let token),
+             .blockSomeone(_, let token),
+             .unblockSomeone(_, let token),
+             .muteSomeone(_, let token),
+             .unmuteSomeone(_, let token),
+             .reportSomeone(_, _, _, token: let token):
             
             return [
                 "Authorization": token,
@@ -183,9 +247,17 @@ extension UsersEndpoint: Endpoint {
 
             return editBody
             
-        case .followSomeone(let userID, _):
+        case .followSomeone(let userID, _),
+             .blockSomeone(let userID, _),
+             .muteSomeone(let userID, _):
             return [
                 "user_id": userID
+            ]
+            
+        case .reportSomeone(_, let message, let reportType, _):
+            return [
+                "message": message,
+                "report_type": reportType
             ]
         default:
             return nil
