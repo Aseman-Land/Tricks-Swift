@@ -152,6 +152,10 @@ extension TricksEndpoint: Endpoint {
         }
     }
     
+    var urlParams: [URLQueryItem]? {
+        return nil
+    }
+    
     var body: [String : Any]? {
         switch self {
         case .globalTricks(_):

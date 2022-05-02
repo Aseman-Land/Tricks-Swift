@@ -44,6 +44,10 @@ extension CodeHighlighterEndpoint: Endpoint {
         }
     }
     
+    var urlParams: [URLQueryItem]? {
+        return nil
+    }
+    
     var body: [String : Any]? {
         return nil
     }

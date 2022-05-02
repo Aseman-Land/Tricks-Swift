@@ -84,6 +84,10 @@ extension TagsEndpoint: Endpoint {
         }
     }
     
+    var urlParams: [URLQueryItem]? {
+        return nil
+    }
+    
     var body: [String : Any]? {
         switch self {
             case .globalTags(_),
