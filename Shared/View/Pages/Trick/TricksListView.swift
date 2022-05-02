@@ -29,8 +29,13 @@ struct TricksListView<ProfileContent: View>: View {
         ZStack(alignment: .center) {
             switch tricksListModel.listStatus {
             case .loading:
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                VStack {
+                    profileContent
+                    Spacer()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                    Spacer()
+                }
             case .fullList:
                 GeometryReader { proxy in
                     ScrollRefreshable {
@@ -67,12 +72,22 @@ struct TricksListView<ProfileContent: View>: View {
                     }
                 }
             case .emptyList:
-                EmptyList()
+                VStack {
+                    profileContent
+                    Spacer()
+                    EmptyList()
+                    Spacer()
+                }
             case .errorLoading(let message):
-                NetworkError(title: message) {
-                    Task.init {
-                        await tricksListModel.loadTricks()
+                VStack {
+                    profileContent
+                    Spacer()
+                    NetworkError(title: message) {
+                        Task.init {
+                            await tricksListModel.loadTricks()
+                        }
                     }
+                    Spacer()
                 }
             }
         }
