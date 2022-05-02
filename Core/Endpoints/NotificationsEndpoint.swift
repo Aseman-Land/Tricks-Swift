@@ -8,15 +8,22 @@
 import Foundation
 
 enum NotificationsEndpoint {
-    case getNotifications(token: String)
+    case getNotifications(
+        token: String,
+        offset: Int? = nil,
+        limit: Int? = nil
+    )
     
-    case dismissNotifications(until: String, token: String)
+    case dismissNotifications(
+        until: String,
+        token: String
+    )
 }
 
 extension NotificationsEndpoint: Endpoint {
     var path: String {
         switch self {
-        case .getNotifications(_):
+        case .getNotifications(_, _, _):
             return "/api/v1/notifications"
         case .dismissNotifications(_, _):
             return "/api/v1/notifications/dismiss"
@@ -25,7 +32,7 @@ extension NotificationsEndpoint: Endpoint {
     
     var method: HTTPMethod {
         switch self {
-        case .getNotifications(_):
+        case .getNotifications(_, _, _):
             return .get
         case .dismissNotifications(_, _):
             return .post
@@ -34,7 +41,8 @@ extension NotificationsEndpoint: Endpoint {
     
     var header: [String : String]? {
         switch self {
-        case .getNotifications(let token), .dismissNotifications(_, let token):
+        case .getNotifications(let token, _, _),
+             .dismissNotifications(_, let token):
             return [
                 "Authorization": token,
                 "Content-Type":"application/json; charset=utf-8",
@@ -43,12 +51,28 @@ extension NotificationsEndpoint: Endpoint {
     }
     
     var urlParams: [URLQueryItem]? {
-        return nil
+        switch self {
+        case .getNotifications(_, let offset, let limit):
+            var queryItems = [URLQueryItem]()
+            
+            if let offset = offset {
+                queryItems.append(URLQueryItem(name: "offset", value: String(offset)))
+            }
+            
+            if let limit = limit {
+                queryItems.append(URLQueryItem(name: "limit", value: String(limit)))
+            }
+            
+            return queryItems
+        default:
+            return nil
+        }
+        
     }
     
     var body: [String : Any]? {
         switch self {
-        case .getNotifications(_):
+        case .getNotifications(_, _, _):
             return nil
         case .dismissNotifications(let until, _):
             return ["until": until]
