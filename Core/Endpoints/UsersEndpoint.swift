@@ -8,6 +8,7 @@
 import Foundation
 
 enum UsersEndpoint {
+    // MARK: - Global
     case getUser(
         userID: String,
         token: String
@@ -35,6 +36,36 @@ enum UsersEndpoint {
      case deleteMe(
         token: String
      )
+    
+    // MARK: - Followers
+    case getMyFollowers(
+        token: String
+    )
+    
+    case getUserFollowers(
+        userID: String,
+        token: String
+    )
+    
+    // MARK: - Followings
+    case getMyFollowings(
+        token: String
+    )
+    
+    case getUserFollowings(
+        userID: String,
+        token: String
+    )
+    
+    case followSomeone(
+        userID: String,
+        token: String
+    )
+    
+    case unfollowSomeone(
+        userID: String,
+        token: String
+    )
 }
 
 extension UsersEndpoint: Endpoint {
@@ -50,6 +81,20 @@ extension UsersEndpoint: Endpoint {
             return "/api/v1/users/me"
         case .deleteMe(_):
             return "/api/v1/users/me"
+            
+        case .getMyFollowers(_):
+            return "/api/v1/users/me/followers"
+        case .getUserFollowers(let userID, _):
+            return "/api/v1/users/\(userID)/followers"
+            
+        case .getMyFollowings(_):
+            return "/api/v1/users/me/followings"
+        case .getUserFollowings(let userID, _):
+            return "/api/v1/users/\(userID)/followings"
+        case .followSomeone(_, _):
+            return "/api/v1/users/me/followings"
+        case .unfollowSomeone(let userID, _):
+            return "/api/v1/users/me/followings/\(userID)"
         }
     }
 
@@ -57,11 +102,18 @@ extension UsersEndpoint: Endpoint {
         switch self {
         case .getUser(_, _),
              .searchUsers(_, _, _, _),
-             .getMe(_):
+             .getMe(_),
+             .getMyFollowers(_),
+             .getUserFollowers(_, _),
+             .getMyFollowings(_),
+             .getUserFollowings(_, _):
             return .get
+        case .followSomeone(_, _):
+            return .post
         case .editMe(_, _, _, _, _):
             return .patch
-        case .deleteMe(_):
+        case .deleteMe(_),
+             .unfollowSomeone(_, _):
             return .delete
         }
     }
@@ -72,7 +124,14 @@ extension UsersEndpoint: Endpoint {
              .getMe(let token),
              .searchUsers(_, let token, _, _),
              .editMe(_, _, _, _, let token),
-             .deleteMe(let token):
+             .deleteMe(let token),
+             .getMyFollowers(let token),
+             .getUserFollowers(_, let token),
+             .getMyFollowings(let token),
+             .getUserFollowings(_, let token),
+             .followSomeone(_, let token),
+             .unfollowSomeone(_, let token):
+            
             return [
                 "Authorization": token,
                 "Content-Type":"application/json; charset=utf-8",
@@ -124,6 +183,10 @@ extension UsersEndpoint: Endpoint {
 
             return editBody
             
+        case .followSomeone(let userID, _):
+            return [
+                "user_id": userID
+            ]
         default:
             return nil
         }
