@@ -73,8 +73,16 @@ struct NotificationsListView: View {
     @ViewBuilder
     func EmptyList() -> some View {
         VStack(spacing: 12) {
-            Image(systemName: "eyes.inverse")
-                .font(.custom("system", size: 150))
+            ZStack {
+                Image(systemName: "bell.fill")
+                    .font(.custom("system", size: 150))
+                    .foregroundColor(.yellow)
+                
+                Image(systemName: "eyes.inverse")
+                    .font(.custom("system", size: 50))
+                    .foregroundColor(.white)
+            }
+            .opacity(0.60)
             
             Text("Great, No Notification!")
                 .font(.title)
@@ -88,13 +96,11 @@ struct NotificationsListView: View {
     
     func NetworkError(title: String, action: @escaping () -> Void) -> some View {
         VStack {
-            ZStack(alignment: .bottomTrailing) {
-                Image(systemName: "network")
-                    .font(.custom("system", size: 150))
-                
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .font(.largeTitle)
-            }
+            Image(systemName: "pc")
+                .font(.custom("system", size: 150))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.accentColor)
+                .opacity(0.60)
             
             Text(title)
                 .font(.title)

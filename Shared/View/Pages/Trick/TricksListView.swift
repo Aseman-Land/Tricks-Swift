@@ -132,6 +132,7 @@ struct TricksListView<ProfileContent: View>: View {
                 ZStack {
                     Image(systemName: "macwindow")
                         .font(.custom("system", size: 150))
+                        .symbolRenderingMode(.multicolor)
                     
                     Text("404")
                         .font(.system(.largeTitle, design: .monospaced))
@@ -146,18 +147,17 @@ struct TricksListView<ProfileContent: View>: View {
             .lineLimit(1)
             .minimumScaleFactor(0.5)
             .foregroundStyle(.secondary)
+            .opacity(0.75)
         }
     }
     
     func NetworkError(title: String, action: @escaping () -> Void) -> some View {
         VStack {
-            ZStack(alignment: .bottomTrailing) {
-                Image(systemName: "network")
-                    .font(.custom("system", size: 150))
-                
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .font(.largeTitle)
-            }
+            Image(systemName: "pc")
+                .font(.custom("system", size: 150))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.accentColor)
+                .opacity(0.60)
             
             Text(title)
                 .font(.title)
