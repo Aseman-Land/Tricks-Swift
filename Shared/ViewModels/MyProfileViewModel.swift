@@ -22,7 +22,8 @@ class MyProfileViewModel: ObservableObject {
     @AppStorage("username") private var storageUsername = ""
     @AppStorage("avatarAddress") private var storageAvatarAddress = ""
     
-    private var service = AuthService()
+    private var authService = AuthService()
+    private var usersService = UsersService()
     
     init() {
         let keychain = Keychain(service: AppService.apiKey)
@@ -73,7 +74,7 @@ class MyProfileViewModel: ObservableObject {
         if userToken == "" { return }
         
         Task(priority: .background) {
-            let result = try await service.getUser(userID: "me" ,token: userToken)
+            let result = try await usersService.getUser(userID: "me" ,token: userToken)
             
             switch result {
             case .success(let result):
@@ -102,7 +103,7 @@ class MyProfileViewModel: ObservableObject {
         errorMessage = ""
         
         Task(priority: .background) {
-            let result = try await service.logout(token: userToken ,fcmToken: nil)
+            let result = try await authService.logout(token: userToken ,fcmToken: nil)
             
             switch result {
             case .success(let result):

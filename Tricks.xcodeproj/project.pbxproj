@@ -30,6 +30,10 @@
 		C629101F27CEAF4400FD740E /* TrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TrickView.swift */; };
 		C62A29F92802C3F20056F8D5 /* ScrollRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */; };
 		C62A29FA2802D2DA0056F8D5 /* ScrollRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */; };
+		C63886542820307800E894D7 /* UsersEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63886532820307800E894D7 /* UsersEndpoint.swift */; };
+		C63886552820307800E894D7 /* UsersEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63886532820307800E894D7 /* UsersEndpoint.swift */; };
+		C63886572820440500E894D7 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63886562820440500E894D7 /* UsersService.swift */; };
+		C63886582820440500E894D7 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63886562820440500E894D7 /* UsersService.swift */; };
 		C63930A7280F1D4F00E9E1DB /* NotificationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63930A6280F1D4F00E9E1DB /* NotificationsEndpoint.swift */; };
 		C63930A8280F1D4F00E9E1DB /* NotificationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63930A6280F1D4F00E9E1DB /* NotificationsEndpoint.swift */; };
 		C63930AA280F211500E9E1DB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63930A9280F211500E9E1DB /* NotificationService.swift */; };
@@ -170,6 +174,8 @@
 		C629101727CEA36800FD740E /* TricksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksService.swift; sourceTree = "<group>"; };
 		C629101D27CEAF4400FD740E /* TrickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickView.swift; sourceTree = "<group>"; };
 		C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollRefreshable.swift; sourceTree = "<group>"; };
+		C63886532820307800E894D7 /* UsersEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersEndpoint.swift; sourceTree = "<group>"; };
+		C63886562820440500E894D7 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		C63930A6280F1D4F00E9E1DB /* NotificationsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsEndpoint.swift; sourceTree = "<group>"; };
 		C63930A9280F211500E9E1DB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		C63930AC280F262500E9E1DB /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
@@ -439,6 +445,7 @@
 				C63930A6280F1D4F00E9E1DB /* NotificationsEndpoint.swift */,
 				C6799B5E28033AA100385799 /* TagsEndpoint.swift */,
 				C629101427CE9DB000FD740E /* TricksEndpoint.swift */,
+				C63886532820307800E894D7 /* UsersEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -468,6 +475,7 @@
 				C63930A9280F211500E9E1DB /* NotificationService.swift */,
 				C6799B6128033F1A00385799 /* TagsService.swift */,
 				C629101727CEA36800FD740E /* TricksService.swift */,
+				C63886562820440500E894D7 /* UsersService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -788,9 +796,11 @@
 				C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */,
 				C6F7D2C027E3C5F1001F0B54 /* ShareSheet.swift in Sources */,
 				C63930A7280F1D4F00E9E1DB /* NotificationsEndpoint.swift in Sources */,
+				C63886542820307800E894D7 /* UsersEndpoint.swift in Sources */,
 				C6B143D827DCC27F00AE777E /* ProfileViewModel.swift in Sources */,
 				C63C912827BFC9090022051C /* NotificationsListView.swift in Sources */,
 				C6C0F82927C12EF20011F173 /* GlobalResponse.swift in Sources */,
+				C63886572820440500E894D7 /* UsersService.swift in Sources */,
 				C6F7D2BC27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift in Sources */,
 				C67D8A0227C14A70001E0E56 /* User.swift in Sources */,
 				C6F1B72627E64B690008EFBE /* TrickViewModel.swift in Sources */,
@@ -822,6 +832,7 @@
 				C67D8A0627C14ABD001E0E56 /* AppService.swift in Sources */,
 				C6799B5D280337CD00385799 /* TagsViewModel.swift in Sources */,
 				C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */,
+				C63886582820440500E894D7 /* UsersService.swift in Sources */,
 				C6F7D2B927E3C485001F0B54 /* ShareSheet.swift in Sources */,
 				C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */,
 				C6F1B72727E64B690008EFBE /* TrickViewModel.swift in Sources */,
@@ -830,6 +841,7 @@
 				C6D1013B27C7E13A0087235E /* AuthService.swift in Sources */,
 				C6018F0F27FAF51A00DF8FED /* View+Extension.swift in Sources */,
 				C6CDBBB327CA1068008BFF5E /* HTTPMethod.swift in Sources */,
+				C63886552820307800E894D7 /* UsersEndpoint.swift in Sources */,
 				C629101927CEA36800FD740E /* TricksService.swift in Sources */,
 				C63930AB280F211500E9E1DB /* NotificationService.swift in Sources */,
 				C64A97C827FB2F6A00C7EE1A /* AddTrickView.swift in Sources */,

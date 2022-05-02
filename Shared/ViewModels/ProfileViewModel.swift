@@ -18,7 +18,7 @@ class ProfileViewModel: ObservableObject {
     @Published var showSettings: Bool = false
     @Published var showAvatarPreview: Bool = false
     
-    private var service = AuthService()
+    private var service = UsersService()
     
     init(userId: String) {
         self.userId = userId

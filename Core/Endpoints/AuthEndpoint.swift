@@ -37,19 +37,6 @@ enum AuthEndpoint {
         code: String,
         newPassword: String
     )
-    
-    case getUser(
-        userID: String,
-        token: String
-    )
-    
-    case editMe(
-        username: String?,
-        fullname: String?,
-        password: String?,
-        current_password: String?,
-        token: String
-    )
 }
 
 extension AuthEndpoint: Endpoint {
@@ -65,33 +52,16 @@ extension AuthEndpoint: Endpoint {
             return "/api/v1/auth/forget-password"
         case .recoverPassword(_, _, _):
             return "/api/v1/auth/forget-password/recover"
-        case .getUser(let userID, _):
-            return "/api/v1/users/\(userID)"
-        case .editMe(_, _, _, _, _):
-            return "/api/v1/users/me"
         }
     }
     
     var method: HTTPMethod {
-        switch self {
-        case .login(_, _, _),
-             .register(_, _, _, _, _),
-             .logout(_, _),
-             .forgotPassword(_),
-             .recoverPassword(_, _, _):
-            return .post
-        case .getUser(_, _):
-            return .get
-        case .editMe(_, _, _, _, _):
-            return .patch
-        }
+        return .post
     }
     
     var header: [String : String]? {
         switch self {
-        case .logout(let token, _),
-             .getUser(_, let token),
-             .editMe(_, _, _, _, let token):
+        case .logout(let token, _):
             return [
                 "Authorization": token,
                 "Content-Type":"application/json; charset=utf-8",
@@ -142,30 +112,6 @@ extension AuthEndpoint: Endpoint {
                 "code": code,
                 "new_password": securedPassword
             ]
-            
-        case .getUser(_, _):
-            return nil
-            
-        case .editMe(let username , let fullname, let password, let current_password, _):
-            var editBody = [String : String]()
-            
-            if let username = username {
-                editBody["username"] = username
-            }
-            
-            if let fullname = fullname {
-                editBody["fullname"] = fullname
-            }
-            
-            if let password = password {
-                editBody["password"] = password
-            }
-            
-            if let current_password = current_password {
-                editBody["current_password"] = current_password
-            }
-            
-            return editBody
         }
     }
 }
