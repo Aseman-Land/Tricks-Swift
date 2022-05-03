@@ -9,21 +9,21 @@ import SwiftUI
 import NukeUI
 
 struct AccountSettingsView: View {
+    @StateObject var accountModel = AccountSettingsViewModel()
+    
     @EnvironmentObject var profile: MyProfileViewModel
     
-    @AppStorage("fullname") private var storageFullname = ""
-    @AppStorage("username") private var storageUsername = ""
     @AppStorage("avatarAddress") private var storageAvatarAddress = ""
     
     var body: some View {
         if profile.isUserLoggedIn {
             Form {
-                HStack {
+                HStack(alignment: .top) {
                     // MARK: - Profile avatar
                     ZStack {
                         Circle()
                             .foregroundStyle(.white)
-                            .frame(width: 40, height: 40)
+                            .frame(width: 75, height: 75)
                         LazyImage(source: storageAvatarAddress) { state in
                             if let image = state.image {
                                 image
@@ -35,52 +35,100 @@ struct AccountSettingsView: View {
                         }
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
-                        .frame(width: 38, height: 38, alignment: .center)
+                        .frame(width: 66, height: 66, alignment: .center)
                         .padding(.all, 2)
                     }
-                    .frame(width: 40, height: 40)
+                    .frame(width: 75, height: 75)
                     .shadow(radius: 1)
-                    
-                    
-                    VStack(alignment: .leading) {
-                        // MARK: - Profile Fullname
-                        Text(storageFullname)
-                            .font(.title3)
-                            .foregroundStyle(.primary)
+                    .padding()
+                    VStack {
+                        Section("General Details") {
+                            TextField("Full name", text: $accountModel.fullname)
+                            
+                            TextField("Username", text: $accountModel.username)
+                        }
+                        .textFieldStyle(.roundedBorder)
                         
-                        // MARK: - Profile username
-                        Text("@\(storageUsername)")
-                            .font(.body)
-                            .fontWeight(.light)
-                            .foregroundStyle(.secondary)
-                    }
-                    
-                    Spacer()
-                    
-                    // MARK: - Logout
-                    HStack {
-                        Text(profile.errorMessage)
-                            .foregroundColor(.red)
+                        Divider()
                         
-                        ZStack {
-                            if !profile.loading {
-                                Button("Logout", role: .destructive) {
-                                    Task.init {
-                                        await profile.logout()
+                        Section("Security") {
+                            SecureField("Current Password", text: $accountModel.currentPass)
+                            
+                            SecureField("New Password", text: $accountModel.newPass)
+                            
+                            SecureField("Repeat New Password", text: $accountModel.repeatNewPass)
+                        }
+                        .textFieldStyle(.roundedBorder)
+                        
+                        Divider()
+                        
+                        Section("Other") {
+                            TextField("Bio", text: $accountModel.bio)
+                        }
+                        .textFieldStyle(.roundedBorder)
+                        
+                        HStack {
+                            Spacer()
+                            VStack {
+                                ZStack {
+                                    if !accountModel.loading {
+                                        Button("Save Changes") {
+                                            Task.init {
+                                                await accountModel.updateProfile()
+                                            }
+                                        }
+                                        .buttonStyle(.bordered)
+                                        .controlSize(.large)
+                                        .headerProminence(.increased)
+                                    } else {
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
                                     }
                                 }
-                                .buttonStyle(.bordered)
-                                .controlSize(.large)
-                                .headerProminence(.increased)
-                                .padding()
-                            } else {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                                .padding(.vertical)
+                                
+                                if accountModel.errorMessage != "" {
+                                    Text(accountModel.errorMessage)
+                                        .foregroundColor(.red)
+                                }
                             }
                         }
+                        .padding(.top)
+                        
+                        Divider()
                     }
                 }
-                .padding()
+                
+                // MARK: - Logout
+                VStack {
+                    ZStack {
+                        if !profile.loading {
+                            Button("Logout", role: .destructive) {
+                                Task.init {
+                                    await profile.logout()
+                                }
+                            }
+                            .foregroundColor(.red)
+                            .buttonStyle(.bordered)
+                            .controlSize(.large)
+                            .headerProminence(.increased)
+                        } else {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                        }
+                    }
+                    .padding(.vertical)
+                    
+                    if profile.errorMessage != "" {
+                        Text(profile.errorMessage)
+                            .foregroundColor(.red)
+                    }
+                }
+            }
+            .padding()
+            .task {
+                accountModel.profile = profile
+                accountModel.fillFields()
             }
         } else {
             Text("You are not logged in")

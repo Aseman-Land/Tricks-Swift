@@ -71,6 +71,10 @@
 		C64E784827C226A300B26527 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784627C226A300B26527 /* Endpoint.swift */; };
 		C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784927C2271A00B26527 /* AuthEndpoint.swift */; };
 		C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E784927C2271A00B26527 /* AuthEndpoint.swift */; };
+		C65D3C7F28213355002EC14C /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D3C7E28213355002EC14C /* AccountSettingsViewModel.swift */; };
+		C65D3C8128215AAF002EC14C /* SecureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D3C8028215AAF002EC14C /* SecureKey.swift */; };
+		C65D3C8228215AAF002EC14C /* SecureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D3C8028215AAF002EC14C /* SecureKey.swift */; };
+		C65D3C8328218107002EC14C /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D3C7E28213355002EC14C /* AccountSettingsViewModel.swift */; };
 		C667D8552813256500018E6A /* RecoverPaswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */; };
 		C667D8562813256500018E6A /* RecoverPaswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */; };
 		C66BF77A2815A7D500171BDA /* ImagePreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */; };
@@ -198,6 +202,8 @@
 		C64A97C927FB463500C7EE1A /* LoaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderButton.swift; sourceTree = "<group>"; };
 		C64E784627C226A300B26527 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		C64E784927C2271A00B26527 /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
+		C65D3C7E28213355002EC14C /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
+		C65D3C8028215AAF002EC14C /* SecureKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureKey.swift; sourceTree = "<group>"; };
 		C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPaswordViewModel.swift; sourceTree = "<group>"; };
 		C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewerView.swift; sourceTree = "<group>"; };
 		C6748D6B27C015110023251B /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
@@ -356,10 +362,11 @@
 		C63C910427BFC5BA0022051C /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				C6D9FF3A27D173ED0000CB4A /* Extensions */,
 				C6748D6A27C015090023251B /* Components */,
+				C6D9FF3A27D173ED0000CB4A /* Extensions */,
 				C67D89FF27C139AE001E0E56 /* Resources */,
 				C629100A27CE8E5100FD740E /* View */,
+				C65D3C7C28213330002EC14C /* ViewModel */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -407,6 +414,7 @@
 		C63C912027BFC65A0022051C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C65D3C7E28213355002EC14C /* AccountSettingsViewModel.swift */,
 				C63D793627D27882000D7442 /* AddQuoteViewModel.swift */,
 				C69D74AC27C0D9730060432F /* AuthViewModel.swift */,
 				C6C0F81F27C12EF20011F173 /* MyProfileViewModel.swift */,
@@ -450,6 +458,13 @@
 			path = Endpoints;
 			sourceTree = "<group>";
 		};
+		C65D3C7C28213330002EC14C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		C6748D6A27C015090023251B /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +488,7 @@
 				C6D1013927C7E13A0087235E /* AuthService.swift */,
 				C6B84D1027FC7D6800A9F734 /* CodeHighlighterService.swift */,
 				C63930A9280F211500E9E1DB /* NotificationService.swift */,
+				C65D3C8028215AAF002EC14C /* SecureKey.swift */,
 				C6799B6128033F1A00385799 /* TagsService.swift */,
 				C629101727CEA36800FD740E /* TricksService.swift */,
 				C63886562820440500E894D7 /* UsersService.swift */,
@@ -775,6 +791,7 @@
 				C67D8A0927C17EC3001E0E56 /* HTTPClient.swift in Sources */,
 				C63C911A27BFC6230022051C /* MainView.swift in Sources */,
 				C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
+				C65D3C8128215AAF002EC14C /* SecureKey.swift in Sources */,
 				C621AFC128114BB3007BBEDA /* Bundle+Extensions.swift in Sources */,
 				C63C912F27BFCCD90022051C /* LoginView.swift in Sources */,
 				C63D793727D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
@@ -799,6 +816,7 @@
 				C63886542820307800E894D7 /* UsersEndpoint.swift in Sources */,
 				C6B143D827DCC27F00AE777E /* ProfileViewModel.swift in Sources */,
 				C63C912827BFC9090022051C /* NotificationsListView.swift in Sources */,
+				C65D3C8328218107002EC14C /* AccountSettingsViewModel.swift in Sources */,
 				C6C0F82927C12EF20011F173 /* GlobalResponse.swift in Sources */,
 				C63886572820440500E894D7 /* UsersService.swift in Sources */,
 				C6F7D2BC27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift in Sources */,
@@ -857,11 +875,13 @@
 				C629101327CE96CF00FD740E /* AccountSettingsView.swift in Sources */,
 				C63930AE280F262500E9E1DB /* NotificationsViewModel.swift in Sources */,
 				C629101F27CEAF4400FD740E /* TrickView.swift in Sources */,
+				C65D3C8228215AAF002EC14C /* SecureKey.swift in Sources */,
 				C6B84D1527FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
 				C605E127280E966A00C777DB /* NotificationRow.swift in Sources */,
 				C6B84D1D27FC86C800A9F734 /* TrickCodePreview.swift in Sources */,
 				C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C6957C1627CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
+				C65D3C7F28213355002EC14C /* AccountSettingsViewModel.swift in Sources */,
 				C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C912C27BFC9100022051C /* ProfileView.swift in Sources */,
 				C6B84D2027FC8D5400A9F734 /* TrickCodeImagePreview.swift in Sources */,

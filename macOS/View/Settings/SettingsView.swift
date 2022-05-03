@@ -32,7 +32,7 @@ struct SettingsView: View {
                 }
         }
         .padding(20)
-        .frame(minWidth: 450, minHeight: 250)
+        .frame(width: 500, height: 450)
         
     }
 }

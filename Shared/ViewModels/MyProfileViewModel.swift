@@ -21,6 +21,7 @@ class MyProfileViewModel: ObservableObject {
     @AppStorage("fullname") private var storageFullname = ""
     @AppStorage("username") private var storageUsername = ""
     @AppStorage("avatarAddress") private var storageAvatarAddress = ""
+    @AppStorage("about") private var storageAbout = ""
     
     private var authService = AuthService()
     private var usersService = UsersService()
@@ -57,11 +58,11 @@ class MyProfileViewModel: ObservableObject {
             withAnimation {
                 self.isUserLoggedIn = token.count > 0
                 self.userToken = "Bearer \(token)"
+                
+                Task.init {
+                    await self.getMe()
+                }
             }
-        }
-        
-        Task.init {
-            await getMe()
         }
     }
     
@@ -83,6 +84,7 @@ class MyProfileViewModel: ObservableObject {
                         self.storageUserID = String(result.result.id)
                         self.storageUsername = result.result.username
                         self.storageFullname = result.result.fullname
+                        self.storageAbout = result.result.about ?? ""
                         
                         if let avatar = result.result.avatarAddress {
                             self.storageAvatarAddress = avatar

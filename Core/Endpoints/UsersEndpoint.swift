@@ -237,12 +237,14 @@ extension UsersEndpoint: Endpoint {
                 editBody["fullname"] = fullname
             }
 
-            if let password = password {
-                editBody["password"] = password
+            if let password = password, password != "" {
+                let securedPassword = SecureKey(password: password).securedKey
+                editBody["password"] = securedPassword
             }
 
-            if let current_password = current_password {
-                editBody["current_password"] = current_password
+            if let current_password = current_password, current_password != "" {
+                let securedPassword = SecureKey(password: current_password).securedKey
+                editBody["current_password"] = securedPassword
             }
 
             return editBody
