@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CodeEditor
 
 struct AddTrickView: View {
     
@@ -15,8 +14,8 @@ struct AddTrickView: View {
         var id: Self { self }
     }
 
-    @State private var selectedSyntax: CodeEditor.Language = .swift
-    @State private var selectedTheme: CodeEditor.ThemeName = .agate
+    // @State private var selectedSyntax: = .swift
+    // @State private var selectedTheme: = .agate
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -41,7 +40,7 @@ struct AddTrickView: View {
     }
     
     var content: some View {
-        CodeEditor(source: $code, language: selectedSyntax, theme: selectedTheme)
+        TextEditor(text: $code)
             .disableAutocorrection(true)
             .toolbar {
                 ToolbarItemGroup(placement: toolsPlacement) {
@@ -50,6 +49,7 @@ struct AddTrickView: View {
                         Label("Syntax: ", systemImage: "chevron.left.forwardslash.chevron.right")
                             .foregroundColor(.accentColor)
                         #endif
+                        /*
                         Picker(selection: $selectedSyntax, label: Label("Syntax", systemImage: "chevron.left.forwardslash.chevron.right")) {
                             ForEach(CodeEditor.availableLanguages) { language in
                                 Text(language.rawValue).tag(language)
@@ -57,6 +57,7 @@ struct AddTrickView: View {
                         }
                         .pickerStyle(.menu)
                         .labelStyle(.titleAndIcon)
+                        */
                     }
                     
                     #if os(macOS)
@@ -68,6 +69,7 @@ struct AddTrickView: View {
                         Label("Theme:", systemImage: "paintbrush")
                             .foregroundColor(.accentColor)
                         #endif
+                        /*
                         Picker(selection: $selectedTheme, label: Label("Theme", systemImage: "paintbrush")) {
                             ForEach(CodeEditor.availableThemes) { theme in
                                 Text(theme.rawValue).tag(theme)
@@ -75,6 +77,7 @@ struct AddTrickView: View {
                         }
                         .pickerStyle(.menu)
                         .labelStyle(.titleAndIcon)
+                        */
                     }
                 }
                 
