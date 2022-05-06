@@ -189,7 +189,6 @@ extension UsersEndpoint: Endpoint {
              .getUserFollowings(_, let token),
              .followSomeone(_, let token),
              .unfollowSomeone(_, let token),
-             .updateAvatar(_, let token),
              .blockSomeone(_, let token),
              .unblockSomeone(_, let token),
              .muteSomeone(_, let token),
@@ -198,7 +197,13 @@ extension UsersEndpoint: Endpoint {
             
             return [
                 "Authorization": token,
-                "Content-Type":"application/json; charset=utf-8",
+                "Content-Type":"\(HTTPContentType.applicationJSON); \(HTTPContentType.charsetUTF8)",
+            ]
+            
+        case .updateAvatar(_, let token):
+            return [
+                "Authorization": token,
+                "Content-Type":"\(HTTPContentType.multipartFormData); \(HTTPContentType.charsetUTF8)",
             ]
         }
     }

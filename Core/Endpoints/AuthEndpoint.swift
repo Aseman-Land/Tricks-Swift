@@ -63,10 +63,10 @@ extension AuthEndpoint: Endpoint {
         case .logout(let token, _):
             return [
                 "Authorization": token,
-                "Content-Type":"application/json; charset=utf-8",
+                "Content-Type":"\(HTTPContentType.applicationJSON); \(HTTPContentType.charsetUTF8)",
             ]
         default:
-            return ["Content-Type":"application/json; charset=utf-8"]
+            return ["Content-Type":"\(HTTPContentType.applicationJSON); \(HTTPContentType.charsetUTF8)"]
         }
     }
     

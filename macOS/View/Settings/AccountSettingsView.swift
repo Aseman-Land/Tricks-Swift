@@ -20,27 +20,51 @@ struct AccountSettingsView: View {
             Form {
                 HStack(alignment: .top) {
                     // MARK: - Profile avatar
-                    ZStack {
-                        Circle()
-                            .foregroundStyle(.white)
-                            .frame(width: 75, height: 75)
-                        LazyImage(source: storageAvatarAddress) { state in
-                            if let image = state.image {
-                                image
-                            } else {
-                                Image(systemName: "person.fill")
-                                    .font(.body)
-                                    .foregroundColor(.gray)
-                            }
+                    Button(action: {
+                        Task.init {
+                            await accountModel.showImagePicker()
                         }
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
-                        .frame(width: 66, height: 66, alignment: .center)
-                        .padding(.all, 2)
-                    }
+                    }, label: {
+                        ZStack {
+                            Circle()
+                                .foregroundStyle(.white)
+                                .frame(width: 75, height: 75)
+                            LazyImage(source: storageAvatarAddress) { state in
+                                if let image = state.image {
+                                    image
+                                } else {
+                                    Image(systemName: "person.fill")
+                                        .font(.body)
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                            .overlay(alignment: .bottom) {
+                                if accountModel.editAvatarloading {
+                                    ZStack {
+                                        Color.black.opacity(0.5)
+                                        
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                                    }
+                                } else {
+                                    Text("Edit")
+                                        .font(.footnote)
+                                        .frame(maxWidth: .infinity)
+                                        .background(.ultraThinMaterial)
+                                }
+                            }
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
+                            .frame(width: 66, height: 66, alignment: .center)
+                            .padding(.all, 2)
+                        }
+                        .frame(width: 75, height: 75)
+                        
+                    })
                     .frame(width: 75, height: 75)
-                    .shadow(radius: 1)
+                    .buttonStyle(.borderless)
                     .padding()
+                    
                     VStack {
                         Section("General Details") {
                             TextField("Full name", text: $accountModel.fullname)
@@ -71,10 +95,10 @@ struct AccountSettingsView: View {
                             Spacer()
                             VStack {
                                 ZStack {
-                                    if !accountModel.loading {
+                                    if !accountModel.editProfileloading {
                                         Button("Save Changes") {
                                             Task.init {
-                                                await accountModel.updateProfile()
+                                                await accountModel.editProfile()
                                             }
                                         }
                                         .buttonStyle(.bordered)

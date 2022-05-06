@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+#if os(macOS)
+import Quartz
+#endif
+
 class AccountSettingsViewModel: ObservableObject {
     
     @AppStorage("fullname") private var storageFullname = ""
@@ -25,11 +29,69 @@ class AccountSettingsViewModel: ObservableObject {
     
     @Published var profile: MyProfileViewModel? = nil
     
-    @Published var loading: Bool = false
+    @Published var editAvatarloading: Bool = false
+    @Published var editProfileloading: Bool = false
     @Published var showErrorMessage: Bool = false
     @Published var errorMessage: String = ""
     
     private var service = UsersService()
+    
+    #if os(macOS)
+    func showImagePicker() async {
+        let imageChooser: IKPictureTaker = await IKPictureTaker.pictureTaker()
+        await imageChooser.runModal()
+        
+        let nsImage = await imageChooser.outputImage()
+        /// We need to save image as NSImage(`inputImage`) in ram in order to convert and upload it
+        if let nsImage = nsImage, let imageData = nsImage.jpeg {
+            await updateAvatar(imageData: imageData)
+        }
+    }
+    #endif
+    
+    func updateAvatar(imageData: Data) async {
+        /*
+        editAvatarloading = true
+        
+        guard let profile = profile else {
+            self.setErrorMessage("Failed to authorize")
+            return
+        }
+        
+        Task(priority: .background) {
+            let result = try await service.updateAvatar(avatar: imageData, token: profile.userToken)
+            
+            switch result {
+            case .success(let userResult):
+                if userResult.status {
+                    DispatchQueue.main.async {
+                        self.updateProfile(user: userResult)
+                    }
+                } else {
+                    setErrorMessage("Failed to update avatar, try again")
+                }
+                DispatchQueue.main.async {
+                    self.editAvatarloading = false
+                }
+            case .failure(let error):
+                switch error {
+                case .decode:
+                    setErrorMessage("Failed to execute, try later")
+                case .invalidURL:
+                    setErrorMessage("Invalid URL")
+                case .noResponse:
+                    setErrorMessage("Network error, Try again")
+                case .unauthorized(let data):
+                    setErrorMessage(try await decodeErrorMessage(data))
+                case .unexpectedStatusCode(let status):
+                    setErrorMessage("Unexpected Status Code \(status) occured")
+                case .unknown(_):
+                    setErrorMessage("Network error, Try again")
+                }
+            }
+        }
+         */
+    }
     
     func fillFields() {
         fullname = storageFullname
@@ -37,8 +99,8 @@ class AccountSettingsViewModel: ObservableObject {
         bio = storageAbout
     }
     
-    func updateProfile() async {
-        loading = true
+    func editProfile() async {
+        editProfileloading = true
         errorMessage = ""
         
         guard let profile = profile else {
@@ -69,19 +131,13 @@ class AccountSettingsViewModel: ObservableObject {
             case .success(let userResult):
                 if userResult.status {
                     DispatchQueue.main.async {
-                        self.storageUsername = userResult.result.username
-                        self.storageFullname = userResult.result.fullname
-                        self.storageAbout = userResult.result.about ?? ""
-                        
-                        if let avatar = userResult.result.avatarAddress {
-                            self.storageAvatarAddress = avatar
-                        }
+                        self.updateProfile(user: userResult)
                     }
                 } else {
                     setErrorMessage("Failed to update profile, try again")
                 }
                 DispatchQueue.main.async {
-                    self.loading = false
+                    self.editProfileloading = false
                 }
             case .failure(let error):
                 switch error {
@@ -113,9 +169,20 @@ class AccountSettingsViewModel: ObservableObject {
     
     func setErrorMessage(_ message: String) {
         DispatchQueue.main.async {
-            self.loading = false
+            self.editAvatarloading = false
+            self.editProfileloading = false
             self.errorMessage = message
             self.showErrorMessage = true
+        }
+    }
+    
+    func updateProfile(user: User) {
+        self.storageUsername = user.result.username
+        self.storageFullname = user.result.fullname
+        self.storageAbout = user.result.about ?? ""
+        
+        if let avatar = user.result.avatarAddress {
+            self.storageAvatarAddress = avatar
         }
     }
 }

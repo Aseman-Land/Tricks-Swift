@@ -116,7 +116,7 @@ extension TricksEndpoint: Endpoint {
              .addView(_, token: let token):
             return [
                 "Authorization": token,
-                "Content-Type":"application/json; charset=utf-8",
+                "Content-Type":"\(HTTPContentType.applicationJSON); \(HTTPContentType.charsetUTF8)",
             ]
         }
     }
