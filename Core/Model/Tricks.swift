@@ -20,7 +20,7 @@ struct Trick: Codable {
     let code: String
     let owner: UserResult
     let datetime: String
-    let highlighter: GlobalTrickItemDetail
+    let highlighter: GlobalTrickItemDetail?
     let programing_language: GlobalTrickItemDetail?
     let code_frame: GlobalTrickItemDetail?
     let type: TrickTypeClass
