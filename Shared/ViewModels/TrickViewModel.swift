@@ -27,6 +27,15 @@ class TrickViewModel: ObservableObject {
         return trick.owner.id == Int(storageUserID)
     }
     
+    var trickQuoteBody: String {
+        let body = trick.quote != nil ? trick.quote?.quote ?? "" : trick.body
+        return body
+    }
+    
+    var trickBody: String {
+        return trick.body
+    }
+    
     func copyCode() {
         #if os(iOS)
         let pasteboard = UIPasteboard.general

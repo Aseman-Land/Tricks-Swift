@@ -29,7 +29,7 @@ struct TrickView: View {
                 .environmentObject(profile)
             
             // MARK: - Trick's body (description)
-            Text((trickModel.trick.quote != nil) ? (trickModel.trick.quote?.quote ?? "") : trickModel.trick.body)
+            Text(trickModel.trickQuoteBody)
                 .font(.body)
                 .foregroundStyle(.primary)
                 .dynamicTypeSize(.xSmall ... .medium)
@@ -50,7 +50,7 @@ struct TrickView: View {
                             Spacer()
                         }
                         
-                        Text(trickModel.trick.body)
+                        Text(trickModel.trickBody)
                             .font(.body)
                             .foregroundStyle(.primary)
                             .dynamicTypeSize(.xSmall ... .medium)

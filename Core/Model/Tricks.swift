@@ -49,9 +49,9 @@ struct Trick: Codable {
         rates: 2,
         rate_state: 1,
         tags: ["Rust"],
-        filename: "storage/upload/1/4d1ad4cf-46f4-41a0-80c5-5f50e6132a0a.png",
+        filename: "storage/static/newtrick_0.png",
         quote: nil,
-        image_size: CodePreviewDetail(width: 1024, height: 278),
+        image_size: CodePreviewDetail(width: 1200, height: 496),
         share_link: "https://tricks.aseman.io/tricks/127"
     )
 }
