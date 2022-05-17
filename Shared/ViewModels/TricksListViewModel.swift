@@ -44,6 +44,8 @@ class TricksListViewModel: ObservableObject {
             switch type {
             case .timeline:
                 result = try await service.myTimelineTricks(token: profile.userToken)
+            case .global:
+                result = try await service.globalTricks(token: profile.userToken)
             case .me:
                 result = try await service.profileTricks(userID: "me", token: profile.userToken)
             case .user(let userID):
@@ -87,6 +89,7 @@ class TricksListViewModel: ObservableObject {
 }
 
 enum TrickListType: Equatable {
+    case global
     case timeline
     case me
     case user(userID: String)

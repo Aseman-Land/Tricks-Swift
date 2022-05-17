@@ -27,10 +27,16 @@ final class NavigationItemsModel: ObservableObject {
     
     static let defaultItems: [NavigationItem] = [
         NavigationItem(
-            name: "Discover",
+            name: "Home",
             comment: "Latest tricks",
-            icon: "rectangle.stack",
+            icon: "house",
             content: AnyView(TricksListView(viewModel: TricksListViewModel(.timeline)))
+        ),
+        NavigationItem(
+            name: "Discover",
+            comment: "Discover people's tricks",
+            icon: "globe",
+            content: AnyView(TricksListView(viewModel: TricksListViewModel(.global)))
         ),
         
         NavigationItem(

@@ -557,6 +557,8 @@
 		C6D1E253280034DA00DFC60A /* Trick */ = {
 			isa = PBXGroup;
 			children = (
+				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
+				C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */,
 				C6D1E2502800342200DFC60A /* TrickActions.swift */,
 				C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */,
 				C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */,
@@ -574,8 +576,6 @@
 				C605E124280E964A00C777DB /* Notifications */,
 				C6FBB8E52815408F00ECCE77 /* Profile */,
 				C6D1E253280034DA00DFC60A /* Trick */,
-				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
-				C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
