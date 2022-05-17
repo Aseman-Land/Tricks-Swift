@@ -143,6 +143,8 @@
 		C6D9FF3827D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
 		C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */; };
 		C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */; };
+		C6DE700D2834244700A60A92 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE700C2834244700A60A92 /* Comment.swift */; };
+		C6DE700E2834244700A60A92 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE700C2834244700A60A92 /* Comment.swift */; };
 		C6F1B72627E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
 		C6F1B72727E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
 		C6F339FF2811326200AD7688 /* ListStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F339FE2811326200AD7688 /* ListStatus.swift */; };
@@ -240,6 +242,7 @@
 		C6D1E2572800376500DFC60A /* HapticGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGenerator.swift; sourceTree = "<group>"; };
 		C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteView.swift; sourceTree = "<group>"; };
 		C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extension.swift"; sourceTree = "<group>"; };
+		C6DE700C2834244700A60A92 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C6F1B72527E64B690008EFBE /* TrickViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickViewModel.swift; sourceTree = "<group>"; };
 		C6F339FE2811326200AD7688 /* ListStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStatus.swift; sourceTree = "<group>"; };
 		C6F33A0528113F5A00AD7688 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -518,6 +521,7 @@
 				C67D8A0127C14A70001E0E56 /* User.swift */,
 				C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */,
 				C6F339FE2811326200AD7688 /* ListStatus.swift */,
+				C6DE700C2834244700A60A92 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -802,6 +806,7 @@
 				C6C0F82B27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C911827BFC6230022051C /* Sidebar.swift in Sources */,
 				C63C912527BFC8E80022051C /* TricksListView.swift in Sources */,
+				C6DE700D2834244700A60A92 /* Comment.swift in Sources */,
 				C6B84D1427FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
 				C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C6F339FF2811326200AD7688 /* ListStatus.swift in Sources */,
@@ -844,6 +849,7 @@
 				C667D8562813256500018E6A /* RecoverPaswordViewModel.swift in Sources */,
 				C6799B6028033AA100385799 /* TagsEndpoint.swift in Sources */,
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
+				C6DE700E2834244700A60A92 /* Comment.swift in Sources */,
 				C67D8A0627C14ABD001E0E56 /* AppService.swift in Sources */,
 				C6799B5D280337CD00385799 /* TagsViewModel.swift in Sources */,
 				C6CDBBB927CA1096008BFF5E /* HTTPContentType.swift in Sources */,

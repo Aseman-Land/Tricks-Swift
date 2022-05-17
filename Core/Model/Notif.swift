@@ -21,11 +21,13 @@ struct Notif: Codable {
     let datetime: String
     let user: UserResult
     let viewed: Int
+    let comment: Comment?
     
     enum CodingKeys: String, CodingKey {
         case trick
         case notifyType = "notify_type"
         case datetime, user, viewed
+        case comment
     }
     
     static let mockLikeExample = Notif(
@@ -33,7 +35,8 @@ struct Notif: Codable {
         notifyType: 1,
         datetime: "2022-04-05T01:37:40",
         user: UserResult.mockExample,
-        viewed: 1
+        viewed: 1,
+        comment: nil
     )
     
     static let mockQuoteExample = Notif(
@@ -41,7 +44,8 @@ struct Notif: Codable {
         notifyType: 2,
         datetime: "2022-04-05T01:37:40",
         user: UserResult.mockExample,
-        viewed: 1
+        viewed: 1,
+        comment: nil
     )
     
     static let mockCommentExample = Notif(
@@ -49,7 +53,8 @@ struct Notif: Codable {
         notifyType: 3,
         datetime: "2022-04-05T01:37:40",
         user: UserResult.mockExample,
-        viewed: 1
+        viewed: 1,
+        comment: Comment.mockExample
     )
 }
 

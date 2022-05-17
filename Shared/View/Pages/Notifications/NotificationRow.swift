@@ -12,6 +12,14 @@ struct NotificationRow: View {
     
     @State var notif: Notif
     
+    var notifBody: String {
+        if let comment = notif.comment {
+            return comment.message ?? ""
+        } else {
+            return notif.trick.body
+        }
+    }
+    
     var body: some View {
         HStack {
             // Profile avatar and notification status
@@ -23,13 +31,14 @@ struct NotificationRow: View {
                     LazyImage(source: notif.user.avatarAddress) { state in
                         if let image = state.image {
                             image
+                                .clipShape(Circle())
                         } else {
                             Image(systemName: "person.fill")
                                 .font(.body)
                                 .foregroundColor(.gray)
+                                .clipShape(Circle())
                         }
                     }
-                    .clipShape(Circle())
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 38, height: 38, alignment: .center)
                     .padding(.all, 2)
@@ -82,11 +91,11 @@ struct NotificationRow: View {
                 .minimumScaleFactor(0.4)
                 
                 // Trick body caption
-                Text(notif.trick.body)
+                Text(notifBody)
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .dynamicTypeSize(.xSmall ... .medium)
-                    .minimumScaleFactor(0.4)
+                    .lineLimit(2)
             }
         }
     }
