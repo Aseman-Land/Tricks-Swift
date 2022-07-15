@@ -16,7 +16,7 @@ struct NotifResult: Codable {
 // MARK: - Notification Item
 struct Notif: Codable {
     let id = UUID()
-    let trick: NotifTrickResult
+    let trick: NotifTrickResult?
     let notifyType: Int
     let datetime: String
     let user: UserResult

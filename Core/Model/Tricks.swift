@@ -16,8 +16,8 @@ struct Tricks: Codable {
 // MARK: - Result
 struct Trick: Codable {
     let id: Int
-    let body: String
-    let code: String
+    let body: String?
+    let code: String?
     let owner: UserResult
     let datetime: String
     let highlighter: GlobalTrickItemDetail?

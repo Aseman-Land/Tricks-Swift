@@ -16,7 +16,7 @@ struct NotificationRow: View {
         if let comment = notif.comment {
             return comment.message ?? ""
         } else {
-            return notif.trick.body
+            return notif.trick?.body ?? ""
         }
     }
     

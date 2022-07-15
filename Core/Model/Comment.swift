@@ -10,7 +10,7 @@ import Foundation
 struct Comment: Codable {
     let id: Int
     let user_id: Int
-    let trick_id: Int
+    let trick_id: Int?
     let datetime: String
     let message: String?
     let deleted: Int?

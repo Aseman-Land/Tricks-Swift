@@ -28,24 +28,26 @@ class TrickViewModel: ObservableObject {
     }
     
     var trickQuoteBody: String {
-        let body = trick.quote != nil ? trick.quote?.quote ?? "" : trick.body
+        let body = (trick.quote != nil ? trick.quote?.quote ?? "" : trick.body) ?? ""
         return body
     }
     
     var trickBody: String {
-        return trick.body
+        return trick.body ?? ""
     }
     
     func copyCode() {
-        #if os(iOS)
-        let pasteboard = UIPasteboard.general
-        pasteboard.string = trick.code
-        HapticGenerator.shared.success()
-        #elseif os(macOS)
-        let pasteboard = NSPasteboard.general
-        pasteboard.clearContents()
-        pasteboard.setString(trick.code, forType: .string)
-        #endif
+        if let code = trick.code {
+            #if os(iOS)
+            let pasteboard = UIPasteboard.general
+            pasteboard.string = code
+            HapticGenerator.shared.success()
+            #elseif os(macOS)
+            let pasteboard = NSPasteboard.general
+            pasteboard.clearContents()
+            pasteboard.setString(code, forType: .string)
+            #endif
+        }
     }
     
     func shareBody() -> [Any] {
