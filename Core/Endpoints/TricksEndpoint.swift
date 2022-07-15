@@ -16,11 +16,15 @@ enum TricksEndpoint {
     )
     
     case globalTricks(
-        token: String
+        token: String,
+        limit: Int = 20,
+        offset: Int = 0
     )
     
     case myTimelineTricks(
-        token: String
+        token: String,
+        limit: Int = 20,
+        offset: Int = 0
     )
     
     case getTrick(
@@ -30,7 +34,9 @@ enum TricksEndpoint {
     
     case profiletricks(
         userID: String,
-        token: String
+        token: String,
+        limit: Int = 20,
+        offset: Int = 0
     )
     
     case postTrick(
@@ -65,13 +71,13 @@ extension TricksEndpoint: Endpoint {
         switch self {
         case .addRate(tagID: let tagID, rate: _, _):
             return "/api/v1/tricks/\(tagID)/rates"
-        case .globalTricks(_):
+        case .globalTricks(_, _, _):
             return "/api/v1/tricks"
-        case .myTimelineTricks(_):
+        case .myTimelineTricks(_, _, _):
             return "/api/v1/users/me/timeline"
         case .getTrick(trickID: let trickID, _):
             return "/api/v1/tricks/\(trickID)"
-        case .profiletricks(userID: let userID, _):
+        case .profiletricks(userID: let userID, _, _, _):
             return "/api/v1/users/\(userID)/tricks"
         case .postTrick(_, _, _, _, _, _, _):
             return "/api/v1/tricks"
@@ -86,10 +92,10 @@ extension TricksEndpoint: Endpoint {
     
     var method: HTTPMethod {
         switch self {
-        case .globalTricks(_),
-             .myTimelineTricks(_),
+        case .globalTricks(_, _, _),
+             .myTimelineTricks(_, _, _),
              .getTrick(_, _),
-             .profiletricks(_, _):
+             .profiletricks(_, _, _, _):
             return .get
             
         case .postTrick(_, _, _, _, _, _, _),
@@ -105,10 +111,10 @@ extension TricksEndpoint: Endpoint {
     
     var header: [String : String]? {
         switch self {
-        case .globalTricks(token: let token),
-             .myTimelineTricks(token: let token),
+        case .globalTricks(token: let token, _, _),
+             .myTimelineTricks(token: let token, _, _),
              .getTrick(_, token: let token),
-             .profiletricks(_, token: let token),
+             .profiletricks(_, token: let token, _, _),
              .postTrick(_, _, _, _, _, _, token: let token),
              .retrickPost(_, _, token: let token),
              .deleteTrickPost(_, token: let token),
@@ -122,7 +128,17 @@ extension TricksEndpoint: Endpoint {
     }
     
     var urlParams: [URLQueryItem]? {
-        return nil
+        switch self {
+        case .globalTricks(_, let limit, let offset),
+             .myTimelineTricks(_, let limit, let offset),
+             .profiletricks(_, _, let limit, let offset):
+            return [
+                URLQueryItem(name: "limit", value: String(limit)),
+                URLQueryItem(name: "offset", value: String(offset))
+            ]
+        default:
+            return nil
+        }
     }
     
     var body: [String : Any]? {
