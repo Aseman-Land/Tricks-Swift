@@ -20,11 +20,10 @@ struct ScrollRefreshable<Content: View>: View {
     }
     
     var body: some View {
+        #if os(iOS)
         List {
             content
-            #if os(iOS)
                 .listRowSeparatorTint(.clear)
-            #endif
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
@@ -37,6 +36,11 @@ struct ScrollRefreshable<Content: View>: View {
                 print("Failed")
             }
         }
+        #elseif os(macOS)
+        ScrollView {
+            content
+        }
+        #endif
     }
 }
 
