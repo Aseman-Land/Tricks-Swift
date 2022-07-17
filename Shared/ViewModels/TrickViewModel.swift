@@ -53,8 +53,8 @@ class TrickViewModel: ObservableObject {
     func shareBody() -> [Any] {
         #if os(iOS)
         return [
-            trick.body,
-            trick.code,
+            trick.body ?? "",
+            trick.code ?? "",
             "By \(trick.owner.fullname)",
             URL(string: trick.share_link ?? trick.previewAddress)!
         ]
