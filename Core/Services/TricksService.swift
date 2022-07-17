@@ -8,13 +8,13 @@
 import Foundation
 
 protocol TricksServiceable {
-    func globalTricks(token: String) async throws -> Result<Tricks, RequestError>
+    func globalTricks(token: String, limit: Int, offset: Int) async throws -> Result<Tricks, RequestError>
     
-    func myTimelineTricks(token: String) async throws -> Result<Tricks, RequestError>
+    func myTimelineTricks(token: String, limit: Int, offset: Int) async throws -> Result<Tricks, RequestError>
+    
+    func profileTricks(userID: String, token: String, limit: Int, offset: Int) async throws -> Result<Tricks, RequestError>
     
     func getTrick(trickID: Int, token: String) async throws -> Result<Tricks, RequestError>
-    
-    func profileTricks(userID: String, token: String) async throws -> Result<Tricks, RequestError>
     
     func postTrick(
         comment: String,
@@ -40,16 +40,16 @@ protocol TricksServiceable {
 }
 
 struct TricksService: HTTPClient, TricksServiceable {
-    func globalTricks(token: String) async throws -> Result<Tricks, RequestError> {
+    func globalTricks(token: String, limit: Int = 20, offset: Int = 0) async throws -> Result<Tricks, RequestError> {
         return try await sendRequest(
-            endpoint: TricksEndpoint.globalTricks(token: token),
+            endpoint: TricksEndpoint.globalTricks(token: token, limit: limit, offset: offset),
             responseModel: Tricks.self
         )
     }
     
-    func myTimelineTricks(token: String) async throws -> Result<Tricks, RequestError> {
+    func myTimelineTricks(token: String, limit: Int = 20, offset: Int = 0) async throws -> Result<Tricks, RequestError> {
         return try await sendRequest(
-            endpoint: TricksEndpoint.myTimelineTricks(token: token),
+            endpoint: TricksEndpoint.myTimelineTricks(token: token, limit: limit, offset: offset),
             responseModel: Tricks.self
         )
     }
@@ -61,9 +61,9 @@ struct TricksService: HTTPClient, TricksServiceable {
         )
     }
     
-    func profileTricks(userID: String, token: String) async throws -> Result<Tricks, RequestError> {
+    func profileTricks(userID: String, token: String, limit: Int = 20, offset: Int = 0) async throws -> Result<Tricks, RequestError> {
         return try await sendRequest(
-            endpoint: TricksEndpoint.profiletricks(userID: userID, token: token),
+            endpoint: TricksEndpoint.profiletricks(userID: userID, token: token, limit: limit, offset: offset),
             responseModel: Tricks.self
         )
     }

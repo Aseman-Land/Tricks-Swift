@@ -51,6 +51,9 @@ struct TricksListView<ProfileContent: View>: View {
                                     #elseif os(macOS)
                                     .padding()
                                     #endif
+                                    .task {
+                                        await tricksListModel.loadMore(currentItem: trick)
+                                    }
                             }
                         }
                     } onRefresh: {
