@@ -44,7 +44,7 @@ struct NotificationRow: View {
                     .padding(.all, 2)
                 }
                 .frame(width: 40, height: 40)
-                .padding(.all , 10)
+                .padding(.all , 5)
                 .shadow(radius: 1)
                 
                 switch notif.notifyType {
@@ -54,10 +54,10 @@ struct NotificationRow: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(.white, .red)
                 case 2:
-                    // Quote
-                    Image(systemName: "quote.bubble.fill")
+                    // Follow
+                    Image(systemName: "person.crop.circle.fill.badge.plus")
                         .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, .indigo)
+                        .foregroundStyle(.green, .indigo)
                 case 3:
                     // Comment
                     Image(systemName: "text.bubble.fill")
@@ -77,7 +77,7 @@ struct NotificationRow: View {
                     case 1:
                         Text("**\(notif.user.fullname)** Liked your trick")
                     case 2:
-                        Text("**\(notif.user.fullname)** quoted your trick")
+                        Text("**\(notif.user.fullname)** Followed you")
                     case 3:
                         Text("**\(notif.user.fullname)** commented on your trick")
                     default:
@@ -103,16 +103,14 @@ struct NotificationRow: View {
 
 struct NotificationRow_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            List {
-                NotificationRow(notif: Notif.mockLikeExample)
-                NotificationRow(notif: Notif.mockQuoteExample)
-                NotificationRow(notif: Notif.mockCommentExample)
-            }
-            .navigationTitle("Notifications")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            #endif
+        List {
+            NotificationRow(notif: Notif.mockLikeExample)
+            NotificationRow(notif: Notif.mockQuoteExample)
+            NotificationRow(notif: Notif.mockCommentExample)
         }
+        .navigationTitle("Notifications")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }

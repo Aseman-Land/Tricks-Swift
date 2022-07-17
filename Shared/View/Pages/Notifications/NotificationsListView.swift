@@ -120,10 +120,9 @@ struct NotificationsListView_Previews: PreviewProvider {
     @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
-        NavigationView {
-            NotificationsListView()
-                .navigationTitle("Notifications")
-                .environmentObject(profile)
-        }
+        NotificationsListView()
+            .navigationTitle("Notifications")
+            .environmentObject(profile)
+            .navigationViewStyle(.columns)
     }
 }
