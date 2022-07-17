@@ -64,13 +64,19 @@ class TrickViewModel: ObservableObject {
     }
     
     func addLike() async {
-        liked = !liked
-        trick.rates += liked ? 1 : -1
+        DispatchQueue.main.async {
+            self.liked = !self.liked
+            self.trick.rates += self.liked ? 1 : -1
+        }
         
         guard let profile = profile else {
-            liked = !liked
-            trick.rates -= 1
+            DispatchQueue.main.async {
+                self.liked = !self.liked
+                self.trick.rates -= 1
+            }
+            #if DEBUG
             print("Warning: No profile found!")
+            #endif
             return
         }
 
