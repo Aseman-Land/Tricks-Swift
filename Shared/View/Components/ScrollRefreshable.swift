@@ -20,6 +20,8 @@ struct ScrollRefreshable<Content: View>: View {
     }
     
     var body: some View {
+        /// FIXME: - The `List` is not stable and hast so many glitches that could take so much ram and cpu usage (Commented for now to fix in the future)
+        /*
         #if os(iOS)
         List {
             content
@@ -41,6 +43,11 @@ struct ScrollRefreshable<Content: View>: View {
             content
         }
         #endif
+         */
+        
+        ScrollView {
+            content
+        }
     }
 }
 
