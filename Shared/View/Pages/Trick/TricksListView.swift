@@ -43,7 +43,9 @@ struct TricksListView<ProfileContent: View>: View {
                         RefreshHeader(
                             refreshing: $tricksListModel.isRefreshing,
                             action: {
+                                #if os(iOS)
                                 HapticGenerator().soft()
+                                #endif
                                 Task.init {
                                     await tricksListModel.loadTricks()
                                 }
@@ -82,7 +84,9 @@ struct TricksListView<ProfileContent: View>: View {
                         RefreshFooter(
                             refreshing: $tricksListModel.isLoadingMore,
                             action: {
+                                #if os(iOS)
                                 HapticGenerator().soft()
+                                #endif
                                 Task.init {
                                     await tricksListModel.loadMore()
                                 }
