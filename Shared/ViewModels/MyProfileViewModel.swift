@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import KeychainAccess
+import SimpleKeychain
 
 class MyProfileViewModel: ObservableObject {
     
@@ -27,8 +27,7 @@ class MyProfileViewModel: ObservableObject {
     private var usersService = UsersService()
     
     init() {
-        let keychain = Keychain(service: AppService.apiKey)
-        let token = keychain["token"]
+        let token = A0SimpleKeychain().string(forKey: "token")
         
         // Check there is saved token
         if let token = token {
@@ -40,7 +39,7 @@ class MyProfileViewModel: ObservableObject {
         }
         
         // Set Firebase cloud messaging token
-        if let token = keychain["fcmToken"] {
+        if let token = A0SimpleKeychain().string(forKey: "fcmToken") {
             fcmToken = token
         } else {
             fcmToken = ""
@@ -52,8 +51,7 @@ class MyProfileViewModel: ObservableObject {
     }
     
     func setToken(_ token: String) {
-        let keychain = Keychain(service: AppService.apiKey)
-        keychain["token"] = token
+        A0SimpleKeychain().setString(token, forKey: "token")
         DispatchQueue.main.async {
             withAnimation {
                 self.isUserLoggedIn = token.count > 0
@@ -67,8 +65,7 @@ class MyProfileViewModel: ObservableObject {
     }
     
     func setFCMToken(_ token: String) {
-        let keychain = Keychain(service: AppService.apiKey)
-        keychain["fcmToken"] = token
+        A0SimpleKeychain().setString(token, forKey: "fcmToken")
     }
     
     func getMe() async {
@@ -110,8 +107,7 @@ class MyProfileViewModel: ObservableObject {
             switch result {
             case .success(let result):
                 if result.status {
-                    let keychain = Keychain(service: AppService.apiKey)
-                    keychain["token"] = nil
+                    A0SimpleKeychain().clearAll()
                     DispatchQueue.main.async {
                         withAnimation {
                             self.isUserLoggedIn = false

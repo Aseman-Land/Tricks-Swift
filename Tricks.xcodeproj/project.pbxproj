@@ -73,6 +73,8 @@
 		C65D3C8128215AAF002EC14C /* SecureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D3C8028215AAF002EC14C /* SecureKey.swift */; };
 		C65D3C8228215AAF002EC14C /* SecureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D3C8028215AAF002EC14C /* SecureKey.swift */; };
 		C65D3C8328218107002EC14C /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D3C7E28213355002EC14C /* AccountSettingsViewModel.swift */; };
+		C663FEBB2885BF4800476F0B /* SimpleKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = C663FEBA2885BF4800476F0B /* SimpleKeychain */; };
+		C663FEBD2885BF5400476F0B /* SimpleKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = C663FEBC2885BF5400476F0B /* SimpleKeychain */; };
 		C667D8552813256500018E6A /* RecoverPaswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */; };
 		C667D8562813256500018E6A /* RecoverPaswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */; };
 		C66BF77A2815A7D500171BDA /* ImagePreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */; };
@@ -127,8 +129,6 @@
 		C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82127C12EF20011F173 /* Tags.swift */; };
 		C6C0F82D27C12EF20011F173 /* Notif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82227C12EF20011F173 /* Notif.swift */; };
 		C6C0F82E27C12EF20011F173 /* Notif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82227C12EF20011F173 /* Notif.swift */; };
-		C6C0F83127C12FF50011F173 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C6C0F83027C12FF50011F173 /* KeychainAccess */; };
-		C6C0F83427C130010011F173 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C6C0F83327C130010011F173 /* KeychainAccess */; };
 		C6C9D72C288559CD00CAA06F /* Refresh in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D72B288559CD00CAA06F /* Refresh */; };
 		C6C9D72E28856D3E00CAA06F /* Refresh in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D72D28856D3E00CAA06F /* Refresh */; };
 		C6CDBBB227CA1068008BFF5E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDBBB127CA1068008BFF5E /* HTTPMethod.swift */; };
@@ -260,8 +260,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C663FEBB2885BF4800476F0B /* SimpleKeychain in Frameworks */,
 				C6C9D72C288559CD00CAA06F /* Refresh in Frameworks */,
-				C6C0F83127C12FF50011F173 /* KeychainAccess in Frameworks */,
 				C6B84D1827FC838400A9F734 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,8 +270,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C663FEBD2885BF5400476F0B /* SimpleKeychain in Frameworks */,
 				C6C9D72E28856D3E00CAA06F /* Refresh in Frameworks */,
-				C6C0F83427C130010011F173 /* KeychainAccess in Frameworks */,
 				C6B84D1A27FC838F00A9F734 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,9 +656,9 @@
 			);
 			name = "Tricks (iOS)";
 			packageProductDependencies = (
-				C6C0F83027C12FF50011F173 /* KeychainAccess */,
 				C6B84D1727FC838400A9F734 /* NukeUI */,
 				C6C9D72B288559CD00CAA06F /* Refresh */,
+				C663FEBA2885BF4800476F0B /* SimpleKeychain */,
 			);
 			productName = "Tricks (iOS)";
 			productReference = C63C90FD27BFC5BA0022051C /* Tricks.app */;
@@ -678,9 +678,9 @@
 			);
 			name = "Tricks (macOS)";
 			packageProductDependencies = (
-				C6C0F83327C130010011F173 /* KeychainAccess */,
 				C6B84D1927FC838F00A9F734 /* NukeUI */,
 				C6C9D72D28856D3E00CAA06F /* Refresh */,
+				C663FEBC2885BF5400476F0B /* SimpleKeychain */,
 			);
 			productName = "Tricks (macOS)";
 			productReference = C63C910327BFC5BA0022051C /* Tricks.app */;
@@ -714,9 +714,9 @@
 			);
 			mainGroup = C63C90F027BFC5B90022051C;
 			packageReferences = (
-				C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */,
 				C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */,
+				C663FEB92885BF4800476F0B /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
 			);
 			productRefGroup = C63C90FE27BFC5BA0022051C /* Products */;
 			projectDirPath = "";
@@ -1177,20 +1177,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C663FEB92885BF4800476F0B /* XCRemoteSwiftPackageReference "SimpleKeychain" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/SimpleKeychain";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/NukeUI";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.8.1;
-			};
-		};
-		C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.2;
 			};
 		};
 		C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */ = {
@@ -1204,6 +1204,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C663FEBA2885BF4800476F0B /* SimpleKeychain */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C663FEB92885BF4800476F0B /* XCRemoteSwiftPackageReference "SimpleKeychain" */;
+			productName = SimpleKeychain;
+		};
+		C663FEBC2885BF5400476F0B /* SimpleKeychain */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C663FEB92885BF4800476F0B /* XCRemoteSwiftPackageReference "SimpleKeychain" */;
+			productName = SimpleKeychain;
+		};
 		C6B84D1727FC838400A9F734 /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */;
@@ -1213,16 +1223,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */;
 			productName = NukeUI;
-		};
-		C6C0F83027C12FF50011F173 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
-		};
-		C6C0F83327C130010011F173 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
 		};
 		C6C9D72B288559CD00CAA06F /* Refresh */ = {
 			isa = XCSwiftPackageProductDependency;
