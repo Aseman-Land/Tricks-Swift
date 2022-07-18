@@ -100,7 +100,7 @@ struct NotificationsListView: View {
                 .font(.custom("system", size: 150))
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, .blue)
-                .shadow(color: .black, radius: 2, x: 1, y: 1)
+                .shadow(color: .black.opacity(0.5), radius: 2, x: 1, y: 1)
                 .opacity(0.60)
             
             Text(title)
