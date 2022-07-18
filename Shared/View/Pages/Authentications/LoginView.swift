@@ -107,7 +107,7 @@ struct LoginView: View {
                     #if os(iOS)
                     .foregroundColor(Color("AccentTextColor"))
                     #endif
-                    .font(.title2)
+                    .font(.title3)
                     .fontWeight(.semibold)
                     .frame(maxWidth: 200)
             } action: {
