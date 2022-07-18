@@ -36,6 +36,54 @@ class TrickViewModel: ObservableObject {
         return trick.body ?? ""
     }
     
+    var trickBodyAlignment: Alignment {
+        if isRTL(text: trickBody) {
+            return .trailing
+        } else {
+            return .leading
+        }
+    }
+    
+    var trickQuoteBodyAlignment: Alignment {
+        if isRTL(text: trickQuoteBody) {
+            return .trailing
+        } else {
+            return .leading
+        }
+    }
+    
+    var trickBodyTextAlignment: TextAlignment {
+        if isRTL(text: trickBody) {
+            return .trailing
+        } else {
+            return .leading
+        }
+    }
+    
+    var trickQuoteBodyTextAlignment: TextAlignment {
+        if isRTL(text: trickQuoteBody) {
+            return .trailing
+        } else {
+            return .leading
+        }
+    }
+    
+    func isRTL(text: String) -> Bool {
+        let lang = CFStringTokenizerCopyBestStringLanguage(text as CFString, CFRange(location: 0, length: text.count))
+
+        if let lang = lang {
+            let direction = NSLocale.characterDirection(forLanguage: lang as String)
+
+            if direction == .rightToLeft {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        return false
+    }
+    
     func copyCode() {
         if let code = trick.code {
             #if os(iOS)

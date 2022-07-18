@@ -33,7 +33,11 @@ struct TrickView: View {
                 .font(.body)
                 .foregroundStyle(.primary)
                 .dynamicTypeSize(.xSmall ... .medium)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .multilineTextAlignment(trickModel.trickQuoteBodyTextAlignment)
+                .frame(
+                    maxWidth: .infinity,
+                    alignment: trickModel.trickQuoteBodyAlignment
+                )
             
             if trickModel.trick.quote != nil {
                 SectionView {
@@ -54,7 +58,11 @@ struct TrickView: View {
                             .font(.body)
                             .foregroundStyle(.primary)
                             .dynamicTypeSize(.xSmall ... .medium)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .multilineTextAlignment(trickModel.trickBodyTextAlignment)
+                            .frame(
+                                maxWidth: .infinity,
+                                alignment: trickModel.trickBodyAlignment
+                            )
                         
                         // MARK: - Trick preview
                         TrickCodeImagePreview(
