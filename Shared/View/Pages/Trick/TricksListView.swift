@@ -43,19 +43,24 @@ struct TricksListView<ProfileContent: View>: View {
                         RefreshHeader(
                             refreshing: $tricksListModel.isRefreshing,
                             action: {
+                                HapticGenerator().soft()
                                 Task.init {
                                     await tricksListModel.loadTricks()
                                 }
                             }
                         ) { progress in
-                            if tricksListModel.isRefreshing {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                                    #if os(macOS)
-                                    .scaleEffect(0.5)
-                                    #endif
-                            } else {
-                                Label("Pull to refresh", systemImage: "arrow.down")
+                            ZStack {
+                                if tricksListModel.isRefreshing {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                                        #if os(macOS)
+                                        .scaleEffect(0.5)
+                                        #endif
+                                } else {
+                                    Label("Pull to refresh", systemImage: "arrow.down")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
                             }
                         }
                         
@@ -77,6 +82,7 @@ struct TricksListView<ProfileContent: View>: View {
                         RefreshFooter(
                             refreshing: $tricksListModel.isLoadingMore,
                             action: {
+                                HapticGenerator().soft()
                                 Task.init {
                                     await tricksListModel.loadMore()
                                 }
