@@ -158,12 +158,14 @@ struct TricksListView<ProfileContent: View>: View {
         VStack {
             Image(systemName: "pc")
                 .font(.custom("system", size: 150))
-                .symbolRenderingMode(.hierarchical)
-                .foregroundColor(.accentColor)
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.white, .blue)
+                .shadow(color: .black, radius: 2, x: 1, y: 1)
                 .opacity(0.60)
             
             Text(title)
-                .font(.title)
+                .font(.title2)
+                .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
             
             Button(action: action) {
@@ -172,6 +174,7 @@ struct TricksListView<ProfileContent: View>: View {
             .buttonStyle(.bordered)
         }
         .foregroundStyle(.secondary)
+        .padding(.horizontal)
     }
 }
 
