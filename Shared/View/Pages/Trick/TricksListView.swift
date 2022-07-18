@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Refresh
 
 struct TricksListView<ProfileContent: View>: View {
     
@@ -38,7 +39,26 @@ struct TricksListView<ProfileContent: View>: View {
                 }
             case .fullList:
                 GeometryReader { proxy in
-                    ScrollRefreshable {
+                    ScrollView {
+                        RefreshHeader(
+                            refreshing: $tricksListModel.isRefreshing,
+                            action: {
+                                Task.init {
+                                    await tricksListModel.loadTricks()
+                                }
+                            }
+                        ) { progress in
+                            if tricksListModel.isRefreshing {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                                    #if os(macOS)
+                                    .scaleEffect(0.5)
+                                    #endif
+                            } else {
+                                Label("Pull to refresh", systemImage: "arrow.down")
+                            }
+                        }
+                        
                         LazyVStack {
                             profileContent
                             
@@ -51,28 +71,30 @@ struct TricksListView<ProfileContent: View>: View {
                                     #elseif os(macOS)
                                     .padding()
                                     #endif
-                                    .task {
-                                        await tricksListModel.loadMore(currentItem: trick)
-                                    }
                             }
                         }
-                    } onRefresh: {
-                        await tricksListModel.loadTricks()
-                    }
-                    .toolbar {
-                        ToolbarItem {
-                            #if os(macOS)
-                            LoaderButton(loading: $tricksListModel.isRefreshing) {
-                                Label("Refresh", systemImage: "arrow.clockwise")
-                            } action: {
+                        
+                        RefreshFooter(
+                            refreshing: $tricksListModel.isLoadingMore,
+                            action: {
                                 Task.init {
-                                    tricksListModel.isRefreshing = true
-                                    await tricksListModel.loadTricks()
+                                    await tricksListModel.loadMore()
                                 }
                             }
-                            #endif
+                        ) {
+                            if tricksListModel.noMore {
+                                Text("\(tricksListModel.tricks.count.formatted())")
+                            } else {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                                    #if os(macOS)
+                                    .scaleEffect(0.5)
+                                    #endif
+                            }
                         }
+                        .noMore(tricksListModel.noMore)
                     }
+                    .enableRefresh()
                 }
             case .emptyList:
                 VStack {

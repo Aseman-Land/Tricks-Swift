@@ -28,8 +28,6 @@
 		C629101927CEA36800FD740E /* TricksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101727CEA36800FD740E /* TricksService.swift */; };
 		C629101E27CEAF4400FD740E /* TrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TrickView.swift */; };
 		C629101F27CEAF4400FD740E /* TrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C629101D27CEAF4400FD740E /* TrickView.swift */; };
-		C62A29F92802C3F20056F8D5 /* ScrollRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */; };
-		C62A29FA2802D2DA0056F8D5 /* ScrollRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */; };
 		C63886542820307800E894D7 /* UsersEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63886532820307800E894D7 /* UsersEndpoint.swift */; };
 		C63886552820307800E894D7 /* UsersEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63886532820307800E894D7 /* UsersEndpoint.swift */; };
 		C63886572820440500E894D7 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63886562820440500E894D7 /* UsersService.swift */; };
@@ -131,6 +129,8 @@
 		C6C0F82E27C12EF20011F173 /* Notif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82227C12EF20011F173 /* Notif.swift */; };
 		C6C0F83127C12FF50011F173 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C6C0F83027C12FF50011F173 /* KeychainAccess */; };
 		C6C0F83427C130010011F173 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C6C0F83327C130010011F173 /* KeychainAccess */; };
+		C6C9D72C288559CD00CAA06F /* Refresh in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D72B288559CD00CAA06F /* Refresh */; };
+		C6C9D72E28856D3E00CAA06F /* Refresh in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D72D28856D3E00CAA06F /* Refresh */; };
 		C6CDBBB227CA1068008BFF5E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDBBB127CA1068008BFF5E /* HTTPMethod.swift */; };
 		C6CDBBB327CA1068008BFF5E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDBBB127CA1068008BFF5E /* HTTPMethod.swift */; };
 		C6CDBBB827CA1096008BFF5E /* HTTPContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDBBB727CA1096008BFF5E /* HTTPContentType.swift */; };
@@ -178,7 +178,6 @@
 		C629101427CE9DB000FD740E /* TricksEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksEndpoint.swift; sourceTree = "<group>"; };
 		C629101727CEA36800FD740E /* TricksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksService.swift; sourceTree = "<group>"; };
 		C629101D27CEAF4400FD740E /* TrickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickView.swift; sourceTree = "<group>"; };
-		C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollRefreshable.swift; sourceTree = "<group>"; };
 		C63886532820307800E894D7 /* UsersEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersEndpoint.swift; sourceTree = "<group>"; };
 		C63886562820440500E894D7 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		C63930A6280F1D4F00E9E1DB /* NotificationsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsEndpoint.swift; sourceTree = "<group>"; };
@@ -261,6 +260,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6C9D72C288559CD00CAA06F /* Refresh in Frameworks */,
 				C6C0F83127C12FF50011F173 /* KeychainAccess in Frameworks */,
 				C6B84D1827FC838400A9F734 /* NukeUI in Frameworks */,
 			);
@@ -270,6 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6C9D72E28856D3E00CAA06F /* Refresh in Frameworks */,
 				C6C0F83427C130010011F173 /* KeychainAccess in Frameworks */,
 				C6B84D1A27FC838F00A9F734 /* NukeUI in Frameworks */,
 			);
@@ -584,7 +585,6 @@
 			isa = PBXGroup;
 			children = (
 				C64A97C927FB463500C7EE1A /* LoaderButton.swift */,
-				C62A29F82802C3F20056F8D5 /* ScrollRefreshable.swift */,
 				C6B84D2427FCD34D00A9F734 /* SectionView.swift */,
 				C61A875928129FB400CA6257 /* CustomTextEditor.swift */,
 				C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */,
@@ -658,6 +658,7 @@
 			packageProductDependencies = (
 				C6C0F83027C12FF50011F173 /* KeychainAccess */,
 				C6B84D1727FC838400A9F734 /* NukeUI */,
+				C6C9D72B288559CD00CAA06F /* Refresh */,
 			);
 			productName = "Tricks (iOS)";
 			productReference = C63C90FD27BFC5BA0022051C /* Tricks.app */;
@@ -679,6 +680,7 @@
 			packageProductDependencies = (
 				C6C0F83327C130010011F173 /* KeychainAccess */,
 				C6B84D1927FC838F00A9F734 /* NukeUI */,
+				C6C9D72D28856D3E00CAA06F /* Refresh */,
 			);
 			productName = "Tricks (macOS)";
 			productReference = C63C910327BFC5BA0022051C /* Tricks.app */;
@@ -714,6 +716,7 @@
 			packageReferences = (
 				C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				C6B84D1627FC838400A9F734 /* XCRemoteSwiftPackageReference "NukeUI" */,
+				C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */,
 			);
 			productRefGroup = C63C90FE27BFC5BA0022051C /* Products */;
 			projectDirPath = "";
@@ -750,7 +753,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C61A875E2812C37A00CA6257 /* RecoverPasswordView.swift in Sources */,
-				C62A29F92802C3F20056F8D5 /* ScrollRefreshable.swift in Sources */,
 				C629101E27CEAF4400FD740E /* TrickView.swift in Sources */,
 				C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */,
 				C6C0F82727C12EF20011F173 /* MyProfileViewModel.swift in Sources */,
@@ -843,7 +845,6 @@
 				C680745B2822C23800FD704E /* NSImage+Extensions.swift in Sources */,
 				C6799B6328033F1A00385799 /* TagsService.swift in Sources */,
 				C63D793827D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
-				C62A29FA2802D2DA0056F8D5 /* ScrollRefreshable.swift in Sources */,
 				C64A97CB27FB463500C7EE1A /* LoaderButton.swift in Sources */,
 				C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
 				C667D8562813256500018E6A /* RecoverPaswordViewModel.swift in Sources */,
@@ -1192,6 +1193,14 @@
 				minimumVersion = 4.2.2;
 			};
 		};
+		C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wxxsw/Refresh";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1214,6 +1223,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C6C0F82F27C12FF50011F173 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		C6C9D72B288559CD00CAA06F /* Refresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */;
+			productName = Refresh;
+		};
+		C6C9D72D28856D3E00CAA06F /* Refresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */;
+			productName = Refresh;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -35,6 +35,15 @@
         "revision" : "17f26c07e6b1d3b9258287f99f528111fcd7b7ad",
         "version" : "0.8.1"
       }
+    },
+    {
+      "identity" : "refresh",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wxxsw/Refresh",
+      "state" : {
+        "branch" : "master",
+        "revision" : "ec2d891f2f8e9d7ad45f2a13aacc3cfd5b9715fa"
+      }
     }
   ],
   "version" : 2

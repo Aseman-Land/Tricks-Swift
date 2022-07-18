@@ -15,7 +15,10 @@ class TricksListViewModel: ObservableObject {
     
     @Published var tricks: [Trick] = [Trick]()
     @Published var listStatus: ListStatus = .loading
+    
     @Published var isRefreshing: Bool = false
+    @Published var isLoadingMore: Bool = false
+    @Published var noMore: Bool = false
     
     var currentOffset: Int = 0
     
@@ -25,20 +28,14 @@ class TricksListViewModel: ObservableObject {
         self.type = type
     }
     
-    func loadMore(currentItem item: Trick) async {
+    func loadMore() async {
         #if DEBUG
-        print("Checking")
+        print("🔁 Loading more content, offset :\(currentOffset + 20)")
         #endif
-        let lastItemID = self.tricks[self.tricks.count - 1].id
-        if lastItemID == item.id {
-            #if DEBUG
-            print("🔁 Loading more content, offset :\(currentOffset + 20)")
-            #endif
-            await loadTricks(reload: false, offset: currentOffset + 20)
-        }
+        await loadTricks()
     }
     
-    func loadTricks(reload: Bool = true, limit: Int = 20, offset: Int = 0) async {
+    func loadTricks(limit: Int = 20) async {
         if tricks.isEmpty {
             DispatchQueue.main.async {
                 self.listStatus = .loading
@@ -58,25 +55,26 @@ class TricksListViewModel: ObservableObject {
             
             switch type {
             case .timeline:
-                result = try await service.myTimelineTricks(token: profile.userToken, limit: limit, offset: offset)
+                result = try await service.myTimelineTricks(token: profile.userToken, limit: limit, offset: currentOffset)
             case .global:
-                result = try await service.globalTricks(token: profile.userToken, limit: limit, offset: offset)
+                result = try await service.globalTricks(token: profile.userToken, limit: limit, offset: currentOffset)
             case .me:
-                result = try await service.profileTricks(userID: "me", token: profile.userToken, limit: limit, offset: offset)
+                result = try await service.profileTricks(userID: "me", token: profile.userToken, limit: limit, offset: currentOffset)
             case .user(let userID):
-                result = try await service.profileTricks(userID: userID, token: profile.userToken, limit: limit, offset: offset)
+                result = try await service.profileTricks(userID: userID, token: profile.userToken, limit: limit, offset: currentOffset)
             }
             
             switch result {
             case .success(let tricksResult):
                 DispatchQueue.main.async {
                     self.isRefreshing = false
-                    if reload {
+                    if self.currentOffset == 0 {
                         self.tricks = tricksResult.result
-                        self.currentOffset = 0
+                        self.currentOffset = limit
                     } else {
                         self.tricks.append(contentsOf: tricksResult.result)
-                        self.currentOffset += 20
+                        self.currentOffset += limit
+                        self.isLoadingMore = false
                     }
                     self.listStatus = self.tricks.isEmpty ? .emptyList : .fullList
                 }
