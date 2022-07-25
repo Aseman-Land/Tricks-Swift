@@ -8,6 +8,7 @@
 import Foundation
 
 enum AuthEndpoint {
+    // MARK: - Tricks Authentication
     case login(
         username: String,
         password: String,
@@ -27,6 +28,7 @@ enum AuthEndpoint {
         fcmToken: String?
     )
     
+    // MARK: - Forgot Password
     case forgotPassword(
         email: String
     )
@@ -35,6 +37,24 @@ enum AuthEndpoint {
         email: String,
         code: String,
         newPassword: String
+    )
+    
+    // MARK: - Github
+    case requestGithubLink
+    
+    case checkGithubRegisteration(
+        sessionID: String
+    )
+    
+    case githubRegister(
+        username: String,
+        fullname: String,
+        githubRegisterToken: String,
+        agreementVersion: Int
+    )
+    
+    case githubConnectToAccount(
+        registerToken: String
     )
 }
 
@@ -51,11 +71,26 @@ extension AuthEndpoint: Endpoint {
             return "/api/v1/auth/forget-password"
         case .recoverPassword(_, _, _):
             return "/api/v1/auth/forget-password/recover"
+        case .requestGithubLink:
+            return "/api/v1/auth/github"
+        case .checkGithubRegisteration(_):
+            return "api/v1/auth/github/check"
+        case .githubRegister(_, _, _, _):
+            return "/api/v1/users"
+        case .githubConnectToAccount(_):
+            return "/api/v1/auth/github/check"
         }
     }
     
     var method: HTTPMethod {
-        return .post
+        switch self {
+        case .requestGithubLink,
+             .checkGithubRegisteration(_):
+            return .get
+        default:
+            return .post
+        }
+        
     }
     
     var header: [String : String]? {
@@ -71,7 +106,12 @@ extension AuthEndpoint: Endpoint {
     }
     
     var urlParams: [URLQueryItem]? {
-        return nil
+        switch self {
+        case .checkGithubRegisteration(let sessionID):
+            return [URLQueryItem(name: "session_id", value: sessionID)]
+        default:
+            return nil
+        }
     }
     
     var body: [String : Any]? {
@@ -84,7 +124,13 @@ extension AuthEndpoint: Endpoint {
                 //"fcm_token": Profile().getFCMToken
             ]
         
-        case .register(let username, let password, let email, let fullname, let invitationCode):
+        case .register(
+            let username,
+            let password,
+            let email,
+            let fullname,
+            let invitationCode
+        ):
             let securedPassword = SecureKey(password: password).securedKey
             return [
                 "username": username,
@@ -111,6 +157,22 @@ extension AuthEndpoint: Endpoint {
                 "code": code,
                 "new_password": securedPassword
             ]
+        case .githubRegister(
+            let username,
+            let fullname,
+            let githubRegisterToken,
+            let agreementVersion
+        ):
+            return [
+                "username": username,
+                "fullname": fullname,
+                "github_register_token": githubRegisterToken,
+                "agreement_version": agreementVersion
+            ]
+        case .githubConnectToAccount(registerToken: let registerToken):
+            return ["register_token": registerToken]
+        default:
+            return nil
         }
     }
 }
