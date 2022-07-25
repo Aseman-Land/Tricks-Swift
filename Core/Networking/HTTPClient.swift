@@ -29,7 +29,7 @@ extension HTTPClient {
         
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
-        request.allHTTPHeaderFields = endpoint.header
+        request.allHTTPHeaderFields = endpoint.baseHeader.merging(endpoint.header ?? [:], uniquingKeysWith: { (first, _) in first })
         
         if let body = endpoint.body {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])

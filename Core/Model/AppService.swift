@@ -22,6 +22,20 @@ struct AppService {
         return ""
     }
     
+    static var apiAppID: String {
+        if let result = Bundle.main.infoDictionary?["API_APP_ID"] as? String {
+            return result
+        }
+        return ""
+    }
+    
+    static var apiAppVersion: String {
+        if let result = Bundle.main.infoDictionary?["API_APP_VERSION"] as? String {
+            return result
+        }
+        return ""
+    }
+    
     func imageURL(url: String?) -> String {
         if let url = url {
             return "https://\(AppService.apiKey)/api/v1/\(url)"

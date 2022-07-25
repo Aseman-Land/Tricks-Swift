@@ -2,9 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>API_DOMAIN</key>
-    <string>$(TRICKS_BASE_API)</string>
+	<key>API_DOMAIN</key>
+	<string>$(TRICKS_BASE_API)</string>
 	<key>REGISTER_SALT</key>
 	<string>$(TRICKS_PASSWORD_SALT)</string>
+	<key>API_APP_ID</key>
+	<string>$(TRICKS_API_APP_ID)</string>
+	<key>API_APP_VERSION</key>
+	<string>$(TRICKS_API_APP_VERSION)</string>
 </dict>
 </plist>
