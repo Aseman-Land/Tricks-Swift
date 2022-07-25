@@ -56,6 +56,24 @@ enum AuthEndpoint {
     case githubConnectToAccount(
         registerToken: String
     )
+    
+    // MARK: - Google
+    case requestGoogleLink
+    
+    case checkGoogleRegisteration(
+        sessionID: String
+    )
+    
+    case googleRegister(
+        username: String,
+        fullname: String,
+        googleRegisterToken: String,
+        agreementVersion: Int
+    )
+    
+    case googleConnectToAccount(
+        registerToken: String
+    )
 }
 
 extension AuthEndpoint: Endpoint {
@@ -79,13 +97,23 @@ extension AuthEndpoint: Endpoint {
             return "/api/v1/users"
         case .githubConnectToAccount(_):
             return "/api/v1/auth/github/check"
+        case .requestGoogleLink:
+            return "/api/v1/auth/google"
+        case .checkGoogleRegisteration(_):
+            return "/api/v1/auth/google/check"
+        case .googleRegister(_, _, _, _):
+            return "/api/v1/users"
+        case .googleConnectToAccount(_):
+            return "/api/v1/auth/google/check"
         }
     }
     
     var method: HTTPMethod {
         switch self {
         case .requestGithubLink,
-             .checkGithubRegisteration(_):
+             .requestGoogleLink,
+             .checkGithubRegisteration(_),
+             .checkGoogleRegisteration(_):
             return .get
         default:
             return .post
@@ -107,7 +135,8 @@ extension AuthEndpoint: Endpoint {
     
     var urlParams: [URLQueryItem]? {
         switch self {
-        case .checkGithubRegisteration(let sessionID):
+        case .checkGithubRegisteration(let sessionID),
+             .checkGoogleRegisteration(let sessionID):
             return [URLQueryItem(name: "session_id", value: sessionID)]
         default:
             return nil
@@ -169,7 +198,20 @@ extension AuthEndpoint: Endpoint {
                 "github_register_token": githubRegisterToken,
                 "agreement_version": agreementVersion
             ]
-        case .githubConnectToAccount(registerToken: let registerToken):
+        case .googleRegister(
+            let username,
+            let fullname,
+            let googleRegisterToken,
+            let agreementVersion
+        ):
+            return [
+                "username": username,
+                "fullname": fullname,
+                "google_register_token": googleRegisterToken,
+                "agreement_version": agreementVersion
+            ]
+        case .githubConnectToAccount(let registerToken),
+             .googleConnectToAccount(let registerToken):
             return ["register_token": registerToken]
         default:
             return nil
