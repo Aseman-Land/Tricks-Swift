@@ -71,29 +71,26 @@ class MyProfileViewModel: ObservableObject {
     func getMe() async {
         if userToken == "" { return }
         
-        Task(priority: .background) {
+        do {
             let result = try await usersService.getUser(userID: "me" ,token: userToken)
-            
-            switch result {
-            case .success(let result):
-                if result.status {
-                    DispatchQueue.main.async {
-                        self.storageUserID = String(result.result.id)
-                        self.storageUsername = result.result.username
-                        self.storageFullname = result.result.fullname
-                        self.storageAbout = result.result.about ?? ""
-                        
-                        if let avatar = result.result.avatarAddress {
-                            self.storageAvatarAddress = avatar
-                        }
+            if result.status {
+                DispatchQueue.main.async {
+                    self.storageUserID = String(result.result.id)
+                    self.storageUsername = result.result.username
+                    self.storageFullname = result.result.fullname
+                    self.storageAbout = result.result.about ?? ""
+                    
+                    if let avatar = result.result.avatarAddress {
+                        self.storageAvatarAddress = avatar
                     }
-                } else {
-                    print("Failed to get user data")
                 }
-                
-            case .failure(let error):
-                print(error)
+            } else {
+                #if DEBUG
+                print("Failed to get user data")
+                #endif
             }
+        } catch {
+            print(error)
         }
     }
     
@@ -101,45 +98,40 @@ class MyProfileViewModel: ObservableObject {
         loading = true
         errorMessage = ""
         
-        Task(priority: .background) {
+        do {
             let result = try await authService.logout(token: userToken ,fcmToken: nil)
-            
-            switch result {
-            case .success(let result):
-                if result.status {
-                    A0SimpleKeychain().clearAll()
-                    DispatchQueue.main.async {
-                        withAnimation {
-                            self.isUserLoggedIn = false
-                            self.userToken = ""
-                        }
-                        self.storageUsername.removeAll()
-                        self.storageAvatarAddress.removeAll()
+            if result.status {
+                A0SimpleKeychain().clearAll()
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.isUserLoggedIn = false
+                        self.userToken = ""
                     }
-                } else {
-                    setErrorMessage("Failed to logout, try again")
+                    self.storageUsername.removeAll()
+                    self.storageAvatarAddress.removeAll()
                 }
-                
-            case .failure(let error):
-                switch error {
-                case .decode:
-                    setErrorMessage("Failed to execute, try later")
-                case .invalidURL:
-                    setErrorMessage("Invalid URL")
-                case .noResponse:
-                    setErrorMessage("Network error, Try again")
-                case .unauthorized(_):
-                    setErrorMessage("Unauthorized access")
-                case .unexpectedStatusCode(let status):
-                    setErrorMessage("Unexpected Status Code \(status) occured")
-                case .unknown(_):
-                    setErrorMessage("Network error, Try again")
-                }
+            } else {
+                setErrorMessage("Failed to logout, try again")
             }
-            
-            DispatchQueue.main.async {
-                self.loading = false
+        } catch {
+            switch error as? RequestError {
+            case .decode:
+                setErrorMessage("Failed to execute, try later")
+            case .invalidURL:
+                setErrorMessage("Invalid URL")
+            case .noResponse:
+                setErrorMessage("Network error, Try again")
+            case .unauthorized(_):
+                setErrorMessage("Unauthorized access")
+            case .unexpectedStatusCode(let status):
+                setErrorMessage("Unexpected Status Code \(status) occured")
+            default:
+                setErrorMessage("Network error, Try again")
             }
+        }
+        
+        DispatchQueue.main.async {
+            self.loading = false
         }
     }
     

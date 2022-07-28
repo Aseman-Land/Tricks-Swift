@@ -31,40 +31,37 @@ class AddQuoteViewModel: ObservableObject {
             return
         }
         
-        Task(priority: .background) {
+        do {
             let result = try await service.retrickPost(trickID: trickID, quote: quote, token: profile.userToken)
             
-            switch result {
-            case .success(let trickResult):
-                if trickResult.status {
-                    DispatchQueue.main.async {
-                        self.showQuoteView = false
-                        NotificationCenter.default.post(name: NSNotification.UpdateList, object: nil)
-                    }
-                } else {
-                    setErrorMessage("Failed to sent the quote, try again")
+            if result.status {
+                DispatchQueue.main.async {
+                    self.showQuoteView = false
+                    NotificationCenter.default.post(name: NSNotification.UpdateList, object: nil)
                 }
-                
-            case .failure(let error):
-                switch error {
-                case .decode:
-                    setErrorMessage("Failed to execute, try later")
-                case .invalidURL:
-                    setErrorMessage("Invalid URL")
-                case .noResponse:
-                    setErrorMessage("Network error, Try again")
-                case .unauthorized(_):
-                    setErrorMessage("Unauthorized access")
-                case .unexpectedStatusCode(let status):
-                    setErrorMessage("Unexpected Status Code \(status) occured")
-                case .unknown(_):
-                    setErrorMessage("Network error, Try again")
-                }
+            } else {
+                setErrorMessage("Failed to sent the quote, try again")
             }
             
-            DispatchQueue.main.async {
-                self.loading = false
+        } catch {
+            switch error as? RequestError {
+            case .decode:
+                setErrorMessage("Failed to execute, try later")
+            case .invalidURL:
+                setErrorMessage("Invalid URL")
+            case .noResponse:
+                setErrorMessage("Network error, Try again")
+            case .unauthorized(_):
+                setErrorMessage("Unauthorized access")
+            case .unexpectedStatusCode(let status):
+                setErrorMessage("Unexpected Status Code \(status) occured")
+            default:
+                setErrorMessage("Network error, Try again")
             }
+        }
+        
+        DispatchQueue.main.async {
+            self.loading = false
         }
     }
     

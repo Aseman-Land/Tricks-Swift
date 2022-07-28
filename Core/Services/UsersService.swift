@@ -11,18 +11,18 @@ protocol UsersServiceable {
     func getUser(
         userID: String,
         token: String
-    ) async throws -> Result<User, RequestError>
+    ) async throws -> User
     
     func searchUsers(
         keyword: String,
         token: String,
         offset: Int?,
         limit: Int?
-    ) async throws -> Result<Users, RequestError>
+    ) async throws -> Users
     
     func getMe(
         token: String
-    ) async throws -> Result<User, RequestError>
+    ) async throws -> User
     
     func editMe(
         username: String?,
@@ -30,68 +30,68 @@ protocol UsersServiceable {
         password: String?,
         current_password: String?,
         token: String
-    ) async throws -> Result<User, RequestError>
+    ) async throws -> User
     
     func deleteMe(
         token: String
-    ) async throws -> Result<GlobalResponse, RequestError>
+    ) async throws -> GlobalResponse
     
     func getMyFollowers(
         token: String
-    ) async throws -> Result<Users, RequestError>
+    ) async throws -> Users
 
     func getUserFollowers(
         userID: String,
         token: String
-    ) async throws -> Result<Users, RequestError>
+    ) async throws -> Users
 
     // MARK: - Followings
     func getMyFollowings(
         token: String
-    ) async throws -> Result<Users, RequestError>
+    ) async throws -> Users
 
     func getUserFollowings(
         userID: String,
         token: String
-    ) async throws -> Result<Users, RequestError>
+    ) async throws -> Users
 
     func followSomeone(
         userID: String,
         token: String
-    ) async throws -> Result<User, RequestError>
+    ) async throws -> User
 
     func unfollowSomeone(
         userID: String,
         token: String
-    ) async throws -> Result<User, RequestError>
+    ) async throws -> User
 
     // MARK: - Avatar
     func updateAvatar(
         avatar: Data,
         token: String
-    ) async throws -> Result<User, RequestError>
+    ) async throws -> User
 
     // MARK: - Blocks
     func blockSomeone(
         userID: String,
         token: String
-    ) async throws -> Result<GlobalResponse, RequestError>
+    ) async throws -> GlobalResponse
 
     func unblockSomeone(
         userID: String,
         token: String
-    ) async throws -> Result<GlobalResponse, RequestError>
+    ) async throws -> GlobalResponse
 
     // MARK: - Mutes
     func muteSomeone(
         userID: String,
         token: String
-    ) async throws -> Result<GlobalResponse, RequestError>
+    ) async throws -> GlobalResponse
 
     func unmuteSomeone(
         userID: String,
         token: String
-    ) async throws -> Result<GlobalResponse, RequestError>
+    ) async throws -> GlobalResponse
 
     // MARK: - Reports
     func reportSomeone(
@@ -99,14 +99,14 @@ protocol UsersServiceable {
         message: String,
         reportType: Int,
         token: String
-    ) async throws -> Result<GlobalResponse, RequestError>
+    ) async throws -> GlobalResponse
 }
 
 struct UsersService: HTTPClient, UsersServiceable {
     func getUser(
         userID: String,
         token: String
-    ) async throws -> Result<User, RequestError> {
+    ) async throws -> User {
         return try await sendRequest(
             endpoint: UsersEndpoint.getUser(
                 userID: userID,
@@ -121,7 +121,7 @@ struct UsersService: HTTPClient, UsersServiceable {
         token: String,
         offset: Int?,
         limit: Int?
-    ) async throws -> Result<Users, RequestError> {
+    ) async throws -> Users {
         return try await sendRequest(
             endpoint: UsersEndpoint.searchUsers(
                 keyword: keyword,
@@ -135,7 +135,7 @@ struct UsersService: HTTPClient, UsersServiceable {
     
     func getMe(
         token: String
-    ) async throws -> Result<User, RequestError> {
+    ) async throws -> User {
         return try await sendRequest(
             endpoint: UsersEndpoint.getMe(
                 token: token
@@ -150,7 +150,7 @@ struct UsersService: HTTPClient, UsersServiceable {
         password: String?,
         current_password: String?,
         token: String
-    ) async throws -> Result<User, RequestError> {
+    ) async throws -> User {
         return try await sendRequest(
             endpoint:
                 UsersEndpoint.editMe(
@@ -166,91 +166,91 @@ struct UsersService: HTTPClient, UsersServiceable {
     
     func deleteMe(
         token: String
-    ) async throws -> Result<GlobalResponse, RequestError> {
+    ) async throws -> GlobalResponse {
         return try await sendRequest(
             endpoint: UsersEndpoint.deleteMe(token: token),
             responseModel: GlobalResponse.self
         )
     }
     
-    func getMyFollowers(token: String) async throws -> Result<Users, RequestError> {
+    func getMyFollowers(token: String) async throws -> Users {
         return try await sendRequest(
             endpoint: UsersEndpoint.getMyFollowers(token: token),
             responseModel: Users.self
         )
     }
     
-    func getUserFollowers(userID: String, token: String) async throws -> Result<Users, RequestError> {
+    func getUserFollowers(userID: String, token: String) async throws -> Users {
         return try await sendRequest(
             endpoint: UsersEndpoint.getUserFollowers(userID: userID, token: token),
             responseModel: Users.self
         )
     }
     
-    func getMyFollowings(token: String) async throws -> Result<Users, RequestError> {
+    func getMyFollowings(token: String) async throws -> Users {
         return try await sendRequest(
             endpoint: UsersEndpoint.getMyFollowings(token: token),
             responseModel: Users.self
         )
     }
     
-    func getUserFollowings(userID: String, token: String) async throws -> Result<Users, RequestError> {
+    func getUserFollowings(userID: String, token: String) async throws -> Users {
         return try await sendRequest(
             endpoint: UsersEndpoint.getUserFollowings(userID: userID, token: token),
             responseModel: Users.self
         )
     }
     
-    func followSomeone(userID: String, token: String) async throws -> Result<User, RequestError> {
+    func followSomeone(userID: String, token: String) async throws -> User {
         return try await sendRequest(
             endpoint: UsersEndpoint.followSomeone(userID: userID, token: token),
             responseModel: User.self
         )
     }
     
-    func unfollowSomeone(userID: String, token: String) async throws -> Result<User, RequestError> {
+    func unfollowSomeone(userID: String, token: String) async throws -> User {
         return try await sendRequest(
             endpoint: UsersEndpoint.unfollowSomeone(userID: userID, token: token),
             responseModel: User.self
         )
     }
     
-    func updateAvatar(avatar: Data, token: String) async throws -> Result<User, RequestError> {
+    func updateAvatar(avatar: Data, token: String) async throws -> User {
         return try await sendRequest(
             endpoint: UsersEndpoint.updateAvatar(avatar: avatar, token: token),
             responseModel: User.self
         )
     }
     
-    func blockSomeone(userID: String, token: String) async throws -> Result<GlobalResponse, RequestError> {
+    func blockSomeone(userID: String, token: String) async throws -> GlobalResponse {
         return try await sendRequest(
             endpoint: UsersEndpoint.blockSomeone(userID: userID, token: token),
             responseModel: GlobalResponse.self
         )
     }
     
-    func unblockSomeone(userID: String, token: String) async throws -> Result<GlobalResponse, RequestError> {
+    func unblockSomeone(userID: String, token: String) async throws -> GlobalResponse {
         return try await sendRequest(
             endpoint: UsersEndpoint.unblockSomeone(userID: userID, token: token),
             responseModel: GlobalResponse.self
         )
     }
     
-    func muteSomeone(userID: String, token: String) async throws -> Result<GlobalResponse, RequestError> {
+    func muteSomeone(userID: String, token: String) async throws -> GlobalResponse {
         return try await sendRequest(
             endpoint: UsersEndpoint.muteSomeone(userID: userID, token: token),
             responseModel: GlobalResponse.self
         )
     }
     
-    func unmuteSomeone(userID: String, token: String) async throws -> Result<GlobalResponse, RequestError> {
+    func unmuteSomeone(userID: String, token: String) async throws -> GlobalResponse {
         return try await sendRequest(
             endpoint: UsersEndpoint.unmuteSomeone(userID: userID, token: token),
             responseModel: GlobalResponse.self
         )
     }
     
-    func reportSomeone(userID: String, message: String, reportType: Int, token: String) async throws -> Result<GlobalResponse, RequestError> {
+    func reportSomeone(userID: String, message: String, reportType: Int, token: String) async throws -> GlobalResponse {
         return try await sendRequest(
             endpoint: UsersEndpoint.reportSomeone(
                 userID: userID,

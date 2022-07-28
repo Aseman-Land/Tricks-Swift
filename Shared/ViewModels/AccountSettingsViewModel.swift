@@ -118,7 +118,7 @@ class AccountSettingsViewModel: ObservableObject {
             }
         }
         
-        Task(priority: .background) {
+        do {
             let result = try await service.editMe(
                 username: username,
                 fullname: fullname,
@@ -127,38 +127,35 @@ class AccountSettingsViewModel: ObservableObject {
                 token: profile.userToken
             )
             
-            switch result {
-            case .success(let userResult):
-                if userResult.status {
-                    DispatchQueue.main.async {
-                        self.updateProfile(user: userResult)
-                    }
-                } else {
-                    setErrorMessage("Failed to update profile, try again")
-                }
+            if result.status {
                 DispatchQueue.main.async {
-                    self.editProfileloading = false
+                    self.updateProfile(user: result)
                 }
-            case .failure(let error):
-                switch error {
-                case .decode:
-                    setErrorMessage("Failed to execute, try later")
-                case .invalidURL:
-                    setErrorMessage("Invalid URL")
-                case .noResponse:
-                    setErrorMessage("Network error, Try again")
-                case .unauthorized(let data):
-                    setErrorMessage(try await decodeErrorMessage(data))
-                case .unexpectedStatusCode(let status):
-                    setErrorMessage("Unexpected Status Code \(status) occured")
-                case .unknown(_):
-                    setErrorMessage("Network error, Try again")
-                }
+            } else {
+                setErrorMessage("Failed to update profile, try again")
+            }
+            DispatchQueue.main.async {
+                self.editProfileloading = false
+            }
+        } catch {
+            switch error as? RequestError {
+            case .decode:
+                setErrorMessage("Failed to execute, try later")
+            case .invalidURL:
+                setErrorMessage("Invalid URL")
+            case .noResponse:
+                setErrorMessage("Network error, Try again")
+            case .unauthorized(let data):
+                setErrorMessage(await decodeErrorMessage(data))
+            case .unexpectedStatusCode(let status):
+                setErrorMessage("Unexpected Status Code \(status) occured")
+            default:
+                setErrorMessage("Network error, Try again")
             }
         }
     }
     
-    func decodeErrorMessage(_ data: Data) async throws -> String {
+    func decodeErrorMessage(_ data: Data) async -> String {
         do {
             let message = try JSONDecoder().decode(ResponseFail.self, from: data).message
             return message ?? "Try again"

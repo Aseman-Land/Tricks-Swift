@@ -8,9 +8,9 @@
 import Foundation
 
 protocol NotificationServiceable {
-    func getNotifications(token: String, offset: Int?, limit: Int?) async throws -> Result<NotifResult, RequestError>
+    func getNotifications(token: String, offset: Int?, limit: Int?) async throws -> NotifResult
     
-    func dismissNotifications(until: String, token: String) async throws -> Result<NotifResult, RequestError>
+    func dismissNotifications(until: String, token: String) async throws -> NotifResult
 }
 
 struct NotificationService: HTTPClient, NotificationServiceable {
@@ -18,7 +18,7 @@ struct NotificationService: HTTPClient, NotificationServiceable {
         token: String,
         offset: Int? = nil,
         limit: Int? = nil
-    ) async throws -> Result<NotifResult, RequestError> {
+    ) async throws -> NotifResult {
         return try await sendRequest(
             endpoint: NotificationsEndpoint.getNotifications(token: token, offset: offset, limit: limit),
             responseModel: NotifResult.self
@@ -28,7 +28,7 @@ struct NotificationService: HTTPClient, NotificationServiceable {
     func dismissNotifications(
         until: String,
         token: String
-    ) async throws -> Result<NotifResult, RequestError> {
+    ) async throws -> NotifResult {
         return try await sendRequest(
             endpoint: NotificationsEndpoint.dismissNotifications(until: until, token: token),
             responseModel: NotifResult.self

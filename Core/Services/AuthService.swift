@@ -12,7 +12,7 @@ protocol AuthServiceable {
         username: String,
         password: String,
         fcmToken: String?
-    ) async throws -> Result<LoginCall, RequestError>
+    ) async throws -> LoginCall
     
     func register(
         username: String,
@@ -20,22 +20,22 @@ protocol AuthServiceable {
         email: String,
         fullname: String,
         invitationCode: String
-    ) async throws -> Result<ResponseSuccess, RequestError>
+    ) async throws -> ResponseSuccess
     
     func logout(
         token: String,
         fcmToken: String?
-    ) async throws -> Result<GlobalResponse, RequestError>
+    ) async throws -> GlobalResponse
     
     func forgotPassword(
         email: String
-    ) async throws -> Result<GlobalResponse, RequestError>
+    ) async throws -> GlobalResponse
     
     func recoverPassword(
         email: String,
         code: String,
         newPassword: String
-    ) async throws -> Result<GlobalResponse, RequestError>
+    ) async throws -> GlobalResponse
 }
 
 struct AuthService: HTTPClient, AuthServiceable {
@@ -43,7 +43,7 @@ struct AuthService: HTTPClient, AuthServiceable {
         username: String,
         password: String,
         fcmToken: String?
-    ) async throws -> Result<LoginCall, RequestError> {
+    ) async throws -> LoginCall {
         return try await sendRequest(
             endpoint: AuthEndpoint.login(
                 username: username,
@@ -60,7 +60,7 @@ struct AuthService: HTTPClient, AuthServiceable {
         email: String,
         fullname: String,
         invitationCode: String
-    ) async throws -> Result<ResponseSuccess, RequestError> {
+    ) async throws -> ResponseSuccess {
         return try await sendRequest(
             endpoint: AuthEndpoint.register(
                 username: username,
@@ -76,7 +76,7 @@ struct AuthService: HTTPClient, AuthServiceable {
     func logout(
         token: String,
         fcmToken: String?
-    ) async throws -> Result<GlobalResponse, RequestError> {
+    ) async throws -> GlobalResponse {
         return try await sendRequest(
             endpoint: AuthEndpoint.logout(
                 token: token,
@@ -88,7 +88,7 @@ struct AuthService: HTTPClient, AuthServiceable {
     
     func forgotPassword(
         email: String
-    ) async throws -> Result<GlobalResponse, RequestError> {
+    ) async throws -> GlobalResponse {
         return try await sendRequest(
             endpoint: AuthEndpoint.forgotPassword(email: email),
             responseModel: GlobalResponse.self
@@ -99,7 +99,7 @@ struct AuthService: HTTPClient, AuthServiceable {
         email: String,
         code: String,
         newPassword: String
-    ) async throws -> Result<GlobalResponse, RequestError> {
+    ) async throws -> GlobalResponse {
         return try await sendRequest(
             endpoint: AuthEndpoint.recoverPassword(
                 email: email,

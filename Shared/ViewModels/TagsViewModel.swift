@@ -35,44 +35,38 @@ class TagsViewModel: ObservableObject {
             return
         }
 
-        Task(priority: .background) {
-            var result: Result<Tags, RequestError>? = nil
-            
+        do {
             switch type {
             case .all:
-                result = try await service.globalTags(token: profile.userToken)
-            case .me:
-                result = try await service.myTags(token: profile.userToken)
-            }
-            
-            switch result {
-            case .success(let tagsResult):
+                let tagsResult = try await service.globalTags(token: profile.userToken)
                 DispatchQueue.main.async {
                     self.tags = tagsResult.result
                 }
-            case .failure(let error):
-                switch error {
-                case .decode:
-                    setErrorMessage("Failed to execute, try later")
-                case .invalidURL:
-                    setErrorMessage("Invalid URL")
-                case .noResponse:
-                    setErrorMessage("Network error, Try again")
-                case .unauthorized(_):
-                    setErrorMessage("Unauthorized access")
-                case .unexpectedStatusCode(let status):
-                    setErrorMessage("Unexpected Status Code \(status) occured")
-                case .unknown(_):
-                    setErrorMessage("Network error, Try again")
+            case .me:
+                let tagsResult = try await service.myTags(token: profile.userToken)
+                DispatchQueue.main.async {
+                    self.tags = tagsResult.result
                 }
-            case .none:
-                setErrorMessage("Failed to load tricks, Try again")
             }
-            
-            DispatchQueue.main.async {
-                self.loading = false
-                self.isRefreshing = false
+        } catch {
+            switch error as? RequestError {
+            case .decode:
+                setErrorMessage("Failed to execute, try later")
+            case .invalidURL:
+                setErrorMessage("Invalid URL")
+            case .noResponse:
+                setErrorMessage("Network error, Try again")
+            case .unauthorized(_):
+                setErrorMessage("Unauthorized access")
+            case .unexpectedStatusCode(let status):
+                setErrorMessage("Unexpected Status Code \(status) occured")
+            default:
+                setErrorMessage("Network error, Try again")
             }
+        }
+        DispatchQueue.main.async {
+            self.loading = false
+            self.isRefreshing = false
         }
     }
     

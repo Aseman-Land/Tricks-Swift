@@ -128,41 +128,37 @@ class TrickViewModel: ObservableObject {
             return
         }
 
-        Task(priority: .background) {
+        do {
             let result = try await service.addRate(tagID: trick.id, rate: liked ? 1 : 0, token: profile.userToken)
             
-            switch result {
-            case .success(let trickResult):
-                if let trick = trickResult.result.first {
-                    DispatchQueue.main.async {
-                        self.trick = trick
-                        self.liked = trick.rate_state == 1
-                    }
-                } else {
-                    liked = !liked
-                    trick.rates -= 1
-                    print("Failed to sent the rate, try again")
-                }
-                
-            case .failure(let error):
+            if let trick = result.result.first {
                 DispatchQueue.main.async {
-                    self.liked = !(self.liked)
-                    self.trick.rates -= 1
+                    self.trick = trick
+                    self.liked = trick.rate_state == 1
                 }
-                switch error {
-                case .decode:
-                    print("Failed to execute, try later")
-                case .invalidURL:
-                    print("Invalid URL")
-                case .noResponse:
-                    print("Network error, Try again")
-                case .unauthorized(_):
-                    print("Unauthorized access")
-                case .unexpectedStatusCode(let status):
-                    print("Unexpected Status Code \(status) occured")
-                case .unknown(_):
-                    print("Network error, Try again")
-                }
+            } else {
+                liked = !liked
+                trick.rates -= 1
+                print("Failed to sent the rate, try again")
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.liked = !(self.liked)
+                self.trick.rates -= 1
+            }
+            switch error as? RequestError {
+            case .decode:
+                print("Failed to execute, try later")
+            case .invalidURL:
+                print("Invalid URL")
+            case .noResponse:
+                print("Network error, Try again")
+            case .unauthorized(_):
+                print("Unauthorized access")
+            case .unexpectedStatusCode(let status):
+                print("Unexpected Status Code \(status) occured")
+            default:
+                print("Network error, Try again")
             }
         }
     }
@@ -173,33 +169,29 @@ class TrickViewModel: ObservableObject {
             return
         }
         
-        Task(priority: .background) {
+        do {
             let result = try await service.deleteTrickPost(trickID: trick.id, token: profile.userToken)
-            
-            switch result {
-            case .success(let response):
-                if response.result {
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: NSNotification.UpdateList, object: nil)
-                    }
-                } else {
-                    print("Failed to delete the trick, try again")
+            if result.result {
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.UpdateList, object: nil)
                 }
-            case .failure(let error):
-                switch error {
-                case .decode:
-                    print("Failed to execute, try later")
-                case .invalidURL:
-                    print("Invalid URL")
-                case .noResponse:
-                    print("Network error, Try again")
-                case .unauthorized(_):
-                    print("Unauthorized access")
-                case .unexpectedStatusCode(let status):
-                    print("Unexpected Status Code \(status) occured")
-                case .unknown(_):
-                    print("Network error, Try again")
-                }
+            } else {
+                print("Failed to delete the trick, try again")
+            }
+        } catch {
+            switch error as? RequestError {
+            case .decode:
+                print("Failed to execute, try later")
+            case .invalidURL:
+                print("Invalid URL")
+            case .noResponse:
+                print("Network error, Try again")
+            case .unauthorized(_):
+                print("Unauthorized access")
+            case .unexpectedStatusCode(let status):
+                print("Unexpected Status Code \(status) occured")
+            default:
+                print("Network error, Try again")
             }
         }
     }

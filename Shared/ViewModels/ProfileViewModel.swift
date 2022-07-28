@@ -28,22 +28,19 @@ class ProfileViewModel: ObservableObject {
         
         guard let token = profile?.userToken else { return }
         
-        Task(priority: .background) {
+        do {
             let result = try await service.getUser(userID: userId ,token: token)
-            
-            switch result {
-            case .success(let result):
-                if result.status {
-                    DispatchQueue.main.async {
-                        self.userResult = result.result
-                    }
-                } else {
-                    print("Failed to get user data")
+            if result.status {
+                DispatchQueue.main.async {
+                    self.userResult = result.result
                 }
-                
-            case .failure(let error):
-                print(error)
+            } else {
+                print("Failed to get user data")
             }
+        } catch {
+            #if DEBUG
+            print(error)
+            #endif
         }
     }
 }

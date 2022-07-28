@@ -50,52 +50,77 @@ class TricksListViewModel: ObservableObject {
             return
         }
 
-        Task(priority: .background) {
-            var result: Result<Tricks, RequestError>? = nil
-            
+        do {
             switch type {
             case .timeline:
-                result = try await service.myTimelineTricks(token: profile.userToken, limit: limit, offset: currentOffset)
+                setResult(
+                    tricksResult: try await service.myTimelineTricks(
+                        token: profile.userToken,
+                        limit: limit,
+                        offset: currentOffset
+                    ).result,
+                    limit: limit
+                )
             case .global:
-                result = try await service.globalTricks(token: profile.userToken, limit: limit, offset: currentOffset)
+                setResult(
+                    tricksResult: try await service.globalTricks(
+                        token: profile.userToken,
+                        limit: limit,
+                        offset: currentOffset
+                    ).result,
+                    limit: limit
+                )
             case .me:
-                result = try await service.profileTricks(userID: "me", token: profile.userToken, limit: limit, offset: currentOffset)
+                setResult(
+                    tricksResult: try await service.profileTricks(
+                        userID: "me",
+                        token: profile.userToken,
+                        limit: limit,
+                        offset: currentOffset
+                    ).result,
+                    limit: limit
+                )
             case .user(let userID):
-                result = try await service.profileTricks(userID: userID, token: profile.userToken, limit: limit, offset: currentOffset)
+                setResult(
+                    tricksResult: try await service.profileTricks(
+                        userID: userID,
+                        token: profile.userToken,
+                        limit: limit,
+                        offset: currentOffset
+                    ).result,
+                    limit: limit
+                )
             }
-            
-            switch result {
-            case .success(let tricksResult):
-                DispatchQueue.main.async {
-                    self.isRefreshing = false
-                    if self.currentOffset == 0 {
-                        self.tricks = tricksResult.result
-                        self.currentOffset = limit
-                    } else {
-                        self.tricks.append(contentsOf: tricksResult.result)
-                        self.currentOffset += limit
-                        self.isLoadingMore = false
-                    }
-                    self.listStatus = self.tricks.isEmpty ? .emptyList : .fullList
-                }
-            case .failure(let error):
-                switch error {
-                case .decode:
-                    setErrorMessage("Failed to execute, try later")
-                case .invalidURL:
-                    setErrorMessage("Invalid URL")
-                case .noResponse:
-                    setErrorMessage("Network error, Try again")
-                case .unauthorized(_):
-                    setErrorMessage("Unauthorized access")
-                case .unexpectedStatusCode(let status):
-                    setErrorMessage("Unexpected Status Code \(status) occured")
-                case .unknown(_):
-                    setErrorMessage("Network error, Try again")
-                }
-            case .none:
-                setErrorMessage("Failed to load tricks, Try again")
+        } catch {
+            switch error as? RequestError {
+            case .decode:
+                setErrorMessage("Failed to execute, try later")
+            case .invalidURL:
+                setErrorMessage("Invalid URL")
+            case .noResponse:
+                setErrorMessage("Network error, Try again")
+            case .unauthorized(_):
+                setErrorMessage("Unauthorized access")
+            case .unexpectedStatusCode(let status):
+                setErrorMessage("Unexpected Status Code \(status) occured")
+            default:
+                setErrorMessage("Network error, Try again")
             }
+        }
+    }
+    
+    private func setResult(tricksResult: [Trick], limit: Int) {
+        DispatchQueue.main.async {
+            self.isRefreshing = false
+            if self.currentOffset == 0 {
+                self.tricks = tricksResult
+                self.currentOffset = limit
+            } else {
+                self.tricks.append(contentsOf: tricksResult)
+                self.currentOffset += limit
+                self.isLoadingMore = false
+            }
+            self.listStatus = self.tricks.isEmpty ? .emptyList : .fullList
         }
     }
     
