@@ -33,7 +33,7 @@ struct Sidebar: View {
                     }
                 }
             }
-            .frame(minWidth: 150, maxHeight: .infinity)
+            .frame(minWidth: 150, idealWidth: 550)
             .listStyle(.sidebar)
             .navigationTitle("Tricks")
             .toolbar {
