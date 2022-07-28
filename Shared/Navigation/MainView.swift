@@ -61,8 +61,8 @@ struct MainView: View {
     
     func titleBarVisibility(hidden: Bool) {
         #if os(macOS)
-        NSApplication.shared.windows.first?.titlebarAppearsTransparent = hidden
-        NSApplication.shared.windows.first?.titleVisibility = hidden ? .hidden : .visible
+        NSApp.keyWindow?.titlebarAppearsTransparent = hidden
+        NSApp.keyWindow?.titleVisibility = hidden ? .hidden : .visible
         #endif
     }
     
