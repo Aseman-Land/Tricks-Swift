@@ -18,7 +18,7 @@ struct TrickActions: View {
         HStack {
             Button {
                 Task.init {
-                    await trickModel.addLike()
+                    await trickModel.toggleLike()
                 }
             } label: {
                 Label($trickModel.trick.rates.wrappedValue.formatted(), systemImage: trickModel.liked ? "heart.fill" : "heart")

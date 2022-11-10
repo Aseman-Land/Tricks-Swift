@@ -111,61 +111,93 @@ class TrickViewModel: ObservableObject {
         #endif
     }
     
-    func addLike() async {
+    func toggleLike() async {
+        let currentLikeState = liked
+        let currentRateCount = trick.rates
+        
+        /// Updating like toggle
         DispatchQueue.main.async {
             self.liked = !self.liked
             self.trick.rates += self.liked ? 1 : -1
         }
         
         guard let profile = profile else {
+            /// Resetting the like toggle
             DispatchQueue.main.async {
-                self.liked = !self.liked
-                self.trick.rates -= 1
+                self.liked = currentLikeState
+                self.trick.rates = currentRateCount
             }
             #if DEBUG
-            print("Warning: No profile found!")
+            print("⚠️ Warning: No profile found!")
             #endif
             return
         }
 
         do {
-            let result = try await service.addRate(tagID: trick.id, rate: liked ? 1 : 0, token: profile.userToken)
+            #if DEBUG
+            print("\n\n\n")
+            print("🗳️ Preparing to rate")
+            print("🤔 Trick was liked? : \(currentLikeState)")
+            print("🆔 Trick id: \(trick.id)")
+            #endif
+            let result = try await service.addRate(
+                tagID: trick.id,
+                rate: currentLikeState ? 0 : 1,
+                token: profile.userToken
+            )
             
-            if let trick = result.result.first {
+            if let updatedTrick = result.result.first {
+                #if DEBUG
+                print("\n")
+                print("🗳️ Trick gonna update")
+                print("🔢 Trick rates: \(updatedTrick.rates)")
+                print("🤔 Trick is liked? : \(updatedTrick.rate_state == 1)")
+                #endif
+                /// Updating current rate state of trick
                 DispatchQueue.main.async {
-                    self.trick = trick
-                    self.liked = trick.rate_state == 1
+                    self.trick = updatedTrick
+                    self.liked = updatedTrick.rate_state == 1
                 }
             } else {
-                liked = !liked
-                trick.rates -= 1
-                print("Failed to sent the rate, try again")
+                #if DEBUG
+                print("⚠️ Failed to sent the rate, try again")
+                #endif
+                /// Resetting the like toggle
+                DispatchQueue.main.async {
+                    self.liked = currentLikeState
+                    self.trick.rates = currentRateCount
+                }
             }
         } catch {
+            /// Resetting the like toggle
             DispatchQueue.main.async {
-                self.liked = !(self.liked)
-                self.trick.rates -= 1
+                self.liked = currentLikeState
+                self.trick.rates = currentRateCount
             }
+            #if DEBUG
             switch error as? RequestError {
             case .decode:
-                print("Failed to execute, try later")
+                print("⚠️ Failed to execute, try later")
             case .invalidURL:
-                print("Invalid URL")
+                print("⚠️ Invalid URL")
             case .noResponse:
-                print("Network error, Try again")
+                print("⚠️ Network error, Try again")
             case .unauthorized(_):
-                print("Unauthorized access")
+                print("⚠️ Unauthorized access")
             case .unexpectedStatusCode(let status):
-                print("Unexpected Status Code \(status) occured")
+                print("⚠️ Unexpected Status Code \(status) occured")
             default:
-                print("Network error, Try again")
+                print("⚠️ Network error, Try again")
             }
+            #endif
         }
     }
     
     func deleteTrick() async {
         guard let profile = profile else {
-            print("Failed to authorize")
+            #if DEBUG
+            print("⚠️ Failed to authorize")
+            #endif
             return
         }
         
@@ -176,23 +208,27 @@ class TrickViewModel: ObservableObject {
                     NotificationCenter.default.post(name: NSNotification.UpdateList, object: nil)
                 }
             } else {
-                print("Failed to delete the trick, try again")
+                #if DEBUG
+                print("⚠️ Failed to delete the trick, try again")
+                #endif
             }
         } catch {
+            #if DEBUG
             switch error as? RequestError {
             case .decode:
-                print("Failed to execute, try later")
+                print("⚠️ Failed to execute, try later")
             case .invalidURL:
-                print("Invalid URL")
+                print("⚠️ Invalid URL")
             case .noResponse:
-                print("Network error, Try again")
+                print("⚠️ Network error, Try again")
             case .unauthorized(_):
-                print("Unauthorized access")
+                print("⚠️ Unauthorized access")
             case .unexpectedStatusCode(let status):
-                print("Unexpected Status Code \(status) occured")
+                print("⚠️ Unexpected Status Code \(status) occured")
             default:
-                print("Network error, Try again")
+                print("⚠️ Network error, Try again")
             }
+            #endif
         }
     }
 }

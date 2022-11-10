@@ -95,8 +95,10 @@ class MyProfileViewModel: ObservableObject {
     }
     
     func logout() async {
-        loading = true
-        errorMessage = ""
+        DispatchQueue.main.async {
+            self.loading = true
+            self.errorMessage = ""
+        }
         
         do {
             let result = try await authService.logout(token: userToken ,fcmToken: nil)
