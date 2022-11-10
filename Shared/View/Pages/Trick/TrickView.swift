@@ -39,15 +39,15 @@ struct TrickView: View {
                     alignment: trickModel.trickQuoteBodyAlignment
                 )
             
-            if trickModel.trick.quote != nil {
+            if let quote = trickModel.trick.quote {
                 SectionView {
                     VStack {
                         HStack {
                             UserRow(
-                                name: trickModel.trick.quote?.user.fullname ?? "",
-                                username: trickModel.trick.quote?.user.username ?? "",
-                                userID: String(trickModel.trick.quote?.user.id ?? 1),
-                                avatar: trickModel.trick.quote?.user.avatarAddress ?? ""
+                                name: quote.user.fullname ,
+                                username: quote.user.username,
+                                userID: String(quote.user.id),
+                                avatar: quote.user.avatarAddress ?? ""
                             )
                             .environmentObject(profile)
                             
