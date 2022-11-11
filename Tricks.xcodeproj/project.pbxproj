@@ -117,8 +117,8 @@
 		C6B84D1D27FC86C800A9F734 /* TrickCodePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */; };
 		C6B84D1F27FC8D5400A9F734 /* TrickCodeImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */; };
 		C6B84D2027FC8D5400A9F734 /* TrickCodeImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */; };
-		C6B84D2227FCCE2200A9F734 /* TrickUserPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */; };
-		C6B84D2327FCCE2200A9F734 /* TrickUserPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */; };
+		C6B84D2227FCCE2200A9F734 /* TrickUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D2127FCCE2200A9F734 /* TrickUserInfo.swift */; };
+		C6B84D2327FCCE2200A9F734 /* TrickUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D2127FCCE2200A9F734 /* TrickUserInfo.swift */; };
 		C6B84D2527FCD34D00A9F734 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D2427FCD34D00A9F734 /* SectionView.swift */; };
 		C6B84D2627FCD34D00A9F734 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B84D2427FCD34D00A9F734 /* SectionView.swift */; };
 		C6C0F82327C12EF20011F173 /* Tricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F81D27C12EF20011F173 /* Tricks.swift */; };
@@ -149,6 +149,8 @@
 		C6D9FF3C27D174030000CB4A /* NSTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */; };
 		C6DE700D2834244700A60A92 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE700C2834244700A60A92 /* Comment.swift */; };
 		C6DE700E2834244700A60A92 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE700C2834244700A60A92 /* Comment.swift */; };
+		C6E061EE291EAAA000C68CC2 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E061ED291EAAA000C68CC2 /* AvatarView.swift */; };
+		C6E061EF291EAAA000C68CC2 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E061ED291EAAA000C68CC2 /* AvatarView.swift */; };
 		C6F1B72627E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
 		C6F1B72727E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
 		C6F339FF2811326200AD7688 /* ListStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F339FE2811326200AD7688 /* ListStatus.swift */; };
@@ -230,7 +232,7 @@
 		C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighters.swift; sourceTree = "<group>"; };
 		C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickCodePreview.swift; sourceTree = "<group>"; };
 		C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickCodeImagePreview.swift; sourceTree = "<group>"; };
-		C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickUserPreview.swift; sourceTree = "<group>"; };
+		C6B84D2127FCCE2200A9F734 /* TrickUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickUserInfo.swift; sourceTree = "<group>"; };
 		C6B84D2427FCD34D00A9F734 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		C6C0F81D27C12EF20011F173 /* Tricks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tricks.swift; sourceTree = "<group>"; };
 		C6C0F81E27C12EF20011F173 /* ResponseCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCall.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteView.swift; sourceTree = "<group>"; };
 		C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extension.swift"; sourceTree = "<group>"; };
 		C6DE700C2834244700A60A92 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		C6E061ED291EAAA000C68CC2 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		C6F1B72527E64B690008EFBE /* TrickViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickViewModel.swift; sourceTree = "<group>"; };
 		C6F339FE2811326200AD7688 /* ListStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStatus.swift; sourceTree = "<group>"; };
 		C6F33A0528113F5A00AD7688 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -570,8 +573,9 @@
 				C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */,
 				C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */,
 				C63C912427BFC8E80022051C /* TricksListView.swift */,
-				C6B84D2127FCCE2200A9F734 /* TrickUserPreview.swift */,
+				C6B84D2127FCCE2200A9F734 /* TrickUserInfo.swift */,
 				C629101D27CEAF4400FD740E /* TrickView.swift */,
+				C6E061ED291EAAA000C68CC2 /* AvatarView.swift */,
 			);
 			path = Trick;
 			sourceTree = "<group>";
@@ -773,7 +777,7 @@
 				C63C912B27BFC9100022051C /* ProfileView.swift in Sources */,
 				C6C0F82327C12EF20011F173 /* Tricks.swift in Sources */,
 				C63C912227BFC6670022051C /* NavigationItem.swift in Sources */,
-				C6B84D2227FCCE2200A9F734 /* TrickUserPreview.swift in Sources */,
+				C6B84D2227FCCE2200A9F734 /* TrickUserInfo.swift in Sources */,
 				C6B84D2527FCD34D00A9F734 /* SectionView.swift in Sources */,
 				C629101827CEA36800FD740E /* TricksService.swift in Sources */,
 				C6F7D2C427E3C646001F0B54 /* Sharer.swift in Sources */,
@@ -825,6 +829,7 @@
 				C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */,
 				C6F7D2C027E3C5F1001F0B54 /* ShareSheet.swift in Sources */,
 				C63930A7280F1D4F00E9E1DB /* NotificationsEndpoint.swift in Sources */,
+				C6E061EE291EAAA000C68CC2 /* AvatarView.swift in Sources */,
 				C63886542820307800E894D7 /* UsersEndpoint.swift in Sources */,
 				C6B143D827DCC27F00AE777E /* ProfileViewModel.swift in Sources */,
 				C66CC6AD291E2EC400FA1833 /* CopyButton.swift in Sources */,
@@ -880,7 +885,7 @@
 				C61A875B28129FB400CA6257 /* CustomTextEditor.swift in Sources */,
 				C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C67D8A0A27C17EC3001E0E56 /* HTTPClient.swift in Sources */,
-				C6B84D2327FCCE2200A9F734 /* TrickUserPreview.swift in Sources */,
+				C6B84D2327FCCE2200A9F734 /* TrickUserInfo.swift in Sources */,
 				C6D1E2522800342200DFC60A /* TrickActions.swift in Sources */,
 				C63C911B27BFC6230022051C /* MainView.swift in Sources */,
 				C63C911927BFC6230022051C /* Sidebar.swift in Sources */,
@@ -900,6 +905,7 @@
 				C65D3C7F28213355002EC14C /* AccountSettingsViewModel.swift in Sources */,
 				C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C912C27BFC9100022051C /* ProfileView.swift in Sources */,
+				C6E061EF291EAAA000C68CC2 /* AvatarView.swift in Sources */,
 				C6B84D2027FC8D5400A9F734 /* TrickCodeImagePreview.swift in Sources */,
 				C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */,
 				C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */,

@@ -72,8 +72,8 @@ struct TricksListView<ProfileContent: View>: View {
                             ForEach(tricksListModel.tricks, id: \.id) { trick in
                                 TrickView(trick: trick, parentWidth: proxy.size.width)
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .padding(.horizontal)
                                     #if os(iOS)
+                                    .padding(.horizontal)
                                     .padding(.bottom)
                                     #elseif os(macOS)
                                     .padding()
