@@ -16,25 +16,32 @@ struct TrickActions: View {
     
     var body: some View {
         HStack {
+            /// Rate - Like
             Button {
                 Task.init {
+                    HapticGenerator.shared.soft()
                     await trickModel.toggleLike()
                 }
             } label: {
-                Label($trickModel.trick.rates.wrappedValue.formatted(), systemImage: trickModel.liked ? "heart.fill" : "heart")
+                Label {
+                    Text(trickModel.trick.rates.formatted())
+                } icon: {
+                    LikeLabel(state: $trickModel.liked)
+                        .frame(width: 15, height: 15)
+                }
             }
             .buttonStyle(.plain)
             .foregroundColor(trickModel.liked ? .red : .gray)
             .accentColor(.clear)
             
-            Spacer()
-            
+            /// Quote - Retrick
             Button(action: { addQuoteModel.showQuoteView.toggle() }) {
                 Label("Quote", systemImage: "quote.bubble")
             }
             .buttonStyle(.plain)
             .labelStyle(.iconOnly)
             .foregroundColor(.gray)
+            .padding(.horizontal)
             .popover(isPresented: $addQuoteModel.showQuoteView) {
                 AddQuoteView(trickID: trickModel.trick.id)
                     .frame(minWidth: 300, minHeight: 250)
@@ -43,12 +50,14 @@ struct TrickActions: View {
             
             Spacer()
             
+            /// Share
             Button(action: { showShare = true }) {
                 Label("Share", systemImage: "square.and.arrow.up")
             }
             .buttonStyle(.plain)
             .labelStyle(.iconOnly)
             .foregroundColor(.gray)
+            .padding(.horizontal)
             #if os(iOS)
             .sheet(isPresented: $showShare) {
                 ShareSheet(items: trickModel.shareBody())
@@ -57,8 +66,7 @@ struct TrickActions: View {
             .background(ShareSheet(isPresented: $showShare, items: trickModel.shareBody()))
             #endif
             
-            Spacer()
-            
+            /// Copy code
             Button(action: trickModel.copyCode) {
                 Label("Copy Code", systemImage: "doc.on.doc")
             }
@@ -66,10 +74,8 @@ struct TrickActions: View {
             .labelStyle(.iconOnly)
             .foregroundColor(.gray)
             
-            
+            /// Delete Trick
             if trickModel.isMine {
-                Spacer()
-                
                 Button {
                     trickModel.willDelete = true
                 } label: {
@@ -91,6 +97,7 @@ struct TrickActions: View {
                 }
             }
         }
+        .padding(.horizontal)
     }
 }
 

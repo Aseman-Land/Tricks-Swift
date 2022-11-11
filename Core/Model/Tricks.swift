@@ -24,7 +24,7 @@ struct Trick: Codable {
     let programing_language: GlobalTrickItemDetail?
     let code_frame: GlobalTrickItemDetail?
     let type: TrickTypeClass
-    var views, rates, rate_state: Int
+    var views, rates, rate_state: Int64
     let tags: [String?]
     let filename: String?
     let quote: Quote?
@@ -46,7 +46,7 @@ struct Trick: Codable {
         code_frame: nil,
         type: TrickTypeClass(id: 1, name: "code", typeDescription: nil),
         views: 3,
-        rates: 2,
+        rates: 1000,
         rate_state: 1,
         tags: ["Rust"],
         filename: "storage/static/newtrick_0.png",

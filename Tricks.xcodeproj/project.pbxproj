@@ -86,6 +86,8 @@
 		C6799B6028033AA100385799 /* TagsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5E28033AA100385799 /* TagsEndpoint.swift */; };
 		C6799B6228033F1A00385799 /* TagsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B6128033F1A00385799 /* TagsService.swift */; };
 		C6799B6328033F1A00385799 /* TagsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B6128033F1A00385799 /* TagsService.swift */; };
+		C67A3789291D58C300514961 /* LikeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A3788291D58C300514961 /* LikeLabel.swift */; };
+		C67A378A291D58C300514961 /* LikeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A3788291D58C300514961 /* LikeLabel.swift */; };
 		C67D8A0227C14A70001E0E56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0127C14A70001E0E56 /* User.swift */; };
 		C67D8A0327C14A70001E0E56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0127C14A70001E0E56 /* User.swift */; };
 		C67D8A0527C14ABD001E0E56 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0427C14ABD001E0E56 /* AppService.swift */; };
@@ -210,6 +212,7 @@
 		C6799B5B280337CD00385799 /* TagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewModel.swift; sourceTree = "<group>"; };
 		C6799B5E28033AA100385799 /* TagsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEndpoint.swift; sourceTree = "<group>"; };
 		C6799B6128033F1A00385799 /* TagsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsService.swift; sourceTree = "<group>"; };
+		C67A3788291D58C300514961 /* LikeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeLabel.swift; sourceTree = "<group>"; };
 		C67D89FE27C1399D001E0E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C67D8A0127C14A70001E0E56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C67D8A0427C14ABD001E0E56 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
@@ -588,6 +591,7 @@
 				C6B84D2427FCD34D00A9F734 /* SectionView.swift */,
 				C61A875928129FB400CA6257 /* CustomTextEditor.swift */,
 				C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */,
+				C67A3788291D58C300514961 /* LikeLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -810,6 +814,7 @@
 				C63C912527BFC8E80022051C /* TricksListView.swift in Sources */,
 				C6DE700D2834244700A60A92 /* Comment.swift in Sources */,
 				C6B84D1427FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
+				C67A3789291D58C300514961 /* LikeLabel.swift in Sources */,
 				C63C910627BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C6F339FF2811326200AD7688 /* ListStatus.swift in Sources */,
 				C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */,
@@ -879,6 +884,7 @@
 				C629101327CE96CF00FD740E /* AccountSettingsView.swift in Sources */,
 				C63930AE280F262500E9E1DB /* NotificationsViewModel.swift in Sources */,
 				C629101F27CEAF4400FD740E /* TrickView.swift in Sources */,
+				C67A378A291D58C300514961 /* LikeLabel.swift in Sources */,
 				C65D3C8228215AAF002EC14C /* SecureKey.swift in Sources */,
 				C6B84D1527FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
 				C605E127280E966A00C777DB /* NotificationRow.swift in Sources */,

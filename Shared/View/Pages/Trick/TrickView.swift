@@ -88,7 +88,6 @@ struct TrickView: View {
                 .environmentObject(trickModel)
                 .environmentObject(addQuoteModel)
                 .frame(maxWidth: 450)
-                .padding(.horizontal)
         }
         .task {
             trickModel.profile = profile
