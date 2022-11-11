@@ -35,11 +35,21 @@ struct LoaderButton<Content: View>: View {
 }
 
 struct LoaderButton_Previews: PreviewProvider {
-    static var previews: some View {
-        LoaderButton(loading: .constant(false)) {
-            Text("Hello")
-        } action: {
-            
+    struct Preview: View {
+        @State private var state: Bool = false
+        
+        var body: some View {
+            LoaderButton(loading: $state) {
+                Text("Hello")
+            } action: {
+                state.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    state.toggle()
+                }
+            }
         }
+    }
+    static var previews: some View {
+        Preview()
     }
 }

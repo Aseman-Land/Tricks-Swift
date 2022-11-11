@@ -52,10 +52,17 @@ struct CustomTextEditor: View {
 }
 
 struct CustomTextEditor_Previews: PreviewProvider {
+    struct Preview: View {
+        @State private var context: String = ""
+        
+        var body: some View {
+            CustomTextEditor(
+                placeholder: "Hello world",
+                context: $context
+            )
+        }
+    }
     static var previews: some View {
-        CustomTextEditor(
-            placeholder: "Hello world",
-            context: .constant("")
-        )
+        Preview()
     }
 }

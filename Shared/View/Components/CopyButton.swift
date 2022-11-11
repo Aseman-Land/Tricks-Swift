@@ -43,5 +43,7 @@ struct CopyButton: View {
 struct CopyButton_Previews: PreviewProvider {
     static var previews: some View {
         CopyButton(action: {})
+            .font(.largeTitle)
+            .padding()
     }
 }

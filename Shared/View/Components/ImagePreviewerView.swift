@@ -112,9 +112,10 @@ struct ImagePreviewerView<Content: View>: View {
 struct ImagePreviewerView_Previews: PreviewProvider {
     static var previews: some View {
         ImagePreviewerView {
-            Image(systemName: "doc.text")
+            Image(systemName: "camera.macro")
                 .resizable()
                 .scaledToFit()
+                .padding()
         }
     }
 }

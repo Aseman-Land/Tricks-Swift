@@ -51,7 +51,6 @@ struct LikeLabel: View {
 }
 
 struct LikeLabel_Previews: PreviewProvider {
-    
     struct Preview: View {
         @State private var state: Bool = false
         
@@ -62,6 +61,8 @@ struct LikeLabel_Previews: PreviewProvider {
                 LikeLabel(state: $state)
             }
             .buttonStyle(.plain)
+            .font(.largeTitle)
+            .padding()
         }
     }
     static var previews: some View {
