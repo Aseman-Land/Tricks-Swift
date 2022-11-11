@@ -60,6 +60,7 @@ struct TrickActions: View {
             .padding(.horizontal)
             #if os(iOS)
             .sheet(isPresented: $showShare) {
+                #warning("There is a bug with shareSheet")
                 ShareSheet(items: trickModel.shareBody())
             }
             #elseif os(macOS)
@@ -67,12 +68,8 @@ struct TrickActions: View {
             #endif
             
             /// Copy code
-            Button(action: trickModel.copyCode) {
-                Label("Copy Code", systemImage: "doc.on.doc")
-            }
-            .buttonStyle(.plain)
-            .labelStyle(.iconOnly)
-            .foregroundColor(.gray)
+            CopyButton(action: trickModel.copyCode)
+                .foregroundColor(.gray)
             
             /// Delete Trick
             if trickModel.isMine {

@@ -79,6 +79,8 @@
 		C667D8562813256500018E6A /* RecoverPaswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */; };
 		C66BF77A2815A7D500171BDA /* ImagePreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */; };
 		C66BF77B2815A7D500171BDA /* ImagePreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */; };
+		C66CC6AD291E2EC400FA1833 /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CC6AC291E2EC400FA1833 /* CopyButton.swift */; };
+		C66CC6AE291E2EC400FA1833 /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CC6AC291E2EC400FA1833 /* CopyButton.swift */; };
 		C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6748D6B27C015110023251B /* VisualEffectBlur.swift */; };
 		C6799B5C280337CD00385799 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5B280337CD00385799 /* TagsViewModel.swift */; };
 		C6799B5D280337CD00385799 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5B280337CD00385799 /* TagsViewModel.swift */; };
@@ -208,6 +210,7 @@
 		C65D3C8028215AAF002EC14C /* SecureKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureKey.swift; sourceTree = "<group>"; };
 		C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPaswordViewModel.swift; sourceTree = "<group>"; };
 		C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewerView.swift; sourceTree = "<group>"; };
+		C66CC6AC291E2EC400FA1833 /* CopyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
 		C6748D6B27C015110023251B /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
 		C6799B5B280337CD00385799 /* TagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewModel.swift; sourceTree = "<group>"; };
 		C6799B5E28033AA100385799 /* TagsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEndpoint.swift; sourceTree = "<group>"; };
@@ -592,6 +595,7 @@
 				C61A875928129FB400CA6257 /* CustomTextEditor.swift */,
 				C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */,
 				C67A3788291D58C300514961 /* LikeLabel.swift */,
+				C66CC6AC291E2EC400FA1833 /* CopyButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -698,7 +702,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					C63C90FC27BFC5BA0022051C = {
 						CreatedOnToolsVersion = 13.2;
@@ -823,6 +827,7 @@
 				C63930A7280F1D4F00E9E1DB /* NotificationsEndpoint.swift in Sources */,
 				C63886542820307800E894D7 /* UsersEndpoint.swift in Sources */,
 				C6B143D827DCC27F00AE777E /* ProfileViewModel.swift in Sources */,
+				C66CC6AD291E2EC400FA1833 /* CopyButton.swift in Sources */,
 				C63C912827BFC9090022051C /* NotificationsListView.swift in Sources */,
 				C65D3C8328218107002EC14C /* AccountSettingsViewModel.swift in Sources */,
 				C6C0F82927C12EF20011F173 /* GlobalResponse.swift in Sources */,
@@ -886,6 +891,7 @@
 				C629101F27CEAF4400FD740E /* TrickView.swift in Sources */,
 				C67A378A291D58C300514961 /* LikeLabel.swift in Sources */,
 				C65D3C8228215AAF002EC14C /* SecureKey.swift in Sources */,
+				C66CC6AE291E2EC400FA1833 /* CopyButton.swift in Sources */,
 				C6B84D1527FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
 				C605E127280E966A00C777DB /* NotificationRow.swift in Sources */,
 				C6B84D1D27FC86C800A9F734 /* TrickCodePreview.swift in Sources */,
@@ -951,6 +957,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1011,6 +1018,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1102,6 +1110,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1131,6 +1140,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
