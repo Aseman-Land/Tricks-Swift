@@ -19,7 +19,9 @@ struct TrickActions: View {
             /// Rate - Like
             Button {
                 Task.init {
+                    #if os(iOS)
                     HapticGenerator.shared.soft()
+                    #endif
                     await trickModel.toggleLike()
                 }
             } label: {
@@ -60,7 +62,7 @@ struct TrickActions: View {
             .padding(.horizontal)
             #if os(iOS)
             .sheet(isPresented: $showShare) {
-                #warning("There is a bug with shareSheet")
+                /// FIXME: There is a bug with shareSheet
                 ShareSheet(items: trickModel.shareBody())
             }
             #elseif os(macOS)
