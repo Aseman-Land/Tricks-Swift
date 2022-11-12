@@ -37,10 +37,10 @@ struct NotificationsListView: View {
                 }
                 
             case .emptyList:
-                EmptyList()
+                NoNotificationsView()
                 
             case .errorLoading(let message):
-                NetworkError(title: message) {
+                NetworkErrorView(title: message) {
                     Task.init {
                         await notifModel.getNotifications()
                     }
@@ -67,54 +67,6 @@ struct NotificationsListView: View {
             )
         )
         #endif
-    }
-    
-    // MARK: - Empty View
-    @ViewBuilder
-    func EmptyList() -> some View {
-        VStack(spacing: 12) {
-            ZStack {
-                Image(systemName: "bell.fill")
-                    .font(.custom("system", size: 150))
-                    .foregroundColor(.yellow)
-                
-                Image(systemName: "eyes.inverse")
-                    .font(.custom("system", size: 50))
-                    .foregroundColor(.white)
-            }
-            .opacity(0.60)
-            
-            Text("Great, No Notification!")
-                .font(.title)
-                .fontWeight(.medium)
-        }
-        .dynamicTypeSize(.xSmall ... .medium)
-        .lineLimit(1)
-        .minimumScaleFactor(0.5)
-        .foregroundStyle(.secondary)
-    }
-    
-    func NetworkError(title: String, action: @escaping () -> Void) -> some View {
-        VStack {
-            Image(systemName: "pc")
-                .font(.custom("system", size: 150))
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(.white, .blue)
-                .shadow(color: .black.opacity(0.5), radius: 2, x: 1, y: 1)
-                .opacity(0.60)
-            
-            Text(title)
-                .font(.title2)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-            
-            Button(action: action) {
-                Text("Try again")
-            }
-            .buttonStyle(.bordered)
-        }
-        .foregroundStyle(.secondary)
-        .padding(.horizontal)
     }
 }
 

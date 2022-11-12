@@ -110,14 +110,14 @@ struct TricksListView<ProfileContent: View>: View {
                 VStack {
                     profileContent
                     Spacer()
-                    EmptyList()
+                    EmptyListView()
                     Spacer()
                 }
             case .errorLoading(let message):
                 VStack {
                     profileContent
                     Spacer()
-                    NetworkError(title: message) {
+                    NetworkErrorView(title: message) {
                         Task.init {
                             await tricksListModel.loadTricks()
                         }
@@ -158,55 +158,6 @@ struct TricksListView<ProfileContent: View>: View {
             )
         )
         #endif
-    }
-    
-    // MARK: - Empty View
-    private struct EmptyList: View {
-        var body: some View {
-            VStack {
-                ZStack {
-                    Image(systemName: "macwindow")
-                        .font(.custom("system", size: 150))
-                        .symbolRenderingMode(.multicolor)
-                    
-                    Text("404")
-                        .font(.system(.largeTitle, design: .monospaced))
-                        .offset(y: 15)
-                }
-                
-                Text("No tricks available")
-                    .font(.title)
-                    .fontWeight(.medium)
-            }
-            .dynamicTypeSize(.xSmall ... .medium)
-            .lineLimit(1)
-            .minimumScaleFactor(0.5)
-            .foregroundStyle(.secondary)
-            .opacity(0.75)
-        }
-    }
-    
-    func NetworkError(title: String, action: @escaping () -> Void) -> some View {
-        VStack {
-            Image(systemName: "pc")
-                .font(.custom("system", size: 150))
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(.white, .blue)
-                .shadow(color: .black.opacity(0.5), radius: 2, x: 1, y: 1)
-                .opacity(0.60)
-            
-            Text(title)
-                .font(.title2)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-            
-            Button(action: action) {
-                Text("Try again")
-            }
-            .buttonStyle(.bordered)
-        }
-        .foregroundStyle(.secondary)
-        .padding(.horizontal)
     }
 }
 

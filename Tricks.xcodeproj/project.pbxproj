@@ -99,6 +99,12 @@
 		C67D8A0C27C17EDA001E0E56 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0B27C17EDA001E0E56 /* RequestError.swift */; };
 		C67D8A0D27C17EDA001E0E56 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0B27C17EDA001E0E56 /* RequestError.swift */; };
 		C680745B2822C23800FD704E /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680745A2822C23800FD704E /* NSImage+Extensions.swift */; };
+		C69477F7291FDC5C00BFCBF8 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69477F6291FDC5C00BFCBF8 /* NetworkErrorView.swift */; };
+		C69477F8291FDC5C00BFCBF8 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69477F6291FDC5C00BFCBF8 /* NetworkErrorView.swift */; };
+		C69477FB291FDD1C00BFCBF8 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69477FA291FDD1C00BFCBF8 /* EmptyListView.swift */; };
+		C69477FC291FDD1C00BFCBF8 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69477FA291FDD1C00BFCBF8 /* EmptyListView.swift */; };
+		C69477FE291FDD6800BFCBF8 /* NoNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69477FD291FDD6800BFCBF8 /* NoNotificationsView.swift */; };
+		C69477FF291FDD6800BFCBF8 /* NoNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69477FD291FDD6800BFCBF8 /* NoNotificationsView.swift */; };
 		C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */; };
 		C6957C1627CF7025004ECB14 /* TricksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */; };
 		C69D74AD27C0D9730060432F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D74AC27C0D9730060432F /* AuthViewModel.swift */; };
@@ -224,6 +230,9 @@
 		C67D8A0827C17EC3001E0E56 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		C67D8A0B27C17EDA001E0E56 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		C680745A2822C23800FD704E /* NSImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
+		C69477F6291FDC5C00BFCBF8 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
+		C69477FA291FDD1C00BFCBF8 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		C69477FD291FDD6800BFCBF8 /* NoNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNotificationsView.swift; sourceTree = "<group>"; };
 		C6957C1427CF7025004ECB14 /* TricksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TricksListViewModel.swift; sourceTree = "<group>"; };
 		C69D74AC27C0D9730060432F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		C6B143D727DCC27F00AE777E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -508,6 +517,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		C69477F9291FDC6000BFCBF8 /* EmptyStates */ = {
+			isa = PBXGroup;
+			children = (
+				C69477F6291FDC5C00BFCBF8 /* NetworkErrorView.swift */,
+				C69477FA291FDD1C00BFCBF8 /* EmptyListView.swift */,
+				C69477FD291FDD6800BFCBF8 /* NoNotificationsView.swift */,
+			);
+			path = EmptyStates;
+			sourceTree = "<group>";
+		};
 		C6C0F81B27C12EBA0011F173 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +613,7 @@
 		C6D1E2552800356400DFC60A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C69477F9291FDC6000BFCBF8 /* EmptyStates */,
 				C64A97C927FB463500C7EE1A /* LoaderButton.swift */,
 				C6B84D2427FCD34D00A9F734 /* SectionView.swift */,
 				C61A875928129FB400CA6257 /* CustomTextEditor.swift */,
@@ -801,6 +821,7 @@
 				C6FBB8E7281540A000ECCE77 /* AvatarPreview.swift in Sources */,
 				C6799B6228033F1A00385799 /* TagsService.swift in Sources */,
 				C6C0F82527C12EF20011F173 /* ResponseCall.swift in Sources */,
+				C69477FE291FDD6800BFCBF8 /* NoNotificationsView.swift in Sources */,
 				C6B84D1C27FC86C800A9F734 /* TrickCodePreview.swift in Sources */,
 				C67D8A0927C17EC3001E0E56 /* HTTPClient.swift in Sources */,
 				C63C911A27BFC6230022051C /* MainView.swift in Sources */,
@@ -808,6 +829,7 @@
 				C65D3C8128215AAF002EC14C /* SecureKey.swift in Sources */,
 				C621AFC128114BB3007BBEDA /* Bundle+Extensions.swift in Sources */,
 				C63C912F27BFCCD90022051C /* LoginView.swift in Sources */,
+				C69477FB291FDD1C00BFCBF8 /* EmptyListView.swift in Sources */,
 				C63D793727D27882000D7442 /* AddQuoteViewModel.swift in Sources */,
 				C6F7D2C227E3C602001F0B54 /* Sharer+Implementation.swift in Sources */,
 				C6018F0B27FADFD700DF8FED /* NavigationButton.swift in Sources */,
@@ -819,6 +841,7 @@
 				C63C911F27BFC63E0022051C /* TabNavigation.swift in Sources */,
 				C6C0F82B27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C911827BFC6230022051C /* Sidebar.swift in Sources */,
+				C69477F7291FDC5C00BFCBF8 /* NetworkErrorView.swift in Sources */,
 				C63C912527BFC8E80022051C /* TricksListView.swift in Sources */,
 				C6DE700D2834244700A60A92 /* Comment.swift in Sources */,
 				C6B84D1427FC7E2000A9F734 /* CodeHighlighters.swift in Sources */,
@@ -863,6 +886,7 @@
 				C64A97CB27FB463500C7EE1A /* LoaderButton.swift in Sources */,
 				C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
 				C667D8562813256500018E6A /* RecoverPaswordViewModel.swift in Sources */,
+				C69477FC291FDD1C00BFCBF8 /* EmptyListView.swift in Sources */,
 				C6799B6028033AA100385799 /* TagsEndpoint.swift in Sources */,
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
 				C6DE700E2834244700A60A92 /* Comment.swift in Sources */,
@@ -883,6 +907,7 @@
 				C63930AB280F211500E9E1DB /* NotificationService.swift in Sources */,
 				C64A97C827FB2F6A00C7EE1A /* AddTrickView.swift in Sources */,
 				C61A875B28129FB400CA6257 /* CustomTextEditor.swift in Sources */,
+				C69477F8291FDC5C00BFCBF8 /* NetworkErrorView.swift in Sources */,
 				C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C67D8A0A27C17EC3001E0E56 /* HTTPClient.swift in Sources */,
 				C6B84D2327FCCE2200A9F734 /* TrickUserInfo.swift in Sources */,
@@ -913,6 +938,7 @@
 				C6018F0C27FADFD700DF8FED /* NavigationButton.swift in Sources */,
 				C69D74AE27C0D9730060432F /* AuthViewModel.swift in Sources */,
 				C63C912927BFC9090022051C /* NotificationsListView.swift in Sources */,
+				C69477FF291FDD6800BFCBF8 /* NoNotificationsView.swift in Sources */,
 				C66BF77B2815A7D500171BDA /* ImagePreviewerView.swift in Sources */,
 				C61A875F2812C37A00CA6257 /* RecoverPasswordView.swift in Sources */,
 				C6C0F82A27C12EF20011F173 /* GlobalResponse.swift in Sources */,
