@@ -34,7 +34,7 @@ struct ProfileView: View {
                 .environmentObject(profile)
         }
         .fullScreenCover(isPresented: $profileModel.showAvatarPreview) {
-            AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress ?? "")
+            AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress)
         }
         .toolbar {
             ToolbarItem {
@@ -57,8 +57,8 @@ struct ProfileView: View {
     
     @ViewBuilder
     func UserView() -> some View {
-        VStack(spacing: 12) {
-            // MARK: - User avatar
+        VStack(spacing: 0) {
+            /// User avatar
             Button(action: {
                 profileModel.showAvatarPreview.toggle()
             }, label: {
@@ -79,15 +79,20 @@ struct ProfileView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 70, height: 70, alignment: .center)
                     .clipShape(Circle())
+                    
+                    #if os(macOS)
+                    /// There is a bug in macOS SwiftUI that the Image is not make it clickable without this hack
+                    Color.white.opacity(0.001)
+                    #endif
                 }
                 .frame(width: 80, height: 80)
                 .padding()
             })
-            .frame(width: 80, height: 80)
             .buttonStyle(.borderless)
             
+            /// User details
             VStack {
-                // MARK: - User's name
+                /// User's name
                 Text(profileModel.userResult?.fullname ?? "       ")
                     .font(.title)
                     .fontWeight(.medium)
@@ -96,7 +101,7 @@ struct ProfileView: View {
                     .minimumScaleFactor(0.5)
                     .redacted(reason: profileModel.userResult?.fullname.trimmingCharacters(in: .whitespaces).isEmpty ?? true ? .placeholder : [])
                 
-                // MARK: - Username
+                /// Username
                 Text("@" + (profileModel.userResult?.username ?? "     "))
                     .font(.body)
                     .fontWeight(.light)
