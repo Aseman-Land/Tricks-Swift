@@ -14,10 +14,6 @@ struct NoNotificationsView: View {
                 Image(systemName: "bell.fill")
                     .font(.custom("system", size: 150))
                     .foregroundColor(.yellow)
-                
-                Image(systemName: "eyes.inverse")
-                    .font(.custom("system", size: 50))
-                    .foregroundColor(.white)
             }
             .opacity(0.60)
             

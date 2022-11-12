@@ -19,6 +19,7 @@ struct EmptyListView: View {
                     .font(.system(.largeTitle, design: .monospaced))
                     .offset(y: 15)
             }
+            .padding()
             
             Text("No tricks available")
                 .font(.title)

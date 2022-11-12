@@ -31,6 +31,7 @@ struct NetworkErrorView: View {
             }
             .buttonStyle(.bordered)
         }
+        .dynamicTypeSize(.xSmall ... .medium)
         .foregroundStyle(.secondary)
         .padding(.horizontal)
     }
