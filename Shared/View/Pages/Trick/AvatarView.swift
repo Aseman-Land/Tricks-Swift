@@ -10,7 +10,7 @@ import NukeUI
 
 struct AvatarView: View {
     
-    @State var avatar: String
+    @State var avatar: URL?
     @State var name:   String
     @State var userID: String
     @EnvironmentObject var profile: MyProfileViewModel
@@ -21,7 +21,7 @@ struct AvatarView: View {
                 Circle()
                     .foregroundStyle(.white)
                 
-                LazyImage(source: avatar) { state in
+                LazyImage(url: avatar) { state in
                     if let image = state.image {
                         image
                     } else {
@@ -44,7 +44,7 @@ struct AvatarView: View {
 struct AvatarView_Previews: PreviewProvider {
     static var previews: some View {
         AvatarView(
-            avatar: "https://tricks.aseman.io/api/v1/storage/static/avatar_general.jpg",
+            avatar: URL(string: "https://tricks.aseman.io/api/v1/storage/static/avatar_general.jpg"),
             name: "Test",
             userID: "test"
         )

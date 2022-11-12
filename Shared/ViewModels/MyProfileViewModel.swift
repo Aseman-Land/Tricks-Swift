@@ -81,7 +81,7 @@ class MyProfileViewModel: ObservableObject {
                     self.storageAbout = result.result.about ?? ""
                     
                     if let avatar = result.result.avatarAddress {
-                        self.storageAvatarAddress = avatar
+                        self.storageAvatarAddress = avatar.absoluteString
                     }
                 }
             } else {

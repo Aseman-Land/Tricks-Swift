@@ -10,7 +10,7 @@ import NukeUI
 
 struct AvatarPreview: View {
     
-    @State var imageAddress: String
+    @State var imageAddress: URL?
     @GestureState var scale: CGFloat = 1.0
     
     @Environment(\.presentationMode) var presentationMode
@@ -25,7 +25,7 @@ struct AvatarPreview: View {
             )
             #endif
             
-            LazyImage(source: imageAddress) { state in
+            LazyImage(url: imageAddress) { state in
                 if state.isLoading {
                     if state.progress.total > 0 {
                     ProgressView(value: Float(state.progress.completed / state.progress.total))
@@ -75,7 +75,7 @@ struct AvatarPreview: View {
 struct AvatarPreview_Previews: PreviewProvider {
     static var previews: some View {
         AvatarPreview(
-            imageAddress: "https://tricks.aseman.io/static/images/icon.png"
+            imageAddress: URL(string: "https://tricks.aseman.io/static/images/icon.png")
         )
     }
 }

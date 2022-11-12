@@ -107,7 +107,7 @@ class TrickViewModel: ObservableObject {
             URL(string: trick.share_link ?? trick.previewAddress)!
         ]
         #else
-        return [trick.share_link ?? trick.previewAddress]
+        return [trick.share_link ?? trick.previewURL as Any]
         #endif
     }
     

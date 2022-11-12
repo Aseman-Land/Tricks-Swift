@@ -36,10 +36,10 @@ struct AppService {
         return ""
     }
     
-    func imageURL(url: String?) -> String {
+    func imageURL(url: String?) -> URL? {
         if let url = url {
-            return "https://\(AppService.apiKey)/api/v1/\(url)"
+            return URL(string: "https://\(AppService.apiKey)/api/v1/\(url)")
         }
-        return ""
+        return nil
     }
 }

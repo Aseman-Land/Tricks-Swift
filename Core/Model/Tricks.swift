@@ -31,7 +31,7 @@ struct Trick: Codable {
     let image_size: CodePreviewDetail?
     let share_link: String?
     
-    var previewAddress: String {
+    var previewURL: URL? {
         return AppService().imageURL(url: filename)
     }
     

@@ -29,9 +29,9 @@ public struct UserResult: Codable {
     let details: UserDetails?
     let isFollower, isFollowed: Bool?
     
-    var avatarAddress: String? {
+    var avatarAddress: URL? {
         if let avatar = avatar {
-            return "https://\(AppService.apiKey)/api/v1/\(avatar)"
+            return URL(string: "https://\(AppService.apiKey)/api/v1/\(avatar)")
         }
         return nil
     }

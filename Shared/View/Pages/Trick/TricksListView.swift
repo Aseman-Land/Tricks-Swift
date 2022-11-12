@@ -126,16 +126,19 @@ struct TricksListView<ProfileContent: View>: View {
                 }
             }
         }
+        /// Loading tricks
         .task {
             tricksListModel.profile = profile
             await tricksListModel.loadTricks()
         }
+        /// Updating list
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.UpdateList)) { _ in
             Task.init {
                 await tricksListModel.loadTricks()
             }
         }
         .toolbar {
+            /// Add trick item
             ToolbarItem(placement: .primaryAction) {
                 if tricksListModel.type == .timeline {
                     Button(action: { showAddTrick.toggle() }) {
@@ -143,7 +146,9 @@ struct TricksListView<ProfileContent: View>: View {
                     }
                 }
             }
+            #warning("Add refresher for macOS")
         }
+        /// Add trick sheet
         .sheet(isPresented: $showAddTrick) {
             AddTrickView()
         }
@@ -151,6 +156,7 @@ struct TricksListView<ProfileContent: View>: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #elseif os(macOS)
+        /// Same Background as the List (for matching the same background)
         .background(
             VisualEffectBlur(
                 material: .contentBackground,

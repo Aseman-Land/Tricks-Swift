@@ -48,7 +48,7 @@ struct ProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
         #elseif os(macOS)
         .onChange(of: profileModel.showAvatarPreview) { _ in
-            AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress ?? "")
+            AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress)
                 .frame(minWidth: 512, minHeight: 484)
                 .openInWindow(title: profileModel.userResult?.fullname ?? "", sender: self, transparentTitlebar: true)
         }
@@ -67,7 +67,7 @@ struct ProfileView: View {
                         .foregroundStyle(.ultraThickMaterial)
                         .frame(width: 80, height: 80)
                         .shadow(radius: 2)
-                    LazyImage(source: profileModel.userResult?.avatarAddress ?? "") { state in
+                    LazyImage(url: profileModel.userResult?.avatarAddress) { state in
                         if let image = state.image {
                             image
                         } else {

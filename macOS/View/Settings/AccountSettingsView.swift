@@ -29,7 +29,7 @@ struct AccountSettingsView: View {
                             Circle()
                                 .foregroundStyle(.white)
                                 .frame(width: 75, height: 75)
-                            LazyImage(source: storageAvatarAddress) { state in
+                            LazyImage(url: URL(string: storageAvatarAddress)) { state in
                                 if let image = state.image {
                                     image
                                 } else {

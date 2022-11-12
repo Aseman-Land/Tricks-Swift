@@ -179,7 +179,7 @@ class AccountSettingsViewModel: ObservableObject {
         self.storageAbout = user.result.about ?? ""
         
         if let avatar = user.result.avatarAddress {
-            self.storageAvatarAddress = avatar
+            self.storageAvatarAddress = avatar.absoluteString
         }
     }
 }

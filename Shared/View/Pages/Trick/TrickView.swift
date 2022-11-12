@@ -26,7 +26,7 @@ struct TrickView: View {
     var body: some View {
         HStack(alignment: .top) {
             AvatarView(
-                avatar: trickModel.trick.owner.avatarAddress ?? "",
+                avatar: trickModel.trick.owner.avatarAddress,
                 name: trickModel.trick.owner.fullname,
                 userID: String(trickModel.trick.owner.id)
             )
@@ -54,7 +54,7 @@ struct TrickView: View {
                     SectionView {
                         HStack(alignment: .top) {
                             AvatarView(
-                                avatar: quote.user.avatarAddress ?? "",
+                                avatar: quote.user.avatarAddress,
                                 name: quote.user.fullname,
                                 userID: String(quote.user.id)
                             )
@@ -87,7 +87,7 @@ struct TrickView: View {
                                 
                                 // MARK: - Trick preview
                                 TrickCodeImagePreview(
-                                    source: trickModel.trick.previewAddress,
+                                    url: trickModel.trick.previewURL,
                                     codePreviewSize: trickModel.trick.image_size!,
                                     width: parentWidth
                                 )
@@ -100,7 +100,7 @@ struct TrickView: View {
                 } else {
                     // MARK: - Trick preview
                     TrickCodeImagePreview(
-                        source: trickModel.trick.previewAddress,
+                        url: trickModel.trick.previewURL,
                         codePreviewSize: trickModel.trick.image_size!,
                         width: parentWidth
                     )

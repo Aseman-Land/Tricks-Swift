@@ -28,7 +28,7 @@ struct NotificationRow: View {
                     Circle()
                         .foregroundStyle(.white)
                         .frame(width: 40, height: 40)
-                    LazyImage(source: notif.user.avatarAddress) { state in
+                    LazyImage(url: notif.user.avatarAddress) { state in
                         if let image = state.image {
                             image
                                 .clipShape(Circle())
