@@ -44,12 +44,14 @@ struct TricksListView<ProfileContent: View>: View {
             case .fullList:
                 GeometryReader { proxy in
                     List {
+                        /// Profile Section
                         profileContent
                             #if os(iOS)
                             .listSectionSeparator(.hidden)
                             .listRowSeparator(.hidden)
                             #endif
                         
+                        /// Tricks
                         ForEach(tricksListModel.tricks, id: \.id) { trick in
                             TrickView(trick: trick, parentWidth: proxy.size.width)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -61,6 +63,7 @@ struct TricksListView<ProfileContent: View>: View {
                                 #endif
                         }
                         
+                        /// Bottom pagination refresher
                         VStack {
                             if !tricksListModel.noMore {
                                 ProgressView()
@@ -76,6 +79,10 @@ struct TricksListView<ProfileContent: View>: View {
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
+                        #if os(iOS)
+                        .listSectionSeparator(.hidden)
+                        .listRowSeparator(.hidden)
+                        #endif
                         .onAppear {
                             #if os(iOS)
                             HapticGenerator().soft()
