@@ -55,14 +55,13 @@ struct NotificationRow: View {
                         .foregroundStyle(.white, .red)
                 case 2:
                     // Follow
-                    Image(systemName: "person.crop.circle.fill.badge.plus")
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.green, .indigo)
+                    Image(systemName: "plus.circle.fill")
+                        .symbolRenderingMode(.multicolor)
                 case 3:
                     // Comment
                     Image(systemName: "text.bubble.fill")
                         .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, .green)
+                        .foregroundStyle(.white, .blue)
                 default:
                     Spacer()
                 }
