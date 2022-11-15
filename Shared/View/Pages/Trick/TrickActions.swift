@@ -25,11 +25,11 @@ struct TrickActions: View {
                     await trickModel.toggleLike()
                 }
             } label: {
-                Label {
-                    Text(trickModel.trick.rates.formatted())
-                } icon: {
+                HStack {
                     LikeLabel(state: $trickModel.liked)
                         .frame(width: 15, height: 15)
+                    
+                    Text(trickModel.trick.rates.formatted())
                 }
             }
             .buttonStyle(.plain)
