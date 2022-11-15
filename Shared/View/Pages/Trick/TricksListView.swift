@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Refresh
 
 struct TricksListView<ProfileContent: View>: View {
     
@@ -30,99 +29,101 @@ struct TricksListView<ProfileContent: View>: View {
         ZStack(alignment: .center) {
             switch tricksListModel.listStatus {
             case .loading:
-                VStack {
+                List {
                     profileContent
-                    Spacer()
+                        #if os(iOS)
+                        .listSectionSeparator(.hidden)
+                        .listRowSeparator(.hidden)
+                        #endif
+                }
+                .listStyle(.plain)
+                .overlay {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                    Spacer()
                 }
             case .fullList:
                 GeometryReader { proxy in
-                    ScrollView {
-                        RefreshHeader(
-                            refreshing: $tricksListModel.isRefreshing,
-                            action: {
+                    List {
+                        profileContent
+                            #if os(iOS)
+                            .listSectionSeparator(.hidden)
+                            .listRowSeparator(.hidden)
+                            #endif
+                        
+                        ForEach(tricksListModel.tricks, id: \.id) { trick in
+                            TrickView(trick: trick, parentWidth: proxy.size.width)
+                                .fixedSize(horizontal: false, vertical: true)
                                 #if os(iOS)
-                                HapticGenerator().soft()
+                                .listSectionSeparator(.hidden)
+                                .listRowSeparator(.hidden)
+                                #elseif os(macOS)
+                                .padding([.horizontal, .bottom])
                                 #endif
-                                Task.init {
-                                    await tricksListModel.loadTricks()
-                                }
-                            }
-                        ) { progress in
-                            ZStack {
-                                if tricksListModel.isRefreshing {
-                                    ProgressView()
-                                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                                        #if os(macOS)
-                                        .scaleEffect(0.5)
-                                        #endif
-                                } else {
-                                    Label("Pull to refresh", systemImage: "arrow.down")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
                         }
                         
-                        LazyVStack {
-                            profileContent
-                            
-                            ForEach(tricksListModel.tricks, id: \.id) { trick in
-                                TrickView(trick: trick, parentWidth: proxy.size.width)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    #if os(iOS)
-                                    .padding(.horizontal)
-                                    .padding(.bottom)
-                                    #elseif os(macOS)
-                                    .padding()
-                                    #endif
-                            }
-                        }
-                        
-                        RefreshFooter(
-                            refreshing: $tricksListModel.isLoadingMore,
-                            action: {
-                                #if os(iOS)
-                                HapticGenerator().soft()
-                                #endif
-                                Task.init {
-                                    await tricksListModel.loadMore()
-                                }
-                            }
-                        ) {
-                            if tricksListModel.noMore {
-                                Text("\(tricksListModel.tricks.count.formatted())")
-                            } else {
+                        VStack {
+                            if !tricksListModel.noMore {
                                 ProgressView()
                                     .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
                                     #if os(macOS)
                                     .scaleEffect(0.5)
                                     #endif
+                            } else {
+                                Text("Total tricks: \(tricksListModel.tricks.count.formatted())")
+                                    .multilineTextAlignment(.center)
+                                    .foregroundStyle(.secondary)
+                                    .padding()
                             }
                         }
-                        .noMore(tricksListModel.noMore)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .onAppear {
+                            #if os(iOS)
+                            HapticGenerator().soft()
+                            #endif
+                            Task.init {
+                                if !tricksListModel.noMore {
+                                    await tricksListModel.loadMore()
+                                } else {
+                                    print("No more!")
+                                }
+                            }
+                        }
                     }
-                    .enableRefresh()
+                    .listStyle(.plain)
+                    .refreshable {
+                        #if os(iOS)
+                        HapticGenerator().soft()
+                        #endif
+                        await tricksListModel.loadTricks()
+                    }
                 }
             case .emptyList:
-                VStack {
+                List {
                     profileContent
-                    Spacer()
+                        #if os(iOS)
+                        .listSectionSeparator(.hidden)
+                        .listRowSeparator(.hidden)
+                        #endif
+                }
+                .listStyle(.plain)
+                .overlay {
                     EmptyListView()
-                    Spacer()
                 }
             case .errorLoading(let message):
-                VStack {
+                List {
                     profileContent
-                    Spacer()
+                        #if os(iOS)
+                        .listSectionSeparator(.hidden)
+                        .listRowSeparator(.hidden)
+                        #endif
+                }
+                .listStyle(.plain)
+                .overlay {
                     NetworkErrorView(title: message) {
                         Task.init {
                             await tricksListModel.loadTricks()
                         }
                     }
-                    Spacer()
                 }
             }
         }
@@ -146,7 +147,17 @@ struct TricksListView<ProfileContent: View>: View {
                     }
                 }
             }
-            #warning("Add refresher for macOS")
+            #if os(macOS)
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {
+                    Task.init {
+                        await tricksListModel.loadTricks()
+                    }
+                }) {
+                    Label("Refresh", systemImage: "arrow.clockwise")
+                }
+            }
+            #endif
         }
         /// Add trick sheet
         .sheet(isPresented: $showAddTrick) {
@@ -155,14 +166,6 @@ struct TricksListView<ProfileContent: View>: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
-        #elseif os(macOS)
-        /// Same Background as the List (for matching the same background)
-        .background(
-            VisualEffectBlur(
-                material: .contentBackground,
-                blendingMode: .withinWindow
-            )
-        )
         #endif
     }
 }

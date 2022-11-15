@@ -141,8 +141,6 @@
 		C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82127C12EF20011F173 /* Tags.swift */; };
 		C6C0F82D27C12EF20011F173 /* Notif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82227C12EF20011F173 /* Notif.swift */; };
 		C6C0F82E27C12EF20011F173 /* Notif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0F82227C12EF20011F173 /* Notif.swift */; };
-		C6C9D72C288559CD00CAA06F /* Refresh in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D72B288559CD00CAA06F /* Refresh */; };
-		C6C9D72E28856D3E00CAA06F /* Refresh in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D72D28856D3E00CAA06F /* Refresh */; };
 		C6CDBBB227CA1068008BFF5E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDBBB127CA1068008BFF5E /* HTTPMethod.swift */; };
 		C6CDBBB327CA1068008BFF5E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDBBB127CA1068008BFF5E /* HTTPMethod.swift */; };
 		C6CDBBB827CA1096008BFF5E /* HTTPContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDBBB727CA1096008BFF5E /* HTTPContentType.swift */; };
@@ -282,7 +280,6 @@
 			files = (
 				C6947802292022CB00BFCBF8 /* Nuke in Frameworks */,
 				C663FEBB2885BF4800476F0B /* SimpleKeychain in Frameworks */,
-				C6C9D72C288559CD00CAA06F /* Refresh in Frameworks */,
 				C6947804292022CB00BFCBF8 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,7 +290,6 @@
 			files = (
 				C6947806292022F300BFCBF8 /* Nuke in Frameworks */,
 				C663FEBD2885BF5400476F0B /* SimpleKeychain in Frameworks */,
-				C6C9D72E28856D3E00CAA06F /* Refresh in Frameworks */,
 				C6947808292022F800BFCBF8 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -692,7 +688,6 @@
 			);
 			name = "Tricks (iOS)";
 			packageProductDependencies = (
-				C6C9D72B288559CD00CAA06F /* Refresh */,
 				C663FEBA2885BF4800476F0B /* SimpleKeychain */,
 				C6947801292022CA00BFCBF8 /* Nuke */,
 				C6947803292022CB00BFCBF8 /* NukeUI */,
@@ -715,7 +710,6 @@
 			);
 			name = "Tricks (macOS)";
 			packageProductDependencies = (
-				C6C9D72D28856D3E00CAA06F /* Refresh */,
 				C663FEBC2885BF5400476F0B /* SimpleKeychain */,
 				C6947805292022F300BFCBF8 /* Nuke */,
 				C6947807292022F800BFCBF8 /* NukeUI */,
@@ -752,7 +746,6 @@
 			);
 			mainGroup = C63C90F027BFC5B90022051C;
 			packageReferences = (
-				C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */,
 				C663FEB92885BF4800476F0B /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
 				C6947800292022CA00BFCBF8 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
@@ -1247,14 +1240,6 @@
 				minimumVersion = 11.3.1;
 			};
 		};
-		C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/wxxsw/Refresh";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1287,16 +1272,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C6947800292022CA00BFCBF8 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
-		};
-		C6C9D72B288559CD00CAA06F /* Refresh */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */;
-			productName = Refresh;
-		};
-		C6C9D72D28856D3E00CAA06F /* Refresh */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6C9D72A288559CD00CAA06F /* XCRemoteSwiftPackageReference "Refresh" */;
-			productName = Refresh;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

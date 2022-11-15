@@ -115,9 +115,14 @@ class TricksListViewModel: ObservableObject {
             if self.currentOffset == 0 {
                 self.tricks = tricksResult
                 self.currentOffset = limit
+                self.noMore = false
             } else {
-                self.tricks.append(contentsOf: tricksResult)
-                self.currentOffset += limit
+                if !tricksResult.isEmpty {
+                    self.tricks.append(contentsOf: tricksResult)
+                    self.currentOffset += limit
+                } else {
+                    self.noMore = true
+                }
                 self.isLoadingMore = false
             }
             self.listStatus = self.tricks.isEmpty ? .emptyList : .fullList

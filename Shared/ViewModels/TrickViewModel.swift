@@ -104,7 +104,7 @@ class TrickViewModel: ObservableObject {
             trick.body ?? "",
             trick.code ?? "",
             "By \(trick.owner.fullname)",
-            URL(string: trick.share_link ?? trick.previewAddress)!
+            URL(string: (trick.share_link ?? trick.previewURL?.absoluteString) ?? "https://tricks.aseman.io")!
         ]
         #else
         return [trick.share_link ?? trick.previewURL as Any]
