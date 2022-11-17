@@ -588,13 +588,13 @@
 			children = (
 				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
 				C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */,
+				C6E061ED291EAAA000C68CC2 /* AvatarView.swift */,
 				C6D1E2502800342200DFC60A /* TrickActions.swift */,
 				C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */,
 				C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */,
 				C63C912427BFC8E80022051C /* TricksListView.swift */,
 				C6B84D2127FCCE2200A9F734 /* TrickUserInfo.swift */,
 				C629101D27CEAF4400FD740E /* TrickView.swift */,
-				C6E061ED291EAAA000C68CC2 /* AvatarView.swift */,
 			);
 			path = Trick;
 			sourceTree = "<group>";

@@ -24,14 +24,21 @@ public struct UserResult: Codable {
     let fullname: String
     let about: String?
     let joinDate: String?
-    let avatar: String?
+    let avatar, cover: String?
     let followersCount, followingsCount, tricksCount: Int
     let details: UserDetails?
     let isFollower, isFollowed: Bool?
     
     var avatarAddress: URL? {
-        if let avatar = avatar {
+        if let avatar {
             return URL(string: "https://\(AppService.apiKey)/api/v1/\(avatar)")
+        }
+        return nil
+    }
+    
+    var coverAddress: URL? {
+        if let cover {
+            return URL(string: "https://\(AppService.apiKey)/api/v1/\(cover)")
         }
         return nil
     }
@@ -39,7 +46,7 @@ public struct UserResult: Codable {
     enum CodingKeys: String, CodingKey {
         case id, username, fullname, about
         case joinDate = "join_date"
-        case avatar, details
+        case avatar, cover, details
         case followersCount = "followers_count"
         case followingsCount = "followings_count"
         case tricksCount = "tricks_count"
@@ -54,6 +61,7 @@ public struct UserResult: Codable {
         about: "I'm a C++ and Rust Developer :)",
         joinDate: "2021-03-03T20:38:04",
         avatar: "storage/upload/1/a92e7655-1d03-46c4-af07-408e68ba464c.jpeg",
+        cover: "storage/upload/1/62a45d0c-cbcc-403a-bed2-cda8115cac8f.jpg",
         followersCount: 4,
         followingsCount: 3,
         tricksCount: 4,
