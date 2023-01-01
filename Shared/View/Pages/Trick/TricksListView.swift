@@ -35,6 +35,7 @@ struct TricksListView<ProfileContent: View>: View {
                         .listSectionSeparator(.hidden)
                         .listRowSeparator(.hidden)
                         #endif
+                        .listRowInsets(EdgeInsets())
                 }
                 .listStyle(.plain)
                 .overlay {
@@ -50,6 +51,7 @@ struct TricksListView<ProfileContent: View>: View {
                             .listSectionSeparator(.hidden)
                             .listRowSeparator(.hidden)
                             #endif
+                            .listRowInsets(EdgeInsets())
                         
                         /// Tricks
                         ForEach(tricksListModel.tricks, id: \.id) { trick in

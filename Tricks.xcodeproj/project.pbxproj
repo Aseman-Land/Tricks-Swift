@@ -81,6 +81,8 @@
 		C66BF77B2815A7D500171BDA /* ImagePreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */; };
 		C66CC6AD291E2EC400FA1833 /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CC6AC291E2EC400FA1833 /* CopyButton.swift */; };
 		C66CC6AE291E2EC400FA1833 /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CC6AC291E2EC400FA1833 /* CopyButton.swift */; };
+		C66DB7732962187000CA90EE /* ProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66DB7722962187000CA90EE /* ProfileSectionView.swift */; };
+		C66DB7742962187000CA90EE /* ProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66DB7722962187000CA90EE /* ProfileSectionView.swift */; };
 		C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6748D6B27C015110023251B /* VisualEffectBlur.swift */; };
 		C6799B5C280337CD00385799 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5B280337CD00385799 /* TagsViewModel.swift */; };
 		C6799B5D280337CD00385799 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B5B280337CD00385799 /* TagsViewModel.swift */; };
@@ -219,6 +221,7 @@
 		C667D8542813256500018E6A /* RecoverPaswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPaswordViewModel.swift; sourceTree = "<group>"; };
 		C66BF7792815A7D500171BDA /* ImagePreviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewerView.swift; sourceTree = "<group>"; };
 		C66CC6AC291E2EC400FA1833 /* CopyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
+		C66DB7722962187000CA90EE /* ProfileSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionView.swift; sourceTree = "<group>"; };
 		C6748D6B27C015110023251B /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
 		C6799B5B280337CD00385799 /* TagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewModel.swift; sourceTree = "<group>"; };
 		C6799B5E28033AA100385799 /* TagsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEndpoint.swift; sourceTree = "<group>"; };
@@ -667,6 +670,7 @@
 			children = (
 				C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */,
 				C63C912A27BFC9100022051C /* ProfileView.swift */,
+				C66DB7722962187000CA90EE /* ProfileSectionView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -851,6 +855,7 @@
 				C63D793B27D287F1000D7442 /* NSNotification+Extension.swift in Sources */,
 				C6F7D2C027E3C5F1001F0B54 /* ShareSheet.swift in Sources */,
 				C63930A7280F1D4F00E9E1DB /* NotificationsEndpoint.swift in Sources */,
+				C66DB7732962187000CA90EE /* ProfileSectionView.swift in Sources */,
 				C6E061EE291EAAA000C68CC2 /* AvatarView.swift in Sources */,
 				C63886542820307800E894D7 /* UsersEndpoint.swift in Sources */,
 				C6B143D827DCC27F00AE777E /* ProfileViewModel.swift in Sources */,
@@ -930,6 +935,7 @@
 				C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C912C27BFC9100022051C /* ProfileView.swift in Sources */,
 				C6E061EF291EAAA000C68CC2 /* AvatarView.swift in Sources */,
+				C66DB7742962187000CA90EE /* ProfileSectionView.swift in Sources */,
 				C6B84D2027FC8D5400A9F734 /* TrickCodeImagePreview.swift in Sources */,
 				C6748D6C27C015110023251B /* VisualEffectBlur.swift in Sources */,
 				C629100C27CE8E6200FD740E /* SettingsView.swift in Sources */,

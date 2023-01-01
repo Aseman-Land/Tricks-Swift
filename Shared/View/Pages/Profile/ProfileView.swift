@@ -20,8 +20,19 @@ struct ProfileView: View {
     
     var body: some View {
         TricksListView(viewModel: TricksListViewModel(profileModel.userId == "me" ? .me : .user(userID: profileModel.userId))) {
-            UserView()
-                .frame(maxWidth: .infinity, alignment: .center)
+            ProfileSectionView(
+                name: profileModel.userResult?.fullname,
+                username: profileModel.userResult?.username,
+                about: profileModel.userResult?.about,
+                followers: profileModel.userResult?.followersCount,
+                followings: profileModel.userResult?.followingsCount,
+                avatar: profileModel.userResult?.avatarAddress,
+                cover: profileModel.userResult?.coverAddress,
+                profilePreviewAction: { profileModel.showAvatarPreview.toggle() },
+                followersAction: {},
+                followingsAction: {}
+            )
+            .frame(maxWidth: .infinity, alignment: .center)
         }
         .environmentObject(profile)
         .task {
@@ -54,66 +65,6 @@ struct ProfileView: View {
         }
         #endif
     }
-    
-    @ViewBuilder
-    func UserView() -> some View {
-        VStack(spacing: 0) {
-            /// User avatar
-            Button(action: {
-                profileModel.showAvatarPreview.toggle()
-            }, label: {
-                ZStack {
-                    Circle()
-                        .foregroundStyle(.ultraThickMaterial)
-                        .frame(width: 80, height: 80)
-                        .shadow(radius: 2)
-                    LazyImage(url: profileModel.userResult?.avatarAddress) { state in
-                        if let image = state.image {
-                            image
-                        } else {
-                            Image(systemName: "person.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 70, height: 70, alignment: .center)
-                    .clipShape(Circle())
-                    
-                    #if os(macOS)
-                    /// There is a bug in macOS SwiftUI that the Image is not make it clickable without this hack
-                    Color.white.opacity(0.001)
-                    #endif
-                }
-                .frame(width: 80, height: 80)
-                .padding()
-            })
-            .buttonStyle(.borderless)
-            
-            /// User details
-            VStack {
-                /// User's name
-                Text(profileModel.userResult?.fullname ?? "       ")
-                    .font(.title)
-                    .fontWeight(.medium)
-                    .dynamicTypeSize(.xSmall ... .large)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .redacted(reason: profileModel.userResult?.fullname.trimmingCharacters(in: .whitespaces).isEmpty ?? true ? .placeholder : [])
-                
-                /// Username
-                Text("@" + (profileModel.userResult?.username ?? "     "))
-                    .font(.body)
-                    .fontWeight(.light)
-                    .dynamicTypeSize(.xSmall ... .large)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .foregroundStyle(.secondary)
-                    .redacted(reason: profileModel.userResult?.username.trimmingCharacters(in: .whitespaces).isEmpty ?? true ? .placeholder : [])
-            }
-        }
-        .padding()
-    }
 }
 
 struct ProfileView_Previews: PreviewProvider {
@@ -121,8 +72,7 @@ struct ProfileView_Previews: PreviewProvider {
     @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
-        ProfileView(viewModel: ProfileViewModel(userId: "me"))
-            .preferredColorScheme(.dark)
+        ProfileView(viewModel: ProfileViewModel(userId: "1"))
             .environmentObject(profile)
     }
 }
