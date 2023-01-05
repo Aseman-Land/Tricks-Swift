@@ -61,8 +61,10 @@ struct TricksListView<ProfileContent: View>: View {
                                 .listSectionSeparator(.hidden)
                                 .listRowSeparator(.hidden)
                                 #elseif os(macOS)
-                                .padding([.horizontal, .bottom])
+                                .padding(.horizontal)
                                 #endif
+                            
+                            Divider()
                         }
                         
                         /// Bottom pagination refresher
