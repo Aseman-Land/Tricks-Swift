@@ -18,6 +18,7 @@ extension View {
         window.titleVisibility = transparentTitlebar ? .hidden : .visible
         window.styleMask.insert(transparentTitlebar ? .fullSizeContentView : .titled)
         window.makeKeyAndOrderFront(sender)
+        window.orderFrontRegardless()
         return window
     }
 }
