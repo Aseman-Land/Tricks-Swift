@@ -92,6 +92,8 @@
 		C6799B6328033F1A00385799 /* TagsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6799B6128033F1A00385799 /* TagsService.swift */; };
 		C67A3789291D58C300514961 /* LikeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A3788291D58C300514961 /* LikeLabel.swift */; };
 		C67A378A291D58C300514961 /* LikeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A3788291D58C300514961 /* LikeLabel.swift */; };
+		C67C772B29671CBC0016CD81 /* AvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C772A29671CBC0016CD81 /* AvatarButton.swift */; };
+		C67C772C29671CBC0016CD81 /* AvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C772A29671CBC0016CD81 /* AvatarButton.swift */; };
 		C67D8A0227C14A70001E0E56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0127C14A70001E0E56 /* User.swift */; };
 		C67D8A0327C14A70001E0E56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0127C14A70001E0E56 /* User.swift */; };
 		C67D8A0527C14ABD001E0E56 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D8A0427C14ABD001E0E56 /* AppService.swift */; };
@@ -227,6 +229,7 @@
 		C6799B5E28033AA100385799 /* TagsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEndpoint.swift; sourceTree = "<group>"; };
 		C6799B6128033F1A00385799 /* TagsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsService.swift; sourceTree = "<group>"; };
 		C67A3788291D58C300514961 /* LikeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeLabel.swift; sourceTree = "<group>"; };
+		C67C772A29671CBC0016CD81 /* AvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarButton.swift; sourceTree = "<group>"; };
 		C67D89FE27C1399D001E0E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C67D8A0127C14A70001E0E56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C67D8A0427C14ABD001E0E56 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
@@ -497,6 +500,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		C67C772929671CA60016CD81 /* Avatars */ = {
+			isa = PBXGroup;
+			children = (
+				C6E061ED291EAAA000C68CC2 /* AvatarView.swift */,
+				C67C772A29671CBC0016CD81 /* AvatarButton.swift */,
+				C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */,
+			);
+			path = Avatars;
+			sourceTree = "<group>";
+		};
 		C67D89FF27C139AE001E0E56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,7 +604,6 @@
 			children = (
 				C6D9FF3727D16DAD0000CB4A /* AddQuoteView.swift */,
 				C64A97C627FB2F6A00C7EE1A /* AddTrickView.swift */,
-				C6E061ED291EAAA000C68CC2 /* AvatarView.swift */,
 				C6D1E2502800342200DFC60A /* TrickActions.swift */,
 				C6B84D1E27FC8D5400A9F734 /* TrickCodeImagePreview.swift */,
 				C6B84D1B27FC86C800A9F734 /* TrickCodePreview.swift */,
@@ -616,6 +628,7 @@
 		C6D1E2552800356400DFC60A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C67C772929671CA60016CD81 /* Avatars */,
 				C69477F9291FDC6000BFCBF8 /* EmptyStates */,
 				C64A97C927FB463500C7EE1A /* LoaderButton.swift */,
 				C6B84D2427FCD34D00A9F734 /* SectionView.swift */,
@@ -668,7 +681,6 @@
 		C6FBB8E52815408F00ECCE77 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */,
 				C63C912A27BFC9100022051C /* ProfileView.swift */,
 				C66DB7722962187000CA90EE /* ProfileSectionView.swift */,
 			);
@@ -863,6 +875,7 @@
 				C63C912827BFC9090022051C /* NotificationsListView.swift in Sources */,
 				C65D3C8328218107002EC14C /* AccountSettingsViewModel.swift in Sources */,
 				C6C0F82927C12EF20011F173 /* GlobalResponse.swift in Sources */,
+				C67C772B29671CBC0016CD81 /* AvatarButton.swift in Sources */,
 				C63886572820440500E894D7 /* UsersService.swift in Sources */,
 				C6F7D2BC27E3C5C4001F0B54 /* ShareSheet+Modifiers.swift in Sources */,
 				C67D8A0227C14A70001E0E56 /* User.swift in Sources */,

@@ -25,7 +25,7 @@ struct TrickView: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            AvatarView(
+            AvatarButton(
                 avatar: trickModel.trick.owner.avatarAddress,
                 name: trickModel.trick.owner.fullname,
                 userID: String(trickModel.trick.owner.id)
@@ -53,7 +53,7 @@ struct TrickView: View {
                 if let quote = trickModel.trick.quote {
                     SectionView {
                         HStack(alignment: .top) {
-                            AvatarView(
+                            AvatarButton(
                                 avatar: quote.user.avatarAddress,
                                 name: quote.user.fullname,
                                 userID: String(quote.user.id)
