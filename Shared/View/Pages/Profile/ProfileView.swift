@@ -28,7 +28,6 @@ struct ProfileView: View {
                 followings: profileModel.userResult?.followingsCount,
                 avatar: profileModel.userResult?.avatarAddress,
                 cover: profileModel.userResult?.coverAddress,
-                profilePreviewAction: { profileModel.showAvatarPreview.toggle() },
                 followersAction: {},
                 followingsAction: {}
             )
@@ -44,9 +43,6 @@ struct ProfileView: View {
             SettingsView()
                 .environmentObject(profile)
         }
-        .fullScreenCover(isPresented: $profileModel.showAvatarPreview) {
-            AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress)
-        }
         .toolbar {
             ToolbarItem {
                 if profileModel.userId == "me" {
@@ -57,12 +53,6 @@ struct ProfileView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        #elseif os(macOS)
-        .onChange(of: profileModel.showAvatarPreview) { _ in
-            AvatarPreview(imageAddress: profileModel.userResult?.avatarAddress)
-                .frame(minWidth: 512, minHeight: 484)
-                .openInWindow(title: profileModel.userResult?.fullname ?? "", sender: self, transparentTitlebar: true)
-        }
         #endif
     }
 }

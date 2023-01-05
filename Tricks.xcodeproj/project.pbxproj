@@ -927,6 +927,7 @@
 				C69477F8291FDC5C00BFCBF8 /* NetworkErrorView.swift in Sources */,
 				C6C0F82627C12EF20011F173 /* ResponseCall.swift in Sources */,
 				C67D8A0A27C17EC3001E0E56 /* HTTPClient.swift in Sources */,
+				C67C772C29671CBC0016CD81 /* AvatarButton.swift in Sources */,
 				C6B84D2327FCCE2200A9F734 /* TrickUserInfo.swift in Sources */,
 				C6D1E2522800342200DFC60A /* TrickActions.swift in Sources */,
 				C63C911B27BFC6230022051C /* MainView.swift in Sources */,

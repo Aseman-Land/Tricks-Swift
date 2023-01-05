@@ -22,7 +22,6 @@ struct ProfileSectionView: View {
     var cover:  URL?
     
     /// Actions
-    var profilePreviewAction: () -> Void
     var followersAction: () -> Void
     var followingsAction: () -> Void
     
@@ -59,34 +58,33 @@ struct ProfileSectionView: View {
                 )
                     
                 /// User avatar
-                Button(action: profilePreviewAction) {
-                    ZStack {
-                        Circle()
-                            .foregroundStyle(.ultraThickMaterial)
-                            .frame(width: 80, height: 80)
-                            .shadow(radius: 2)
-                        LazyImage(url: avatar) { state in
-                            if let image = state.image {
-                                image
-                            } else {
-                                Image(systemName: "person.fill")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.secondary)
-                            }
+                ZStack {
+                    Circle()
+                        .foregroundStyle(.ultraThinMaterial)
+                        .shadow(radius: 2)
+                    
+                    NavigationButton(
+                        title: name ?? "",
+                        type: .fullCover
+                    ) {
+                        ZStack {
+                            AvatarView(
+                                avatar: avatar,
+                                name: name,
+                                placeholderFont: .largeTitle
+                            )
+                            #if os(macOS)
+                            /// There is a bug in macOS SwiftUI that the Image is not make it clickable without this hack
+                            Color.white.opacity(0.001)
+                            #endif
                         }
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 70, height: 70, alignment: .center)
-                        .clipShape(Circle())
-                        
-                        #if os(macOS)
-                        /// There is a bug in macOS SwiftUI that the Image is not make it clickable without this hack
-                        Color.white.opacity(0.001)
-                        #endif
+                    } destination: {
+                        AvatarPreview(imageAddress: avatar)
                     }
-                    .frame(width: 80, height: 80)
-                    .padding(5)
+                    .frame(width: 70, height: 70, alignment: .center)
                 }
-                .buttonStyle(.borderless)
+                .frame(width: 80, height: 80, alignment: .center)
+                .padding(5)
                 .offset(y: 40)
                 .padding(.horizontal, 15)
             }
@@ -154,7 +152,6 @@ struct ProfileSectionView_Previews: PreviewProvider {
                 followings: 120,
                 avatar: URL(string: "https://avatars.githubusercontent.com/u/4667751?v=4"),
                 cover: URL(string: "https://www.apple.com/v/macos/ventura/a/images/router/compatible_devices__d5lgp6ypklua_large_2x.jpg"),
-                profilePreviewAction: {},
                 followersAction: {},
                 followingsAction: {}
             )
