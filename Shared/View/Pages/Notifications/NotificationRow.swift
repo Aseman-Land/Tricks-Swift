@@ -10,7 +10,7 @@ import NukeUI
 
 struct NotificationRow: View {
     
-    @State var notif: Notif
+    var notif: Notif
     
     var notifBody: String {
         if let comment = notif.comment {
@@ -23,50 +23,37 @@ struct NotificationRow: View {
     var body: some View {
         HStack {
             // Profile avatar and notification status
-            ZStack(alignment: .bottomTrailing) {
-                ZStack {
-                    Circle()
-                        .foregroundStyle(.white)
-                        .frame(width: 40, height: 40)
-                    LazyImage(url: notif.user.avatarAddress) { state in
-                        if let image = state.image {
-                            image
-                                .clipShape(Circle())
-                        } else {
-                            Image(systemName: "person.fill")
-                                .font(.body)
-                                .foregroundColor(.gray)
-                                .clipShape(Circle())
-                        }
+            AvatarButton(
+                avatar: notif.user.avatarAddress,
+                name: notif.user.fullname,
+                userID: String(notif.user.id)
+            )
+            .frame(width: 40, height: 40)
+            .overlay(alignment: .bottomTrailing) {
+                Group {
+                    switch notif.notifyType {
+                    case 1:
+                        // Like
+                        Image(systemName: "heart.circle.fill")
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.white, .red)
+                            .offset(x: 3, y: 3)
+                    case 2:
+                        // Follow
+                        Image(systemName: "plus.circle.fill")
+                            .symbolRenderingMode(.multicolor)
+                            .offset(x: 3, y: 3)
+                    case 3:
+                        // Comment
+                        Image(systemName: "text.bubble.fill")
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.white, .blue)
+                            .offset(x: 5, y: 5)
+                    default:
+                        Spacer()
                     }
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 38, height: 38, alignment: .center)
-                    .padding(.all, 2)
-                }
-                .frame(width: 40, height: 40)
-                .padding(.all , 5)
-                .shadow(radius: 1)
-                
-                switch notif.notifyType {
-                case 1:
-                    // Like
-                    Image(systemName: "heart.circle.fill")
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, .red)
-                case 2:
-                    // Follow
-                    Image(systemName: "plus.circle.fill")
-                        .symbolRenderingMode(.multicolor)
-                case 3:
-                    // Comment
-                    Image(systemName: "text.bubble.fill")
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, .blue)
-                default:
-                    Spacer()
                 }
             }
-            .frame(width: 50, height: 50)
             .padding(.trailing, 10)
             
             // Notification Message

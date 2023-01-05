@@ -13,6 +13,7 @@ struct AvatarButton: View {
     var avatar: URL?
     var name:   String?
     var userID: String
+    
     @EnvironmentObject var profile: MyProfileViewModel
     
     var body: some View {
