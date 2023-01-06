@@ -23,9 +23,11 @@ struct ProfileView: View {
             ProfileSectionView(
                 name: profileModel.userResult?.fullname,
                 username: profileModel.userResult?.username,
+                joinedDate: profileModel.userResult?.joinedDate,
                 about: profileModel.userResult?.about,
                 followers: profileModel.userResult?.followersCount,
                 followings: profileModel.userResult?.followingsCount,
+                tricksCount: profileModel.userResult?.tricksCount,
                 avatar: profileModel.userResult?.avatarAddress,
                 cover: profileModel.userResult?.coverAddress,
                 followersAction: {},

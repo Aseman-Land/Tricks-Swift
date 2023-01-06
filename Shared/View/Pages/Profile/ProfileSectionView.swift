@@ -14,9 +14,11 @@ struct ProfileSectionView: View {
     /// Details
     var name: String?
     var username: String?
+    var joinedDate: Date?
     var about: String?
     var followers: Int?
     var followings: Int?
+    var tricksCount: Int?
     
     /// Images
     var avatar: URL?
@@ -64,7 +66,7 @@ struct ProfileSectionView: View {
                 .clipShape(Rectangle())
                 
                 LinearGradient(
-                    colors: [.clear, .clear, .clear, .clear, backgroundColor],
+                    colors: [.clear, .clear, .clear, .clear, .clear, backgroundColor],
                     startPoint: .top,
                     endPoint: .bottom
                 )
@@ -103,7 +105,7 @@ struct ProfileSectionView: View {
             .padding(.bottom, 40)
             
             /// User details
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 6) {
                 /// Name and Username
                 VStack(alignment: .leading, spacing: 0) {
                     /// User's name
@@ -126,28 +128,41 @@ struct ProfileSectionView: View {
                         .redacted(reason: username?.trimmingCharacters(in: .whitespaces).isEmpty ?? true ? .placeholder : [])
                         .shimmering(active: username?.trimmingCharacters(in: .whitespaces).isEmpty ?? true)
                 }
-                /// About
-                if let about {
-                    Text(about)
-                        .font(.body)
-                        .fontWeight(.light)
-                        .dynamicTypeSize(.xSmall ... .large)
-                }
                 
-                HStack {
-                    if let followings {
-                        Button(action: {}) {
-                            Text("**\(followings.formatted())** Following")
-                        }
+                VStack(alignment: .leading, spacing: 4) {
+                    /// About
+                    if let about {
+                        Text(about)
+                            .font(.body)
+                            .fontWeight(.light)
+                            .dynamicTypeSize(.xSmall ... .large)
                     }
                     
-                    if let followers {
-                        Button(action: {}) {
-                            Text("**\(followers.formatted())** Followers")
+                    if let joinedDate {
+                        Label("Joined \(joinedDate.formatted(date: .abbreviated, time: .omitted))", systemImage: "calendar")
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    /// Followings, Followers, Tricks counts
+                    HStack(spacing: 15) {
+                        if let followings {
+                            Button(action: {}) {
+                                Text("**\(followings.formatted())** Following")
+                            }
+                        }
+                        
+                        if let followers {
+                            Button(action: {}) {
+                                Text("**\(followers.formatted())** Followers")
+                            }
+                        }
+                        
+                        if let tricksCount {
+                            Text("**\(tricksCount.formatted())** Tricks")
                         }
                     }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
             .padding(.horizontal, 20)
         }
@@ -161,9 +176,11 @@ struct ProfileSectionView_Previews: PreviewProvider {
             ProfileSectionView(
                 name: "Armin",
                 username: "Shalchian",
+                joinedDate: Date(),
                 about: "Something big to make it really make sense",
                 followers: 999_990,
                 followings: 120,
+                tricksCount: 120,
                 avatar: URL(string: "https://avatars.githubusercontent.com/u/4667751?v=4"),
                 cover: URL(string: "https://www.apple.com/v/macos/ventura/a/images/router/compatible_devices__d5lgp6ypklua_large_2x.jpg"),
                 followersAction: {},

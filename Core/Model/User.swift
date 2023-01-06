@@ -43,6 +43,13 @@ public struct UserResult: Codable {
         return nil
     }
     
+    var joinedDate: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return dateFormatter.date(from: self.joinDate ?? "") ?? Date()
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, username, fullname, about
         case joinDate = "join_date"
