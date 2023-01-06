@@ -48,13 +48,13 @@ struct ProfileSectionView: View {
                         LazyImage(url: cover) { state in
                             if let image = state.image {
                                 image
+                                    .frame(height: 120)
                             } else {
                                 Rectangle()
                                     .fill(.gray)
                                     .shimmering()
                             }
                         }
-                        .aspectRatio(contentMode: .fill)
                     } else {
                         Image("cover_pattern")
                             .resizable()
@@ -64,6 +64,7 @@ struct ProfileSectionView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 120)
                 .clipShape(Rectangle())
+                .clipped()
                 
                 LinearGradient(
                     colors: [.clear, .clear, .clear, .clear, .clear, backgroundColor],
@@ -172,7 +173,7 @@ struct ProfileSectionView: View {
 
 struct ProfileSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrollView {
+        List {
             ProfileSectionView(
                 name: "Armin",
                 username: "Shalchian",
@@ -187,5 +188,6 @@ struct ProfileSectionView_Previews: PreviewProvider {
                 followingsAction: {}
             )
         }
+        .listStyle(.plain)
     }
 }
