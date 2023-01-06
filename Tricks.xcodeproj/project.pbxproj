@@ -176,6 +176,8 @@
 		C6FA15F627C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
 		C6FAD4B429688EB900FF39DF /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = C6FAD4B329688EB900FF39DF /* Shimmer */; };
 		C6FAD4B629688EC600FF39DF /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = C6FAD4B529688EC600FF39DF /* Shimmer */; };
+		C6FAD4B82968AE5E00FF39DF /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAD4B72968AE5E00FF39DF /* View+Extension.swift */; };
+		C6FAD4B92968AE5E00FF39DF /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAD4B72968AE5E00FF39DF /* View+Extension.swift */; };
 		C6FBB8E7281540A000ECCE77 /* AvatarPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */; };
 		C6FBB8E8281540A000ECCE77 /* AvatarPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */; };
 /* End PBXBuildFile section */
@@ -278,6 +280,7 @@
 		C6F7D2C127E3C602001F0B54 /* Sharer+Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sharer+Implementation.swift"; sourceTree = "<group>"; };
 		C6F7D2C327E3C646001F0B54 /* Sharer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharer.swift; sourceTree = "<group>"; };
 		C6FA15F427C0E6F9005CAD1A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		C6FAD4B72968AE5E00FF39DF /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -471,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				C63D793A27D287F1000D7442 /* NSNotification+Extension.swift */,
+				C6FAD4B72968AE5E00FF39DF /* View+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -824,6 +828,7 @@
 				C629101827CEA36800FD740E /* TricksService.swift in Sources */,
 				C6F7D2C427E3C646001F0B54 /* Sharer.swift in Sources */,
 				C64E784A27C2271A00B26527 /* AuthEndpoint.swift in Sources */,
+				C6FAD4B82968AE5E00FF39DF /* View+Extension.swift in Sources */,
 				C67D8A0527C14ABD001E0E56 /* AppService.swift in Sources */,
 				C61A875A28129FB400CA6257 /* CustomTextEditor.swift in Sources */,
 				C605E126280E966A00C777DB /* NotificationRow.swift in Sources */,
@@ -910,6 +915,7 @@
 				C64A97CB27FB463500C7EE1A /* LoaderButton.swift in Sources */,
 				C6D9FF3927D16DAD0000CB4A /* AddQuoteView.swift in Sources */,
 				C667D8562813256500018E6A /* RecoverPaswordViewModel.swift in Sources */,
+				C6FAD4B92968AE5E00FF39DF /* View+Extension.swift in Sources */,
 				C69477FC291FDD1C00BFCBF8 /* EmptyListView.swift in Sources */,
 				C6799B6028033AA100385799 /* TagsEndpoint.swift in Sources */,
 				C64E784B27C2271A00B26527 /* AuthEndpoint.swift in Sources */,

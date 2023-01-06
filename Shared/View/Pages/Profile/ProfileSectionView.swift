@@ -132,35 +132,39 @@ struct ProfileSectionView: View {
                 
                 VStack(alignment: .leading, spacing: 4) {
                     /// About
-                    if let about {
-                        Text(about)
-                            .font(.body)
-                            .fontWeight(.light)
-                            .dynamicTypeSize(.xSmall ... .large)
-                    }
+                    Text(about ?? "")
+                        .font(.body)
+                        .fontWeight(.light)
+                        .dynamicTypeSize(.xSmall ... .large)
+                        .hidden(about?.trimmingCharacters(in: .whitespaces).isEmpty ?? true)
                     
-                    if let joinedDate {
-                        Label("Joined \(joinedDate.formatted(date: .abbreviated, time: .omitted))", systemImage: "calendar")
-                            .foregroundColor(.secondary)
-                    }
+                    Label(
+                        "Joined \(joinedDate?.formatted(date: .abbreviated, time: .omitted) ?? "")",
+                        systemImage: "calendar"
+                    )
+                    .font(.callout)
+                    .foregroundColor(.secondary)
+                    .labelStyle(.titleAndIcon)
+                    .redacted(reason: joinedDate == nil ? .placeholder : [])
+                    .shimmering(active: joinedDate == nil)
                     
                     /// Followings, Followers, Tricks counts
                     HStack(spacing: 15) {
-                        if let followings {
-                            Button(action: {}) {
-                                Text("**\(followings.formatted())** Following")
-                            }
+                        Button(action: {}) {
+                            Text("**\((followings ?? 0).formatted())** Following")
+                                .redacted(reason: followings == nil ? .placeholder : [])
+                                .shimmering(active: followings == nil)
                         }
                         
-                        if let followers {
-                            Button(action: {}) {
-                                Text("**\(followers.formatted())** Followers")
-                            }
+                        Button(action: {}) {
+                            Text("**\((followers ?? 0).formatted())** Followers")
+                                .redacted(reason: followers == nil ? .placeholder : [])
+                                .shimmering(active: followers == nil)
                         }
                         
-                        if let tricksCount {
-                            Text("**\(tricksCount.formatted())** Tricks")
-                        }
+                        Text("**\((tricksCount ?? 0).formatted())** Tricks")
+                            .redacted(reason: tricksCount == nil ? .placeholder : [])
+                            .shimmering(active: tricksCount == nil)
                     }
                     .buttonStyle(.plain)
                 }
@@ -168,6 +172,7 @@ struct ProfileSectionView: View {
             .padding(.horizontal, 20)
         }
         .padding(.bottom)
+        .dynamicTypeSize(.xSmall ... .medium)
     }
 }
 
@@ -187,6 +192,7 @@ struct ProfileSectionView_Previews: PreviewProvider {
                 followersAction: {},
                 followingsAction: {}
             )
+            .listRowInsets(EdgeInsets())
         }
         .listStyle(.plain)
     }
