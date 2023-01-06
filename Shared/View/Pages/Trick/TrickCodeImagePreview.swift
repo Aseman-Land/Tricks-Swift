@@ -15,6 +15,8 @@ struct TrickCodeImagePreview: View {
     @State var codePreviewSize: CodePreviewDetail
     @State var width: CGFloat
     
+    @StateObject private var image = FetchImage()
+    
     var widthNormal: CGFloat {
         if width >= 450 {
             return 450
@@ -23,19 +25,27 @@ struct TrickCodeImagePreview: View {
         }
     }
     
+    var height: CGFloat {
+        widthNormal * CGFloat(codePreviewSize.height) / CGFloat(codePreviewSize.width)
+    }
+    
     var body: some View {
         VStack {
             // MARK: - Trick Image Preview
-            #if os(macOS)
-            LazyImage(url: url)
-                .frame(height: widthNormal * CGFloat(codePreviewSize.height) / CGFloat(codePreviewSize.width))
-            #else
-            LazyImage(url: url, resizingMode: .aspectFit)
-                .frame(height: widthNormal * CGFloat(codePreviewSize.height) / CGFloat(codePreviewSize.width))
-            
-            #endif
+            if let content = image.view {
+                content
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipped()
+            } else {
+             RoundedRectangle(cornerRadius: 12)
+                    .frame(height: height)
+            }
         }
         .frame(maxWidth: 450)
+        .onAppear { image.load(url) }
+        .onChange(of: url) { image.load($0) }
+        .onDisappear { image.reset() }
     }
 }
 
