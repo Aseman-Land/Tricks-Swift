@@ -115,6 +115,7 @@ struct TricksListView<ProfileContent: View>: View {
                         .listSectionSeparator(.hidden)
                         .listRowSeparator(.hidden)
                         #endif
+                        .listRowInsets(EdgeInsets())
                 }
                 .listStyle(.plain)
                 .overlay {
@@ -127,6 +128,7 @@ struct TricksListView<ProfileContent: View>: View {
                         .listSectionSeparator(.hidden)
                         .listRowSeparator(.hidden)
                         #endif
+                        .listRowInsets(EdgeInsets())
                 }
                 .listStyle(.plain)
                 .overlay {
