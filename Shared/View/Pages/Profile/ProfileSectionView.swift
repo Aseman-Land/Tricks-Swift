@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NukeUI
+import Shimmer
 
 struct ProfileSectionView: View {
     
@@ -102,6 +103,7 @@ struct ProfileSectionView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
                         .redacted(reason: name?.trimmingCharacters(in: .whitespaces).isEmpty ?? true ? .placeholder : [])
+                        .shimmering(active: name?.trimmingCharacters(in: .whitespaces).isEmpty ?? true)
                     
                     /// Username
                     Text("@" + (username ?? "     "))
@@ -111,6 +113,7 @@ struct ProfileSectionView: View {
                         .minimumScaleFactor(0.5)
                         .foregroundStyle(.secondary)
                         .redacted(reason: username?.trimmingCharacters(in: .whitespaces).isEmpty ?? true ? .placeholder : [])
+                        .shimmering(active: username?.trimmingCharacters(in: .whitespaces).isEmpty ?? true)
                 }
                 /// About
                 if let about {

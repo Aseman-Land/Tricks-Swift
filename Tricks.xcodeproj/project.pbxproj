@@ -174,6 +174,8 @@
 		C6F7D2C427E3C646001F0B54 /* Sharer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7D2C327E3C646001F0B54 /* Sharer.swift */; };
 		C6FA15F527C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
 		C6FA15F627C0E6F9005CAD1A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA15F427C0E6F9005CAD1A /* SignupView.swift */; };
+		C6FAD4B429688EB900FF39DF /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = C6FAD4B329688EB900FF39DF /* Shimmer */; };
+		C6FAD4B629688EC600FF39DF /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = C6FAD4B529688EC600FF39DF /* Shimmer */; };
 		C6FBB8E7281540A000ECCE77 /* AvatarPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */; };
 		C6FBB8E8281540A000ECCE77 /* AvatarPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBB8E6281540A000ECCE77 /* AvatarPreview.swift */; };
 /* End PBXBuildFile section */
@@ -284,6 +286,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FAD4B429688EB900FF39DF /* Shimmer in Frameworks */,
 				C6947802292022CB00BFCBF8 /* Nuke in Frameworks */,
 				C663FEBB2885BF4800476F0B /* SimpleKeychain in Frameworks */,
 				C6947804292022CB00BFCBF8 /* NukeUI in Frameworks */,
@@ -294,6 +297,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FAD4B629688EC600FF39DF /* Shimmer in Frameworks */,
 				C6947806292022F300BFCBF8 /* Nuke in Frameworks */,
 				C663FEBD2885BF5400476F0B /* SimpleKeychain in Frameworks */,
 				C6947808292022F800BFCBF8 /* NukeUI in Frameworks */,
@@ -707,6 +711,7 @@
 				C663FEBA2885BF4800476F0B /* SimpleKeychain */,
 				C6947801292022CA00BFCBF8 /* Nuke */,
 				C6947803292022CB00BFCBF8 /* NukeUI */,
+				C6FAD4B329688EB900FF39DF /* Shimmer */,
 			);
 			productName = "Tricks (iOS)";
 			productReference = C63C90FD27BFC5BA0022051C /* Tricks.app */;
@@ -729,6 +734,7 @@
 				C663FEBC2885BF5400476F0B /* SimpleKeychain */,
 				C6947805292022F300BFCBF8 /* Nuke */,
 				C6947807292022F800BFCBF8 /* NukeUI */,
+				C6FAD4B529688EC600FF39DF /* Shimmer */,
 			);
 			productName = "Tricks (macOS)";
 			productReference = C63C910327BFC5BA0022051C /* Tricks.app */;
@@ -764,6 +770,7 @@
 			packageReferences = (
 				C663FEB92885BF4800476F0B /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
 				C6947800292022CA00BFCBF8 /* XCRemoteSwiftPackageReference "Nuke" */,
+				C6FAD4B229688EB900FF39DF /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = C63C90FE27BFC5BA0022051C /* Products */;
 			projectDirPath = "";
@@ -1260,6 +1267,14 @@
 				minimumVersion = 11.3.1;
 			};
 		};
+		C6FAD4B229688EB900FF39DF /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1292,6 +1307,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C6947800292022CA00BFCBF8 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
+		};
+		C6FAD4B329688EB900FF39DF /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6FAD4B229688EB900FF39DF /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+		C6FAD4B529688EC600FF39DF /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6FAD4B229688EB900FF39DF /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NukeUI
+import Shimmer
 
 struct TrickCodeImagePreview: View {
     
@@ -40,6 +41,7 @@ struct TrickCodeImagePreview: View {
             } else {
              RoundedRectangle(cornerRadius: 12)
                     .frame(height: height)
+                    .shimmering()
             }
         }
         .frame(maxWidth: 450)
