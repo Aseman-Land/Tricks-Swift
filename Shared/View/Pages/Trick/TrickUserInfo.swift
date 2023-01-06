@@ -13,13 +13,6 @@ struct TrickUserInfo: View {
     @Binding var trick: Trick
     @EnvironmentObject var profile: MyProfileViewModel
     
-    var trickDate: Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return dateFormatter.date(from: trick.datetime) ?? Date()
-    }
-    
     var body: some View {
         HStack {
             // MARK: - User avatar
@@ -35,7 +28,7 @@ struct TrickUserInfo: View {
             
             VStack(alignment: .trailing, spacing: 3) {
                 // MARK: - Trick's time
-                Text(trickDate, style: .relative)
+                Text(trick.date, style: .relative)
                     .font(.caption)
                     .fontWeight(.light)
                     .foregroundStyle(.secondary)
