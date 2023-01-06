@@ -41,12 +41,23 @@ struct ProfileSectionView: View {
             /// Avatar and Cover
             ZStack(alignment: .bottomLeading) {
                 /// Cover
-                AsyncImage(url: cover) { image in
-                    image
-                        .resizable()
+                Group {
+                    if let cover {
+                        LazyImage(url: cover) { state in
+                            if let image = state.image {
+                                image
+                            } else {
+                                Rectangle()
+                                    .fill(.gray)
+                                    .shimmering()
+                            }
+                        }
                         .aspectRatio(contentMode: .fill)
-                } placeholder: {
-                    EmptyView()
+                    } else {
+                        Image("cover_pattern")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 120)
