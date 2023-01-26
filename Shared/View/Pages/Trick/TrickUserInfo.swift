@@ -37,13 +37,16 @@ struct TrickUserInfo: View {
                     .minimumScaleFactor(0.4)
                 
                 // MARK: - View count
-                Label(trick.views.formatted(), systemImage: "eye")
-                    .font(.caption.weight(.light))
-                
+                HStack(spacing: 5) {
+                    Image(systemName: "eye")
+                    Text(trick.views.formatted())
+                }
+                .font(.caption.weight(.light))
             }
             .foregroundStyle(.secondary)
         }
         .padding(.bottom, 8)
+        .dynamicTypeSize(.xSmall ... .medium)
     }
 }
 
@@ -79,15 +82,17 @@ struct UserRow: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.4)
                     }
-                    if let language = language {
-                        Label(language.capitalized, systemImage: "chevron.left.forwardslash.chevron.right")
-                            .font(.system(.caption, design: .monospaced))
-                            .foregroundStyle(.secondary)
-                            .dynamicTypeSize(.xSmall ... .medium)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.4)
-                            .labelStyle(.titleAndIcon)
+                    
+                    HStack(spacing: 5) {
+                        Image(systemName: "chevron.left.forwardslash.chevron.right")
+                        Text(language?.capitalized ?? "")
                     }
+                    .font(.system(.caption, design: .monospaced))
+                    .foregroundStyle(.secondary)
+                    .dynamicTypeSize(.xSmall ... .medium)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.4)
+                    .opacity(language != nil ? 1 : 0)
                 }
             }
         } destination: {
