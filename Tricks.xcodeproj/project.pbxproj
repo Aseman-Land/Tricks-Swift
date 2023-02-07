@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C6018F0B27FADFD700DF8FED /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6018F0A27FADFD700DF8FED /* NavigationButton.swift */; };
 		C6018F0C27FADFD700DF8FED /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6018F0A27FADFD700DF8FED /* NavigationButton.swift */; };
-		C6018F0F27FAF51A00DF8FED /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6018F0D27FAF51A00DF8FED /* View+Extension.swift */; };
+		C6018F0F27FAF51A00DF8FED /* View+Extension+macos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6018F0D27FAF51A00DF8FED /* View+Extension+macos.swift */; };
 		C605E126280E966A00C777DB /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C605E125280E966A00C777DB /* NotificationRow.swift */; };
 		C605E127280E966A00C777DB /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C605E125280E966A00C777DB /* NotificationRow.swift */; };
 		C61A875A28129FB400CA6257 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A875928129FB400CA6257 /* CustomTextEditor.swift */; };
@@ -184,7 +184,7 @@
 
 /* Begin PBXFileReference section */
 		C6018F0A27FADFD700DF8FED /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
-		C6018F0D27FAF51A00DF8FED /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		C6018F0D27FAF51A00DF8FED /* View+Extension+macos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension+macos.swift"; sourceTree = "<group>"; };
 		C605E125280E966A00C777DB /* NotificationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRow.swift; sourceTree = "<group>"; };
 		C61A875928129FB400CA6257 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		C61A875D2812C37A00CA6257 /* RecoverPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordView.swift; sourceTree = "<group>"; };
@@ -660,7 +660,7 @@
 			isa = PBXGroup;
 			children = (
 				C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */,
-				C6018F0D27FAF51A00DF8FED /* View+Extension.swift */,
+				C6018F0D27FAF51A00DF8FED /* View+Extension+macos.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -930,7 +930,7 @@
 				C629101127CE96B600FD740E /* EditorSettingsView.swift in Sources */,
 				C629100F27CE969A00FD740E /* AdvancedSettingsView.swift in Sources */,
 				C6D1013B27C7E13A0087235E /* AuthService.swift in Sources */,
-				C6018F0F27FAF51A00DF8FED /* View+Extension.swift in Sources */,
+				C6018F0F27FAF51A00DF8FED /* View+Extension+macos.swift in Sources */,
 				C6CDBBB327CA1068008BFF5E /* HTTPMethod.swift in Sources */,
 				C63886552820307800E894D7 /* UsersEndpoint.swift in Sources */,
 				C629101927CEA36800FD740E /* TricksService.swift in Sources */,
