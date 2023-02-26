@@ -39,7 +39,7 @@ struct TrickUserInfo: View {
                 // MARK: - View count
                 HStack(spacing: 5) {
                     Image(systemName: "eye")
-                    Text(trick.views.formatted())
+                    Text(trick.views, format: .number.notation(.compactName))
                 }
                 .font(.caption.weight(.light))
             }

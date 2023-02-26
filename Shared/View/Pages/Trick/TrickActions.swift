@@ -29,7 +29,7 @@ struct TrickActions: View {
                     LikeLabel(state: $trickModel.liked)
                         .frame(width: 15, height: 15)
                     
-                    Text(trickModel.trick.rates.formatted())
+                    Text(trickModel.trick.rates, format: .number.notation(.compactName))
                 }
             }
             .buttonStyle(.plain)
