@@ -90,9 +90,14 @@ struct NotificationRow: View {
 struct NotificationRow_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            NotificationRow(notif: Notif.mockLikeExample)
-            NotificationRow(notif: Notif.mockQuoteExample)
-            NotificationRow(notif: Notif.mockCommentExample)
+            NotificationRow(notif: .placeHolder(type: .like))
+            NotificationRow(notif: .placeHolder(type: .follow))
+            NotificationRow(notif: .placeHolder(type: .comment))
+            NotificationRow(notif: .placeHolder(type: .mention))
+            NotificationRow(notif: .placeHolder(type: .tagUpdate))
+            NotificationRow(notif: .placeHolder(type: .tips))
+            NotificationRow(notif: .placeHolder(type: .donate))
+            NotificationRow(notif: .placeHolder(type: .unknown))
         }
         .navigationTitle("Notifications")
         #if os(iOS)

@@ -22,9 +22,3 @@ TRICKS_APP_NAME = Tricks
 
 // MARK: - App Bundle Identifier
 TRICKS_BUNDLE_ID = io.aseman.tricks${DEVELOPMENT_TEAM}
-
-// MARK: - API Configs
-TRICKS_BASE_API = tricks.aseman.io
-TRICKS_PASSWORD_SALT = 92bcd38b-9aae-4528-a5b0-4c38489db279
-TRICKS_API_APP_ID = 
-TRICKS_API_APP_VERSION = 4

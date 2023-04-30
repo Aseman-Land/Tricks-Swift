@@ -20,7 +20,7 @@ class TrickViewModel: ObservableObject {
     
     init(trick: Trick) {
         self.trick = trick
-        self.liked = trick.rate_state == 1
+        self.liked = trick.rateState == 1
     }
     
     var isMine: Bool {
@@ -104,10 +104,10 @@ class TrickViewModel: ObservableObject {
             trick.body ?? "",
             trick.code ?? "",
             "By \(trick.owner.fullname)",
-            URL(string: (trick.share_link ?? trick.previewURL?.absoluteString) ?? "https://tricks.aseman.io")!
+            URL(string: (trick.shareLink ?? trick.previewURL?.absoluteString) ?? "https://tricks.aseman.io")!
         ]
         #else
-        return [trick.share_link ?? trick.previewURL as Any]
+        return [trick.shareLink ?? trick.previewURL as Any]
         #endif
     }
     
@@ -151,12 +151,12 @@ class TrickViewModel: ObservableObject {
                 print("\n")
                 print("🗳️ Trick gonna update")
                 print("🔢 Trick rates: \(updatedTrick.rates)")
-                print("🤔 Trick is liked? : \(updatedTrick.rate_state == 1)")
+                print("🤔 Trick is liked? : \(updatedTrick.rateState == 1)")
                 #endif
                 /// Updating current rate state of trick
                 DispatchQueue.main.async {
                     self.trick = updatedTrick
-                    self.liked = updatedTrick.rate_state == 1
+                    self.liked = updatedTrick.rateState == 1
                 }
             } else {
                 #if DEBUG

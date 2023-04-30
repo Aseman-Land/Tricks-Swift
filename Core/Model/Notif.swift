@@ -8,13 +8,13 @@
 import Foundation
 
 // MARK: - Notification
-struct NotifResult: Codable {
+public struct NotifResult: Codable {
     let result: [Notif]
     let status: Bool
 }
 
 // MARK: - Notification Item
-struct Notif: Codable {
+public struct Notif: Codable {
     let id = UUID()
     let trick: NotifTrickResult?
     let notifyType: Int
@@ -30,35 +30,126 @@ struct Notif: Codable {
         case comment
     }
     
-    static let mockLikeExample = Notif(
-        trick: NotifTrickResult.mockExample,
-        notifyType: 1,
-        datetime: "2022-04-05T01:37:40",
-        user: UserResult.mockExample,
-        viewed: 1,
-        comment: nil
-    )
+    var type: NotifType {
+        switch notifyType {
+        case 1:
+            return .like
+        case 2:
+            return .follow
+        case 3:
+            return .comment
+        case 4:
+            return .mention
+        case 5:
+            return .tagUpdate
+        case 6:
+            return .tips
+        case 7:
+            return .donate
+        default:
+            return .unknown
+        }
+    }
+}
+
+extension Notif {
+    static func placeHolder(type: NotifType) -> Notif {
+        switch type {
+        case .like:
+            return Notif(
+                trick: .placeHolder(),
+                notifyType: 1,
+                datetime: "2022-04-05T01:37:40",
+                user: .placeHolder(),
+                viewed: 1,
+                comment: nil
+            )
+        case .follow:
+            return Notif(
+                trick: nil,
+                notifyType: 2,
+                datetime: "2022-05-21T14:39:56",
+                user: .placeHolder(),
+                viewed: 1,
+                comment: nil
+            )
+        case .comment:
+            return Notif(
+                trick: .placeHolder(),
+                notifyType: 3,
+                datetime: "2022-05-21T14:39:56",
+                user: .placeHolder(),
+                viewed: 1,
+                comment: .placeHolder()
+            )
+        case .mention:
+            return Notif(
+                trick: .placeHolder(),
+                notifyType: 4,
+                datetime: "2022-05-21T14:39:56",
+                user: .placeHolder(),
+                viewed: 1,
+                comment: .placeHolder()
+            )
+        case .tagUpdate:
+            return Notif(
+                trick: .placeHolder(),
+                notifyType: 5,
+                datetime: "2022-05-21T14:39:56",
+                user: .placeHolder(),
+                viewed: 1,
+                comment: nil
+            )
+        case .tips:
+            return Notif(
+                trick: .placeHolder(),
+                notifyType: 6,
+                datetime: "2022-05-21T14:39:56",
+                user: .placeHolder(),
+                viewed: 0,
+                comment: nil
+            )
+        case .donate:
+            return Notif(
+                trick: .placeHolder(),
+                notifyType: 7,
+                datetime: "2022-05-21T14:39:56",
+                user: .placeHolder(),
+                viewed: 0,
+                comment: nil
+            )
+        case .unknown:
+            return Notif(
+                trick: .placeHolder(),
+                notifyType: 999,
+                datetime: "2022-05-21T14:39:56",
+                user: .placeHolder(),
+                viewed: 1,
+                comment: nil
+            )
+        }
+    }
     
     static let mockQuoteExample = Notif(
-        trick: NotifTrickResult.mockExample,
+        trick: .placeHolder(),
         notifyType: 2,
         datetime: "2022-04-05T01:37:40",
-        user: UserResult.mockExample,
+        user: .placeHolder(),
         viewed: 1,
         comment: nil
     )
     
     static let mockCommentExample = Notif(
-        trick: NotifTrickResult.mockExample,
+        trick: .placeHolder(),
         notifyType: 3,
         datetime: "2022-04-05T01:37:40",
-        user: UserResult.mockExample,
+        user: .placeHolder(),
         viewed: 1,
-        comment: Comment.mockExample
+        comment: .placeHolder()
     )
 }
 
-struct NotifTrickResult: Codable {
+public struct NotifTrickResult: Codable {
     let id: Int
     let body: String
     let code: String
@@ -67,20 +158,23 @@ struct NotifTrickResult: Codable {
     let highlighterID, programingLanguageID, codeFrameID, typeID: Int?
     let views, rates: Int
     let filename: String
-    
-    static let mockExample = NotifTrickResult(
-        id: 123,
-        body: "Its a test",
-        code: "PostTrickRequest {\n    id: postReq\n    allowGlobalBusy: GlobalSettings.mobileView\n    onSuccessfull: reloadTimer.restart()\n}",
-        owner: 7,
-        datetime: "2022-04-04T15:34:39",
-        highlighterID: 4,
-        programingLanguageID: 11,
-        codeFrameID: 2,
-        typeID: 1,
-        views: 2,
-        rates: 2,
-        filename: "storage/upload/1/efb5ca7f-7f37-4f17-aefd-dd6f8d2b7108.png"
-    )
 }
 
+extension NotifTrickResult {
+    static func placeHolder() -> NotifTrickResult {
+        NotifTrickResult(
+            id: 1,
+            body: "Hello world! 😃",
+            code: "fn main() {\n    println!(\"Hello Tricks :)\");\n}",
+            owner: 7,
+            datetime: "2022-04-30T20:47:20",
+            highlighterID: 4,
+            programingLanguageID: 11,
+            codeFrameID: 2,
+            typeID: 1,
+            views: 2,
+            rates: 2,
+            filename: "storage/upload/1/efb5ca7f-7f37-4f17-aefd-dd6f8d2b7108.png"
+        )
+    }
+}

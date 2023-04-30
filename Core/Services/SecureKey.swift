@@ -12,7 +12,7 @@ public actor SecureKey {
     let securedKey: String
     
     init(password: String) {
-        let pass = "\(AppService.passwordSalt)\(password)\(AppService.passwordSalt)"
+        let pass = "\(AppService.PASSWORD_SALT)\(password)\(AppService.PASSWORD_SALT)"
         let hashed = SHA256.hash(data: Data(pass.utf8))
         self.securedKey = hashed.compactMap { String(format: "%02x", $0) }.joined()
     }

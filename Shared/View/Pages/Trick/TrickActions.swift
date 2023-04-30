@@ -102,7 +102,7 @@ struct TrickActions: View {
 
 struct TrickActions_Previews: PreviewProvider {
     
-    @StateObject static var trickModel = TrickViewModel(trick: Trick.mockExample)
+    @StateObject static var trickModel = TrickViewModel(trick: .placeHolder())
     @StateObject static var addQuoteModel = AddQuoteViewModel()
     
     static var previews: some View {

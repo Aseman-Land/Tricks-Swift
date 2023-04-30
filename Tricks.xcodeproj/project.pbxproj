@@ -161,6 +161,8 @@
 		C6DE700E2834244700A60A92 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE700C2834244700A60A92 /* Comment.swift */; };
 		C6E061EE291EAAA000C68CC2 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E061ED291EAAA000C68CC2 /* AvatarView.swift */; };
 		C6E061EF291EAAA000C68CC2 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E061ED291EAAA000C68CC2 /* AvatarView.swift */; };
+		C6F0C88729FEFD600031F8D7 /* NotifType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0C88629FEFD600031F8D7 /* NotifType.swift */; };
+		C6F0C88829FEFD600031F8D7 /* NotifType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0C88629FEFD600031F8D7 /* NotifType.swift */; };
 		C6F1B72627E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
 		C6F1B72727E64B690008EFBE /* TrickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F1B72527E64B690008EFBE /* TrickViewModel.swift */; };
 		C6F339FF2811326200AD7688 /* ListStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F339FE2811326200AD7688 /* ListStatus.swift */; };
@@ -234,7 +236,6 @@
 		C6799B6128033F1A00385799 /* TagsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsService.swift; sourceTree = "<group>"; };
 		C67A3788291D58C300514961 /* LikeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeLabel.swift; sourceTree = "<group>"; };
 		C67C772A29671CBC0016CD81 /* AvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarButton.swift; sourceTree = "<group>"; };
-		C67D89FE27C1399D001E0E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C67D8A0127C14A70001E0E56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C67D8A0427C14ABD001E0E56 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		C67D8A0827C17EC3001E0E56 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -260,7 +261,6 @@
 		C6C0F82127C12EF20011F173 /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		C6C0F82227C12EF20011F173 /* Notif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notif.swift; sourceTree = "<group>"; };
 		C6C0F83527C130510011F173 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		C6C0F83627C136280011F173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6CDBBB127CA1068008BFF5E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C6CDBBB727CA1096008BFF5E /* HTTPContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPContentType.swift; sourceTree = "<group>"; };
 		C6D1013927C7E13A0087235E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -270,6 +270,7 @@
 		C6D9FF3B27D174030000CB4A /* NSTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extension.swift"; sourceTree = "<group>"; };
 		C6DE700C2834244700A60A92 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C6E061ED291EAAA000C68CC2 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		C6F0C88629FEFD600031F8D7 /* NotifType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifType.swift; sourceTree = "<group>"; };
 		C6F1B72527E64B690008EFBE /* TrickViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrickViewModel.swift; sourceTree = "<group>"; };
 		C6F339FE2811326200AD7688 /* ListStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStatus.swift; sourceTree = "<group>"; };
 		C6F33A0528113F5A00AD7688 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -522,7 +523,6 @@
 			isa = PBXGroup;
 			children = (
 				C63C910527BFC5BA0022051C /* macOS.entitlements */,
-				C67D89FE27C1399D001E0E56 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -554,10 +554,10 @@
 		C6C0F81B27C12EBA0011F173 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				C6C9DE5B27CD77680008B4AD /* Networking */,
 				C64E784527C2267C00B26527 /* Endpoints */,
-				C67D8A0727C17EB3001E0E56 /* Services */,
 				C6C0F81C27C12EF20011F173 /* Model */,
+				C6C9DE5B27CD77680008B4AD /* Networking */,
+				C67D8A0727C17EB3001E0E56 /* Services */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -575,6 +575,7 @@
 				C6B84D1327FC7E2000A9F734 /* CodeHighlighters.swift */,
 				C6F339FE2811326200AD7688 /* ListStatus.swift */,
 				C6DE700C2834244700A60A92 /* Comment.swift */,
+				C6F0C88629FEFD600031F8D7 /* NotifType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -590,7 +591,6 @@
 		C6C0F83727C1392D0011F173 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C6C0F83627C136280011F173 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -852,6 +852,7 @@
 				C6B84D1C27FC86C800A9F734 /* TrickCodePreview.swift in Sources */,
 				C67D8A0927C17EC3001E0E56 /* HTTPClient.swift in Sources */,
 				C63C911A27BFC6230022051C /* MainView.swift in Sources */,
+				C6F0C88729FEFD600031F8D7 /* NotifType.swift in Sources */,
 				C6957C1527CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
 				C65D3C8128215AAF002EC14C /* SecureKey.swift in Sources */,
 				C621AFC128114BB3007BBEDA /* Bundle+Extensions.swift in Sources */,
@@ -959,6 +960,7 @@
 				C63C910727BFC5BA0022051C /* TricksApp.swift in Sources */,
 				C6957C1627CF7025004ECB14 /* TricksListViewModel.swift in Sources */,
 				C65D3C7F28213355002EC14C /* AccountSettingsViewModel.swift in Sources */,
+				C6F0C88829FEFD600031F8D7 /* NotifType.swift in Sources */,
 				C6C0F82C27C12EF20011F173 /* Tags.swift in Sources */,
 				C63C912C27BFC9100022051C /* ProfileView.swift in Sources */,
 				C6E061EF291EAAA000C68CC2 /* AvatarView.swift in Sources */,
@@ -1111,7 +1113,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iOS/Resources/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1142,7 +1144,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iOS/Resources/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1178,7 +1180,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = macOS/Resources/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1208,7 +1210,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = macOS/Resources/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -21,15 +21,35 @@ struct Trick: Codable {
     let owner: UserResult
     let datetime: String
     let highlighter: GlobalTrickItemDetail?
-    let programing_language: GlobalTrickItemDetail?
-    let code_frame: GlobalTrickItemDetail?
+    let programingLanguage: GlobalTrickItemDetail?
+    let codeFrame: GlobalTrickItemDetail?
     let type: TrickTypeClass
-    var views, rates, rate_state: Int64
+    var views, rates, rateState: Int64
     let tags: [String?]
     let filename: String?
     let quote: Quote?
-    let image_size: CodePreviewDetail?
-    let share_link: String?
+    let imageSize: CodePreviewDetail?
+    let shareLink: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case body
+        case code
+        case owner
+        case datetime
+        case highlighter
+        case programingLanguage = "programing_language"
+        case codeFrame = "code_frame"
+        case type
+        case views
+        case rates
+        case rateState = "rate_state"
+        case tags
+        case filename
+        case quote
+        case imageSize = "image_size"
+        case shareLink = "share_link"
+    }
     
     var previewURL: URL? {
         return AppService().imageURL(url: filename)
@@ -41,26 +61,30 @@ struct Trick: Codable {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return dateFormatter.date(from: self.datetime) ?? Date()
     }
-    
-    static let mockExample = Trick(
-        id: 1,
-        body: "Rust’s Hello world",
-        code: "fn main() {\n    println!(\"Hello World!\");\n}",
-        owner: UserResult.mockExample,
-        datetime: "2022-01-18T20:22:07",
-        highlighter: GlobalTrickItemDetail(id: 16, name: "ayu Dark"),
-        programing_language: GlobalTrickItemDetail(id: 6, name: "rust"),
-        code_frame: nil,
-        type: TrickTypeClass(id: 1, name: "code", typeDescription: nil),
-        views: 3,
-        rates: 1000,
-        rate_state: 1,
-        tags: ["Rust"],
-        filename: "storage/static/newtrick_0.png",
-        quote: nil,
-        image_size: CodePreviewDetail(width: 1200, height: 496),
-        share_link: "https://tricks.aseman.io/tricks/127"
-    )
+}
+
+extension Trick {
+    static func placeHolder() -> Trick {
+        Trick(
+            id: 1,
+            body: "Hello world! 😃",
+            code: "fn main() {\n    println!(\"Hello Tricks :)\");\n}",
+            owner: .placeHolder(),
+            datetime: "2022-04-30T20:47:20",
+            highlighter: .init(id: 17, name: "ayu Light"),
+            programingLanguage: .init(id: 6, name: "Rust"),
+            codeFrame: .init(id: 2, name: "Light"),
+            type: .init(id: 1, name: "code", typeDescription: nil),
+            views: 50,
+            rates: 1_000,
+            rateState: 1,
+            tags: ["HelloWorld", "Rust", "Noob"],
+            filename: "storage/upload/1/ce2d8302-5c66-4464-b452-8e12b3aafa8b.png",
+            quote: nil,
+            imageSize: .init(width: 1024, height: 278),
+            shareLink: "https://tricks.aseman.io/tricks/1"
+        )
+    }
 }
 
 // MARK: - GlobalTrickItemDetail

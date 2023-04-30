@@ -88,7 +88,7 @@ struct TrickView: View {
                                 // MARK: - Trick preview
                                 TrickCodeImagePreview(
                                     url: trickModel.trick.previewURL,
-                                    codePreviewSize: trickModel.trick.image_size!,
+                                    codePreviewSize: trickModel.trick.imageSize!,
                                     width: parentWidth
                                 )
                             }
@@ -101,7 +101,7 @@ struct TrickView: View {
                     // MARK: - Trick preview
                     TrickCodeImagePreview(
                         url: trickModel.trick.previewURL,
-                        codePreviewSize: trickModel.trick.image_size!,
+                        codePreviewSize: trickModel.trick.imageSize!,
                         width: parentWidth
                     )
                 }
@@ -125,7 +125,7 @@ struct TrickView_Previews: PreviewProvider {
     
     static var previews: some View {
         GeometryReader { proxy in
-            TrickView(trick: Trick.mockExample, parentWidth: proxy.size.width)
+            TrickView(trick: Trick.placeHolder(), parentWidth: proxy.size.width)
                 .padding()
                 .environmentObject(profile)
                 .preferredColorScheme(.dark)

@@ -82,7 +82,7 @@ struct AddQuoteView: View {
 
 struct AddQuoteView_Previews: PreviewProvider {
     
-    static private var trick = Trick.mockExample
+    static private var trick = Trick.placeHolder()
     @StateObject static var addQuoteModel = AddQuoteViewModel()
     
     static var previews: some View {

@@ -31,14 +31,14 @@ public struct UserResult: Codable {
     
     var avatarAddress: URL? {
         if let avatar {
-            return URL(string: "https://\(AppService.apiKey)/api/v1/\(avatar)")
+            return URL(string: "https://\(AppService.BASE_ADDRESS)/api/v1/\(avatar)")
         }
         return nil
     }
     
     var coverAddress: URL? {
         if let cover {
-            return URL(string: "https://\(AppService.apiKey)/api/v1/\(cover)")
+            return URL(string: "https://\(AppService.BASE_ADDRESS)/api/v1/\(cover)")
         }
         return nil
     }
@@ -60,22 +60,26 @@ public struct UserResult: Codable {
         case isFollower = "is_follower"
         case isFollowed = "is_followed"
     }
-    
-    static let mockExample = UserResult(
-        id: 1,
-        username: "realbardia",
-        fullname: "Bardia Daneshvar",
-        about: "I'm a C++ and Rust Developer :)",
-        joinDate: "2021-03-03T20:38:04",
-        avatar: "storage/upload/1/a92e7655-1d03-46c4-af07-408e68ba464c.jpeg",
-        cover: "storage/upload/1/62a45d0c-cbcc-403a-bed2-cda8115cac8f.jpg",
-        followersCount: 4,
-        followingsCount: 3,
-        tricksCount: 4,
-        details: UserDetails(role: 0),
-        isFollower: nil,
-        isFollowed: nil
-    )
+}
+
+public extension UserResult {
+    static func placeHolder() -> UserResult {
+        UserResult(
+            id: -1,
+            username: "Tricks",
+            fullname: "Tricks Social Network",
+            about: "Official Account",
+            joinDate: "1111-01-01T00:00:00",
+            avatar: "storage/static/avatar.png",
+            cover: nil,
+            followersCount: 40,
+            followingsCount: 0,
+            tricksCount: 3,
+            details: UserDetails(role: 1),
+            isFollower: false,
+            isFollowed: true
+        )
+    }
 }
 
 // MARK: - UserDetails

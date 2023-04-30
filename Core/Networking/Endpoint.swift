@@ -19,13 +19,13 @@ public protocol Endpoint {
 
 extension Endpoint {
     var baseURL: String {
-        return "https://\(AppService.apiKey)"
+        return "https://\(AppService.BASE_ADDRESS)"
     }
     
     var baseHeader: [String: String] {
         return [
-            "App-Version": AppService.apiAppVersion,
-            "App-Secret-ID": AppService.apiAppID,
+            "App-Version": AppService.APP_VERSION,
+            "App-Secret-ID": AppService.APP_ID,
         ]
     }
 }

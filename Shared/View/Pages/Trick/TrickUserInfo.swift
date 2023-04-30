@@ -20,7 +20,7 @@ struct TrickUserInfo: View {
                 name: trick.owner.fullname,
                 username: trick.owner.username,
                 userID: String(trick.owner.id),
-                language: trick.programing_language?.name
+                language: trick.programingLanguage?.name
             )
             .environmentObject(profile)
 
@@ -107,7 +107,7 @@ struct TrickUserPreview_Previews: PreviewProvider {
     @StateObject static var profile = MyProfileViewModel()
     
     static var previews: some View {
-        TrickUserInfo(trick: .constant(Trick.mockExample))
+        TrickUserInfo(trick: .constant(.placeHolder()))
             .environmentObject(profile)
             .padding()
     }

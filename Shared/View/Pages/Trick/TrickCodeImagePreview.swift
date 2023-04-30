@@ -55,8 +55,8 @@ struct TrickCodeImagePreview_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { proxy in
             TrickCodeImagePreview(
-                url: Trick.mockExample.previewURL,
-                codePreviewSize: Trick.mockExample.image_size ?? CodePreviewDetail(width: 300, height: 300),
+                url: Trick.placeHolder().previewURL,
+                codePreviewSize: Trick.placeHolder().imageSize ?? CodePreviewDetail(width: 300, height: 300),
                 width: proxy.size.width
             )
         }
