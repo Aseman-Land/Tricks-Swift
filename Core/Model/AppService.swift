@@ -11,7 +11,7 @@ struct AppService {
     static var BASE_ADDRESS = "tricks.aseman.io"
     static var PASSWORD_SALT = "92bcd38b-9aae-4528-a5b0-4c38489db279"
     static var APP_ID = ""
-    static var APP_VERSION = 4
+    static var APP_VERSION = "4"
 }
 
 extension AppService {
